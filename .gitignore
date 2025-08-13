@@ -1,5 +1,7 @@
+# Ignore generated files.
+dist
+
 # Ignore dependencies.
 node_modules
 
-# Ignore generated files.
-/dist
+.astro

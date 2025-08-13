@@ -1,25 +1,33 @@
 {
-    "name": "YINI homepage ",
+    "name": "YINI Homepage",
     "version": "1.0.0",
     "description": "YINI homepage",
     "main": "dist/index.js",
     "type": "module",
     "scripts": {
-        "build": "tsc",
-        "start": "node dist/index.js"
+        "dev": "astro dev",
+        "build": "astro build",
+        "start": "node dist/index.js",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "preview": "astro preview",
+        "typecheck": "astro check"
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.3",
         "@astrojs/react": "^4.3.0",
-        "astro": "^5.12.9",
         "react": "^19.1.1",
         "react-dom": "^19.1.1",
         "yini-parser": "^1.0.2-beta"
     },
     "devDependencies": {
+        "@astrojs/check": "^0.9.4",
         "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
         "@typescript-eslint/eslint-plugin": "^8.39.1",
         "@typescript-eslint/parser": "^8.39.1",
+        "astro": "^5.12.9",
         "astro-eslint-parser": "^1.2.2",
         "eslint": "^9.33.0",
         "eslint-mdx": "^3.6.2",
