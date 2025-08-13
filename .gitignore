@@ -1,0 +1,5 @@
+# Ignore dependencies.
+node_modules
+
+# Ignore generated files.
+/dist

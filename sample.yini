@@ -1,0 +1,25 @@
+// This is a comment
+// YINI is a simple, human-readable configuration file format.
+
+// Note: In YINI, spaces and tabs don't change meaning - 
+// indentation is just for readability.
+
+/*  This is a block comment
+
+    In YINI, section headers use repeated characters "^" at the start to
+    show their level: (Section header names are case-sensitive.)
+
+    ^ SectionLevel1
+    ^^ SectionLevel2
+    ^^^ SectionLevel3
+*/
+
+^ App                      // Definition of section (group) "App" 
+    name     = 'My Title'    // Keys and values are written as key = value
+    items    = 25
+    darkMode = true          // "ON" and "YES" works too
+
+    // Sub-section of the "App" section
+    ^^ Special
+        primaryColor = #336699   // Hex number format
+        isCaching    = false     // "OFF" and "NO" works too
