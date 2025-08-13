@@ -1,4 +1,5 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from 'astro/config'
+
 export default defineConfig({
-  // integrations: [/* e.g., react(), mdx() */],
-});
+    // integrations: [/* e.g., react(), mdx() */],
+})

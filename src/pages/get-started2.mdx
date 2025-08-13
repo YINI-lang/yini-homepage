@@ -1,0 +1,17 @@
+---
+title: Get Started
+---
+
+# {frontmatter.title}
+
+MDX lets you use components:
+
+<MyNote>YINI + Astro = 🚀</MyNote>
+
+export function MyNote({ children }) {
+    return (
+        <div style={{ padding: '8px 12px', background: '#f6f8fa' }}>
+            {children}
+        </div>
+    )
+}
