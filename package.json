@@ -1,19 +1,24 @@
 {
-    "name": "YINI Homepage",
+    "name": "yini-homepage",
+    "private": true,
     "version": "1.0.0",
     "description": "YINI homepage",
-    "main": "dist/index.js",
     "type": "module",
+    "engines": {
+        "node": ">=20"
+    },
     "scripts": {
         "dev": "astro dev",
+        "dev:host": "astro dev --host",
         "build": "astro build",
-        "start": "node dist/index.js",
+        "preview": "astro preview",
+        "start": "astro preview",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "preview": "astro preview",
-        "typecheck": "astro check"
+        "typecheck": "astro check",
+        "typecheck:watch": "astro check --watch"
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.3",
