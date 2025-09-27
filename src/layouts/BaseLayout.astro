@@ -1,24 +1,82 @@
 ---
-const { title = 'YINI' } = Astro.props;
+const {
+    title = 'YINI',
+    description = 'INI-inspired config with cleaner structure, richer syntax, simple rules.',
+} = Astro.props
 ---
+
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>{title}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body { font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 2rem auto; max-width: 800px; padding: 0 1rem; }
-      nav a { margin-right: 1rem; }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/get-started">Get Started</a>
-      <a href="/playground">Playground</a>
-    </nav>
-    <main>
-      <slot />
-    </main>
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+
+        <!-- Favicons -->
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+
+        <!-- PNG fallbacks -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32.png"
+        />
+
+        <!-- High-res icons (useful for PWA/Android, even without a manifest) -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="/favicon-192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="512x512"
+            href="/favicon-512.png"
+        />
+
+        <!-- Apple iOS -->
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        <!-- Optional theme colors -->
+        <meta name="theme-color" content="#111827" />
+        <meta name="msapplication-TileColor" content="#111827" />
+
+        <style>
+            body {
+                font:
+                    16px/1.6 system-ui,
+                    -apple-system,
+                    Segoe UI,
+                    Roboto,
+                    sans-serif;
+                margin: 2rem auto;
+                max-width: 800px;
+                padding: 0 1rem;
+            }
+            nav a {
+                margin-right: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/get-started">Get Started</a>
+            <a href="/playground">Playground</a>
+            <a href="/faq">FAQ</a>
+        </nav>
+        <main>
+            <slot />
+        </main>
+    </body>
 </html>

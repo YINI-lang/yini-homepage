@@ -1,0 +1,129 @@
+---
+
+title: YINI — Frequently Asked Questions
+layout: ../layouts/BaseLayout.astro
+
+---
+
+# {frontmatter.title}
+
+A quick, practical FAQ for the YINI configuration format. If you’re new, start with [Get Started](/get-started) and try the [Playground](/playground).
+
+
+---
+
+## Why not just use INI/JSON/YAML/TOML?
+Use whatever suits your project best. YINI aims to:
+- Keep **INI-like simplicity**.
+- Add **clear structure** (sections, arrays, objects).
+- Keep **predictable rules** (strict mode available).
+- Be **comfortable to read and diff**.
+
+---
+
+## What file extension should I use?
+YINI documents uses the `.yini` file extension.
+
+---
+
+## How does sections look like?
+Each section starts with `^`. (Settings are grouped in sections.)
+
+Start a section with `^` and then a name **without spaces**, e.g.:
+
+```ts
+^ App
+title = "AppName"
+```
+
+Here the text "App" is the section name.
+
+### To do several sections
+One can add more sections, for example:
+```ts
+^ App
+title = "My App Title"
+items = 25
+
+^ Style
+isDarkTheme = OFF
+```
+
+---
+
+## Can I use comments alongside values?
+
+Yes, various commenting styles are supported in YINI:
+```ts
+// This is a line comment
+
+timeout = 30  // inline comment
+
+# This is also a line comment (must have a space after #)
+
+interval = 30  # inline comment (must have a space after #)
+
+/* Block comment spanning
+   multiple lines */
+
+; Full line comment (must be whole line).
+```
+
+---
+
+## Are tabs and whitespace important?
+No (in the sence as in Python or in Yaml).
+
+**In YINI, spaces and tabs don't change meaning** - indentation is just for human readability.
+
+---
+
+## How to make another section in a section?
+
+Use `^` at the start of a line to make a section, then add one more `^` to make a sub-section. Add yet another `^` to nest more sections into each other.
+
+- `^` = section
+- `^^` = sub-section
+- `^^^` = sub-sub-section
+
+Example:
+```ts
+    ^ App
+      name = 'Demo'
+      version = '1.0.0'
+
+    ^ Database
+      host = 'localhost'
+      port = 5432
+
+        // Add another caret `^` and you get a sub-section
+        ^^ Credentials
+           user = 'admin'
+           password = "secret"
+```
+
+---
+
+## Are keys case-sensitive?
+
+Yes, keys and section names are **case-sensitive**. Keep a consistent style (e.g., `lower_snake_case`).
+
+## What value types are supported?
+
+Common scalars and collections:
+
+- **Strings:** (classic/raw/triple-quoted, per spec)
+- **Numbers:** (ints, floats, exponential)
+- **Booleans:** `true`/`false`, plus `on`/`off` and `yes`/`no` (**all case-insensitive**)
+- **Null:** `null` (**case-insensitive**)
+- **Arrays:** `[1, 2, "str"]`
+- **Objects:** `{ host: "db", port: 5432 }`
+
+## Arrays and objects?
+Yes and yes.
+
+```ts
+list = [1, 2, 3, 'four', true, null]
+
+obj = { host: 'localhost', port: 5432 }
+```
