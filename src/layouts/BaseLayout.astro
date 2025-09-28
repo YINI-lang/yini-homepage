@@ -2,15 +2,8 @@
 //const siteName = 'YINI'
 const {
     headTitle, // optional per-page
-    //description = 'INI-inspired config with cleaner structure, richer syntax, simple rules.',
     headDescription,
-    //head,
-    //description,
 } = Astro.props
-
-// Default to site name when no title provided.
-// If a title exists, render "Page Title · YINI".
-//const htmlTitle = title ? `${title} · ${siteName}` : siteName
 
 const postTitle = 'A Minimal, Human-Readable Configuration Format'
 const htmlTitle = `${headTitle} · ${postTitle}`
