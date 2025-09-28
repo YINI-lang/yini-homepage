@@ -11,7 +11,9 @@ const {
 // Default to site name when no title provided.
 // If a title exists, render "Page Title · YINI".
 //const htmlTitle = title ? `${title} · ${siteName}` : siteName
-//const htmlTitle = title || headTitle
+
+const postTitle = 'A Minimal, Human-Readable Configuration Format'
+const htmlTitle = `${headTitle} · ${postTitle}`
 ---
 
 <html lang="en">
@@ -19,7 +21,7 @@ const {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>{headTitle}</title>
+        <title>{htmlTitle}</title>
         <meta name="description" content={headDescription} />
 
         <!-- Favicons -->

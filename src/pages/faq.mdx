@@ -1,8 +1,11 @@
 ---
-layout: ../layouts/BaseLayout.astro
-headTitle: FAQ
-headDescription: YINI — Frequently Asked Questions
+title: "FAQ: YINI"
+description: Frequently Asked Questions in YINI.
 ---
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+<BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
 # YINI — Frequently Asked Questions
 
@@ -126,3 +129,4 @@ list = [1, 2, 3, 'four', true, null]
 
 obj = { host: 'localhost', port: 5432 }
 ```
+</BaseLayout>
