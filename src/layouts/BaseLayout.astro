@@ -1,13 +1,17 @@
 ---
-const siteName = 'YINI'
+//const siteName = 'YINI'
 const {
-    title, // optional per-page
-    description = 'INI-inspired config with cleaner structure, richer syntax, simple rules.',
+    headTitle, // optional per-page
+    //description = 'INI-inspired config with cleaner structure, richer syntax, simple rules.',
+    headDescription,
+    //head,
+    //description,
 } = Astro.props
 
 // Default to site name when no title provided.
 // If a title exists, render "Page Title · YINI".
-const htmlTitle = title ? `${title} · ${siteName}` : siteName
+//const htmlTitle = title ? `${title} · ${siteName}` : siteName
+//const htmlTitle = title || headTitle
 ---
 
 <html lang="en">
@@ -15,8 +19,8 @@ const htmlTitle = title ? `${title} · ${siteName}` : siteName
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>{htmlTitle}</title>
-        <meta name="description" content={description} />
+        <title>{headTitle}</title>
+        <meta name="description" content={headDescription} />
 
         <!-- Favicons -->
         <link rel="icon" href="/favicon.ico" sizes="any" />

@@ -1,11 +1,12 @@
 ---
-
-title: "YINI: Get Started"
-mainHeader: Get Started
-layout: ../layouts/BaseLayout.astro
-
+headTitle: YINI Get Startedxx
+headDescription: Get started with YINI
 ---
 
-# {frontmatter.mainHeader}
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-This page is written in **Markdown** and rendered by Astro.
+<BaseLayout headTitle={frontmatter.headTitle} headDescription={frontmatter.headDescription}>
+  # Get Started
+
+  This page is written in **Markdown** and rendered by Astro.
+</BaseLayout>

@@ -1,0 +1,9 @@
+---
+layout: ../layouts/BaseLayout.astro
+headTitle: YINI Get Started
+headDescription: Get started with YINI
+---
+
+# Get Started
+
+This page is written in **Markdown** and rendered by Astro.
