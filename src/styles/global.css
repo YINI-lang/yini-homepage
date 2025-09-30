@@ -26,8 +26,24 @@
     }
 }
 
-/* (Optional) dark mode tweak */
+@layer base {
+    a {
+        @apply transition-colors;
+    }
+    a:hover {
+        @apply text-sky-600 underline;
+    }
+    /* optional a11y */
+    a:focus-visible {
+        @apply rounded ring-2 ring-sky-400 outline-none;
+    }
+}
+
+/* Dark mode tweak */
 .dark .prose {
     --tw-prose-bullets: #7dd3fc; /* adjust to taste */
     --tw-prose-counters: #7dd3fc;
+}
+.dark a:hover {
+    @apply text-sky-400;
 }
