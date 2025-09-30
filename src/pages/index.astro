@@ -7,13 +7,28 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     headTitle="YINI: Clean, human-friendly configuration format"
     headDescription="INI-inspired config with cleaner structure, richer syntax, simple rules."
 >
-    <section class="hero">
-        <h1>YINI — Clean, Structured Config</h1>
-        <p>INI-familiar syntax with nesting, comments, and clear rules.</p>
-        <div class="actions">
-            <a href="/get-started" class="btn btn-primary">Get Started</a>
-            <a href="/playground" class="btn">Open Playground</a>
-            <a href="/faq" class="link">FAQ</a>
+    <section class="mx-auto max-w-5xl px-4 py-12 text-center">
+        <h1 class="text-3xl font-semibold tracking-tight md:text-5xl">
+            YINI — Clean, Structured Config
+        </h1>
+        <p class="mt-3 text-base text-gray-600 md:text-lg">
+            INI-familiar syntax with nesting, comments, and clear rules.
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a
+                href="/get-started"
+                class="inline-block rounded-lg bg-sky-600 px-5 py-2.5 text-white hover:brightness-95"
+            >
+                Get Started
+            </a>
+            <a
+                href="/playground"
+                class="inline-block rounded-lg border border-gray-300 px-5 py-2.5 hover:bg-gray-100"
+            >
+                Open Playground
+            </a>
+            <a href="/faq" class="inline-block underline"> FAQ </a>
         </div>
     </section>
 
