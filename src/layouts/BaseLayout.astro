@@ -84,8 +84,11 @@ const htmlTitle = `${headTitle} · ${postTitle}`
                 <a href="/faq">FAQ</a>
             </nav>
         </header>
-        <main>
-            <slot />
+
+        <main class="mx-auto max-w-3xl px-4 py-10">
+            <article class="prose prose-slate dark:prose-invert max-w-none">
+                <slot />
+            </article>
         </main>
     </body>
 </html>
