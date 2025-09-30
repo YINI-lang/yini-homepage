@@ -1,21 +1,59 @@
 ---
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro'
-
-//const title = 'YINI: Clean, human-friendly configuration format.'
-//const description =
-;('INI-inspired config with cleaner structure, richer syntax, simple rules.')
-//const header = 'YINI — Clean, human-friendly configuration format.'
 ---
 
 <BaseLayout
     headTitle="YINI: Clean, human-friendly configuration format"
     headDescription="INI-inspired config with cleaner structure, richer syntax, simple rules."
 >
-    <h1>Welcome to YINI</h1>
-    <p>Clean, human-friendly configuration format.</p>
-    <p>
-        YINI is designed to be a lightweight, human-friendly configuration
-        format — aims to be simpler than YAML, but more expressive than INI.
-    </p>
+    <section class="hero">
+        <h1>YINI — Clean, Structured Config</h1>
+        <p>INI-familiar syntax with nesting, comments, and clear rules.</p>
+        <div class="actions">
+            <a href="/get-started" class="btn btn-primary">Get Started</a>
+            <a href="/playground" class="btn">Open Playground</a>
+            <a href="/faq" class="link">FAQ</a>
+        </div>
+    </section>
+
+    <section class="code">
+        <pre><code class="language-yini">{`^ App
+name = "Demo"
+version = "1.0.0"
+features = [ "search", "dark-mode" ]  # comments allowed
+
+^ Database
+host = "localhost"
+port = 5432
+auth = { user: "admin", pass: "secret" }`}</code></pre>
+    </section>
+
+    <section class="benefits">
+        <ul>
+            <li>
+                <strong>Familiar</strong> — learn it in minutes if you know INI
+            </li>
+            <li>
+                <strong>Structured</strong> — sections, arrays, objects, clear nesting
+            </li>
+            <li>
+                <strong>Predictable</strong> — fewer gotchas; strict/lenient modes
+                available
+            </li>
+        </ul>
+    </section>
+
+    <section class="try">
+        <h2>Try it</h2>
+        <pre><code>npm i -D yini-cli
+yini validate ./config.yini</code></pre>
+        <p><a href="/playground" class="btn">Open Playground</a></p>
+    </section>
+
+    <section class="links">
+        <a href="/examples">Examples</a> ·
+        <a href="/faq">FAQ</a> ·
+        <a href="/spec">Spec ↗</a>
+    </section>
 </BaseLayout>

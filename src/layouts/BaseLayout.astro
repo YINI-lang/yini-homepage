@@ -73,12 +73,15 @@ const htmlTitle = `${headTitle} · ${postTitle}`
         </style>
     </head>
     <body>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/get-started">Get Started</a>
-            <a href="/playground">Playground</a>
-            <a href="/faq">FAQ</a>
-        </nav>
+        <header class="site-header">
+            <a href="/" aria-label="YINI home" class="logo">.yini</a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/get-started">Get Started</a>
+                <a href="/playground">Playground</a>
+                <a href="/faq">FAQ</a>
+            </nav>
+        </header>
         <main>
             <slot />
         </main>
