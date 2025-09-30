@@ -1,4 +1,33 @@
+/* src/styles/global.css */
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
-/* optional: your custom CSS or @theme tokens here */
+/* Your existing list line-height (kept) */
+@layer base {
+    ul li,
+    ol li {
+        line-height: 1.2;
+    }
+}
+
+@layer base {
+    /* Typography plugin uses these vars */
+    .prose {
+        --tw-prose-bullets: #111111; /* unordered list markers */
+        --tw-prose-counters: #111111; /* ordered list numbers */
+    }
+}
+
+/* (Optional) also affect non-.prose lists site-wide */
+@layer base {
+    ul > li::marker,
+    ol > li::marker {
+        color: #111111;
+    }
+}
+
+/* (Optional) dark mode tweak */
+.dark .prose {
+    --tw-prose-bullets: #7dd3fc; /* adjust to taste */
+    --tw-prose-counters: #7dd3fc;
+}
