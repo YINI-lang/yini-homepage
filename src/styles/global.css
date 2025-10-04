@@ -17,13 +17,21 @@
         color: #111111;
     }
 
-    /* Links (skip buttons) */
+    /* Normal links (skip .btn) — no underline by default, blue+underline on hover */
     a:not(.btn) {
         @apply text-sky-600 underline;
     }
+    /* a:not(.btn):hover {
+        @apply text-sky-600 underline;
+    } */
+
+    /* Focus ring for all links (incl. buttons) */
+    a:focus-visible {
+        @apply rounded ring-2 ring-sky-400 outline-none;
+    }
 }
 
-/* Markdown (.prose) — also skip buttons */
+/* Markdown (.prose) – same link behavior as global */
 .prose {
     --tw-prose-bullets: #111111;
     --tw-prose-counters: #111111;
@@ -33,6 +41,10 @@
     color: theme(colors.sky.600);
     text-decoration: underline;
 }
+/* .prose :where(a:hover):not(.btn) {
+    color: theme(colors.sky.600);
+    text-decoration: underline;
+} */
 
 /* Optional dark */
 .dark .prose {
@@ -44,15 +56,17 @@
     @apply text-sky-400;
 }
 
-/* — Component buttons — */
+/* — Component buttons (stronger, explicit) — */
 @layer components {
     .btn {
-        @apply inline-block rounded-lg px-5 py-2.5 no-underline;
+        @apply inline-block rounded-lg px-5 py-2.5 !no-underline;
     }
+
     .btn-primary {
-        @apply bg-sky-600 text-white hover:brightness-95;
+        @apply bg-sky-600 !text-white hover:!text-white hover:brightness-95;
     }
+
     .btn-outline {
-        @apply border border-gray-300 text-slate-900 hover:bg-gray-100;
+        @apply border border-gray-300 !text-slate-900 hover:bg-gray-100 hover:!text-slate-900;
     }
 }
