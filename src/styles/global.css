@@ -1,56 +1,58 @@
-/* src/styles/global.css */
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
-/* Optional: site tokens */
 @theme {
-    --color-brand: #06b6d4; /* your cyan */
+    --color-brand: #06b6d4;
 }
 
-/* ——— Base tweaks (apply everywhere) ——— */
+/* — Base tweaks — */
 @layer base {
-    /* List readability (site-wide) */
+    /* Lists */
     ul li,
     ol li {
-        line-height: 1.2; /* keep your setting */
+        line-height: 1.2;
     }
-
-    /* Non-.prose lists: bullet/number color */
     ul > li::marker,
     ol > li::marker {
         color: #111111;
     }
 
-    /* Links (outside Markdown too) */
-    a {
-        @apply text-sky-600 underline; /* blue + underline on hover */
+    /* Links (skip buttons) */
+    a:not(.btn) {
+        @apply text-sky-600 underline;
     }
 }
 
-/* ——— Markdown (.prose) overrides ——— */
-/* Typography plugin uses these variables for colors. */
+/* Markdown (.prose) — also skip buttons */
 .prose {
-    --tw-prose-bullets: #111111; /* unordered list markers */
-    --tw-prose-counters: #111111; /* ordered list numbers */
-    --tw-prose-links: theme(colors.sky.600); /* link color (used by .prose a) */
+    --tw-prose-bullets: #111111;
+    --tw-prose-counters: #111111;
+    --tw-prose-links: theme(colors.sky.600);
 }
-
-/* Make .prose links match the global hover behavior */
-.prose :where(a) {
+.prose :where(a):not(.btn) {
     color: theme(colors.sky.600);
     text-decoration: underline;
 }
-/* .prose :where(a:hover) {
-    color: theme(colors.sky.600);
-    text-decoration: underline;
-} */
 
-/* Dark mode adjustments */
+/* Optional dark */
 .dark .prose {
     --tw-prose-bullets: #7dd3fc;
     --tw-prose-counters: #7dd3fc;
     --tw-prose-links: theme(colors.sky.400);
 }
-.dark a:hover {
+.dark a:not(.btn):hover {
     @apply text-sky-400;
+}
+
+/* — Component buttons — */
+@layer components {
+    .btn {
+        @apply inline-block rounded-lg px-5 py-2.5 no-underline;
+    }
+    .btn-primary {
+        @apply bg-sky-600 text-white hover:brightness-95;
+    }
+    .btn-outline {
+        @apply border border-gray-300 text-slate-900 hover:bg-gray-100;
+    }
 }
