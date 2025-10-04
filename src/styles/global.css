@@ -2,49 +2,54 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
-/* Your existing list line-height (kept) */
+/* Optional: site tokens */
+@theme {
+    --color-brand: #06b6d4; /* your cyan */
+}
+
+/* ——— Base tweaks (apply everywhere) ——— */
 @layer base {
+    /* List readability (site-wide) */
     ul li,
     ol li {
-        line-height: 1.2;
+        line-height: 1.2; /* keep your setting */
     }
-}
 
-@layer base {
-    /* Typography plugin uses these vars */
-    .prose {
-        --tw-prose-bullets: #111111; /* unordered list markers */
-        --tw-prose-counters: #111111; /* ordered list numbers */
-    }
-}
-
-/* (Optional) also affect non-.prose lists site-wide */
-@layer base {
+    /* Non-.prose lists: bullet/number color */
     ul > li::marker,
     ol > li::marker {
         color: #111111;
     }
-}
 
-@layer base {
-    /* a {
-        @apply transition-colors;
-    } */
-    a,
-    a:hover,
-    a:focus-visible {
-        @apply text-sky-600 underline;
+    /* Links (outside Markdown too) */
+    a {
+        @apply text-sky-600 underline; /* blue + underline on hover */
     }
-    /* optional a11y */
-    /* a:focus-visible {
-        @apply rounded ring-2 ring-sky-400 outline-none;
-    } */
 }
 
-/* Dark mode tweak */
+/* ——— Markdown (.prose) overrides ——— */
+/* Typography plugin uses these variables for colors. */
+.prose {
+    --tw-prose-bullets: #111111; /* unordered list markers */
+    --tw-prose-counters: #111111; /* ordered list numbers */
+    --tw-prose-links: theme(colors.sky.600); /* link color (used by .prose a) */
+}
+
+/* Make .prose links match the global hover behavior */
+.prose :where(a) {
+    color: theme(colors.sky.600);
+    text-decoration: underline;
+}
+/* .prose :where(a:hover) {
+    color: theme(colors.sky.600);
+    text-decoration: underline;
+} */
+
+/* Dark mode adjustments */
 .dark .prose {
-    --tw-prose-bullets: #7dd3fc; /* adjust to taste */
+    --tw-prose-bullets: #7dd3fc;
     --tw-prose-counters: #7dd3fc;
+    --tw-prose-links: theme(colors.sky.400);
 }
 .dark a:hover {
     @apply text-sky-400;
