@@ -1,13 +1,54 @@
 ---
-title: "Get Started: YINI"
-description: Get started with YINI.
+title: 'Get Started: YINI'
+description: Create your first .yini file, validate it, and learn the core syntax in minutes.
 ---
 
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
-  # Get Started
+# Get Started
 
-  This page is written in **Markdown** and rendered by Astro.
+Welcome! This page gets you from **zero → a working `.yini` config** in a few minutes.
+
+## 1) Install (or just use npx)
+
+**Option A — use without installing**
+
+```bash
+npx yini --help
+```
+
+**Option B — add the CLI to your project**
+
+```bash
+npm i -D yini-cli
+```
+
+> After installing, you can run npx yini or add an npm script like "yini": "yini".
+
+## 2) Create your first .yini file
+
+Save this as `config.yini`:
+
+```yini
+^ App
+  name = "Demo"
+  version = "1.0.0"
+  features = [ "search", "dark-mode" ]  # comments are allowed
+
+^ Database
+  host = "localhost"
+  port = 5432
+  auth = { user: "admin", pass: "secret" }  # object literal
+```
+
+Notes:
+
+- **Sections** use `^`, add more carets for sub-sections: `^`, `^^`, `^^^`.
+- **Keys** are name = value.
+- **Arrays:** `[1, 2, 'three']`
+- **Objects:** `{ key: 'value', n: 1 }`
+- **Strings:** quoted `('like this')`.
+
 </BaseLayout>
