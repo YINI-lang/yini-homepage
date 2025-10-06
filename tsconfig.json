@@ -12,6 +12,6 @@
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] }
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "tailwind.config.mjs"],
   "exclude": ["node_modules"]
 }
