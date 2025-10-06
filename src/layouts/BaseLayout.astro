@@ -75,6 +75,7 @@ const htmlTitle = `${headTitle} · ${postTitle}`
         </style>
     </head>
     <body>
+        <!-- Header -->
         <header class="site-header text-center">
             <a href="/" aria-label="YINI home" class="logo m-1"
                 ><img
@@ -92,10 +93,150 @@ const htmlTitle = `${headTitle} · ${postTitle}`
             </nav>
         </header>
 
+        <!-- Main -->
         <main class="mx-auto max-w-3xl px-4 py-10">
             <article class="prose prose-slate dark:prose-invert max-w-none">
                 <slot />
             </article>
         </main>
+
+        <!-- Footer (dark) -->
+        <footer class="mt-16 bg-slate-900 text-slate-300">
+            <div class="mx-auto max-w-6xl px-4 py-10">
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                    <!-- Brand / Tagline -->
+                    <div>
+                        <a
+                            href="/"
+                            aria-label="YINI home"
+                            class="inline-flex items-center gap-2 no-underline"
+                        >
+                            <img
+                                src="/gfx/YINI-logo-cyan-on-white.png"
+                                alt="YINI logo"
+                                class="h-7 w-auto"
+                                loading="lazy"
+                            />
+                            <span class="sr-only">YINI</span>
+                        </a>
+                        <p class="mt-3 text-sm text-slate-400">
+                            INI-familiar syntax with nesting, comments, and
+                            clear rules.
+                        </p>
+                    </div>
+
+                    <!-- Quick links -->
+                    <div>
+                        <h2 class="text-sm font-semibold text-slate-200">
+                            Quick links
+                        </h2>
+                        <ul class="mt-3 space-y-2 text-sm">
+                            <li>
+                                <a
+                                    href="/get-started"
+                                    class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                                    >Get Started</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/playground"
+                                    class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                                    >Playground</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/tutorial"
+                                    class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                                    >Quick Tutorial</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/faq"
+                                    class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                                    >FAQ</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://github.com/your-org/your-spec"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                                    >Spec ↗</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Community / Repos -->
+                    <div>
+                        <h2 class="text-slate-2 00 text-sm font-semibold">
+                            Community
+                        </h2>
+                        <ul class="mt-3 space-y-2 text-sm">
+                            <li>
+                                <a
+                                    href="https://github.com/your-org/yini-homepage"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                                    >GitHub: Homepage ↗</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://github.com/your-org/yini-parser"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                                    >GitHub: Parser ↗</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.npmjs.com/package/yini-parser"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                                    >npm: yini-parser ↗</a
+                                >
+                            </li>
+                            <!-- Add Discussions/Issues/Changelog links as they go live -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bottom line -->
+                <div
+                    class="mt-10 border-t border-slate-800 pt-6 text-xs text-slate-400"
+                >
+                    <div
+                        class="flex flex-col items-center justify-between gap-3 md:flex-row"
+                    >
+                        <div>© 2025 YINI contributors</div>
+                        <div class="flex items-center gap-4">
+                            <a
+                                href="https://github.com/your-org"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-slate-400 no-underline hover:text-sky-300 hover:underline"
+                                >GitHub ↗</a
+                            >
+                            <a
+                                href="https://www.npmjs.com/org/your-org"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-slate-400 no-underline hover:text-sky-300 hover:underline"
+                                >npm ↗</a
+                            >
+                            <!-- Optional License / Privacy links -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
