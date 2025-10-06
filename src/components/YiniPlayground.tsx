@@ -1,7 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+// import YINI, { ParseOptions, PreferredFailLevel } from 'yini-parser'
+// import YINI from 'yini-parser'
+import YINI from '../YiniWrapper.ts'
 
-/** Output view */
 type OutputMode = 'json' | 'pojo' | 'meta'
+type FailLevel = 'ignore-errors' | 'errors' | 'warnings-and-errors'
 
 const DEFAULT_SNIPPET = `^ App
 name = "Demo"
@@ -15,86 +18,98 @@ auth = { user: "admin", pass: "secret" }
 `
 
 export default function YiniPlayground() {
-    const [code, setCode] = useState(DEFAULT_SNIPPET)
+    const [code, setCode] = useState<string>(DEFAULT_SNIPPET)
     const [mode, setMode] = useState<OutputMode>('json')
     const [strict, setStrict] = useState(false)
-    const [failLevel, setFailLevel] = useState<
-        'ignore-errors' | 'errors' | 'warnings-and-errors'
-    >('errors')
     const [includeMeta, setIncludeMeta] = useState(false)
+    const [failLevel, setFailLevel] = useState<FailLevel>('errors')
     const [auto, setAuto] = useState(true)
+
     const [output, setOutput] = useState<string>('')
     const [error, setError] = useState<string>('')
 
-    // Lazy-load default export YINI from the package (or from a local shim if needed)
-    const yiniPromise = useMemo(
-        () =>
-            import('yini-parser')
-                .then((m: any) => m.default ?? m) // expect default export named YINI
-                .catch(async () => {
-                    // Fallback if your project exposes a local '../YINI'
-                    const yiniPromise = useMemo(
-                        () =>
-                            import('yini-parser').then(
-                                (m: any) => m.default ?? m,
-                            ),
-                        [],
-                    )
-                    return (m as any).default ?? m
-                }),
-        [],
-    )
+    const debounce = useRef<number | null>(null)
 
-    async function runParse(src: string) {
+    function parseNow(src = code) {
         setError('')
         try {
-            const YINI: any = await yiniPromise
-
-            // Build options exactly as your API expects
-            const options = {
+            const opts = {
                 strictMode: strict,
-                failLevel, // 'ignore-errors' | 'errors' | 'warnings-and-errors'
+                failLevel,
                 includeMetadata: includeMeta,
-                includeDiagnostics: includeMeta, // only respected if includeMetadata=true
+                includeDiagnostics: includeMeta,
                 requireDocTerminator: 'optional' as const,
-                throwOnError: false, // explicit to keep UI-friendly behavior
-                quiet: true, // suppress console spam from the parser
+                throwOnError: false,
+                quiet: true,
             }
 
-            const result = YINI.parse(src, options)
+            const result = YINI.parse(src, opts)
 
-            // Shape depends on includeMetadata
             if (includeMeta) {
-                // { result, meta }
                 if (mode === 'meta') {
                     setOutput(
                         JSON.stringify((result as any).meta ?? {}, null, 2),
                     )
                 } else {
-                    const data =
-                        mode === 'json'
-                            ? (result as any).result
-                            : (result as any).result
-                    setOutput(JSON.stringify(data, null, 2))
+                    setOutput(JSON.stringify((result as any).result, null, 2))
                 }
             } else {
-                // Plain parsed object
-                setOutput(JSON.stringify(result, null, 2))
+                setOutput(JSON.stringify(result, null, 2)) // POJO/JSON printed the same
             }
+
+            // persist last snippet (optional)
+            try {
+                localStorage.setItem('yini:playground:code', src)
+            } catch {}
         } catch (e: any) {
             setOutput('')
             setError(e?.message ?? String(e))
         }
     }
 
+    // auto-validate with small debounce
     useEffect(() => {
-        if (auto) runParse(code)
+        if (!auto) return
+        if (debounce.current) window.clearTimeout(debounce.current)
+        debounce.current = window.setTimeout(() => parseNow(), 250)
+        return () => {
+            if (debounce.current) window.clearTimeout(debounce.current)
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [code, mode, strict, failLevel, includeMeta, auto])
+    }, [code, mode, strict, includeMeta, failLevel, auto])
 
-    const copyOut = async () => {
+    // load from URL/localStorage on first mount
+    useEffect(() => {
         try {
-            await navigator.clipboard.writeText(output)
+            const params = new URLSearchParams(location.search)
+            const fromUrl = params.get('code')
+            const saved = localStorage.getItem('yini:playground:code')
+            if (fromUrl) {
+                setCode(decodeURIComponent(fromUrl))
+            } else if (saved) {
+                setCode(saved)
+            }
+        } catch {
+            /* ignore */
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    // keyboard: Ctrl/Cmd+Enter to parse (when auto is off)
+    useEffect(() => {
+        function onKey(e: KeyboardEvent) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && !auto) {
+                e.preventDefault()
+                parseNow()
+            }
+        }
+        window.addEventListener('keydown', onKey)
+        return () => window.removeEventListener('keydown', onKey)
+    }, [auto, code, strict, includeMeta, failLevel, mode])
+
+    const copy = async (text: string) => {
+        try {
+            await navigator.clipboard.writeText(text)
         } catch {}
     }
 
@@ -107,7 +122,7 @@ export default function YiniPlayground() {
                 <p className="mt-2 text-slate-600">
                     Paste YINI on the left, see parsed output on the right.
                     Choose <strong>JSON</strong> or <strong>POJO</strong>, view{' '}
-                    <strong>meta</strong>, and toggle strict mode.
+                    <strong>Meta</strong>, and toggle strict mode.
                 </p>
 
                 {/* Controls */}
@@ -145,7 +160,7 @@ export default function YiniPlayground() {
                                 disabled={!includeMeta}
                                 title={
                                     !includeMeta
-                                        ? 'Enable metadata to view meta'
+                                        ? 'Enable metadata to view'
                                         : ''
                                 }
                             />
@@ -178,17 +193,16 @@ export default function YiniPlayground() {
                             className="rounded border border-slate-300 px-2 py-1"
                             value={failLevel}
                             onChange={(e) =>
-                                setFailLevel(e.target.value as typeof failLevel)
+                                setFailLevel(e.target.value as FailLevel)
                             }>
-                            <option value="ignore-errors">ignore-errors</option>
                             <option value="errors">errors</option>
+                            <option value="ignore-errors">ignore-errors</option>
                             <option value="warnings-and-errors">
                                 warnings-and-errors
                             </option>
                         </select>
                     </label>
 
-                    {/* Auto-validate & manual parse */}
                     <label className="inline-flex items-center gap-2">
                         <input
                             type="checkbox"
@@ -200,13 +214,16 @@ export default function YiniPlayground() {
 
                     <button
                         type="button"
-                        onClick={() => runParse(code)}
                         className="btn btn-primary ms-auto"
-                        disabled={auto}
+                        onClick={() => {
+                            console.log('here')
+                            parseNow()
+                        }}
+                        // disabled={auto}
                         title={
                             auto
                                 ? 'Disable Auto-validate to use'
-                                : 'Parse (Ctrl+Enter)'
+                                : 'Parse (Ctrl/Cmd+Enter)'
                         }>
                         Parse
                     </button>
@@ -215,9 +232,19 @@ export default function YiniPlayground() {
                 {/* Panels */}
                 <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div className="flex flex-col">
-                        <label className="mb-2 text-sm font-medium text-slate-600">
-                            Input (.yini)
-                        </label>
+                        <div className="mb-2 flex items-center justify-between">
+                            <label className="text-sm font-medium text-slate-600">
+                                Input (.yini)
+                            </label>
+                            <div className="flex gap-2">
+                                <button
+                                    type="button"
+                                    className="btn btn-outline"
+                                    onClick={() => copy(code)}>
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
                         <textarea
                             value={code}
                             onChange={(e) => setCode(e.target.value)}
@@ -239,8 +266,8 @@ export default function YiniPlayground() {
                             <div className="flex gap-2">
                                 <button
                                     type="button"
-                                    onClick={copyOut}
                                     className="btn btn-outline"
+                                    onClick={() => copy(output)}
                                     disabled={!output}>
                                     Copy
                                 </button>

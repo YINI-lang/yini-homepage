@@ -1,12 +1,10 @@
 ---
-import YiniPlayground from '../components/YiniPlayground.tsx'
-import BaseLayout from '../layouts/BaseLayout.astro'
+import BaseLayout from "../layouts/BaseLayout.astro";
+import YiniPlayground from "../components/YiniPlayground.tsx";
 
-const title = 'Playground'
-const description =
-    'Try YINI in your browser: paste a .yini file and see parsed JSON/POJO output.'
+const title = "Playground";
+const description = "Try YINI in your browser: paste a .yini file and see parsed JSON/POJO/meta output.";
 ---
-
 <BaseLayout {title} {description}>
-    <YiniPlayground client:load />
+  <YiniPlayground client:load />
 </BaseLayout>

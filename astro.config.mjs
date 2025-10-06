@@ -7,5 +7,15 @@ export default defineConfig({
     integrations: [mdx(), react()],
     vite: {
         plugins: [tailwindcss()],
+        resolve: {
+            alias: {
+                process: 'process/browser', // route "process" to the browser polyfill
+            },
+        },
+        define: {
+            global: 'globalThis', // some libs expect global
+            'process.env': {}, // safe env object
+            'process.argv': '[]', // <- fixes your current argv length error
+        },
     },
 })
