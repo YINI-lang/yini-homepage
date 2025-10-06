@@ -46,6 +46,12 @@
     text-decoration: underline;
 } */
 
+/* Remove Typography plugin’s decorative backticks around inline code */
+.prose :where(code):not(:where(pre *))::before,
+.prose :where(code):not(:where(pre *))::after {
+    content: none !important;
+}
+
 /* Optional dark */
 .dark .prose {
     --tw-prose-bullets: #7dd3fc;
