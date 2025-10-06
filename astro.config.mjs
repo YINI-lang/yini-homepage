@@ -17,11 +17,17 @@ export default defineConfig({
                 perf_hooks: fileURLToPath(
                     new URL('./src/shims/perf_hooks.ts', import.meta.url),
                 ),
+                // route Node crypto imports to our browser shim
+                'node:crypto': fileURLToPath(
+                    new URL('./src/shims/crypto.ts', import.meta.url),
+                ),
+                crypto: fileURLToPath(
+                    new URL('./src/shims/crypto.ts', import.meta.url),
+                ),
             },
         },
         define: {
             global: 'globalThis',
-            // Keep the minimal process literals you added earlier:
             process: JSON.stringify({
                 env: {},
                 argv: [],
