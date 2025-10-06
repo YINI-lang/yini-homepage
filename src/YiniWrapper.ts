@@ -12,15 +12,18 @@ export default YINI;
  */
 
 // Ensure a browser-friendly "process" exists before we touch the parser.
-import processPolyfill from 'process'
+// import processPolyfill from 'process'
 // Now import the parser normally (static import, as you wanted)
-import YINI from 'yini-parser'
+// import YINI from 'yini-parser'
 
-if (!(globalThis as any).process) {
-    ;(globalThis as any).process = processPolyfill
-    // also ensure minimal env/argv in case the parser reads them
-    ;(globalThis as any).process.env ||= {}
-    ;(globalThis as any).process.argv ||= []
-}
+// if (!(globalThis as any).process) {
+//     ;(globalThis as any).process = processPolyfill
+//     // also ensure minimal env/argv in case the parser reads them
+//     ;(globalThis as any).process.env ||= {}
+//     ;(globalThis as any).process.argv ||= []
+// }
+
+// export default YINI
+import YINI from 'yini-parser'
 
 export default YINI

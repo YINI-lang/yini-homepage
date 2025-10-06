@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
@@ -9,13 +10,26 @@ export default defineConfig({
         plugins: [tailwindcss()],
         resolve: {
             alias: {
-                process: 'process/browser', // route "process" to the browser polyfill
+                // Route Node perf APIs to our browser shim
+                'node:perf_hooks': fileURLToPath(
+                    new URL('./src/shims/perf_hooks.ts', import.meta.url),
+                ),
+                perf_hooks: fileURLToPath(
+                    new URL('./src/shims/perf_hooks.ts', import.meta.url),
+                ),
             },
         },
         define: {
-            global: 'globalThis', // some libs expect global
-            'process.env': {}, // safe env object
-            'process.argv': '[]', // <- fixes your current argv length error
+            global: 'globalThis',
+            // Keep the minimal process literals you added earlier:
+            process: JSON.stringify({
+                env: {},
+                argv: [],
+                browser: true,
+                versions: {},
+            }),
+            'process.env': JSON.stringify({}),
+            'process.argv': JSON.stringify([]),
         },
     },
 })
