@@ -46,6 +46,47 @@
     text-decoration: underline;
 } */
 
+/* Inline code (not inside <pre>) */
+.prose :where(code):not(:where(pre *)) {
+    background: #f3f4f6; /* light gray for light mode */
+    color: #111827;
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+/* Remove fake backticks we disabled earlier (kept for clarity) */
+.prose :where(code):not(:where(pre *))::before,
+.prose :where(code):not(:where(pre *))::after {
+    content: none !important;
+}
+
+/* Fenced code blocks */
+.prose pre {
+    background: #1f2937; /* slate-800-ish */
+    color: #e5e7eb; /* slate-200-ish */
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+}
+
+/* Don’t double-background the <code> inside <pre> */
+.prose pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+/* Dark mode tweaks (if you use .dark on <html> or <body>) */
+.dark .prose :where(code):not(:where(pre *)) {
+    background: #111827; /* slate-900 */
+    color: #e5e7eb;
+}
+.dark .prose pre {
+    background: #0b1220; /* or keep #1f2937 if you prefer */
+    color: #e5e7eb;
+}
+
 /* Optional dark */
 .dark .prose {
     --tw-prose-bullets: #7dd3fc;
