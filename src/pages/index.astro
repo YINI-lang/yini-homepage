@@ -28,8 +28,36 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </div>
     </section>
 
-    <section class="code">
-        <pre><code class="language-yini">{`^ App
+    <p class="mt-3 text-base text-gray-600 md:text-base">
+        <h4>About</h4>
+        <p>
+            YINI is a new configuration format, <strong
+                >formalized in 2025</strong
+            >. It's a structured configuration format designed for clarity, easy
+            nesting, and strict validation.
+        </p>
+        <p>
+            The format's syntax and behavior are defined in the
+            <strong>YINI Specification</strong>, currently at
+            <strong>Version 1.0 — Candidate Release</strong>.
+        </p>
+        <p>
+            YINI was created and is maintained by Marko K. Seppänen as an
+            open-source project under the <a
+                href="https://github.com/YINI-lang"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-slate-400 no-underline hover:text-sky-300 hover:underline"
+                >YINI-lang organization</a
+            >.
+            <p>
+                The specification, tooling, and ecosystem are actively evolving
+                toward the first stable release.
+            </p>
+        </p>
+
+        <section class="code">
+            <pre><code class="language-yini">{`^ App
 name = "Demo"
 version = "1.0.0"
 features = [ "search", "dark-mode" ]  # comments allowed
@@ -38,37 +66,39 @@ features = [ "search", "dark-mode" ]  # comments allowed
 host = "localhost"
 port = 5432
 auth = { user: "admin", pass: "secret" }`}</code></pre>
-    </section>
+        </section>
 
-    <section class="benefits">
-        <ul>
-            <li>
-                <strong>Familiar</strong> — learn it in minutes if you know INI
-            </li>
-            <li>
-                <strong>Structured</strong> — sections, arrays, objects, clear nesting
-            </li>
-            <li>
-                <strong>Predictable</strong> — fewer gotchas; strict/lenient modes
-                available
-            </li>
-        </ul>
-    </section>
+        <section class="benefits">
+            <ul>
+                <li>
+                    <strong>Familiar</strong> — learn it in minutes if you know INI
+                </li>
+                <li>
+                    <strong>Structured</strong> — sections, arrays, objects, clear
+                    nesting
+                </li>
+                <li>
+                    <strong>Predictable</strong> — fewer gotchas; strict/lenient
+                    modes available
+                </li>
+            </ul>
+        </section>
 
-    <section class="try">
-        <h2>Try it</h2>
-        <p>In your terminal (CMD or bash), write the following:</p>
-        <pre><code>npm i -D yini-cli
+        <section class="try">
+            <h2>Try it</h2>
+            <p>In your terminal (CMD or bash), write the following:</p>
+            <pre><code>npm i -D yini-cli
 yini validate ./config.yini</code></pre>
-        <!-- 
+            <!-- 
         !!Temp disabled
         <p><a href="/playground" class="btn">Open Playground</a></p>
          -->
-    </section>
+        </section>
 
-    <section class="links">
-        <a href="/examples">Examples</a> ·
-        <a href="/faq">FAQ</a> ·
-        <a href="/spec">Spec ↗</a>
-    </section>
+        <section class="links">
+            <a href="/examples">Examples</a> ·
+            <a href="/faq">FAQ</a> ·
+            <a href="/spec">Spec ↗</a>
+        </section>
+    </p>
 </BaseLayout>
