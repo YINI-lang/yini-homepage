@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
+type NavLinksProps = { variant?: 'mobile' | 'desktop' }
+
 export default function Header() {
     const [open, setOpen] = useState(false)
     const [dark, setDark] = useState(false)
@@ -28,33 +30,36 @@ export default function Header() {
         return () => window.removeEventListener('resize', onResize)
     }, [])
 
-    const link = 'no-underline hover:underline'
+    const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
+        const cssClasses =
+            variant === 'desktop' ? '' : 'no-underline hover:underline'
 
-    const NavLinks = () => (
-        <>
-            <a href="/" className={link}>
-                Home
-            </a>
-            <a href="/get-started" className={link}>
-                Get Started
-            </a>
-            {/* Playground is currently temp-disabled in your layout */}
-            {/* <a href="/playground" className={link}>Playground</a> */}
-            <a href="/yini-tutorial" className={link}>
-                Quick Tutorial
-            </a>
-            <a href="/yini-faq" className={link}>
-                FAQ
-            </a>
-            <a
-                href="/specs/YINI-Specification-1.0.0-RC.3.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={link}>
-                Spec ↗
-            </a>
-        </>
-    )
+        return (
+            <>
+                <a href="/" className={cssClasses}>
+                    Home
+                </a>
+                <a href="/get-started" className={cssClasses}>
+                    Get Started
+                </a>
+                {/* Playground is currently temp-disabled in your layout */}
+                {/* <a href="/playground" className={cssClasses}>Playground</a> */}
+                <a href="/yini-tutorial" className={cssClasses}>
+                    Quick Tutorial
+                </a>
+                <a href="/yini-faq" className={cssClasses}>
+                    FAQ
+                </a>
+                <a
+                    href="/specs/YINI-Specification-1.0.0-RC.3.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cssClasses}>
+                    Spec ↗
+                </a>
+            </>
+        )
+    }
 
     return (
         <header className="border-b border-slate-200/60 dark:border-slate-800/60">
@@ -75,7 +80,7 @@ export default function Header() {
 
                 {/* Normal (desktop) menu */}
                 <nav className="ms-auto hidden items-center gap-5 text-sm md:flex">
-                    <NavLinks />
+                    <NavLinks variant="desktop" />
                 </nav>
 
                 {/* Controls */}
@@ -96,7 +101,7 @@ export default function Header() {
                         aria-expanded={open}
                         aria-controls="mobile-nav"
                         aria-label="Toggle menu">
-                        Menu
+                        ☰
                     </button>
                 </div>
             </div>
@@ -107,7 +112,7 @@ export default function Header() {
                     id="mobile-nav"
                     className="border-t border-slate-200/60 md:hidden dark:border-slate-800/60">
                     <nav className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-sm">
-                        <NavLinks />
+                        <NavLinks variant="mobile" />
                     </nav>
                 </div>
             )}
