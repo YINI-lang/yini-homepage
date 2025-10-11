@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import Footer from '../components/Footer.astro'
+import Header from '../components/Header.tsx'
 
 //const siteName = 'YINI'
 const {
@@ -76,6 +77,8 @@ const htmlTitle = `${headTitle} · ${postTitle}`
         </style>
     </head>
     <body>
+        <!-- React header -->
+        <Header client:idle />
         <!-- Header -->
         <header class="site-header text-center">
             <a href="/" aria-label="YINI home" class="logo m-1"
