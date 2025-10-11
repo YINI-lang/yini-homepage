@@ -72,7 +72,7 @@ export default function Header() {
 
     const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
         const cssClasses =
-            variant === 'desktop' ? '' : 'no-underline hover:underline'
+            variant === 'desktop' ? 'px-3' : 'no-underline hover:underline'
 
         return (
             <>
@@ -102,12 +102,13 @@ export default function Header() {
     }
 
     if (!isMobile) {
-        // On Desktop
+        // "Desktop" View.
         return (
             <header className="site-header text-center">
                 <a href="/" aria-label="YINI home" className="logo m-1">
                     <img
-                        className="mx-auto block h-1/3 w-1/3 pr-14.5"
+                        className="mx-auto block h-1/4 w-1/4"
+                        // className="mx-auto block h-1/3 w-1/3 pr-14.5"
                         src="/gfx/YINI-logo-cyan-on-white.png"
                         alt="YINI logo"
                         loading="eager"
@@ -120,6 +121,7 @@ export default function Header() {
             </header>
         )
     } else {
+        // "Mobile" View.
         return (
             <header className="border-b border-slate-200/60 dark:border-slate-800/60">
                 <div className="mx-auto flex max-w-6xl items-center px-4 py-4">
@@ -128,9 +130,9 @@ export default function Header() {
                         aria-label="YINI home"
                         className="inline-flex items-center gap-2 no-underline">
                         <img
+                            className="h-8 w-auto"
                             src="/gfx/YINI-logo-cyan-on-white.png"
                             alt="YINI logo"
-                            className="h-8 w-auto"
                             loading="eager"
                             decoding="async"
                         />
