@@ -2,9 +2,36 @@ import React, { useEffect, useState } from 'react'
 
 type NavLinksProps = { variant?: 'mobile' | 'desktop' }
 
+// ---- Hook: media query -------------------------------------------------------
+function useMediaQuery(query: string) {
+    const [matches, setMatches] = useState(false)
+    useEffect(() => {
+        const mql = window.matchMedia(query)
+        const onChange = (e: MediaQueryListEvent | MediaQueryList) =>
+            setMatches(
+                'matches' in e ? e.matches : (e as MediaQueryList).matches,
+            )
+        // set initial
+        setMatches(mql.matches)
+        // subscribe
+        if (mql.addEventListener)
+            mql.addEventListener('change', onChange as any)
+        else mql.addListener(onChange as any)
+        return () => {
+            if (mql.removeEventListener)
+                mql.removeEventListener('change', onChange as any)
+            else mql.removeListener(onChange as any)
+        }
+    }, [query])
+    return matches
+}
+
 export default function Header() {
     const [open, setOpen] = useState(false)
     const [dark, setDark] = useState(false)
+
+    const maxWidthMobile: number = 767
+    const isMobile = useMediaQuery(`(max-width: ${maxWidthMobile}px)`)
 
     // Load initial theme (persisted or system preference)
     useEffect(() => {
@@ -24,7 +51,7 @@ export default function Header() {
     // Close mobile menu when resizing up to desktop
     useEffect(() => {
         const onResize = () => {
-            if (window.innerWidth >= 768) setOpen(false)
+            if (window.innerWidth > maxWidthMobile) setOpen(false)
         }
         window.addEventListener('resize', onResize)
         return () => window.removeEventListener('resize', onResize)
