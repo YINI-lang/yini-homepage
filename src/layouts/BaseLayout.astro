@@ -2,6 +2,7 @@
 import '../styles/global.css'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.tsx'
+import CONFIG from '../config/cfg'
 
 //const siteName = 'YINI'
 const {
@@ -77,6 +78,9 @@ const htmlTitle = `${headTitle} · ${postTitle}`
         </style>
     </head>
     <body>
+        <!-- <body
+        class="bg-white text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100"
+        > -->
         <!-- React header -->
         <Header client:idle />
 

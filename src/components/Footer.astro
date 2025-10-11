@@ -1,4 +1,6 @@
 ---
+import CONFIG from '../config/cfg'
+
 const year = new Date().getFullYear()
 ---
 
@@ -95,7 +97,7 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
-                            href="/specs/YINI-Specification-1.0.0-RC.3.pdf"
+                            href={CONFIG.urls.spec}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
@@ -104,7 +106,7 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
-                            href="/about-yini"
+                            href={CONFIG.urls.about}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >About</a
                         >
