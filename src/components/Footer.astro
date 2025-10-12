@@ -35,7 +35,7 @@ const year = new Date().getFullYear()
                 <ul class="mt-3 space-y-2 text-sm">
                     <li>
                         <a
-                            href="https://www.npmjs.com/package/yini-cli"
+                            href={CONFIG.urls.external.useIt.npmYiniCli}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
@@ -44,7 +44,7 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
-                            href="https://www.npmjs.com/package/yini-parser"
+                            href={CONFIG.urls.external.useIt.npmYiniParser}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
@@ -62,51 +62,49 @@ const year = new Date().getFullYear()
                 <ul class="mt-3 space-y-2 text-sm">
                     <li>
                         <a
-                            href="/get-started"
+                            href={CONFIG.urls.hero.getStarted}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >Get Started</a
                         >
                     </li>
                     <!-- !!Temp disabled <li>
                                 <a
-                                    href="/playground"
+                                    href={CONFIG.urls.hero.playground}
                                     class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                                     >Playground</a
                                 >
                             </li> -->
                     <li>
                         <a
-                            href="/yini-tutorial"
+                            href={CONFIG.urls.hero.tutorial}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >Quick Tutorial</a
                         >
                     </li>
                     <li>
                         <a
-                            href="/intro-yini-config-format"
+                            href={CONFIG.urls.links.introToYiniFormat}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >Intro to YINI format</a
                         >
                     </li>
                     <li>
                         <a
-                            href="/yini-faq"
+                            href={CONFIG.urls.hero.faq}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >FAQ</a
                         >
                     </li>
                     <li>
                         <a
-                            href={CONFIG.urls.spec}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href={CONFIG.urls.hero.spec}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >YINI-Specification ↗</a
+                            >Specification</a
                         >
                     </li>
                     <li>
                         <a
-                            href={CONFIG.urls.about}
+                            href={CONFIG.urls.links.about}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >About</a
                         >
@@ -121,7 +119,7 @@ const year = new Date().getFullYear()
                 <ul class="mt-3 space-y-2 text-sm">
                     <li>
                         <a
-                            href="https://github.com/YINI-lang/yini-cli"
+                            href={CONFIG.urls.external.gitHub.yiniCli}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
@@ -130,7 +128,7 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
-                            href="https://github.com/YINI-lang/yini-parser-typescript"
+                            href={CONFIG.urls.external.gitHub.yiniParser}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
@@ -139,7 +137,7 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
-                            href="https://github.com/YINI-lang/yini-demo-apps"
+                            href={CONFIG.urls.external.gitHub.yiniDemoApps}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
@@ -148,7 +146,7 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
-                            href="https://github.com/YINI-lang/yini-syntax"
+                            href={CONFIG.urls.external.gitHub.yiniSyntax}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
@@ -157,7 +155,7 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
-                            href="https://github.com/YINI-lang/YINI-spec"
+                            href={CONFIG.urls.external.gitHub.yiniSpec}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
@@ -172,7 +170,7 @@ const year = new Date().getFullYear()
                         Deep dive
                     </h2>
                     <ul class="mt-3 space-y-2 text-sm">
-                        <li>
+                        <!-- <li>
                             <a
                                 href="https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md#table-of-contents"
                                 target="_blank"
@@ -180,7 +178,7 @@ const year = new Date().getFullYear()
                                 class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                                 >Read latest YINI Spec ↗</a
                             >
-                        </li>
+                        </li> -->
                         <li>
                             <a
                                 href="https://github.com/YINI-lang/YINI-spec/blob/production/RATIONALE.md"

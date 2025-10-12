@@ -12,6 +12,6 @@
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] }
   },
-  "include": ["**/*.ts", "tailwind.config.mjs"],
+  "include": ["**/*.ts", "tailwind.config.mjs", "plugins/remark-link-normalize-yini.js", "plugins/remark-link-normalize-yini.js", "plugins/remark-link-normalize-yini.js", "plugins/remark-link-normalize-yini.js", "plugins/remark-link-normalize-yini.js"],
   "exclude": ["node_modules"]
 }

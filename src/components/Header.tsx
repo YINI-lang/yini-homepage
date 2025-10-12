@@ -77,26 +77,22 @@ export default function Header() {
 
         return (
             <>
-                <a href="/" className={cssClasses}>
+                <a href={CONFIG.urls.hero.home} className={cssClasses}>
                     Home
                 </a>
-                <a href="/get-started" className={cssClasses}>
+                <a href={CONFIG.urls.hero.getStarted} className={cssClasses}>
                     Get Started
                 </a>
                 {/* Playground is currently temp-disabled in your layout */}
                 {/* <a href="/playground" className={cssClasses}>Playground</a> */}
-                <a href="/yini-tutorial" className={cssClasses}>
+                <a href={CONFIG.urls.hero.tutorial} className={cssClasses}>
                     Quick Tutorial
                 </a>
-                <a href="/yini-faq" className={cssClasses}>
+                <a href={CONFIG.urls.hero.faq} className={cssClasses}>
                     FAQ
                 </a>
-                <a
-                    href={CONFIG.urls.spec}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cssClasses}>
-                    Spec ↗
+                <a href={CONFIG.urls.hero.spec} className={cssClasses}>
+                    Specification
                 </a>
             </>
         )

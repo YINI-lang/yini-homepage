@@ -1,5 +1,6 @@
 ---
 import Markdown from '@/content/YINI-Specification.md'
+import CONFIG from '../config/conf'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
@@ -7,7 +8,64 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     headTitle={'Specification: YINI'}
     headDescription={'Specification for the YINI config format.'}
 >
+    <section aria-labelledby="alt-formats" class="mt-8">
+        <h2 id="alt-formats" class="text-base font-semibold">
+            Also available as
+        </h2>
+        <ul class="not-prose mt-2 space-y-2">
+            <li>
+                <a
+                    href={CONFIG.urls.specOnGitHubAtProd}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sky-600 no-underline hover:underline dark:text-sky-400"
+                >
+                    <span>View on GitHub ↗</span>
+                </a>
+            </li>
+            <li>
+                <a
+                    href={CONFIG.urls.specPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sky-600 no-underline hover:underline dark:text-sky-400"
+                >
+                    <span>Download PDF ↗</span>
+                </a>
+            </li>
+        </ul>
+        <br /><br />
+    </section>
+
     <section class="spec prose prose-slate dark:prose-invert">
         <Markdown />
+    </section>
+
+    <section aria-labelledby="alt-formats" class="mt-8">
+        <h2 id="alt-formats" class="text-base font-semibold">
+            Also available as
+        </h2>
+        <ul class="not-prose mt-2 space-y-2">
+            <li>
+                <a
+                    href={CONFIG.urls.specOnGitHubAtProd}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sky-600 no-underline hover:underline dark:text-sky-400"
+                >
+                    <span>View on GitHub ↗</span>
+                </a>
+            </li>
+            <li>
+                <a
+                    href={CONFIG.urls.specPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sky-600 no-underline hover:underline dark:text-sky-400"
+                >
+                    <span>Download PDF ↗</span>
+                </a>
+            </li>
+        </ul>
     </section>
 </BaseLayout>
