@@ -1,8 +1,11 @@
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'astro/config'
+import rehypeSlug from 'rehype-slug'
+import remarkGfm from 'remark-gfm'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import tailwindcss from '@tailwindcss/vite'
+import linkNormalizeYini from './plugins/remark-link-normalize-yini.js'
 
 export default defineConfig({
     integrations: [mdx(), react()],
@@ -37,5 +40,9 @@ export default defineConfig({
             'process.env': JSON.stringify({}),
             'process.argv': JSON.stringify([]),
         },
+    },
+    markdown: {
+        remarkPlugins: [remarkGfm, linkNormalizeYini],
+        rehypePlugins: [rehypeSlug],
     },
 })
