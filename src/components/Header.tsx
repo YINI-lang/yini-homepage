@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CONFIG from '../config/cfg'
+import CONFIG from '../config/conf'
 
 type NavLinksProps = { variant?: 'mobile' | 'desktop' }
 const maxWidthMobile: number = 767

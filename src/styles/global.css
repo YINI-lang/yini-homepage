@@ -79,8 +79,13 @@
 
 /* Dark mode tweaks (if you use .dark on <html> or <body>) */
 .dark .prose :where(code):not(:where(pre *)) {
-    background: #111827; /* slate-900 */
-    color: #e5e7eb;
+    /*background: #111827; /* slate-900 */
+    background: #dddddd;
+    /* color: #111111; */
+    color: #333333;
+    font-weight: bold;
+    white-space: nowrap;
+    /* color: #e5e7eb; */
 }
 .dark .prose pre {
     background: #0b1220; /* or keep #1f2937 if you prefer */
