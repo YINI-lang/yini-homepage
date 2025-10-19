@@ -1,6 +1,14 @@
 const LATEST_YINI_SPEC_PDF = '/specs/YINI-Specification-1.0.0-RC.3.pdf'
 
 const CONFIG = {
+    text: {
+        headline: 'YINI — Simple, Structured Config',
+        tagLine:
+            'INI-familiar syntax with nesting, comments, and clear, simple rules.',
+        elevatorPitch:
+            //'YINI is a human-friendly configuration format — like INI, but with nested structures, clear rules, and zero ambiguity.',
+            'YINI is a human-friendly config format—familiar like INI, with clear nesting, predictable rules, and a formal spec.',
+    },
     urls: {
         // The "hero" (heroic attention-grabber) links.
         hero: {

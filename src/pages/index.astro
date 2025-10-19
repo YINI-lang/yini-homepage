@@ -1,5 +1,6 @@
 ---
 // src/pages/index.astro
+import CONFIG from '../config/conf'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
@@ -9,10 +10,10 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 >
     <section class="mx-auto max-w-5xl px-4 py-2 text-center">
         <h1 class="text-3xl font-semibold tracking-tight md:text-5xl">
-            YINI — Clean, Structured Config
+            {CONFIG.text.headline}
         </h1>
         <p class="mt-3 text-base text-gray-600 md:text-lg">
-            INI-familiar syntax with nesting, comments, and clear rules.
+            {CONFIG.text.elevatorPitch}
         </p>
 
         <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -28,8 +29,133 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </div>
     </section>
 
+    <section class="why-yini">
+        <h2>💡 Why YINI?</h2>
+        INI is simple but unstructured. YAML is powerful but can be hard to read
+        and lint. JSON is precise but verbose for humans. YINI blends the best parts:
+        readable keys, clean nesting, and a versioned specification — so it behaves
+        the same everywhere.
+        <ul>
+            <li>
+                <strong>Familiar</strong> — learn it in minutes if you know INI
+            </li>
+            <li>
+                <strong>Structured</strong> — sections, arrays, objects, clear nesting
+            </li>
+            <li>
+                <strong>Predictable</strong> — fewer gotchas; strict/lenient modes
+                available
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>⚡ TL;DR — Try YINI in three quick steps</h2>
+
+        <ul class="space-y-6">
+            <li>
+                <h3>1) Create a file</h3>
+                Save the two lines below as <code>config.yini</code>:<br />
+                <pre><code class="language-yini">{`^ App
+name = 'Hello'`}</code></pre>
+                <p>
+                    <span role="img" aria-label="warning">⚠️</span>
+                    Make sure you save the file with the <code>.yini</code> extension
+                    (not <code>.txt</code>).
+                </p>
+            </li>
+
+            <li>
+                <h3>2) Run this in your terminal</h3>
+                <p>From the same folder where you saved the file:</p>
+                <pre><code class="language-bash">npx yini-cli parse config.yini</code></pre>
+            </li>
+
+            <li>
+                <h3>3) See the result</h3>
+                <p>This prints the following JavaScript object:</p>
+                <pre><code class="language-yini">{`{ App: { name: 'Hello' } }`}</code></pre>
+            </li>
+
+            <li>
+                <h3>Bonus: Pretty-printed output</h3>
+                <p>Use the <code>--pretty</code> flag, and run this line:</p>
+                <pre><code class="language-bash">npx yini-cli parse config.yini --pretty</code></pre>
+                <p>Which gives the following (JS):</p>
+                <pre><code class="language-js">{`{
+    "App": {
+        "name": "Hello"
+    }
+}
+`}</code></pre>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>📝 Example</h2>
+        <h3>YINI code:</h3>
+        <pre><code class="language-yini">{`^ App
+  name = "My App"
+  version = "1.2.3"
+  pageSize = 25
+  darkTheme = off
+`}</code></pre>
+
+        <h3>Parsed output (JS):</h3>
+        <pre><code class="language-js">{`{
+    "App": {
+        "name": "My App",
+        "version": "1.2.3",
+        "pageSize": 25,
+        "darkTheme": false
+    }
+}`}</code></pre>
+    </section>
+
+    <section class="features">
+        <h2>🧩 Fatures</h2>
+        <ol>
+            <li>
+                <strong>Readable & Familiar</strong>
+                <p>
+                    Plain key/value with clear sections and optional strictmode.
+                </p>
+            </li>
+            <li>
+                <strong>Structured</strong>
+                <p>
+                    Native lists, objects, and nesting — no guessing, no
+                    surprises.
+                </p>
+            </li>
+            <li>
+                <strong>Specified</strong>
+                <p>
+                    A formal, versioned spec and ANTLR grammar keep
+                    implementations aligned.
+                </p>
+            </li>
+            <li>
+                <strong>Tooling First</strong>
+                <p>
+                    Parsers, CLI, editors, and validation designed from day one.
+                </p>
+            </li>
+            <li>
+                <strong>Open-source Software</strong>
+                <p>YINI is free, open-source software</p>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="quick-start">
+        <h2>🚀 Quick Start</h2>
+    </section>
+
     <p class="mt-3 text-base text-gray-600 md:text-base">
-        <h4>About</h4>
+        <h2>ℹ️ About</h2>
         <p>
             YINI is a new configuration format, <strong
                 >formalized in 2025</strong
@@ -55,57 +181,58 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                 toward the first stable release.
             </p>
         </p>
-
-        <h2>Intro</h2>
-        <section class="code">
-            <pre><code class="language-yini">{`^ App
-name = "Demo"
-version = "1.0.0"
-features = [ "search", "dark-mode" ]  # comments allowed
-
-^ Database
-host = "localhost"
-port = 5432
-auth = { user: "admin", pass: "secret" }`}</code></pre>
-        </section>
-
-        <section class="benefits">
-            <ul>
-                <li>
-                    <strong>Familiar</strong> — learn it in minutes if you know INI
-                </li>
-                <li>
-                    <strong>Structured</strong> — sections, arrays, objects, clear
-                    nesting
-                </li>
-                <li>
-                    <strong>Predictable</strong> — fewer gotchas; strict/lenient
-                    modes available
-                </li>
-            </ul>
-        </section>
-
-        <section class="try">
-            <h2>Try it</h2>
-            <p>In your terminal (CMD or bash), write the following:</p>
-            <pre><code>npm i -D yini-cli
-yini validate ./config.yini</code></pre>
-            <!-- 
-        !!Temp disabled
-        <p><a href="/playground" class="btn">Open Playground</a></p>
-         -->
-        </section>
-
-        <section>
-            <h2>Next steps</h2>
-            <li>
-                ➡️ <a href="/get-started">Get Started</a><br />
-                <em>Common questions and rules</em>
-            </li>
-            <li>
-                ➡️ <a href="/yini-tutorial">Quick Tutorial</a><br />
-                <em>5–7 minute guided walkthrough YINI.</em>
-            </li>
-        </section>
     </p>
+
+    <section>
+        <h2>🛠️ Contribute & Get Involved</h2>
+        <p class="mt-3 text-gray-700">
+            YINI is open‑source. We invite you to try it, report issues, propose
+            improvements, or help with docs and tooling (like building parsers).
+        </p>
+        <div class="mt-4 flex flex-wrap gap-3">
+            <a
+                href="https://github.com/YINI-lang"
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center rounded-lg border px-4 py-2"
+                >GitHub Org</a
+            >
+            <a
+                href="/docs/spec"
+                class="inline-flex items-center rounded-lg border px-4 py-2"
+                >Read the Spec</a
+            >
+            <a
+                href="/docs/roadmap"
+                class="inline-flex items-center rounded-lg border px-4 py-2"
+                >Roadmap</a
+            >
+        </div>
+    </section>
+
+    <section>
+        <h2>🔭 Next steps</h2>
+        <ul>
+            <li>
+                <a href="/get-started">Get Started</a><br />
+                <p class="mt-2">Learn how to install and use YINI.</p>
+            </li>
+            <!--li>
+            <a href="/yini-tutorial">Try it Online</a><br />
+            <p class="mt-2">Try it in the Playground.</p>
+        </li-->
+            <li>
+                <a href="/yini-tutorial">Quick Tutorial</a><br />
+                <p class="mt-2">5–7 minute guided walkthrough YINI.</p>
+            </li>
+            <li>
+                <a href="/yini-faq">FAQ</a><br />
+                <p class="mt-2">Common questions answered.</p>
+            </li>
+            <li>
+                <a href="/specification">Specification</a><br />
+                <p class="mt-2">Official YINI format rules.</p>
+            </li>
+        </ul>
+    </section>
 </BaseLayout>

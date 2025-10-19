@@ -75,6 +75,7 @@ export default function Header() {
         const cssClasses =
             variant === 'desktop' ? 'px-3' : 'no-underline hover:underline'
 
+        // *** HERO below ***
         return (
             <>
                 <a href={CONFIG.urls.hero.home} className={cssClasses}>
@@ -102,6 +103,22 @@ export default function Header() {
         // "Desktop" View.
         return (
             <header className="site-header text-center">
+                {/* <nav class="hidden items-center gap-6 text-sm md:flex">
+                    <a href="/docs/get-started" class="hover:underline">
+                        Docs
+                    </a>
+                    <a href="/docs/spec" class="hover:underline">
+                        Spec
+                    </a>
+                    <a
+                        href="https://github.com/YINI-lang"
+                        target="_blank"
+                        rel="noreferrer"
+                        class="hover:underline">
+                        GitHub
+                    </a>
+                </nav> */}
+                {/* Logo. */}
                 <a href="/" aria-label="YINI home" className="logo m-1">
                     <img
                         className="mx-auto block h-1/4 w-1/4"
@@ -112,6 +129,7 @@ export default function Header() {
                         decoding="async"
                     />
                 </a>
+
                 <nav>
                     <NavLinks variant="desktop" />
                 </nav>
