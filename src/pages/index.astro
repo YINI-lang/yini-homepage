@@ -29,7 +29,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </div>
     </section>
 
-    <section class="why-yini">
+    <section class="why-yini pb-4">
         <h2>💡 Why YINI?</h2>
         INI is simple but unstructured. YAML is powerful but can be hard to read
         and lint. JSON is precise but verbose for humans. YINI blends the best parts:
@@ -49,48 +49,54 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </ul>
     </section>
 
-    <section>
-        <h2>⚡ TL;DR — Try YINI in three quick steps</h2>
+    <div class="full-bleed pr-8" style="background: #FFEFD5;">
+        <!-- <section class="py-1" style="background: #FFEBCD;"> -->
+        <!-- <section class="pt-1 pb-2" style="background: #FAF0E6;"> -->
+        <section class="mx-auto max-w-3xl pt-1 pb-2">
+            <h2>⚡ TL;DR — Try YINI in three quick steps</h2>
 
-        <ul class="space-y-6">
-            <li>
-                <h3>1) Create a file</h3>
-                Save the two lines below as <code>config.yini</code>:<br />
-                <pre><code class="language-yini">{`^ App
+            <ul class="space-y-6">
+                <li>
+                    <h3>1) Create a file</h3>
+                    Save the two lines below as <code>config.yini</code>:<br />
+                    <pre><code class="language-yini">{`^ App
 name = 'Hello'`}</code></pre>
-                <p>
-                    <span role="img" aria-label="warning">⚠️</span>
-                    Make sure you save the file with the <code>.yini</code> extension
-                    (not <code>.txt</code>).
-                </p>
-            </li>
+                    <p>
+                        <span role="img" aria-label="warning">⚠️</span>
+                        Make sure you save the file with the <code>.yini</code> extension
+                        (not <code>.txt</code>).
+                    </p>
+                </li>
 
-            <li>
-                <h3>2) Run this in your terminal</h3>
-                <p>From the same folder where you saved the file:</p>
-                <pre><code class="language-bash">npx yini-cli parse config.yini</code></pre>
-            </li>
+                <li>
+                    <h3>2) Run this in your terminal</h3>
+                    <p>From the same folder where you saved the file:</p>
+                    <pre><code class="language-bash">npx yini-cli parse config.yini</code></pre>
+                </li>
 
-            <li>
-                <h3>3) See the result</h3>
-                <p>This prints the following JavaScript object:</p>
-                <pre><code class="language-yini">{`{ App: { name: 'Hello' } }`}</code></pre>
-            </li>
+                <li>
+                    <h3>3) See the result</h3>
+                    <p>This prints the following JavaScript object:</p>
+                    <pre><code class="language-yini">{`{ App: { name: 'Hello' } }`}</code></pre>
+                </li>
 
-            <li>
-                <h3>Bonus: Pretty-printed output</h3>
-                <p>Use the <code>--pretty</code> flag, and run this line:</p>
-                <pre><code class="language-bash">npx yini-cli parse config.yini --pretty</code></pre>
-                <p>Which gives the following (JS):</p>
-                <pre><code class="language-js">{`{
+                <li>
+                    <h3>Bonus: Pretty-printed output</h3>
+                    <p>
+                        Use the <code>--pretty</code> flag, and run this line:
+                    </p>
+                    <pre><code class="language-bash">npx yini-cli parse config.yini --pretty</code></pre>
+                    <p>Which gives the following (JS):</p>
+                    <pre><code class="language-js">{`{
     "App": {
         "name": "Hello"
     }
 }
 `}</code></pre>
-            </li>
-        </ul>
-    </section>
+                </li>
+            </ul>
+        </section>
+    </div>
 
     <section>
         <h2>📝 Example</h2>

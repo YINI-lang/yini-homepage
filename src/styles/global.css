@@ -5,6 +5,12 @@
     --color-brand: #06b6d4;
 }
 
+.full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
 /* — Base tweaks — */
 @layer base {
     /* Lists */
