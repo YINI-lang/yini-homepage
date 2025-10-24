@@ -31,8 +31,10 @@ const CONFIG = {
                 npmYiniCli: 'https://www.npmjs.com/package/yini-cli',
                 npmYiniParser: 'https://www.npmjs.com/package/yini-parser',
             },
-            // GitHub repos.
             gitHub: {
+                // GitHub Organization.
+                yiniOrg: 'https://github.com/YINI-lang',
+                // GitHub Repos.
                 yiniCli: 'https://github.com/YINI-lang/yini-cli',
                 yiniParser:
                     'https://github.com/YINI-lang/yini-parser-typescript',

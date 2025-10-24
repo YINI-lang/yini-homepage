@@ -36,18 +36,19 @@ Save this as `config2.yini`:
 ^ App
   name = "Demo"
   version = "1.0.0"
-  features = [ "search", "dark-mode" ]  # comments are allowed
+  features = [ "search", "dark-mode" ]  // Comments are allowed
 
 ^ Database
   host = "localhost"
   port = 5432
-  auth = { user: "admin", pass: "secret" }  # object literal
+  auth = { user: "admin", pass: "secret" }  // Object literal
 ```
 
-Notes:
+**Notes:**
 
-- **Sections** use `^`, add more carets for sub-sections: `^`, `^^`, `^^^`.
-- **Keys** are name = value.
+- **Sections:** start with `^`. Add more carets for nesting (sub-sections): (`^`, `^^`, `^^^`, ...).
+- **Members:** written as `key = value` pairs.
+- **Comments:** Use `//` or `# ` (including a space after the hash) for inline comments.
 - **Arrays:** `[1, 2, 'three']`
 - **Objects:** `{ key: 'value', n: 1 }`
 - **Strings:** must be quoted `'like this'` or `"like this"`.
