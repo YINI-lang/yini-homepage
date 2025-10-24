@@ -10,7 +10,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 # Get Started
 
-Welcome! This page gets you from **zero → a working `.yini` config** in a few minutes.
+Welcome! This page gets you from **zero → a working `.yini` config** in a few minutes.  
+YINI is a human-friendly configuration format — like INI, but with nested sections, comments, arrays, and objects.
 
 ## 1) Install (or just use npx)
 
@@ -20,7 +21,13 @@ Welcome! This page gets you from **zero → a working `.yini` config** in a few 
 npx yini --help
 ```
 
-**Option B — add the CLI to your project**
+**Option B — enable yini CLI globally**
+
+```bash
+npm i -g yini-cli
+```
+
+**Option C — add the CLI to your project**
 
 ```bash
 npm i -D yini-cli
@@ -48,10 +55,40 @@ Save this as `config2.yini`:
 
 - **Sections:** start with `^`. Add more carets for nesting (sub-sections): (`^`, `^^`, `^^^`, ...).
 - **Members:** written as `key = value` pairs.
-- **Comments:** Use `//` or `# ` (including a space after the hash) for inline comments.
+- **Comments:** Use `//` or `#` (including a space after the hash) for inline comments.
 - **Arrays:** `[1, 2, 'three']`
 - **Objects:** `{ key: 'value', n: 1 }`
 - **Strings:** must be quoted `'like this'` or `"like this"`.
+
+## 3) Parse your `.yini` file
+
+Once your file is saved, parse it with the CLI:
+
+If you used **option A** in step 1, type the following:
+```bash
+npx yini parse config2.yini
+```
+
+Or, if you used **option B or C** in step 1:
+```bash
+yini parse config2.yini
+```
+
+You should see output like (JavaScript Object):
+```yini
+{
+  App: {
+    name: 'Demo',
+    version: '1.0.0',
+    features: [ 'search', 'dark-mode' ]
+  },
+  Database: {
+    host: 'localhost',
+    port: 5432,
+    auth: { user: 'admin', pass: 'secret' }
+  }
+}
+```
 
 ---
 
