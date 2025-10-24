@@ -39,9 +39,9 @@
 
 /* Markdown (.prose) – same link behavior as global */
 .prose {
-    --tw-prose-bullets: #111111;
-    --tw-prose-counters: #111111;
-    --tw-prose-links: theme(colors.sky.600);
+    --tw-prose-bullets: #111111 !important;
+    --tw-prose-counters: #111111 !important;
+    --tw-prose-links: theme(colors.sky.600) !important;
 }
 .prose :where(a):not(.btn) {
     color: theme(colors.sky.600);
