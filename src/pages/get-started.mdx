@@ -11,7 +11,20 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 # Get Started
 
 Welcome! This page gets you from **zero → a working `.yini` config** in a few minutes.  
+
 YINI is a human-friendly configuration format — like INI, but with nested sections, comments, arrays, and objects.
+
+## 0) It's assumed Node.js is available
+
+- The examples assumes you have Node.js installed on your system.
+
+💡 Tip: You can check if you have Node installed with:
+```bash
+node -v
+```
+
+It's recommended to have at least Node 16.
+
 
 ## 1) Install (or just use npx)
 
@@ -27,7 +40,7 @@ npx yini --help
 npm i -g yini-cli
 ```
 
-**Option C — add the CLI to your project**
+**Option C — add the CLI to your Node.js project**
 
 ```bash
 npm i -D yini-cli
@@ -64,7 +77,7 @@ Save this as `config2.yini`:
 
 Once your file is saved, parse it with the CLI:
 
-If you used **option A** in step 1, type the following:
+If you used **option A** (with npx) in step 1, type the following:
 ```bash
 npx yini parse config2.yini
 ```
@@ -73,6 +86,8 @@ Or, if you used **option B or C** in step 1:
 ```bash
 yini parse config2.yini
 ```
+
+#### JS Output:
 
 You should see output like (JavaScript Object):
 ```yini
@@ -89,6 +104,64 @@ You should see output like (JavaScript Object):
   }
 }
 ```
+
+## 4) Other output styles
+
+### 4.1) Results in JSON
+
+If you want the **output in pure JSON**, use the `--json` flag.
+
+If you used **option A** (with npx) in step 1, type the following:
+```bash
+npx yini parse --json config2.yini
+```
+
+Or, if you used **option B or C** in step 1:
+```bash
+yini parse --json config2.yini
+```
+
+#### JSON Output:
+```json
+{"App":{"name":"Demo","version":"1.0.0","features":["search","dark-mode"]},"Database":{"host":"localhost","port":5432,"auth":{"user":"admin","pass":"secret"}}}
+```
+
+### 4.2) Results in pretty JSON
+
+If you want the **output in pretty JSON** so it's easier to read, use the `--pretty` flag.
+
+If you used **option A** (with npx) in step 1, type the following:
+```bash
+npx yini parse --pretty config2.yini
+```
+
+Or, if you used **option B or C** in step 1:
+```bash
+yini parse --pretty config2.yini
+```
+
+#### Pretty JSON Output:
+```json
+{
+    "App": {
+        "name": "Demo",
+        "version": "1.0.0",
+        "features": [
+            "search",
+            "dark-mode"
+        ]
+    },
+    "Database": {
+        "host": "localhost",
+        "port": 5432,
+        "auth": {
+            "user": "admin",
+            "pass": "secret"
+        }
+    }
+}
+```
+
 
 ---
 
