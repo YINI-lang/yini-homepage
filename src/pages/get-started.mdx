@@ -14,7 +14,7 @@ Welcome! This page gets you from **zero → a working `.yini` config** in a few 
 
 YINI is a human-friendly configuration format — like INI, but with nested sections, comments, arrays, and objects.
 
-## 0) It's assumed Node.js is available
+## Prerequisite: Node.js installed
 
 - The examples assumes you have Node.js installed on your system.
 
@@ -25,8 +25,9 @@ node -v
 
 It's recommended to have at least Node 16.
 
+---
 
-## 1) Install (or just use npx)
+## 1) Install yini-cli (or just use npx)
 
 **Option A — use without installing**
 
@@ -47,6 +48,8 @@ npm i -D yini-cli
 ```
 
 > After installing, you can run npx yini or add an npm script like "yini": "yini".
+
+💡 You can use either **npx yini** (no install), or just **yini** if `yini-cli` is installed globally or locally.
 
 ## 2) Create your first .yini file
 
@@ -162,14 +165,15 @@ yini parse --pretty config2.yini
 }
 ```
 
+## Summary
+✅ You just parsed your first YINI file into both JavaScript and JSON formats!
 
 ---
 
-**Next steps:**
+## 🧭 Next Steps
 
-- ➡️ [Quick Tutorial](/yini-tutorial)  
-  _5–7 minute guided walkthrough YINI._
-- ➡️ [Specification](/specification)  
-  _Read the YINI Specification._
+- ▶️ [Quick Tutorial](/yini-tutorial) — 5–7 minute guided walkthrough of YINI.  
+- [Intro to YINI format](intro-yini-config-format) — Learn the YINI format step by step.
+- 📘 [Specification](/specification) — Read the full YINI Specification.  
 
 </BaseLayout>

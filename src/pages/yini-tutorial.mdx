@@ -8,10 +8,14 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
+YINI makes configs readable for humans *and* consistent for machines — like INI, but with **real structure**, arrays, objects, and comments.
+
+---
+
 # Quick Tutorial: YINI Basics
 
 ## 1) What is YINI (in one line)?
-A human-friendly config format (like INI) **with real structure**: sections, arrays, objects, and clear, predictable rules.
+A human-friendly config format (like INI) **with real structure**: sections, clear nested sections, arrays, objects, and unambiguous, predictable rules.
 
 ---
 
@@ -23,7 +27,7 @@ Make a file named **`config.yini`** and paste:
 ^ App
 name = "Demo"
 version = "1.0.0"
-features = ["search", "dark-mode"]  # comments are allowed
+features = ["search", "dark-mode"]  // comments are allowed
 
 ^ Server
 host = "0.0.0.0"
@@ -33,19 +37,25 @@ port = 8080
 enabled = false
 ```
 
-**What's happening:**
-- `^` starts a section. More carets = nested section (`^^ TLS` is inside `Logging`).
-- `key = value` pairs hold data.
-- Arrays (lists): `[ ... ]`, objects: `{ key: value }`.
-- Comments: `#` (also `;` and `//`).
+## 💡 What's happening
+- `^` starts a section. More carets = nested section (`^^ Logging` is inside `Server`).
+- `key = value` defines a setting.
+- Arrays (lists): `[1, 2, 3]`, objects: `{ key: value }`.
+- Comments: `//` (also `#` including a space after).
 
 ---
 
-## 3) Validate it (CLI)
-If you have the CLI:
+## 3) Validate your config (in CLI)
+From your terminal (make sure you are in the dir where you've saved your file), type:
 ```bash
 npx yini --help
 npx yini validate ./config.yini
+```
+
+You should see something like:
+
+```bash
+✅ Validation passed — 0 errors, 0 warnings.
 ```
 
 You should see a success message (non-zero exit means a problem).
@@ -66,15 +76,26 @@ npm run config:check
 
 ---
 
-Common mistakes (quick fixes)
-- **"Indenting matters?"** — Normal whitespace is ignored outside strings; use it for readability.
+### ⚠️ Common Questions 
+
+#### Does indentation matter? 
+No — indentation is only for readability.  
+Structure is determined by section markers (`^`, `^^`, etc.), not spaces.
+
+#### Can I mix comment styles?
+Yes — YINI supports both `//` and `#` inline comments, preferrably only use one (inline comment) style per file for consistency.
 
 ---
 
-**Looking for more?**
+## ✅ You just wrote and validated your first YINI config!
+That's the basics.
+
+---
+
+## Next Steps
 - ➡️ [Get Started](/get-started)  
-  *Common questions and rules*
+  *Installation and CLI usage overview.*
 - ➡️ [Specification](/specification)  
-  *Specification with full details.*
+  *Full details on YINI syntax and format.*
 
 </BaseLayout>
