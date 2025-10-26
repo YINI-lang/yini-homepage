@@ -1,6 +1,6 @@
 ---
 title: 'Quick Tutorial: YINI'
-description: Learn YINI in a few minutes—write a small .yini file, understand sections and values, and validate it.
+description: A 5-minute hands-on tutorial — write and validate your first YINI config.
 ---
 
 import CONFIG from '../config/conf'
@@ -8,11 +8,11 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
+# Quick Tutorial: YINI Basics
+
 YINI makes configs readable for humans *and* consistent for machines — like INI, but with **real structure**, arrays, objects, and comments.
 
----
-
-# Quick Tutorial: YINI Basics
+A quick tutorial with the basics of the YINI format and how to validate it.
 
 ## 1) What is YINI (in one line)?
 A human-friendly config format (like INI) **with real structure**: sections, clear nested sections, arrays, objects, and unambiguous, predictable rules.
@@ -21,7 +21,7 @@ A human-friendly config format (like INI) **with real structure**: sections, cle
 
 ## 2) Create your first file
 
-Make a file named **`config.yini`** and paste:
+Make a file named **`config3.yini`** and paste:
 
 ```yini
 ^ App
@@ -37,19 +37,19 @@ port = 8080
 enabled = false
 ```
 
-## 💡 What's happening
+### 💡 What's happening
 - `^` starts a section. More carets = nested section (`^^ Logging` is inside `Server`).
 - `key = value` defines a setting.
 - Arrays (lists): `[1, 2, 3]`, objects: `{ key: value }`.
-- Comments: `//` (also `#` including a space after).
+- Comments: `//` or `#` (include a space after `#` for inline comments).
+- Want more of YINI's syntax and structure? Read [Intro to YINI format](intro-yini-config-format).
 
 ---
 
 ## 3) Validate your config (in CLI)
-From your terminal (make sure you are in the dir where you've saved your file), type:
+In your terminal (from the same folder as your file), run:
 ```bash
-npx yini --help
-npx yini validate ./config.yini
+npx yini-cli validate ./config3.yini
 ```
 
 You should see something like:
@@ -58,13 +58,22 @@ You should see something like:
 ✅ Validation passed — 0 errors, 0 warnings.
 ```
 
-You should see a success message (non-zero exit means a problem).
+If YINI reports 0 errors, 0 warnings, everything's fine.
+A non-zero exit code means something went wrong.
+
+### More commands and options 
+To explore more commands and options, run:
+```bash
+npx yini-cli --help
+```
+
+## 5) npm script
 Use this in **CI** to catch config mistakes early:
 
 ```js
 {
   "scripts": {
-    "config:check": "yini validate ./config.yini"
+    "config:check": "npx yini-cli validate ./config3.yini"
   }
 }
 ```
@@ -83,19 +92,20 @@ No — indentation is only for readability.
 Structure is determined by section markers (`^`, `^^`, etc.), not spaces.
 
 #### Can I mix comment styles?
-Yes — YINI supports both `//` and `#` inline comments, preferrably only use one (inline comment) style per file for consistency.
+Yes — YINI supports both `//` and `#` for inline comments.  
+For consistency, use just one style per file.
 
 ---
 
 ## ✅ You just wrote and validated your first YINI config!
 That's the basics.
 
----
-
 ## Next Steps
 - ➡️ [Get Started](/get-started)  
   *Installation and CLI usage overview.*
 - ➡️ [Specification](/specification)  
   *Full details on YINI syntax and format.*
+
+YINI is simple by design — experiment, break things, and have fun exploring!
 
 </BaseLayout>

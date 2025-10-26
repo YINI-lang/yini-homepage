@@ -10,7 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 # Get Started
 
-Welcome! This page gets you from **zero → a working `.yini` config** in a few minutes.  
+Welcome! This page gets you from **zero → a working `.yini` config** in a few minutes. Learn how to install and use YINI from the CLI.  
 
 YINI is a human-friendly configuration format — like INI, but with nested sections, comments, arrays, and objects.
 
@@ -32,7 +32,7 @@ It's recommended to have at least Node 16.
 **Option A — use without installing**
 
 ```bash
-npx yini --help
+npx yini-cli --help
 ```
 
 **Option B — enable yini CLI globally**
@@ -47,7 +47,7 @@ npm i -g yini-cli
 npm i -D yini-cli
 ```
 
-> After installing, you can run npx yini or add an npm script like "yini": "yini".
+> After installing, you can run npx yini-cli or add an npm script like "yini": "yini".
 
 💡 You can use either **npx yini** (no install), or just **yini** if `yini-cli` is installed globally or locally.
 
@@ -75,6 +75,8 @@ Save this as `config2.yini`:
 - **Arrays:** `[1, 2, 'three']`
 - **Objects:** `{ key: 'value', n: 1 }`
 - **Strings:** must be quoted `'like this'` or `"like this"`.
+- For more details see: [YINI's syntax and structure](intro-yini-config-format).
+
 
 ## 3) Parse your `.yini` file
 
@@ -82,7 +84,7 @@ Once your file is saved, parse it with the CLI:
 
 If you used **option A** (with npx) in step 1, type the following:
 ```bash
-npx yini parse config2.yini
+npx yini-cli parse config2.yini
 ```
 
 Or, if you used **option B or C** in step 1:
@@ -116,7 +118,7 @@ If you want the **output in pure JSON**, use the `--json` flag.
 
 If you used **option A** (with npx) in step 1, type the following:
 ```bash
-npx yini parse --json config2.yini
+npx yini-cli parse --json config2.yini
 ```
 
 Or, if you used **option B or C** in step 1:
@@ -135,7 +137,7 @@ If you want the **output in pretty JSON** so it's easier to read, use the `--pre
 
 If you used **option A** (with npx) in step 1, type the following:
 ```bash
-npx yini parse --pretty config2.yini
+npx yini-cli parse --pretty config2.yini
 ```
 
 Or, if you used **option B or C** in step 1:
@@ -172,8 +174,8 @@ yini parse --pretty config2.yini
 
 ## 🧭 Next Steps
 
-- ▶️ [Quick Tutorial](/yini-tutorial) — 5–7 minute guided walkthrough of YINI.  
-- [Intro to YINI format](intro-yini-config-format) — Learn the YINI format step by step.
+- ▶️ [Quick Tutorial](/yini-tutorial) — 5 minute guided walkthrough of YINI.  
+- 📖 [Intro to YINI format](intro-yini-config-format) — 10–15 minute introduction to YINI format's syntax and structure.
 - 📘 [Specification](/specification) — Read the full YINI Specification.  
 
 </BaseLayout>
