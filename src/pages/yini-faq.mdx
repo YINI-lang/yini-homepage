@@ -9,7 +9,15 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 # YINI — Frequently Asked Questions
 
-A quick, practical FAQ for the YINI configuration format. If you're new, start with [Get Started](/get-started) and try the [Playground](/playground).
+A quick, practical FAQ for the YINI configuration format.  
+If you're new, you might want to start with [Get Started](/get-started).
+
+Below you will find questions and answers grouped into the following topics:
+- Understanding YINI
+- Structure & Syntax
+- Readability & Formatting
+- Data & Values
+- Help & Next Steps
 
 ---
 
@@ -61,7 +69,7 @@ YINI files should be saved as UTF-8 without BOM for maximum compatibility.
 
 ## 2. Structure and Syntax
 
-### Q – How do I define sections and sub-sections?
+### Q – How do I define sections?
 
 Each section starts with `^`. (Settings are grouped in sections.)
 
@@ -85,7 +93,7 @@ items = 25
 isDarkTheme = OFF
 ```
 
-### Q – How to make another section in a section?
+### Q – How do I make another section inside a section?
 
 To nest sections, add more carets (`^`) at the start of a line.
 
@@ -111,7 +119,7 @@ Example:
 ```
 
 ### Q – Are tabs and whitespace important?
-No (in the sense as in Python or in YAML).  
+No (in the same sense as in Python or YAML).  
 **In YINI, spaces and tabs don't change meaning** - indentation is just for human readability.
 
 ### Q – Can YINI include or import other files?
@@ -124,7 +132,7 @@ The YINI specification (1.0 RC.3) states that:
 - In **strict mode**, duplicates are disallowed and will raise an error.
 - In **lenient mode**, duplicates are also not allowed — they may trigger a warning, but must not overwrite existing entries.
 
-However, in the official **YINI-lib** `yini-parser` (Node.js), the behavior for handling duplicates in lenient mode is **customizable**.
+However, in the official YINI-lib `yini-parser` (Node.js), the behavior for handling duplicates in lenient mode is **customizable**.
 
 ### Q – Does the order of keys or sections matter?
 No, order may be preserved for readability but has no semantic meaning.
@@ -149,7 +157,7 @@ interval = 30  # inline comment (must have a space after #)
 /* Block comment spanning
    multiple lines */
 
-; Full line comment (must be whole line).
+; Full-line comment (must be whole line).
 ```
 
 ### Q – Is indentation required?
@@ -182,7 +190,7 @@ obj = { host: 'localhost', port: 5432 }
 ```
 
 ### Q – Are strings required to be quoted?
-Yes. Strings must be enclosed in single ' or double " quotes.  
+Yes. Strings must be enclosed in single `'` or double `"` quotes.  
 Triple-quoted strings are allowed for multi-line text.
 
 ### Q – Are keys and section names case-sensitive?
@@ -204,9 +212,8 @@ Yes. Integers and floating-point numbers are automatically detected; you don't n
 Yes. Use `npx yini-cli` (requires Node.js installed) for parsing or validating files.
 
 ### Q – Syntax highlighting for YINI config files?
-Yes, checkout https://github.com/YINI-lang/yini-syntax  
-The repository includes definitions in tmLanguage, that can be used to get syntax highlighting to
-work in VSCode and any editor supporting TextMate grammars.
+Yes, check out https://github.com/YINI-lang/yini-syntax  
+The repository includes definitions in tmLanguage, that enable syntax highlighting in VSCode and any editor supporting TextMate grammars.
 
 ---
 
