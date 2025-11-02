@@ -13,9 +13,11 @@ A quick, practical FAQ for the YINI configuration format. If you're new, start w
 
 ---
 
-## But, why exactly another config format like YINI?
+## 1. Understanding YINI
 
-**YINI** was created to offer a modern, structured, and readable configuration language that feels familiar — yet removes many of the historical inconsistencies of INI and YAML.
+### Q – But, why exactly another config format like YINI?
+
+**YINI** was created to offer a modern, structured, and readable configuration language that feels familiar — yet while addressing some of the historical limitations found in INI and YAML.
 
 It aims to combine **simplicity, structure, and safety**:
 
@@ -26,9 +28,7 @@ It aims to combine **simplicity, structure, and safety**:
 - **Comment-friendly and human-first** – Keeps support for `;`, `#`, `//`, and even block comments (`/* */`) for maximum readability.
 - **Fully defined specification** – Unlike traditional INI, YINI has an explicit, versioned grammar and spec, making it predictable across implementations.
 
----
-
-## Why not just use INI/JSON/YAML/TOML?
+### Q – Why not just use INI/JSON/YAML/TOML?
 
 Use whatever suits your project best. YINI aims to:
 
@@ -37,15 +37,31 @@ Use whatever suits your project best. YINI aims to:
 - Keep **predictable rules** (strict mode available).
 - Be **comfortable to read and diff**.
 
+### Q – What file extension should I use?
+
+YINI documents use the `.yini` file extension.
+
+### Q – Is YINI production-ready?
+
+Not quite yet — but it's getting close:
+
+- **Specification:** currently at **v1.0 Release Candidate**, meaning the syntax and structure are stable.  
+- **Parser library:** [`yini-parser-typescript`](https://github.com/YINI-lang/yini-parser-typescript) (Node.js) is in **beta**, already implementing much (if not most) of the spec — see the [Feature Checklist](https://github.com/YINI-lang/yini-parser-typescript/blob/main/FEATURE-CHECKLIST.md).  
+- **CLI tool:** [`yini-cli`](https://github.com/YINI-lang/yini-cli) builds on the official parser for use in the terminal (validation, conversion, formatting).  
+- Suitable for **experimentation and internal tools**, though small breaking changes may still occur before the final 1.0 release.
+
+### Q – Who maintains YINI?
+YINI is created and maintained by Marko K. Seppänen and the YINI-lang organization.
+It's an open-source project released under the Apache 2.0 license.
+
+### Q – What encoding should I use?
+YINI files should be saved as UTF-8 without BOM for maximum compatibility.
+
 ---
 
-## What file extension should I use?
+## 2. Structure and Syntax
 
-YINI documents uses the `.yini` file extension.
-
----
-
-## How does sections look like?
+### Q – How do I define sections and sub-sections?
 
 Each section starts with `^`. (Settings are grouped in sections.)
 
@@ -58,8 +74,6 @@ title = "AppName"
 
 Here the text "App" is the section name.
 
-### How to do several sections
-
 One can add more sections, for example:
 
 ```ts
@@ -71,40 +85,9 @@ items = 25
 isDarkTheme = OFF
 ```
 
----
+### Q – How to make another section in a section?
 
-## Can I use comments alongside values?
-
-Yes, various commenting styles are supported in YINI:
-
-```ts
-// This is a line comment
-
-timeout = 30  // inline comment
-
-# This is also a line comment (must have a space after #)
-
-interval = 30  # inline comment (must have a space after #)
-
-/* Block comment spanning
-   multiple lines */
-
-; Full line comment (must be whole line).
-```
-
----
-
-## Are tabs and whitespace important?
-
-No (in the sence as in Python or in Yaml).
-
-**In YINI, spaces and tabs don't change meaning** - indentation is just for human readability.
-
----
-
-## How to make another section in a section?
-
-Use `^` at the start of a line to make a section, then add one more `^` to make a sub-section. Add yet another `^` to nest more sections into each other.
+To nest sections, add more carets (`^`) at the start of a line.
 
 - `^` = section
 - `^^` = sub-section
@@ -127,15 +110,57 @@ Example:
            password = "secret"
 ```
 
+### Q – Are tabs and whitespace important?
+No (in the sense as in Python or in YAML).  
+**In YINI, spaces and tabs don't change meaning** - indentation is just for human readability.
+
+### Q – Can YINI include or import other files?
+No (not yet, at least). YINI files are parsed independently.  
+Tooling **may** later support includes or imports as an optional extension.
+
+### Q – How does YINI handle duplicate keys or sections?
+
+The YINI specification (1.0 RC.3) states that:
+- In **strict mode**, duplicates are disallowed and will raise an error.
+- In **lenient mode**, duplicates are also not allowed — they may trigger a warning, but must not overwrite existing entries.
+
+However, in the official **YINI-lib** `yini-parser` (Node.js), the behavior for handling duplicates in lenient mode is **customizable**.
+
+### Q – Does the order of keys or sections matter?
+No, order may be preserved for readability but has no semantic meaning.
+
 ---
 
-## Are keys case-sensitive?
+## 3. Readability and Formatting
 
-Yes, keys and section names are **case-sensitive**. Keep a consistent style (e.g., `lower_snake_case`).
+### Q – Can I use comments alongside values?
+
+Yes, various commenting styles are supported in YINI:
+
+```ts
+// This is a line comment
+
+timeout = 30  // inline comment
+
+# This is also a line comment (must have a space after #)
+
+interval = 30  # inline comment (must have a space after #)
+
+/* Block comment spanning
+   multiple lines */
+
+; Full line comment (must be whole line).
+```
+
+### Q – Is indentation required?
+No. Indentation is purely for readability.  
+The hierarchy is defined only by the caret (`^`) section marker (and alternative section markers) — not by indentation.
 
 ---
 
-## What value types are supported?
+## 4. Data and Values
+
+### Q – What value types are supported?
 
 Common scalars and collections:
 
@@ -146,7 +171,7 @@ Common scalars and collections:
 - **Arrays:** `[1, 2, "str"]`
 - **Objects:** `{ host: "db", port: 5432 }`
 
-## Arrays and objects?
+### Q – Arrays and objects?
 
 Yes and yes.
 
@@ -156,12 +181,37 @@ list = [1, 2, 3, 'four', true, null]
 obj = { host: 'localhost', port: 5432 }
 ```
 
+### Q – Are strings required to be quoted?
+Yes. Strings must be enclosed in single ' or double " quotes.  
+Triple-quoted strings are allowed for multi-line text.
+
+### Q – Are keys and section names case-sensitive?
+Yes, keys and section names are **case-sensitive**. Keep a consistent style (e.g., `lower_snake_case`).  
+Note: However, key words for null and booleans are not!
+
+### Q – Are booleans and null case-insensitive?
+Yes, key words are **case-insensitive**.  
+`true`, `True`, `ON`, `off`, `null`, `Null` all parse the same.
+
+### Q – Are numeric values automatically typed?
+Yes. Integers and floating-point numbers are automatically detected; you don't need suffixes.
+
 ---
 
-**Looking for more?**
-- ➡️ [Ask in Discussions on GitHub](https://github.com/orgs/YINI-lang/discussions)  
-  *Didn't find your answer?*
-- ➡️ [Get Started](/get-started)  
-  *Common questions and rules*
+## 5. Help and Next Steps
+
+### Q – Is there a CLI for YINI? 
+Yes. Use `npx yini-cli` (requires Node.js installed) for parsing or validating files.
+
+### Q – Syntax highlighting for YINI config files?
+Yes, checkout https://github.com/YINI-lang/yini-syntax  
+The repository includes definitions in tmLanguage, that can be used to get syntax highlighting to
+work in VSCode and any editor supporting TextMate grammars.
+
+---
+
+**Didn't find your answer?**
+- ➡️ [Join the discussion on GitHub ↗](https://github.com/orgs/YINI-lang/discussions)  
+- ➡️ [Get Started guide](/get-started)  
 
 </BaseLayout>
