@@ -55,7 +55,7 @@
 /* Inline code (not inside <pre>) */
 .prose :where(code):not(:where(pre *)) {
     background: #f3f4f6; /* light gray for light mode */
-    color: #111827;
+    color: #111111;
     padding: 0.15rem 0.35rem;
     border-radius: 0.25rem;
     font-weight: 500;
@@ -70,7 +70,7 @@
 /* Fenced code blocks */
 .prose pre {
     background: #1f2937; /* slate-800-ish */
-    color: #e5e7eb; /* slate-200-ish */
+    color: #f0f0f0; /* slate-200-ish */
     border-radius: 0.5rem;
     padding: 1rem 1.25rem;
     overflow-x: auto;
