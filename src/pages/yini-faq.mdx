@@ -13,15 +13,38 @@ A quick, practical FAQ for the YINI configuration format.
 If you're new, you might want to start with [Get Started](/get-started).
 
 Below, you will find questions and answers grouped into the following topics:
-- Understanding YINI
-- Structure & Syntax
-- Readability & Formatting
-- Data & Values
-- Help & Next Steps
+- [Understanding YINI](#1-understanding-yini)
+- [Structure & Syntax](#2-structure-and-syntax)
+- [Readability & Formatting](#3-readability-and-formatting)
+- [Data & Values](#4-data-and-values)
+- [Help & Next Steps](#5-help-and-next-steps)
 
 ---
 
 ## 1. Understanding YINI
+
+### Q – What is an YINI config file?
+A YINI config file is a human-friendly configuration file (like INI) that adds real structure: nested sections, arrays, objects, and clear, predictable rules with comments allowed. It can be used to store app or service settings in files like `config.yini`.
+
+Example (YINI):
+```yini
+^ App
+name = "Demo"                       // This is a comment.
+features = ["search", "dark-mode"]   # This is also a comment.
+
+^^ Server                            # Define section "App.Server"
+host = "0.0.0.0"
+port = 8080
+```
+
+### Q – What is the format of an YINI file?
+YINI is the name of the markup format itself. A YINI file is a plain text file with human readable syntax. It's based on **key-value pairs**, **section markers**, and optional **comments**.
+
+It supports:
+- Sections with `^`, `^^`, etc. for nesting.
+- Key-value pairs (settings) using `=` as `key=value`.
+- Arrays `[1, 2, 3]` and objects `{ key: "value" }`, etc.
+- Comments with `//` or `#`, etc.
 
 ### Q – But, why exactly another config format like YINI?
 

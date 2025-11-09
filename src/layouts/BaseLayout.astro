@@ -21,6 +21,7 @@ const htmlTitle = `${headTitle} · ${postTitle}`
 
         <title>{htmlTitle}</title>
         <meta name="description" content={headDescription} />
+        <meta name="author" content={CONFIG.meta.author} />
 
         <!-- Favicons -->
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -76,7 +77,20 @@ const htmlTitle = `${headTitle} · ${postTitle}`
                 margin-right: 1rem;
             }
         </style>
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "YINI Configuration Format",
+                "applicationCategory": "DeveloperTool",
+                "description": "YINI is an INI-inspired configuration language with clear nesting, comments, and a formal specification.",
+                "programmingLanguage": "YINI",
+                "url": "https://yini-lang.org"
+            }
+        </script>
     </head>
+
     <body>
         <!-- <body
         class="bg-white text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100"
