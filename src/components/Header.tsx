@@ -123,7 +123,7 @@ export default function Header() {
                     <img
                         className="mx-auto block h-1/4 w-1/4"
                         // className="mx-auto block h-1/3 w-1/3 pr-14.5"
-                        src="/gfx/YINI-logo-cyan-on-white.png"
+                        src="/gfx/YINI-logo-cyan-on-tr.png"
                         alt="YINI logo"
                         loading="eager"
                         decoding="async"
