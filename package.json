@@ -18,7 +18,8 @@
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "typecheck": "astro check",
-        "typecheck:watch": "astro check --watch"
+        "typecheck:watch": "astro check --watch",
+        "clean": "astro clean"
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.3",

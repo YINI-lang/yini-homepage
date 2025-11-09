@@ -45,4 +45,6 @@ export default defineConfig({
         remarkPlugins: [remarkGfm, linkNormalizeYini],
         rehypePlugins: [rehypeSlug],
     },
+    site: 'https://yini-lang.org',
+    // IMPORTANT: Do NOT set "base" when using a custom domain.
 })
