@@ -16,6 +16,21 @@ const htmlTitle = `${headTitle} · ${postTitle}`
 
 <html lang="en" class="scroll-smooth">
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-BMK7JS36XR"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || []
+            function gtag() {
+                dataLayer.push(arguments)
+            }
+            gtag('js', new Date())
+
+            gtag('config', 'G-BMK7JS36XR')
+        </script>
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
