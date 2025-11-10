@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import CONFIG from '../config/conf'
 
+type HeaderProps = {
+    isProd: boolean
+}
+
 type NavLinksProps = { variant?: 'mobile' | 'desktop' }
 const maxWidthMobile: number = 767
 
@@ -41,7 +45,12 @@ function useMediaQuery(query: string) {
     return matches
 }
 
-export default function Header() {
+export default function Header({ isProd }: HeaderProps) {
+    const isDev = !isProd
+    useEffect(() => {
+        console.log('isDev: ' + isDev)
+    }, [])
+
     const [open, setOpen] = useState(false)
     const [dark, setDark] = useState(false)
 
@@ -146,7 +155,7 @@ export default function Header() {
                         className="inline-flex items-center gap-2 no-underline">
                         <img
                             className="h-8 w-auto"
-                            src="/gfx/YINI-logo-cyan-on-white.png"
+                            src="/gfx/YINI-logo-cyan-on-tr.png"
                             alt="YINI logo"
                             loading="eager"
                             decoding="async"
@@ -163,19 +172,21 @@ export default function Header() {
                     <div className="ms-3 ml-auto flex items-center gap-2">
                         {
                             // Disabled Dark/Light-button theme not implemented (yet).
-                            /* <button
-                            type="button"
-                            onClick={() => setDark((v) => !v)}
-                            className="rounded-lg border border-slate-300 px-2 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-800"
-                            aria-label="Toggle dark mode">
-                            {dark ? 'Light' : 'Dark'}
-                        </button> */
                         }
+                        {isDev && (
+                            <button
+                                type="button"
+                                onClick={() => setDark((v) => !v)}
+                                className="rounded-lg border border-slate-300 px-2 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-800"
+                                aria-label="Toggle dark mode">
+                                {dark ? 'Light' : 'Dark'}
+                            </button>
+                        )}
 
                         {/* Mobile menu toggle (hidden on md+) */}
                         <button
                             type="button"
-                            className="rounded-lg border border-slate-300 px-2 py-1 text-xs hover:bg-slate-100 md:hidden dark:hover:bg-slate-800"
+                            className="text-xxs rounded-lg border border-slate-300 px-2 py-1 hover:bg-slate-100 md:hidden dark:hover:bg-slate-800"
                             onClick={() => setOpen((o) => !o)}
                             aria-expanded={open}
                             aria-controls="mobile-nav"

@@ -12,10 +12,15 @@ const {
 
 const postTitle = 'A Minimal, Human-Readable Configuration Format'
 const htmlTitle = `${headTitle} · ${postTitle}`
+
+const isProd = import.meta.env.PROD
+const isDev = import.meta.env.DEV
+
 ---
 
 <html lang="en" class="scroll-smooth">
     <head>
+        {isProd && (
         <!-- Google tag (gtag.js) -->
         <script
             async
@@ -30,6 +35,7 @@ const htmlTitle = `${headTitle} · ${postTitle}`
 
             gtag('config', 'G-BMK7JS36XR')
         </script>
+        )}
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -111,7 +117,7 @@ const htmlTitle = `${headTitle} · ${postTitle}`
         class="bg-white text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100"
         > -->
         <!-- React header -->
-        <Header client:idle />
+        <Header client:idle isProd={isProd} />
 
         <!-- Main -->
         <main class="mx-auto max-w-3xl px-4 py-10">

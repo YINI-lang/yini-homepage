@@ -2,7 +2,7 @@
 
 This is the official website for the YINI configuration format — a modern, human-friendly config format—familiar like INI, with clear nesting, predictable rules, and a formal spec.
 
-Built with Astro, Tailwind CSS, React.js, etc — the site provides an overview of the YINI format, including the specification, guides, and examples.
+Built with Astro and Tailwind CSS — the site provides an overview of the YINI format, including the specification, guides, and examples.
 
 👉 **Live site**: https://yini-lang.org ↗
 
