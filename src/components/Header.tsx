@@ -111,22 +111,8 @@ export default function Header({ isProd }: HeaderProps) {
     if (!isMobile) {
         // "Desktop" View.
         return (
-            <header className="site-header text-center">
-                {/* <nav class="hidden items-center gap-6 text-sm md:flex">
-                    <a href="/docs/get-started" class="hover:underline">
-                        Docs
-                    </a>
-                    <a href="/docs/spec" class="hover:underline">
-                        Spec
-                    </a>
-                    <a
-                        href="https://github.com/YINI-lang"
-                        target="_blank"
-                        rel="noreferrer"
-                        class="hover:underline">
-                        GitHub
-                    </a>
-                </nav> */}
+            // <header className="site-header text-center">
+            <header className="site-header text-center dark:bg-slate-950 dark:text-slate-100">
                 {/* Logo. */}
                 <a href="/" aria-label="YINI home" className="logo m-1">
                     <img
@@ -141,6 +127,15 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <nav>
                     <NavLinks variant="desktop" />
+                    {isDev && (
+                        <button
+                            type="button"
+                            onClick={() => setDark((v) => !v)}
+                            className="rounded-lg border border-slate-300 px-2 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-800"
+                            aria-label="Toggle dark mode">
+                            {dark ? 'Light' : 'Dark'}
+                        </button>
+                    )}
                 </nav>
             </header>
         )

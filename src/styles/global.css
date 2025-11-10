@@ -13,6 +13,10 @@
 
 /* — Base tweaks — */
 @layer base {
+    html {
+        @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+    }
+
     /* Lists */
     ul li,
     ol li {
@@ -27,9 +31,6 @@
     a:not(.btn) {
         @apply text-sky-600 underline;
     }
-    /* a:not(.btn):hover {
-        @apply text-sky-600 underline;
-    } */
 
     /* Focus ring for all links (incl. buttons) */
     a:focus-visible {
@@ -47,10 +48,6 @@
     color: theme(colors.sky.600);
     text-decoration: underline;
 }
-/* .prose :where(a:hover):not(.btn) {
-    color: theme(colors.sky.600);
-    text-decoration: underline;
-} */
 
 /* Inline code (not inside <pre>) */
 .prose :where(code):not(:where(pre *)) {
@@ -76,37 +73,39 @@
     overflow-x: auto;
 }
 
-/* Don’t double-background the <code> inside <pre> */
+/* Don't double-background the <code> inside <pre> */
 .prose pre code {
     background: transparent;
     padding: 0;
     color: inherit;
 }
 
+/* Let's plugin invert to dark-mode. */
+.dark .prose {
+    @apply prose-invert;
+}
+
 /* Dark mode tweaks (if you use .dark on <html> or <body>) */
-.dark .prose :where(code):not(:where(pre *)) {
-    /*background: #111827; /* slate-900 */
+/* .dark .prose :where(code):not(:where(pre *)) {
     background: #dddddd;
-    /* color: #111111; */
     color: #333333;
     font-weight: bold;
     white-space: nowrap;
-    /* color: #e5e7eb; */
 }
 .dark .prose pre {
-    background: #0b1220; /* or keep #1f2937 if you prefer */
-    color: #e5e7eb;
-}
+    background: #0b1220; 
+    /* color: #e5e7eb;
+} */
 
 /* Optional dark */
-.dark .prose {
+/* .dark .prose {
     --tw-prose-bullets: #7dd3fc;
     --tw-prose-counters: #7dd3fc;
     --tw-prose-links: theme(colors.sky.400);
 }
 .dark a:not(.btn):hover {
     @apply text-sky-400;
-}
+} */
 
 /* — Component buttons (stronger, explicit) — */
 @layer components {

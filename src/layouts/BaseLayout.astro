@@ -110,6 +110,17 @@ const isDev = import.meta.env.DEV
                 "url": "https://yini-lang.org"
             }
         </script>
+        { /* Hack to prevent flash on first load, set the initial theme before CSS paints. */ }
+        <script is:inline>
+            (() => {
+            try {
+                const saved = localStorage.getItem('theme');            // 'dark' | 'light' | null
+                const system = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const dark = saved ? saved === 'dark' : system;
+                document.documentElement.classList.toggle('dark', dark);
+            } catch {}
+            })();
+        </script>
     </head>
 
     <body>
