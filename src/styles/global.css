@@ -122,6 +122,16 @@
     }
 }
 
+.yini-quick-start {
+    /* background: #ffefd5; */
+    background: #fff2db;
+}
+
+.yini-features {
+    /* background: #f0fafb; */
+    background: #eef8f9;
+}
+
 /* ── Auto dark via OS preference ─────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
     /* Page base */
@@ -160,5 +170,15 @@
     /* Buttons (example dark variant for outline) */
     .btn-outline {
         @apply border-slate-700 !text-slate-100 hover:bg-slate-800;
+    }
+
+    .yini-quick-start {
+        /* background: #251a2a; */
+        /* background: #1a252a; */
+        background: #192429;
+    }
+
+    .yini-features {
+        background: #0b1214;
     }
 }
