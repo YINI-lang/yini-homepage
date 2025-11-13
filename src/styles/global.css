@@ -14,7 +14,7 @@
 /* — Base tweaks — */
 @layer base {
     html {
-        @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+        @apply bg-white text-slate-900;
     }
 
     /* Lists */
@@ -81,9 +81,9 @@
 }
 
 /* Let's plugin invert to dark-mode. */
-.dark .prose {
+/* .dark .prose {
     @apply prose-invert;
-}
+} */
 
 /* Dark mode tweaks (if you use .dark on <html> or <body>) */
 /* .dark .prose :where(code):not(:where(pre *)) {
@@ -119,5 +119,46 @@
 
     .btn-outline {
         @apply border border-gray-300 !text-slate-900 hover:bg-gray-100 hover:!text-slate-900;
+    }
+}
+
+/* ── Auto dark via OS preference ─────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+    /* Page base */
+    html {
+        @apply bg-slate-950 text-slate-100;
+    }
+
+    /* Lists / markers */
+    ul > li::marker,
+    ol > li::marker {
+        color: #cbd5e1;
+    } /* slate-300 */
+
+    /* Links (you already underline by default) */
+    a:not(.btn) {
+        @apply text-sky-400;
+    }
+
+    /* Typography plugin inversion */
+    .prose {
+        @apply prose-invert;
+    }
+
+    /* Inline code (not inside <pre>) */
+    .prose :where(code):not(:where(pre *)) {
+        background: #111827; /* slate-900 */
+        color: #e5e7eb; /* slate-200 */
+    }
+
+    /* Fenced code blocks */
+    .prose pre {
+        background: #0b1220; /* deep navy */
+        color: #e5e7eb;
+    }
+
+    /* Buttons (example dark variant for outline) */
+    .btn-outline {
+        @apply border-slate-700 !text-slate-100 hover:bg-slate-800;
     }
 }
