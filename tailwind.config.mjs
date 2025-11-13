@@ -3,7 +3,8 @@ import typography from '@tailwindcss/typography'
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: 'class',
+    // darkMode: 'class',
+    darkMode: 'media',
     plugins: [require('@tailwindcss/typography')],
     content: [
         './src/**/*.{astro,html,md,mdx,js,jsx,ts,tsx}',
