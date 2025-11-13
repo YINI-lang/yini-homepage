@@ -82,7 +82,9 @@ export default function Header({ isProd }: HeaderProps) {
 
     const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
         const cssClasses =
-            variant === 'desktop' ? 'px-3' : 'no-underline hover:underline'
+            variant === 'desktop'
+                ? 'px-3'
+                : 'no-underline hover:underline text-base'
 
         // *** HERO below ***
         return (
@@ -127,7 +129,7 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <nav>
                     <NavLinks variant="desktop" />
-                    {isDev && (
+                    {false && isDev && (
                         <button
                             type="button"
                             onClick={() => setDark((v) => !v)}
@@ -168,7 +170,7 @@ export default function Header({ isProd }: HeaderProps) {
                         {
                             // Disabled Dark/Light-button theme not implemented (yet).
                         }
-                        {isDev && (
+                        {false && isDev && (
                             <button
                                 type="button"
                                 onClick={() => setDark((v) => !v)}
@@ -181,7 +183,7 @@ export default function Header({ isProd }: HeaderProps) {
                         {/* Mobile menu toggle (hidden on md+) */}
                         <button
                             type="button"
-                            className="text-xxs rounded-lg border border-slate-300 px-2 py-1 hover:bg-slate-100 md:hidden"
+                            className="rounded-lg border border-slate-300 px-2 py-1 text-xl hover:bg-slate-100 md:hidden"
                             onClick={() => setOpen((o) => !o)}
                             aria-expanded={open}
                             aria-controls="mobile-nav"
