@@ -112,7 +112,7 @@ export default function Header({ isProd }: HeaderProps) {
         // "Desktop" View.
         return (
             // <header className="site-header text-center">
-            <header className="site-header text-center dark:bg-slate-950 dark:text-slate-100">
+            <header className="site-header text-center">
                 {/* Logo. */}
                 <a href="/" aria-label="YINI home" className="logo m-1">
                     <img
@@ -131,7 +131,7 @@ export default function Header({ isProd }: HeaderProps) {
                         <button
                             type="button"
                             onClick={() => setDark((v) => !v)}
-                            className="rounded-lg border border-slate-300 px-2 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-800"
+                            className="rounded-lg border border-slate-300 px-2 py-1 text-xs hover:bg-slate-100"
                             aria-label="Toggle dark mode">
                             {dark ? 'Light' : 'Dark'}
                         </button>
@@ -142,7 +142,7 @@ export default function Header({ isProd }: HeaderProps) {
     } else {
         // "Mobile" View.
         return (
-            <header className="border-b border-slate-200/60 dark:border-slate-800/60">
+            <header className="border-b border-slate-200/60">
                 <div className="mx-auto flex max-w-6xl items-center px-4 py-4">
                     <a
                         href="/"
@@ -172,7 +172,7 @@ export default function Header({ isProd }: HeaderProps) {
                             <button
                                 type="button"
                                 onClick={() => setDark((v) => !v)}
-                                className="rounded-lg border border-slate-300 px-2 py-1 text-xs hover:bg-slate-100 dark:hover:bg-slate-800"
+                                className="rounded-lg border border-slate-300 px-2 py-1 text-xs hover:bg-slate-100"
                                 aria-label="Toggle dark mode">
                                 {dark ? 'Light' : 'Dark'}
                             </button>
@@ -181,7 +181,7 @@ export default function Header({ isProd }: HeaderProps) {
                         {/* Mobile menu toggle (hidden on md+) */}
                         <button
                             type="button"
-                            className="text-xxs rounded-lg border border-slate-300 px-2 py-1 hover:bg-slate-100 md:hidden dark:hover:bg-slate-800"
+                            className="text-xxs rounded-lg border border-slate-300 px-2 py-1 hover:bg-slate-100 md:hidden"
                             onClick={() => setOpen((o) => !o)}
                             aria-expanded={open}
                             aria-controls="mobile-nav"
@@ -195,7 +195,7 @@ export default function Header({ isProd }: HeaderProps) {
                 {open && (
                     <div
                         id="mobile-nav"
-                        className="border-t border-slate-200/60 md:hidden dark:border-slate-800/60">
+                        className="border-t border-slate-200/60 md:hidden">
                         <nav className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-sm">
                             <NavLinks variant="mobile" />
                         </nav>
