@@ -40,12 +40,20 @@ const CONFIG = {
                 yiniOrg: 'https://github.com/YINI-lang',
                 // GitHub Repos.
                 yiniCli: 'https://github.com/YINI-lang/yini-cli',
-                yiniParser:
+                yiniParserTs:
                     'https://github.com/YINI-lang/yini-parser-typescript',
                 yiniDemoApps: 'https://github.com/YINI-lang/yini-demo-apps',
                 yiniSyntax: 'https://github.com/YINI-lang/syntax-highlighting',
                 yiniHomepage: 'https://github.com/YINI-lang/yini-homepage',
                 yiniSpec: 'https://github.com/YINI-lang/YINI-spec',
+            },
+            discussions: {
+                yiniLang: 'https://github.com/orgs/YINI-lang/discussions',
+                yiniCli: 'https://github.com/YINI-lang/yini-cli/discussions',
+                yiniParserTs:
+                    'https://github.com/YINI-lang/yini-parser-typescript/discussions',
+                yiniHomepage:
+                    'https://github.com/YINI-lang/yini-homepage/discussions',
             },
         },
     },

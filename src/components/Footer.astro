@@ -95,18 +95,47 @@ const year = new Date().getFullYear()
                             >FAQ</a
                         >
                     </li>
+                </ul>
+
+                <br />
+
+                <!-- Community -->
+                <h2 class="text-slate-2 00 text-sm font-semibold">Community</h2>
+                <ul class="mt-3 space-y-2 text-sm">
                     <li>
                         <a
-                            href={CONFIG.urls.hero.spec}
+                            href={CONFIG.urls.external.discussions.yiniLang}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Specification</a
+                            >YINI Discussions ↗</a
                         >
                     </li>
                     <li>
                         <a
-                            href={CONFIG.urls.links.about}
+                            href={CONFIG.urls.external.discussions.yiniCli}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >About</a
+                            >YINI-CLI Discussions ↗</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={CONFIG.urls.external.discussions.yiniParserTs}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >Parser-TS Discussions ↗</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={CONFIG.urls.external.discussions.yiniHomepage}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >Homepage Discussions ↗</a
                         >
                     </li>
                 </ul>
@@ -114,8 +143,10 @@ const year = new Date().getFullYear()
 
             <!-- Right Column -->
             <div>
-                <!-- Community / Repos -->
-                <h2 class="text-slate-2 00 text-sm font-semibold">Community</h2>
+                <!-- YINI ecosystem / Repos -->
+                <h2 class="text-slate-2 00 text-sm font-semibold">
+                    YINI ecosystem
+                </h2>
                 <ul class="mt-3 space-y-2 text-sm">
                     <li>
                         <a
@@ -137,7 +168,7 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
-                            href={CONFIG.urls.external.gitHub.yiniParser}
+                            href={CONFIG.urls.external.gitHub.yiniParserTs}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
@@ -188,15 +219,13 @@ const year = new Date().getFullYear()
                         Deep dive
                     </h2>
                     <ul class="mt-3 space-y-2 text-sm">
-                        <!-- <li>
+                        <li>
                             <a
-                                href="https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md#table-of-contents"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                href={CONFIG.urls.hero.spec}
                                 class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >Read latest YINI Spec ↗</a
+                                >Specification</a
                             >
-                        </li> -->
+                        </li>
                         <li>
                             <a
                                 href="https://github.com/YINI-lang/YINI-spec/blob/production/RATIONALE.md"
@@ -207,6 +236,20 @@ const year = new Date().getFullYear()
                             >
                         </li>
                     </ul>
+
+                    <br />
+
+                    <!-- General -->
+                    <h2 class="text-slate-2 00 text-sm font-semibold">
+                        General
+                    </h2>
+                    <li>
+                        <a
+                            href={CONFIG.urls.links.about}
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >About</a
+                        >
+                    </li>
                 </ul>
             </div>
         </div>
