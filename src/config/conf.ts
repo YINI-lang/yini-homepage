@@ -23,7 +23,7 @@ const CONFIG = {
             faq: '/yini-faq',
             spec: '/specification',
         },
-        links: {
+        secondary: {
             introToYiniFormat: '/intro-yini-config-format',
             about: '/about-yini',
         },
