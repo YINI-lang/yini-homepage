@@ -43,7 +43,7 @@ const CONFIG = {
                 yiniParser:
                     'https://github.com/YINI-lang/yini-parser-typescript',
                 yiniDemoApps: 'https://github.com/YINI-lang/yini-demo-apps',
-                yiniSyntax: 'https://github.com/YINI-lang/yini-syntax',
+                yiniSyntax: 'https://github.com/YINI-lang/syntax-highlighting',
                 yiniHomepage: 'https://github.com/YINI-lang/yini-homepage',
                 yiniSpec: 'https://github.com/YINI-lang/YINI-spec',
             },
