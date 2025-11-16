@@ -89,21 +89,38 @@ export default function Header({ isProd }: HeaderProps) {
         // *** HERO below ***
         return (
             <>
-                <a href={CONFIG.urls.hero.home} className={cssClasses}>
+                <a
+                    href={CONFIG.siteLinks.hero.home.url}
+                    title={CONFIG.siteLinks.hero.home.title}
+                    className={cssClasses}>
                     Home
                 </a>
-                <a href={CONFIG.urls.hero.getStarted} className={cssClasses}>
+                <a
+                    href={CONFIG.siteLinks.hero.getStarted.url}
+                    title={CONFIG.siteLinks.hero.getStarted.title}
+                    className={cssClasses}>
                     Get Started
                 </a>
                 {/* Playground is currently temp-disabled in your layout */}
-                {/* <a href="/playground" className={cssClasses}>Playground</a> */}
-                <a href={CONFIG.urls.hero.tutorial} className={cssClasses}>
+                {/* <a href={CONFIG.siteLinks.hero.playground.url}
+                    title={CONFIG.siteLinks.hero.playground.title}
+                className={cssClasses}>Playground</a> */}
+                <a
+                    href={CONFIG.siteLinks.hero.tutorial.url}
+                    title={CONFIG.siteLinks.hero.tutorial.title}
+                    className={cssClasses}>
                     Quick Tutorial
                 </a>
-                <a href={CONFIG.urls.hero.faq} className={cssClasses}>
+                <a
+                    href={CONFIG.siteLinks.hero.faq.url}
+                    title={CONFIG.siteLinks.hero.faq.title}
+                    className={cssClasses}>
                     FAQ
                 </a>
-                <a href={CONFIG.urls.hero.spec} className={cssClasses}>
+                <a
+                    href={CONFIG.siteLinks.hero.spec.url}
+                    title={CONFIG.siteLinks.hero.spec.title}
+                    className={cssClasses}>
                     Specification
                 </a>
             </>

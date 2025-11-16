@@ -1,4 +1,4 @@
-const LATEST_YINI_SPEC_PDF = '/specs/YINI-Specification-1.0.0-RC.3.pdf'
+const LATEST_YINI_SPEC_PDF_URL = '/specs/YINI-Specification-1.0.0-RC.3.pdf'
 
 const CONFIG = {
     meta: {
@@ -13,24 +13,47 @@ const CONFIG = {
             //'YINI is a human-friendly config format—familiar like INI, with clear nesting, predictable rules, and a formal spec.',
             'The YINI config format is a modern, structured, and human-friendly configuration language designed to bridge the gap between the simplicity of INI and the expressiveness of YAML, and even more.',
     },
-    urls: {
+    siteLinks: {
         // The "hero" (heroic attention-grabber) links.
         hero: {
-            home: '/',
-            getStarted: '/get-started',
-            playground: '/playground',
-            tutorial: '/yini-tutorial',
-            faq: '/yini-faq',
-            spec: '/specification',
+            home: {
+                url: '/',
+                title: 'Home – YINI homepage',
+            },
+            getStarted: {
+                url: '/get-started',
+                title: 'Start exploring the YINI format',
+            },
+            playground: {
+                url: '/playground',
+                title: 'Experiment with YINI directly in your browser',
+            },
+            tutorial: {
+                url: '/yini-tutorial',
+                title: 'Get a quick overview of YINI syntax and structure',
+            },
+            faq: {
+                url: '/yini-faq',
+                title: 'Read frequently asked questions about YINI',
+            },
+            spec: {
+                url: '/specification',
+                title: 'Read the full YINI specification and syntax reference',
+            },
         },
         secondary: {
-            introToYiniFormat: '/intro-yini-config-format',
-            about: '/about-yini',
+            introToYiniFormat: {
+                url: '/intro-yini-config-format',
+                title: 'Learn what YINI is and how the format works',
+            },
+            about: { url: '/about-yini', title: 'Who’s behind YINI' },
         },
-        specPdf: LATEST_YINI_SPEC_PDF,
-        specOnGitHubAtProd:
-            'https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md',
+        specPdf: { url: LATEST_YINI_SPEC_PDF_URL, title: '' },
+    },
+    urls: {
         external: {
+            specOnGitHubAtProd:
+                'https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md',
             useIt: {
                 npmYiniCli: 'https://www.npmjs.com/package/yini-cli',
                 npmYiniParser: 'https://www.npmjs.com/package/yini-parser',
