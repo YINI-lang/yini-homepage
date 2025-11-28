@@ -124,20 +124,43 @@ name = 'Hello'`}</code></pre>
 
     <div class="yini-features full-bleed pr-8">
         <section class="mx-auto max-w-3xl pt-1 pb-6">
-            <h2>🧩 Features</h2>
+            <h2>🧩 Key Features</h2>
             <ol>
                 <li>
                     <strong>Readable & Familiar</strong>
                     <p class="mt-2">
-                        Plain key/value with clear sections and optional strict
-                        mode.
+                        Plain text files built using key/value-pairs (e.g <code
+                            >key = value</code
+                        >) row by row, takes a lot of inspiration from the
+                        classic and familiar
+                        <code>INI</code>.
                     </p>
                 </li>
                 <li>
-                    <strong>Structured</strong>
+                    <strong>Structured Hierarchy</strong>
                     <p class="mt-2">
-                        Native lists, objects, and nesting — no guessing, no
-                        surprises.
+                        Uses section markers like <code>^</code> for nesting sections
+                        to creare a clear hierarchy, without indentation sensitivity.
+                        (e.g. <code>^ server</code>), (e.g. <code
+                            >^^ database</code
+                        >), and (e.g. <code>^^^ db_advanced_settings</code>).
+                    </p>
+                </li>
+                <li>
+                    <strong>Data Types</strong>
+                    <p class="mt-2">
+                        Supports various data types beyond simple strings,
+                        including integers, floating-point numbers, booleans,
+                        making it more robust and versatile for different data.
+                        Including arrays and objects, even nested inline.
+                    </p>
+                </li>
+                <li>
+                    <strong>Reduces Syntax Noise</strong>
+                    <p class="mt-2">
+                        Aims for a cleaner look comparared with other formats by
+                        reducing "noise" like brackets, quotes, and avoid long
+                        key chaining with dots (<code>.</code>)
                     </p>
                 </li>
                 <li>
