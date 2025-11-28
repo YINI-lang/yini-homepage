@@ -5,13 +5,26 @@ const CONFIG = {
         author: 'Marko K. Seppänen',
     },
     text: {
-        headline: 'YINI — Simple, Structured Config',
+        headline: [
+            'YINI — Simple, Structured Config',
+            'YINI — A Clear Way to Write Configs',
+            'YINI — Configuration Made Understandable',
+            'YINI — Clean, Predictable Configuration',
+            'YINI — A Better Way to Structure Config Files',
+            'YINI — Simple Syntax, Real Structure',
+            'YINI — Human-Readable. Machine-Friendly.',
+            'YINI — Modern Configuration Without the Noise',
+            'YINI — Lightweight Syntax. Powerful Structure.',
+            'YINI — The Config Format That Makes Sense',
+            'YINI — Clean Configs for Modern Projects',
+        ],
         tagLine:
             'INI-familiar syntax with nesting, comments, and clear, simple rules.',
         elevatorPitch:
             //'YINI is a human-friendly configuration format — like INI, but with nested structures, clear rules, and zero ambiguity.',
             //'YINI is a human-friendly config format—familiar like INI, with clear nesting, predictable rules, and a formal spec.',
-            'The YINI config format is a modern, structured, and human-friendly configuration language designed to bridge the gap between the simplicity of INI and the expressiveness of YAML, and even more.',
+            //'The YINI config format is a modern, structured, and human-friendly configuration language designed to bridge the gap between the simplicity of INI and the expressiveness of YAML, and even more.',
+            'YINI is a modern, human-friendly configuration format that bridges the simplicity of INI with the expressive features of YAML. It offers a clear, structured syntax with nested sections, rich data types, and both line and block comments — making config files easy to read, write, and maintain.',
     },
     siteLinks: {
         // The "hero" (heroic attention-grabber) links.
