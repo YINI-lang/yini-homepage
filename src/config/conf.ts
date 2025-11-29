@@ -2,6 +2,7 @@ const LATEST_YINI_SPEC_PDF_URL = '/specs/YINI-Specification-1.0.0-RC.3.pdf'
 
 const CONFIG = {
     meta: {
+        homepageURL: 'https://yini-lang.org/',
         author: 'Marko K. Seppänen',
     },
     text: {
