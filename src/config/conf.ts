@@ -19,7 +19,8 @@ const CONFIG = {
             'YINI — Clean Configs for Modern Projects',
         ],
         tagLine:
-            'INI-familiar syntax with nesting, comments, and clear, simple rules.',
+            //'INI-familiar syntax with nesting, comments, and clear, simple rules.',
+            'A human-friendly config format with real structure and clean syntax.',
         elevatorPitch:
             //'YINI is a human-friendly configuration format — like INI, but with nested structures, clear rules, and zero ambiguity.',
             //'YINI is a human-friendly config format—familiar like INI, with clear nesting, predictable rules, and a formal spec.',
