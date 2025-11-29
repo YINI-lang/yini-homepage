@@ -45,13 +45,13 @@ const CONFIG = {
                 url: '/yini-tutorial',
                 title: 'Get a quick overview of YINI syntax and structure',
             },
-            faq: {
-                url: '/yini-faq',
-                title: 'Read frequently asked questions about YINI',
-            },
             spec: {
                 url: '/specification',
                 title: 'Read the full YINI specification and syntax reference',
+            },
+            faq: {
+                url: '/yini-faq',
+                title: 'Read frequently asked questions about YINI',
             },
         },
         secondary: {
