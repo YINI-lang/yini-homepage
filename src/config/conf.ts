@@ -47,6 +47,10 @@ const CONFIG = {
                 url: '/yini-tutorial',
                 title: 'Get a quick overview of YINI syntax and structure',
             },
+            examples: {
+                url: '/yini-code-examples',
+                title: 'Get a quick overview of YINI syntax and structure',
+            },
             spec: {
                 url: '/specification',
                 title: 'Read the full YINI specification and syntax reference',
