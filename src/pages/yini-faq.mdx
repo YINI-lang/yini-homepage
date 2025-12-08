@@ -59,8 +59,12 @@ It aims to combine **simplicity, structure, and safety**:
 - **Comment-friendly and human-first** – Keeps support for `;`, `#`, `//`, and even block comments (`/* */`) for maximum readability.
 - **Fully defined specification** – Unlike traditional INI, YINI has an explicit, versioned grammar and spec, making it predictable across implementations.
 
-### Q – Why not just use INI/JSON/YAML/TOML?
+### Q – What is YINI based on or influenced by?
+YINI is inspired by several well-known formats and languages, including **INI, JSON, Python**, and **Markdown**, along with a few familiar conventions from C-style languages.
+From INI it keeps the simple key/value structure, from JSON and Python it adopts clear and predictable data types, from Markdown it borrows a focus on readability, and from C-style languages it takes influence for features like line comments (`//`) and block comments (`/* … */`).
+Together, these ideas form a configuration format that is human-friendly, structured, and unambiguous — familiar to read, but much more capable than classic INI.
 
+### Q – Why not just use INI/JSON/YAML/TOML?
 Use whatever suits your project best. YINI aims to:
 
 - Keep **INI-like simplicity**.
@@ -69,11 +73,9 @@ Use whatever suits your project best. YINI aims to:
 - Be **comfortable to read and diff**.
 
 ### Q – What file extension should I use?
-
 YINI documents use the `.yini` file extension.
 
 ### Q – Is YINI production-ready?
-
 Not quite yet — but it's getting close:
 
 - **Specification:** currently at **v1.0 Release Candidate**, meaning the syntax and structure are stable.  
@@ -93,7 +95,6 @@ YINI files should be saved as UTF-8 without BOM for maximum compatibility.
 ## 2. Structure and Syntax
 
 ### Q – How do I define sections?
-
 Each section starts with `^`. (Settings are grouped in sections.)
 
 Start a section with `^` and then a name **without spaces**, e.g.:
