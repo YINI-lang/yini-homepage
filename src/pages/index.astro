@@ -6,8 +6,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout
-    headTitle="YINI Config/Settings Format — Simple, Structured Configuration Language"
-    headDescription="Official site for YINI — a human-friendly, structured settings/configuration format inspired by INI, with nesting, rich data types, and a formal specification."
+    headTitle="YINI Configuration Format — Clear, Structured Config Files"
+    headDescription="Official site for YINI, an INI-inspired settings/configuration format with clear structure, predictable rules, and a formal specification."
 >
     <section class="mx-auto max-w-5xl px-4 py-2 text-center">
         <!-- <h1 class="text-3xl font-semibold tracking-tight md:text-5xl">
@@ -33,23 +33,39 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
     <section class="why-yini pb-4">
         <h2>💡 Why YINI?</h2>
-        INI is simple and familiar, but it lacks structure for complex data.<br
+        INI, YAML, and JSON all solve configuration problems in different ways.<br
         />
-        YAML offers rich features, though it can be harder to read and lint consistently.<br
-        />
-        JSON is precise and universal, but less concise for human editing.<br />
-        YINI aims to balance these aspects — keeping readability while providing
-        clear nesting and predictable behavior.
+        INI emphasizes simplicity, YAML offers expressive structure, and JSON prioritizes
+        precision.<br />
+        YINI focuses on keeping configuration files readable while providing clear
+        nesting and predictable behavior.
         <ul>
-            <li>
-                <strong>Familiar</strong> — learn it in minutes if you know INI
+            <li class="leading-relaxed">
+                <strong>Clear structure without indentation-based rules</strong>
+                — YINI uses explicit structure instead of indentation-based semantics,
+                so files stay readable and predictable.
             </li>
-            <li>
-                <strong>Structured</strong> — sections, arrays, objects, clear nesting
+            <li class="leading-relaxed">
+                <strong
+                    >Readable section nesting that scales with file size</strong
+                > — YINI supports nesting and structured data while keeping configuration
+                files easy to scan and maintain.
             </li>
-            <li>
-                <strong>Predictable</strong> — fewer gotchas; strict/lenient modes
-                available
+            <li class="leading-relaxed">
+                <strong>Optimized for human-edited configuration</strong> — The format
+                prioritizes clarity, comments, and consistency for day-to-day configuration
+                work.
+            </li>
+            <li class="leading-relaxed">
+                <strong>Predictable behavior defined by clear rules</strong> — YINI
+                has a formal grammar and well-defined parsing rules, reducing surprises
+                across tools.
+            </li>
+            <li class="leading-relaxed">
+                <strong
+                    >A balanced middle ground between simplicity and structure</strong
+                > — It offers more structure than INI, less noise than XML/JSON,
+                and fewer edge cases than YAML.
             </li>
         </ul>
     </section>
@@ -129,65 +145,62 @@ name = 'Hello'`}</code></pre>
             <h2>🧩 Key Features</h2>
             <ol>
                 <li>
-                    <strong>Readable & familiar</strong>
+                    <strong>Readable and familiar</strong>
                     <p class="mt-2">
-                        Plain-text config files built from simple key–value
-                        pairs (e.g.
-                        <code>key = value</code>) line by line, taking a lot of
-                        inspiration from classic <code>INI</code>.
+                        Plain-text configuration files built from simple
+                        key–value pairs (
+                        <code>key = value</code>), inspired by classic INI.
                     </p>
                 </li>
                 <li>
-                    <strong>Structured hierarchy</strong>
+                    <strong>Clear structure</strong>
                     <p class="mt-2">
-                        Uses section markers like <code>^</code> for nesting sections
-                        to create a clear hierarchy, without indentation sensitivity.
+                        Supports nested sections using explicit section markers
+                        (such as <code>^</code>), creating a clear hierarchy
+                        without relying on indentation.<br />
                         For example:
                         <code>^ App</code>, <code>^^ Server</code>, and
                         <code>^^^ Logging</code>.
                     </p>
                 </li>
                 <li>
-                    <strong>Rich data types</strong>
+                    <strong>Useful data types</strong>
                     <p class="mt-2">
-                        Supports more than just strings: integers,
-                        floating-point numbers, booleans, arrays, and objects —
-                        including nested inline structures — making it more
-                        robust and versatile for different kinds of data.
+                        Supports strings, numbers, booleans, arrays, and objects
+                        — including nested structures — so configuration can
+                        stay structured without becoming verbose.
                     </p>
                 </li>
                 <li>
-                    <strong>Comments</strong>
+                    <strong>Comments where you expect them</strong>
                     <p class="mt-2">
-                        Allows both inline comments (using <code>//</code> or <code
-                            >#</code
-                        >) and block comments (using <code>/* ... */</code>),
-                        which improves readability and makes it easy to explain
-                        settings directly in the file.
+                        Supports both line comments (<code>#</code>, <code
+                            >//</code
+                        > and block comments (<code>/* ... */</code>), making it
+                        easy to document configuration directly in the file.
                     </p>
                 </li>
                 <li>
                     <strong>Reduced syntax noise</strong>
                     <p class="mt-2">
-                        Aims for a cleaner look compared to many other formats
-                        by reducing “noise” like excessive brackets and quotes,
-                        and by avoiding long dotted key chains (such as <code
-                            >server.database.advanced.timeout</code
+                        Keeps files readable by avoiding excessive brackets,
+                        quotes, and long dotted key paths. <code
+                            >server.database.advanced.param</code
                         >).
                     </p>
                 </li>
                 <li>
-                    <strong>Formally specified</strong>
+                    <strong>Predictable and well-defined</strong>
                     <p class="mt-2">
-                        A formal, versioned specification and ANTLR grammar help
-                        keep implementations aligned and predictable.
+                        Defined by a formal, versioned specification and grammar
+                        to ensure consistent behavior across tools.
                     </p>
                 </li>
                 <li>
-                    <strong>Free & open source</strong>
+                    <strong>Free and open source</strong>
                     <p class="mt-2">
-                        YINI is free, open-source software that you can use and
-                        study.
+                        YINI is open-source software, free to use, inspect, and
+                        build upon.
                     </p>
                 </li>
             </ol>

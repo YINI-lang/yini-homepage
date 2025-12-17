@@ -1,6 +1,6 @@
 # yini-homepage
 
-This is the official website for the YINI configuration format — a modern, human-friendly config format—familiar like INI, with clear nesting, predictable rules, and a formal spec.
+This is the official website for YINI, an INI-inspired configuration format with clear nesting, predictable rules, and a formal specification.
 
 Built with Astro and Tailwind CSS — the site provides an overview of the YINI format, including the specification, guides, and examples.
 
@@ -24,6 +24,6 @@ Then open http://localhost:4321 in your browser.
 ---
 
 **^YINI ≡**  
-> A simple, structured, and human-friendly configuration format.  
+> A structured, human-readable configuration format.  
 
 [yini-lang.org](https://yini-lang.org) · [YINI on GitHub](https://github.com/YINI-lang)  
