@@ -9,7 +9,7 @@ Built with Astro and Tailwind CSS — the site provides an overview of the YINI 
 ## 🧩 Local Development
 ```bash
 # Clone
-git clone https://github.com/marko-ks/yini-homepage.git
+git clone https://github.com/YINI-lang/yini-homepage.git
 cd yini-homepage
 
 # Install dependencies
