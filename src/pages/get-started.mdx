@@ -16,14 +16,14 @@ YINI is a human-friendly configuration format — like INI, but with nested sect
 
 ## Prerequisite: Node.js installed
 
-- The examples assumes you have Node.js installed on your system.
+- The examples assume you have Node.js installed on your system.
 
 💡 Tip: You can check if you have Node installed with:
 ```bash
 node -v
 ```
 
-It's recommended to have at least Node 16.
+It's recommended to use **Node.js 16 or later**.
 
 ---
 
@@ -75,7 +75,7 @@ Save this as `config2.yini`:
 - **Arrays:** `[1, 2, 'three']`
 - **Objects:** `{ key: 'value', n: 1 }`
 - **Strings:** must be quoted `'like this'` or `"like this"`.
-- For more details see: [YINI's syntax and structure](intro-yini-config-format).
+- For more details, see: [Intro to the YINI format](/intro-yini-config-format).
 
 
 ## 3) Parse your `.yini` file
@@ -167,6 +167,10 @@ yini parse --pretty config2.yini
 }
 ```
 
+💡 Common tips:
+- Section headers are case-sensitive.
+- Strings must always be quoted.
+
 ## Summary
 ✅ You just parsed your first YINI file into both JavaScript and JSON formats!
 
@@ -175,7 +179,7 @@ yini parse --pretty config2.yini
 ## 🧭 Next Steps
 
 - ▶️ [Quick Tutorial](/yini-tutorial) — 5-minute guided walkthrough of YINI.  
-- 📖 [Intro to YINI format](intro-yini-config-format) — 10–15 minute introduction to YINI format's syntax and structure.
+- 📖 [Intro to YINI format](/intro-yini-config-format) — 10–15 minute introduction to YINI format's syntax and structure.
 - 📘 [Specification](/specification) — Read the full YINI Specification.  
 
 </BaseLayout>
