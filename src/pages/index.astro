@@ -68,6 +68,13 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                 and fewer edge cases than YAML.
             </li>
         </ul>
+
+        <p class="mt-2 text-sm">
+            New to YINI? Read a short <a
+                href="/intro-yini-config-format"
+                class="underline">intro to the YINI format</a
+            >.
+        </p>
     </section>
 
     <!-- Quick Start -->
@@ -176,7 +183,7 @@ name = 'Hello'`}</code></pre>
                     <p class="mt-2 leading-normal">
                         Supports both line comments (<code>#</code>, <code
                             >//</code
-                        > and block comments (<code>/* ... */</code>), making it
+                        > and block comments <code>/* ... */</code>), making it
                         easy to document configuration directly in the file.
                     </p>
                 </li>
@@ -207,41 +214,25 @@ name = 'Hello'`}</code></pre>
         </section>
     </div>
 
-    <p class="mt-3 text-base md:text-base">
+    <section class="mt-3 text-base md:text-base">
         <h2>ℹ️ About</h2>
         <p>
-            YINI is a new configuration format, <strong
-                >formalized in 2025</strong
-            >. It's a structured configuration format designed for clarity, easy
-            nesting, and strict validation.
+            YINI is an INI-inspired configuration format designed for clarity,
+            simple nesting, and predictable parsing.
         </p>
         <p>
-            The format's syntax and behavior are defined in the
-            <strong>YINI Specification</strong>, currently at
-            <strong>Version 1.0 — Candidate Release</strong>.
+            The format is defined by a formal, versioned specification and
+            maintained as an open-source project under the YINI-lang
+            organization on GitHub.
         </p>
-        <p>
-            YINI was created and is maintained by Marko K. Seppänen as an
-            open-source project under the <a
-                href="https://github.com/YINI-lang"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-slate-400 no-underline hover:text-sky-300 hover:underline"
-                >YINI-lang organization</a
-            >.
-            <p>
-                The specification, tooling, and ecosystem are actively evolving
-                toward the first stable release.
-            </p>
-        </p>
-    </p>
+    </section>
 
     <section>
         <h2>🛠️ Contribute & Get Involved</h2>
         <p class="mt-3">
-            YINI is open-source and evolving. You can help by trying it,
-            reporting issues, contributing code, or just ⭐ the project on
-            GitHub.
+            YINI is open-source and actively maintained. You can get involved by
+            trying it, reporting issues, contributing code, or just ⭐ the
+            project on GitHub.
         </p>
         <div class="mt-4 flex flex-wrap gap-3">
             <a
@@ -278,22 +269,22 @@ name = 'Hello'`}</code></pre>
                 </p>
             </li>
             <li>
-                <a href="/specification">Specification</a><br />
-                <p class="mt-2">
-                    Official YINI format rules — Full technical details of the
-                    YINI format.
-                </p>
-            </li>
-            <li>
                 <a href="/yini-faq">FAQ</a><br />
                 <p class="mt-2">Common questions answered.</p>
+            </li>
+            <li>
+                <a href="/specification">Specification</a><br />
+                <p class="mt-2">
+                    Official YINI format rules with full technical details of
+                    the YINI format.
+                </p>
             </li>
         </ul>
     </section>
 
     <section>
         <hr />
-        <h3>Build & Release Status</h3>
+        <h3>Project status</h3>
         <div class="flex items-center justify-between">
             <div>
                 Parser (Node.js) library: <code>yini-parser</code>
