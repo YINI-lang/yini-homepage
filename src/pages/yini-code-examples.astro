@@ -17,24 +17,18 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     headTitle={'Code Examples: YINI'}
     headDescription={'Real-world configuration examples written in the YINI settings/configuration format.'}
 >
-    <section aria-labelledby="alt-formats" class="mt-8">
+    <section class="mt-8">
         <h1>YINI Code Examples</h1>
         Below are practical YINI configuration examples showing how the format handles
         structure, data types, and readability — without relying on indentation-based
         rules.
 
         <YINIExample title="Basic example" code={exampleBasic} />
-        <YINIExample title="Sections example" code={exampleSections} />
-        <YINIExample
-            title="Nested sections example"
-            code={exampleNestedSections}
-        />
-        <YINIExample
-            title="Lists and objects example"
-            code={exampleListAndObjects}
-        />
-        <YINIExample title="Comments example" code={exampleComments} />
-        <YINIExample title="Number formats example" code={exampleNumbers} />
+        <YINIExample title="Sections" code={exampleSections} />
+        <YINIExample title="Nested sections" code={exampleNestedSections} />
+        <YINIExample title="Comments" code={exampleComments} />
+        <YINIExample title="Lists and objects" code={exampleListAndObjects} />
+        <YINIExample title="Number formats" code={exampleNumbers} />
 
         <h2>File Examples</h2>
         <YINIExample

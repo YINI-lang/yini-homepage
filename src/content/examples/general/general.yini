@@ -1,0 +1,17 @@
+# Basic YINI example: an app config with a nested server section
+
+^ App
+  name = "Demo App"
+  version = "1.1.0"
+  debug = off                 // also: true/false, yes/no, on/off
+  features = ["search", "logs"]
+
+  ^^ Server
+    host = "127.0.0.1"
+    port = 8080
+    timeoutSeconds = 30
+    cors = { enabled: true, origins: ["http://localhost:3000"] }
+
+  ^^ Logging
+    level = "info"
+    file = null               // explicit "no value"

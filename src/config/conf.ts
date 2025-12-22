@@ -36,35 +36,39 @@ const CONFIG = {
             },
             getStarted: {
                 url: '/get-started',
-                title: 'Start exploring the YINI format',
+                title: 'Start exploring the YINI format.',
             },
             playground: {
                 url: '/playground',
-                title: 'Experiment with YINI directly in your browser',
+                title: 'Experiment with YINI directly in your browser.',
             },
             tutorial: {
                 url: '/yini-tutorial',
-                title: 'Get a quick overview of YINI syntax and structure',
+                title: 'Get a quick overview of YINI syntax and structure.',
             },
             examples: {
                 url: '/yini-code-examples',
-                title: 'Get a quick overview of YINI syntax and structure',
+                title: 'Practical YINI configuration examples.',
             },
             spec: {
                 url: '/specification',
-                title: 'Read the full YINI specification and syntax reference',
+                title: 'Read the full YINI specification and syntax reference.',
             },
             faq: {
                 url: '/yini-faq',
-                title: 'Read frequently asked questions about YINI',
+                title: 'Read frequently asked questions about YINI.',
             },
         },
         secondary: {
             introToYiniFormat: {
                 url: '/intro-yini-config-format',
-                title: 'Learn what YINI is and how the format works',
+                title: 'Learn what YINI is and how the format works.',
             },
-            about: { url: '/about-yini', title: 'Who’s behind YINI' },
+            advancedExamples: {
+                url: '/yini-advanced-examples',
+                title: 'These examples show optional syntax, edge cases, and power feature.',
+            },
+            about: { url: '/about-yini', title: "Who's behind YINI" },
         },
         specPdf: { url: LATEST_YINI_SPEC_PDF_URL, title: '' },
     },

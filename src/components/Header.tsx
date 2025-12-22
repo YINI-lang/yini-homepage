@@ -112,6 +112,12 @@ export default function Header({ isProd }: HeaderProps) {
                     Quick Tutorial
                 </a>
                 <a
+                    href={CONFIG.siteLinks.hero.examples.url}
+                    title={CONFIG.siteLinks.hero.examples.title}
+                    className={cssClasses}>
+                    Examples
+                </a>
+                <a
                     href={CONFIG.siteLinks.hero.spec.url}
                     title={CONFIG.siteLinks.hero.spec.title}
                     className={cssClasses}>
