@@ -1,0 +1,76 @@
+---
+import YINIExample from '../components/YINIExample.astro'
+import CONFIG from '../config/conf'
+import exampleFile1 from '../content/examples/1-web-server-configuration.yini?raw'
+import exampleFile2 from '../content/examples/2-user-profile-settings.yini?raw'
+import exampleFile4 from '../content/examples/4-build-project-configuration.yini?raw'
+import exampleBasic from '../content/examples/basic/basic.yini?raw'
+import exampleComments from '../content/examples/basic/comments.yini?raw'
+import exampleListAndObjects from '../content/examples/general/lists-and-objects.yini?raw'
+import exampleNumbers from '../content/examples/general/number-formats.yini?raw'
+import exampleNestedSections from '../content/examples/structure/nested-sections.yini?raw'
+import exampleSections from '../content/examples/structure/sections.yini?raw'
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Code Examples: YINI'}
+    headDescription={'Real-world configuration examples written in the YINI settings/configuration format.'}
+>
+    <section aria-labelledby="alt-formats" class="mt-8">
+        <h1>YINI Code Examples</h1>
+        Below are practical YINI configuration examples showing how the format handles
+        structure, data types, and readability — without relying on indentation-based
+        rules.
+
+        <YINIExample title="Basic example" code={exampleBasic} />
+        <YINIExample title="Sections example" code={exampleSections} />
+        <YINIExample
+            title="Nested sections example"
+            code={exampleNestedSections}
+        />
+        <YINIExample
+            title="Lists and objects example"
+            code={exampleListAndObjects}
+        />
+        <YINIExample title="Comments example" code={exampleComments} />
+        <YINIExample title="Number formats example" code={exampleNumbers} />
+
+        <h2>File Examples</h2>
+        <YINIExample
+            title="File example 1: Web server configuration (sections, numbers, booleans)"
+            code={exampleFile1}
+        />
+        <YINIExample
+            title="File example 2: User profile settings (objects, lists, and comments)"
+            code={exampleFile2}
+        />
+        <YINIExample
+            title="File example 4: build-project-configuration.yini"
+            code={exampleFile4}
+        />
+
+        <b>Want more?</b> See <a href="/yini-advanced-examples"
+            >Advanced Examples</a
+        >
+        (for optional and power-user features).
+
+        <hr />
+
+        <section>
+            <h2>Next steps</h2>
+            <ul>
+                <li>
+                    ➡️ <a href="/get-started">Get Started</a><br />
+                    <em>Learn how to install and use YINI.</em>
+                </li>
+                <li>
+                    ➡️ <a href={CONFIG.siteLinks.hero.tutorial.url}
+                        >Quick Tutorial</a
+                    ><br />
+                    <em>A 5-minute guided walkthrough of YINI basics.</em>
+                </li>
+            </ul>
+        </section>
+    </section>
+</BaseLayout>

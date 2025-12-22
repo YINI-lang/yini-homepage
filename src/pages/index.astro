@@ -164,10 +164,17 @@ name = 'Hello'`}</code></pre>
                     <p class="mt-2 leading-normal">
                         Supports nested sections using explicit section markers
                         (such as <code>^</code>), creating a clear hierarchy
-                        without relying on indentation.<br />
+                        without relying on indentation for difining structure.<br
+                        />
                         For example:
                         <code>^ App</code>, <code>^^ Server</code>, and
                         <code>^^^ Logging</code>.
+                        <ul>
+                            <li>
+                                Support also a couple of alternative section
+                                markers, such as <code>&lt;</code>.
+                            </li>
+                        </ul>
                     </p>
                 </li>
                 <li>
@@ -183,8 +190,10 @@ name = 'Hello'`}</code></pre>
                     <p class="mt-2 leading-normal">
                         Supports both line comments (<code>#</code>, <code
                             >//</code
-                        > and block comments <code>/* ... */</code>), making it
-                        easy to document configuration directly in the file.
+                        >, <code>;</code> and block/multi-line comments <code
+                            >/* ... */</code
+                        >), making it easy to document configuration directly in
+                        the file.
                     </p>
                 </li>
                 <li>

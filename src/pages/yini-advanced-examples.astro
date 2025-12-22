@@ -1,0 +1,58 @@
+---
+import YINIExample from '../components/YINIExample.astro'
+import CONFIG from '../config/conf'
+import exampleFile3 from '../content/examples/3-cli-application-options.yini?raw'
+import exampleFile5 from '../content/examples/5-database-connection.yini?raw'
+import exampleFile6 from '../content/examples/6-feature-flags-example.yini?raw'
+import exampleFile7 from '../content/examples/7-email-smtp-configuration.yini?raw'
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Advanced Examples: YINI'}
+    headDescription={'Advanced code explamles with optional syntax, edge cases, and power features in the YINI config format.'}
+>
+    <section aria-labelledby="alt-formats" class="mt-8">
+        <h1>YINI Advanced Code Examples</h1>
+
+        ⚠️ These examples show optional syntax, edge cases, and power features.
+        You do <b>not</b>
+        need any of these features to use YINI effectively. If you're new to YINI,
+        start with the basic examples or the <a href="/get-started"
+            >Get Started</a
+        > guide.
+
+        <YINIExample
+            title="File example 3: cli-application-options.yini"
+            code={exampleFile3}
+        />
+        <YINIExample
+            title="File example 5: database-connection"
+            code={exampleFile5}
+        />
+        <YINIExample
+            title="File example 6: feature-flags-example.yini"
+            code={exampleFile6}
+        />
+        <YINIExample
+            title="File example 7: email-smtp-configuration"
+            code={exampleFile7}
+        />
+
+        <hr />
+
+        <section>
+            <h2>Next steps</h2>
+            <ul>
+                <li>
+                    ➡️ <a href="/get-started">Get Started</a><br />
+                    <em>Learn how to install and use YINI.</em>
+                </li>
+                <li>
+                    ➡️ <a href="/yini-code-examples">Basic Examples</a><br />
+                    <em>See minimal, everyday YINI configuration examples.</em>
+                </li>
+            </ul>
+        </section>
+    </section>
+</BaseLayout>
