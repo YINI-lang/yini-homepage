@@ -10,11 +10,12 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 # Quick Tutorial: YINI Basics
 
-YINI makes configs readable for humans *and* consistent for machines — like INI, but with **real structure**, arrays, objects, and comments.
+YINI makes configs readable for humans _and_ consistent for machines — like INI, but with **real structure**, arrays, objects, and comments.
 
 A quick tutorial with the basics of the YINI format and how to validate it.
 
 ## 1) What is YINI (in one line)?
+
 A human-friendly config format (like INI) **with real structure**: sections, clear nested sections, arrays, objects, and unambiguous, predictable rules.
 
 ---
@@ -38,16 +39,19 @@ enabled = false
 ```
 
 ### 💡 What's happening
+
 - `^` starts a section. More carets = nested section (`^^ Logging` is inside `Server`).
 - `key = value` defines a setting.
 - Arrays (lists): `[1, 2, 3]`, objects: `{ key: value }`.
 - Comments: `//` or `#` (include a space after `#` for inline comments).
-- Want more of YINI's syntax and structure? Read [Intro to YINI format](intro-yini-config-format).
+- Want more of YINI's syntax and structure? Read [Intro to YINI format](/intro-yini-config-format).
 
 ---
 
 ## 3) Validate your config (in CLI)
+
 In your terminal (from the same folder as your file), run:
+
 ```bash
 npx yini-cli validate ./config3.yini
 ```
@@ -61,13 +65,16 @@ You should see something like:
 If YINI reports 0 errors, 0 warnings, everything's fine.
 A non-zero exit code means something went wrong.
 
-### More commands and options 
+### More commands and options
+
 To explore more commands and options, run:
+
 ```bash
 npx yini-cli --help
 ```
 
 ## 5) npm script
+
 Use this in **CI** to catch config mistakes early:
 
 ```js
@@ -79,32 +86,37 @@ Use this in **CI** to catch config mistakes early:
 ```
 
 Run with:
+
 ```bash
 npm run config:check
 ```
 
 ---
 
-### ⚠️ Common Questions 
+### ⚠️ Common Questions
 
-#### Does indentation matter? 
+#### Does indentation matter?
+
 No — indentation is only for readability.  
 Structure is determined by section markers (`^`, `^^`, etc.), not spaces.
 
 #### Can I mix comment styles?
+
 Yes — YINI supports both `//` and `#` for inline comments.  
 For consistency, use just one style per file.
 
 ---
 
 ## ✅ You just wrote and validated your first YINI config!
+
 That's the basics.
 
 ## Next Steps
+
 - ➡️ [Get Started](/get-started)  
-  *Installation and CLI usage overview.*
+  _Installation and CLI usage overview._
 - ➡️ [Specification](/specification)  
-  *Full details on YINI syntax and format.*
+  _Full details on YINI syntax and format._
 
 YINI is simple by design — experiment, break things, and have fun exploring!
 
