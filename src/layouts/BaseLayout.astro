@@ -4,14 +4,60 @@ import Footer from '../components/Footer.astro'
 import Header from '../components/Header.tsx'
 import CONFIG from '../config/conf'
 
+function removeTrailingYINI(title: string): string {
+    return title.endsWith(": YINI")
+        ? title.slice(0, -": YINI".length)
+        : title;
+}
+
+/** Function that helps to keep HTML titles under max length characters.
+ * @param maxLen Preferred max length of the total title.
+ *
+ * Longer titles than ~70 then, Search Engines:
+ *   - May rewrite the title automatically.
+ *   - May truncate too long titles.
+ * 
+ * NOTE: SEO best practice is usually ~50–60 chars.
+ */
+function makeHtmlTitle(mainTitle: string, postTitle: string, maxLen = 60){
+    let res = ""    // Temp candidate title.
+
+    res = `${mainTitle} · ${postTitle}`
+    if(res.length <= maxLen) return res
+
+    mainTitle = removeTrailingYINI(mainTitle)
+
+    res = `${mainTitle} · ${postTitle}`
+    if(res.length <= maxLen) return res
+
+    res = `${mainTitle} · YINI Config Format`
+    if(res.length <= maxLen) return res
+
+    res = `${mainTitle} | YINI`
+    if(res.length <= maxLen) return res
+
+    res = `${mainTitle}: YINI`
+    if(res.length <= maxLen) return res
+
+    res = mainTitle
+    if(res.length > maxLen){
+        console.warn(`WARN: Resulted title too long in makeHtmlTitle(..), res: "${res}", >${maxLen} chars`)
+    }
+
+    return mainTitle
+}
+
 //const siteName = 'YINI'
 const {
     headTitle, // optional per-page
     headDescription,
 } = Astro.props
 
-const postTitle = 'A Minimal, Human-Readable Configuration Format'
-const htmlTitle = `${headTitle} · ${postTitle}`
+// const postTitle = 'A Minimal, Human-Readable Configuration Format'
+// const postTitle = 'A Minimal, Human-Readable Configuration Format'
+const postTitle = 'Clear and Structured Config Files'
+// const htmlTitle = `${headTitle} · ${postTitle}`
+const htmlTitle = makeHtmlTitle(headTitle, postTitle, 60)
 
 const isProd = import.meta.env.PROD
 const isDev = import.meta.env.DEV
