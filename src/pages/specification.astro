@@ -1,5 +1,6 @@
 ---
-import Markdown from '@/content/YINI-Specification.md'
+import SpecAsMarkdown from '@/content/YINI-Specification.md'
+import DivStatusBadges from '../components/DivStatusBadges.astro'
 import CONFIG from '../config/conf'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
@@ -8,9 +9,15 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     headTitle={'Specification: YINI'}
     headDescription={'The official specification for the YINI configuration format, with full YINI syntax and rules.'}
 >
+    <section>
+        <hr />
+        <h3>Project status</h3>
+        <DivStatusBadges />
+    </section>
+
     <section aria-labelledby="alt-formats" class="mt-8">
         <h2 id="alt-formats" class="text-base font-semibold">
-            Also available as
+            The Spec also available as:
         </h2>
         <ul class="not-prose mt-2 space-y-2">
             <li>
@@ -38,12 +45,12 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     </section>
 
     <section class="spec prose prose-slate">
-        <Markdown />
+        <SpecAsMarkdown />
     </section>
 
     <section aria-labelledby="alt-formats" class="mt-8">
         <h2 id="alt-formats" class="text-base font-semibold">
-            Also available as
+            The Spec also available as:
         </h2>
         <ul class="not-prose mt-2 space-y-2">
             <li>

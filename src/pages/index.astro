@@ -1,5 +1,6 @@
 ---
 // src/pages/index.astro
+import DivStatusBadges from '../components/DivStatusBadges.astro'
 import { RandomHeadlineH1 } from '../components/RandomHeadline'
 import CONFIG from '../config/conf'
 import BaseLayout from '../layouts/BaseLayout.astro'
@@ -152,38 +153,49 @@ name = 'Hello'`}</code></pre>
             <h2>🧩 Key Features</h2>
             <ol>
                 <li>
-                    <strong>Readable and familiar</strong>
+                    <strong>Clear section markers</strong>
                     <p class="mt-2 leading-normal">
-                        Plain-text configuration files built from simple
-                        key–value pairs (
-                        <code>key = value</code>), inspired by classic INI.
+                        Sections start with <code>^</code> by default:
+                    </p>
+                    <pre><code>^ App
+title = "MyApp"</code></pre>
+                    <p>
+                        Nested sections are created using more markers — similar
+                        to Markdown headers:
+                        <code>^ App</code>, <code>^^ Server</code>, <code
+                            >^^^ Logging</code
+                        >. This creates a clear hierarchy without relying on
+                        indentation.
+                    </p>
+                    <p>
+                        YINI also supports alternative section markers such as <code
+                            >&lt;</code
+                        >.
                     </p>
                 </li>
                 <li>
-                    <strong>Clear structure</strong>
+                    <strong>Simple key–value pairs</strong>
                     <p class="mt-2 leading-normal">
-                        Supports nested sections using explicit section markers
-                        (such as <code>^</code>), creating a clear hierarchy
-                        without relying on indentation for difining structure.<br
-                        />
-                        For example:
-                        <code>^ App</code>, <code>^^ Server</code>, and
-                        <code>^^^ Logging</code>.
-                        <ul>
-                            <li>
-                                Support also a couple of alternative section
-                                markers, such as <code>&lt;</code>.
-                            </li>
-                        </ul>
+                        Inside a section, configuration is written as:
+                    </p>
+                    <pre><code>key = value</code></pre>
+                    <p>
+                        This keeps files readable and familiar, inspired by
+                        classic INI.
                     </p>
                 </li>
                 <li>
-                    <strong>Useful data types</strong>
+                    <strong>Structured like YAML, readable like INI</strong>
                     <p class="mt-2 leading-normal">
-                        Supports strings, numbers, booleans, arrays, and objects
-                        — including nested structures — so configuration can
-                        stay structured without becoming verbose.
+                        Useful data types (similar to JSON):
                     </p>
+                    <ul>
+                        <li>Nested sections</li>
+                        <li>Lists (arrays)</li>
+                        <li>Objects (JavaScript objects)</li>
+                        <li>Strings and numbers</li>
+                        <li>Booleans and nulls</li>
+                    </ul>
                 </li>
                 <li>
                     <strong>Comments where you expect them</strong>
@@ -200,9 +212,9 @@ name = 'Hello'`}</code></pre>
                     <strong>Reduced syntax noise</strong>
                     <p class="mt-2 leading-normal">
                         Keeps files readable by avoiding excessive brackets,
-                        quotes, and long dotted key paths. <code
+                        quotes, and long dotted key paths such as <code
                             >server.database.advanced.param</code
-                        >).
+                        >.
                     </p>
                 </li>
                 <li>
@@ -263,26 +275,75 @@ name = 'Hello'`}</code></pre>
         <h2>🔭 Next steps</h2>
         <ul>
             <li>
-                <a href="/get-started">Get Started</a><br />
-                <p class="mt-2">Learn how to install and use YINI from CLI.</p>
+                {
+                    /*
+                    STEP:    Get Started
+                    PURPOSE: Immediate action
+                    EFFECT:  Momentum
+                    */
+                }
+                <a href={CONFIG.siteLinks.hero.getStarted.url}>Get Started</a
+                ><br />
+                <p class="mt-2">
+                    Learn how to install and parse your first config in minutes.
+                </p>
             </li>
             <!--li>
             <a href="/yini-playground">Try it Online</a><br />
             <p class="mt-2">Try it in the Playground.</p>
         </li-->
             <li>
-                <a href="/yini-tutorial">Quick Tutorial</a><br />
+                {
+                    /*
+                    STEP:    Quick Tutorial
+                    PURPOSE: Rapid understanding
+                    EFFECT:  Confidence
+                    */
+                }
+                <a href={CONFIG.siteLinks.hero.tutorial.url}>Quick Tutorial</a
+                ><br />
                 <p class="mt-2">
-                    5-minute guided walkthrough of YINI — the basics of the YINI
-                    format and how to validate it.
+                    5-minute guided walkthrough of the YINI format and
+                    validation basics.
                 </p>
             </li>
             <li>
-                <a href="/yini-faq">FAQ</a><br />
-                <p class="mt-2">Common questions answered.</p>
+                {
+                    /*
+                    STEP:    Code Examples
+                    PURPOSE: Visual reinforcement
+                    EFFECT:  Trust
+                    */
+                }
+                <a href={CONFIG.siteLinks.hero.examples.url}>Code Examples</a
+                ><br />
+                <p class="mt-2">
+                    Real-world YINI examples showing common configuration
+                    patterns.
+                </p>
             </li>
             <li>
-                <a href="/specification">Specification</a><br />
+                {
+                    /*
+                    STEP:    FAQ
+                    PURPOSE: Reduce friction
+                    EFFECT:  Reassurance
+                    */
+                }
+                <a href={CONFIG.siteLinks.hero.faq.url}>FAQ</a><br />
+                <p class="mt-2">
+                    Common questions about using YINI in real projects.
+                </p>
+            </li>
+            <li>
+                {
+                    /*
+                    STEP:    Specification
+                    PURPOSE: Technical validation
+                    EFFECT:  Commitment
+                    */
+                }
+                <a href={CONFIG.siteLinks.hero.spec.url}>Specification</a><br />
                 <p class="mt-2">
                     Official YINI format rules with full technical details of
                     the YINI format.
@@ -294,59 +355,6 @@ name = 'Hello'`}</code></pre>
     <section>
         <hr />
         <h3>Project status</h3>
-        <div class="flex items-center justify-between">
-            <div>
-                Parser (Node.js) library: <code>yini-parser</code>
-
-                <a
-                    href="https://www.npmjs.com/package/yini-parser"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img
-                        style="margin-top: 8px; margin-bottom: 8px;"
-                        src="https://img.shields.io/npm/v/yini-parser.svg"
-                        alt="npm version"
-                    />
-                </a>
-                <a
-                    href="https://github.com/YINI-lang/yini-parser-typescript/actions/workflows/run-all-tests.yml"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img
-                        style="margin-top: 8px; margin-bottom: 8px;"
-                        src="https://github.com/YINI-lang/yini-parser-typescript/actions/workflows/run-all-tests.yml/badge.svg"
-                        alt="All Test Suites status"
-                    />
-                </a>
-            </div>
-            <div>
-                CLI tool: <code>yini-cli</code>
-
-                <a
-                    href="https://www.npmjs.com/package/yini-cli"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img
-                        style="margin-top: 8px; margin-bottom: 8px;"
-                        src="https://img.shields.io/npm/v/yini-cli.svg"
-                        alt="npm version"
-                    />
-                </a>
-                <a
-                    href="https://github.com/YINI-lang/yini-cli/actions/workflows/run-all-tests.yml"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img
-                        style="margin-top: 8px; margin-bottom: 8px;"
-                        src="https://github.com/YINI-lang/yini-cli/actions/workflows/run-all-tests.yml/badge.svg"
-                        alt="All Test Suites status"
-                    />
-                </a>
-            </div>
-        </div>
+        <DivStatusBadges />
     </section>
 </BaseLayout>
