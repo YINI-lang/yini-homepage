@@ -1,3 +1,3 @@
 Dead-link Checker
 
-Check for dead links.
+Check README for dead links.
