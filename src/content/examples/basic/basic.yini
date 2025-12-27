@@ -7,7 +7,7 @@
   debug = off   # Same as false
   pageSize = 25
 
-  ^^ Server
-    host = "localhost"
-    port = 8080
-    useTLS = false
+    ^^ Server
+      host = "localhost"
+      port = 8080
+      useTLS = false

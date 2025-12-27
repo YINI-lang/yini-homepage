@@ -19,10 +19,10 @@ include_paths = ["src/", "lib/", "config/"]
 --exclude_patterns: "*.test.ts", "*.spec.js"
 timeout = 60
 
-	; Output settings.
-	^^ Output
-	format = "json"
-	color = yes
-	log_level = "debug"
+    ; Output settings.
+    ^^ Output
+    format = "json"
+    color = yes
+    log_level = "debug"
 
 # NOTE: No newline at end of file!

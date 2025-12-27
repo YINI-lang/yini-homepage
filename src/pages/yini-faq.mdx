@@ -23,7 +23,7 @@ Below, you will find questions and answers grouped into the following topics:
 
 ## 1. Understanding YINI
 
-### Q – What is an YINI config file?
+### Q – What is a YINI config file?
 A YINI config file is a human-friendly configuration file (like INI) that adds real structure: nested sections, arrays, objects, and clear, predictable rules with comments allowed. It can be used to store app or service settings in files like `config.yini`.
 
 Example (YINI):
@@ -38,22 +38,22 @@ port = 8080
 ```
 
 ### Q – What is the format of an YINI file?
-YINI is the name of the markup format itself. A YINI file is a plain text file with human readable syntax. It's based on **key-value pairs**, **section markers**, and optional **comments**.
+YINI is the name of the markup format itself. A YINI file is a plain-text file with human-readable syntax. It's based on **key-value pairs**, **section markers**, and optional **comments**.
 
 It supports:
 - Sections with `^`, `^^`, etc. for nesting.
 - Key-value pairs (settings) using `=` as `key=value`.
 - Arrays `[1, 2, 3]` and objects `{ key: "value" }`, etc.
-- Comments with `//` or `#`, etc.
+- Comments with `//`, `#`, `/* ... */`.
 
 ### Q – But, why exactly another config format like YINI?
 
-**YINI** was created to offer a modern, structured, and readable configuration language that feels familiar — yet while addressing some of the historical limitations found in INI and YAML.
+**YINI** was created to offer a modern, structured, and readable configuration language that feels familiar — while addressing some of the historical limitations found in INI and YAML.
 
 It aims to combine **simplicity, structure, and safety**:
 
-- **Familiar and readable** – Uses indentation and key-value pairs like INI, so it's immediately understandable.
-- **Structured and nestable** – Supports nested sections, lists, and objects cleanly, without indentation guessing or syntax ambiguity.
+- **Familiar and readable** – Uses key-value pairs like INI and keeps a familiar, readable layout, so it's immediately understandable.
+- **Structured and nestable** – Supports nested sections, lists, and objects cleanly, without indentation guessing or YAML-style ambiguity.
 - **Strict when you need it** – Optional strict mode enforces spec-compliance for reliable configs in production environments.
 - **Relaxed when you don't** – Lenient mode lets you parse partial or loosely formatted files without breaking your workflow.
 - **Comment-friendly and human-first** – Keeps support for `;`, `#`, `//`, and even block comments (`/* */`) for maximum readability.
@@ -106,7 +106,7 @@ title = "AppName"
 
 Here the text "App" is the section name.
 
-One can add more sections, for example:
+You can add more sections, for example:
 
 ```ts
 ^ App
@@ -147,7 +147,7 @@ No (in the same sense as in Python or YAML).
 **In YINI, spaces and tabs don't change meaning** - indentation is just for human readability.
 
 ### Q – Can YINI include or import other files?
-No (not yet, at least). YINI files are parsed independently.  
+No (not yet). YINI files are parsed independently.  
 Tooling **may** later support includes or imports as an optional extension.
 
 ### Q – How does YINI handle duplicate keys or sections?

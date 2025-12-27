@@ -1,0 +1,25 @@
+/*
+  nested-and-structured.yini
+
+  Example: Structured & Nestable (without indentation ambiguity).
+*/
+
+^ App
+name = "DemoApp"
+features = ["search", "sync", "export"]
+
+^^ Server
+host = "0.0.0.0"
+port = 8080
+options = { timeout: 30, secure: true }
+
+^^ Database
+engine = "postgres"
+credentials = {
+    user: "admin",
+    password: "secret"
+}
+
+^^^ Pool
+min = 5
+max = 50

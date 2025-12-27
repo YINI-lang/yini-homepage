@@ -4,35 +4,35 @@
   name = "Demo App"
   env = "production"
 
-  ^^ Features
-    caching = on
-    telemetry = off
+    ^^ Features
+      caching = on
+      telemetry = off
 
-  ^^ UI
-    theme = "dark"
-    language = "en"
+    ^^ UI
+      theme = "dark"
+      language = "en"
 
-    ^^^ Editor
-      font = "Fira Code"
-      tabWidth = 4
-      autosave = true
+        ^^^ Editor
+          font = "Fira Code"
+          tabWidth = 4
+          autosave = true
 
 ^ Server
   host = "0.0.0.0"
   port = 8080
 
-  ^^ TLS
-    enabled = false
-    certPath = null
-    keyPath = null
+    ^^ TLS
+      enabled = false
+      certPath = null
+      keyPath = null
 
-  ^^ Limits
-    maxConnections = 200
-    timeoutSeconds = 60
+    ^^ Limits
+      maxConnections = 200
+      timeoutSeconds = 60
 
 ^ Logging
   level = "info"
 
-  ^^ Output
-    format = "json"
-    color = yes
+    ^^ Output
+      format = "json"
+      color = yes

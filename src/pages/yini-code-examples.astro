@@ -1,4 +1,5 @@
 ---
+// yini-code-examples.astro
 import YINIExample from '../components/YINIExample.astro'
 import CONFIG from '../config/conf'
 import exampleFile1 from '../content/examples/1-web-server-configuration.yini?raw'
@@ -8,6 +9,7 @@ import exampleBasic from '../content/examples/basic/basic.yini?raw'
 import exampleComments from '../content/examples/basic/comments.yini?raw'
 import exampleListAndObjects from '../content/examples/general/lists-and-objects.yini?raw'
 import exampleNumbers from '../content/examples/general/number-formats.yini?raw'
+import exampleNestedStructured from '../content/examples/structure/nested-and-structured.yini?raw'
 import exampleNestedSections from '../content/examples/structure/nested-sections.yini?raw'
 import exampleSections from '../content/examples/structure/sections.yini?raw'
 import BaseLayout from '../layouts/BaseLayout.astro'
@@ -21,23 +23,42 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <h1>YINI Code Examples</h1>
         Below are practical YINI configuration examples showing how the format handles
         structure, data types, and readability — without relying on indentation-based
-        rules.
+        syntax.
 
         <p>
-            <b>Learn the format?</b> See <a
+            💡 <strong>Note:</strong> YINI uses indentation only for human readability.
+        </p>
+
+        <p>
+            <strong>New to YINI format?</strong> See <a
                 href={CONFIG.siteLinks.secondary.introToYiniFormat.url}
-                >Intro to YINI format</a
+                >Intro to the YINI format</a
             >
         </p>
 
         <YINIExample title="Basic example" code={exampleBasic} />
+
+        <h2>Section examples</h2>
         <YINIExample title="Sections" code={exampleSections} />
         <YINIExample title="Nested sections" code={exampleNestedSections} />
+
+        <h2>Comments & compound types</h2>
         <YINIExample title="Comments" code={exampleComments} />
         <YINIExample title="Lists and objects" code={exampleListAndObjects} />
-        <YINIExample title="Number formats" code={exampleNumbers} />
 
-        <h2>File Examples</h2>
+        <h2>Numbers and nesting</h2>
+        <YINIExample title="Number formats" code={exampleNumbers} />
+        <YINIExample
+            title="Nested and structured"
+            code={exampleNestedStructured}
+        />
+
+        <h2>More examples</h2>
+        <p>
+            The following full examples demonstrate how YINI scales from small
+            configs to complete real-world setups.
+        </p>
+
         <YINIExample
             title="File example 1: Web server configuration (sections, numbers, booleans)"
             code={exampleFile1}
@@ -47,7 +68,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
             code={exampleFile2}
         />
         <YINIExample
-            title="File example 4: build-project-configuration.yini"
+            title="File example 4: Build project configuration (real-world example)"
             code={exampleFile4}
         />
 
