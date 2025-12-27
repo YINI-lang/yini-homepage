@@ -23,6 +23,13 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         structure, data types, and readability — without relying on indentation-based
         rules.
 
+        <p>
+            <b>Learn the format?</b> See <a
+                href={CONFIG.siteLinks.secondary.introToYiniFormat.url}
+                >Intro to YINI format</a
+            >
+        </p>
+
         <YINIExample title="Basic example" code={exampleBasic} />
         <YINIExample title="Sections" code={exampleSections} />
         <YINIExample title="Nested sections" code={exampleNestedSections} />
@@ -44,7 +51,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
             code={exampleFile4}
         />
 
-        <b>Want more?</b> See <a href="/yini-advanced-examples"
+        <b>Want more?</b> See <a
+            href={CONFIG.siteLinks.secondary.advancedExamples.url}
             >Advanced Examples</a
         >
         (for optional and power-user features).
@@ -55,7 +63,9 @@ import BaseLayout from '../layouts/BaseLayout.astro'
             <h2>Next steps</h2>
             <ul>
                 <li>
-                    ➡️ <a href="/get-started">Get Started</a><br />
+                    ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
+                        >Get Started</a
+                    ><br />
                     <em>Learn how to install and use YINI.</em>
                 </li>
                 <li>
