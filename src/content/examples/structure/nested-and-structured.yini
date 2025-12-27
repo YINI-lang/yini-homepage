@@ -1,7 +1,7 @@
 /*
   nested-and-structured.yini
 
-  Example: Structured & Nestable (without indentation ambiguity).
+  Example: Nestable & Structured (without indentation ambiguity).
 */
 
 ^ App

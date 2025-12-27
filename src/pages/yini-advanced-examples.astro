@@ -1,4 +1,5 @@
 ---
+// yini-advanced-examples.astro
 import YINIExample from '../components/YINIExample.astro'
 import CONFIG from '../config/conf'
 import exampleFile3 from '../content/examples/3-cli-application-options.yini?raw'
@@ -10,17 +11,23 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <BaseLayout
     headTitle={'Advanced Examples: YINI'}
-    headDescription={'Advanced code explamles with optional syntax, edge cases, and power features in the YINI config format.'}
+    headDescription={'Advanced code examples with optional syntax, edge cases, and power features in the YINI config format.'}
 >
     <section aria-labelledby="alt-formats" class="mt-8">
-        <h1>YINI Advanced Code Examples</h1>
+        <h1>Advanced YINI Code Examples</h1>
 
-        ⚠️ These examples show optional syntax, edge cases, and power features.
-        You do <b>not</b>
+        ⚠️ <strong>Note:</strong> These examples demonstrate optional syntax, edge
+        cases, and advanced features. You do <b>not</b>
         need any of these features to use YINI effectively. If you're new to YINI,
         start with the basic examples or the <a href="/get-started"
             >Get Started</a
         > guide.
+
+        <p>
+            See everyday <a href={CONFIG.siteLinks.hero.examples.url}
+                >YINI configuration examples</a
+            > on the main Examples page.
+        </p>
 
         <YINIExample
             title="File example 3: cli-application-options.yini"
@@ -45,11 +52,15 @@ import BaseLayout from '../layouts/BaseLayout.astro'
             <h2>Next steps</h2>
             <ul>
                 <li>
-                    ➡️ <a href="/get-started">Get Started</a><br />
+                    ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
+                        >Get Started</a
+                    ><br />
                     <em>Learn how to install and use YINI.</em>
                 </li>
                 <li>
-                    ➡️ <a href="/yini-code-examples">Basic Examples</a><br />
+                    ➡️ <a href={CONFIG.siteLinks.hero.examples.url}
+                        >Basic Examples</a
+                    ><br />
                     <em>See minimal, everyday YINI configuration examples.</em>
                 </li>
             </ul>
