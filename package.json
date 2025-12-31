@@ -2,7 +2,7 @@
     "name": "yini-homepage",
     "private": true,
     "version": "1.0.0",
-    "description": "YINI homepage",
+    "description": "The official YINI homepage",
     "type": "module",
     "engines": {
         "node": ">=20"
