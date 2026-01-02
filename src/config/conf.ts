@@ -27,7 +27,7 @@ const CONFIG = {
             //'The YINI config format is a modern, structured, and human-friendly configuration language designed to bridge the gap between the simplicity of INI and the expressiveness of YAML, and even more.',
             //'YINI is an INI-inspired configuration format designed for clarity and predictability. It supports nesting, comments, and a formally defined syntax—so configuration files stay easy to read and reason about as they grow.',
             //"YINI is a human-friendly data format for complex systems: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows.",
-            "YINI is a human-friendly data format for complex systems: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage.",
+            "YINI is a human-friendly, text-based data format for software projects: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage.",
     },
     siteLinks: {
         // The "hero" (heroic attention-grabber) links.
