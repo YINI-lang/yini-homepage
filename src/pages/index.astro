@@ -96,14 +96,14 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <div class="yini-quick-start full-bleed pr-8">
             <section class="mx-auto max-w-3xl pt-1 pb-6">
                 <h2>⚡ TL;DR — Quick Start</h2>
-                <h3 class="pl-4">Try YINI in three quick steps:</h3>
+                <h3 class="pl-4">Try YINI in three simple steps:</h3>
 
                 <ul class="space-y-6">
                     <li>
                         <h3>1) Create a file</h3>
                         Save the two lines below as <code>config.yini</code>: <i
                             >(no build step, no dependencies required)</i
-                        ><br />
+                        >
                         <pre><code class="language-yini">{`^ App
 name = "Hello"`}</code></pre>
                         <p>
@@ -117,28 +117,31 @@ name = "Hello"`}</code></pre>
                     <li>
                         <h3>2) Run this in your terminal</h3>
                         <p>From the same folder where you saved the file:</p>
-                        <pre><code class="language-bash">npx yini-cli parse config.yini</code></pre>
+                        <pre><code class="language-bash">npx yini-cli parse config.yini --pretty</code></pre>
+                        <p>
+                            Use the <code>--pretty</code> flag for pretty-printed
+                            JSON output:
+                        </p>
                     </li>
 
                     <li>
                         <h3>3) See the result</h3>
-                        <p>This prints the following JavaScript object:</p>
-                        <pre><code class="language-yini">{`{ App: { name: 'Hello' } }`}</code></pre>
-                    </li>
-
-                    <li>
-                        <h3>Bonus: Pretty-printed JSON output</h3>
-                        <p>
-                            Use the <code>--pretty</code> flag, and run this line:
-                        </p>
-                        <pre><code class="language-bash">npx yini-cli parse config.yini --pretty</code></pre>
-                        <p>Which gives the following (JSON):</p>
+                        <p>You should now see the following (JSON):</p>
                         <pre><code class="language-json">{`{
     "App": {
         "name": "Hello"
     }
 }
 `}</code></pre>
+                    </li>
+
+                    <li>
+                        <h3>Bonus: JavaScript output</h3>
+                        <pre><code class="language-bash">npx yini-cli parse config.yini</code></pre>
+                        <p>
+                            Gives the output as the following JavaScript object:
+                        </p>
+                        <pre><code class="language-yini">{`{ App: { name: 'Hello' } }`}</code></pre>
                     </li>
                 </ul>
             </section>
