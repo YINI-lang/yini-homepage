@@ -105,6 +105,11 @@
     background: #eef8f9;
 }
 
+.try-under-a-minute {
+    /* background: #f2f2ff; */
+    background: #f2f2ff;
+}
+
 /* ── Auto dark via OS preference ─────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
     /* Page base */
