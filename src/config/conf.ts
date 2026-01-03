@@ -70,6 +70,10 @@ const CONFIG = {
                 url: '/yini-advanced-examples',
                 title: 'These examples show optional syntax, edge cases, and power feature.',
             },
+            downloads: {
+                url: '/yini-downloads',
+                title: 'Get YINI parsers, tools, and related implementations across different languages and platforms.',
+            },
             about: { url: '/about-yini', title: "Who's behind YINI" },
         },
         specPdf: { url: LATEST_YINI_SPEC_PDF_URL, title: '' },

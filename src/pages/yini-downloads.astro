@@ -1,0 +1,39 @@
+---
+// src/pages/yini-downloads.astro
+import CONFIG from '../config/conf'
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle="YINI Downloads — Parsers, Tools & Implementations"
+    headDescription="Get official YINI parsers, CLI tools, and related implementations across different languages and platforms."
+>
+    <section class="mx-auto max-w-5xl px-4 py-2 text-center">
+        <h1 class="text-3xl font-semibold tracking-tight md:text-5xl">
+            YINI Downloads
+        </h1>
+        <p class="mt-3 text-base md:text-lg">
+            Get YINI tools — Official parsers, tools, and related
+            implementations for working with the YINI format.
+        </p>
+    </section>
+
+    <section class="mx-auto max-w-3xl px-4 pb-8 text-center">
+        <div class="rounded-xl border p-6 shadow-sm">
+            <h2 class="text-xl font-semibold">Start here</h2>
+            <p class="mt-2 text-sm text-slate-600">
+                Browse available YINI tools and implementations across languages
+                and platforms.
+            </p>
+
+            <a
+                href={CONFIG.urls.external.yiniWiki.downloads}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 rounded-lg border px-5 py-2 text-base font-medium hover:bg-slate-50"
+            >
+                ⬇️ Open YINI Downloads on Wiki ↗
+            </a>
+        </div>
+    </section>
+</BaseLayout>
