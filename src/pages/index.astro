@@ -32,14 +32,31 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </div>
     </section>
 
+    <section class="pb-6">
+        <!-- <h2>📝 Example</h2> -->
+        <h3>Example of YINI code:</h3>
+        <p>
+            <a href="./samples/config.yini.png"
+                ><img
+                    class="mt-0 mb-1 rounded-lg border-2 border-black/90"
+                    src="./samples/config.yini.png"
+                    alt="YINI Config File"
+                /></a
+            >
+            Source file: <a href="./samples/config.yini" target="_blank"
+                >config.yini</a
+            >
+        </p>
+    </section>
+
     <section class="why-yini pb-4">
-        <h2>💡 Why YINI?</h2>
-        INI, YAML, and JSON all approach configuration differently — each with tradeoffs.<br
+        <h2 class="mt-1">💡 Why YINI?</h2>
+        INI, YAML, and JSON all approach configuration differently, each with tradeoffs:<br
         />
-        INI emphasizes simplicity, YAML offers expressive structure, and JSON prioritizes
+        INI favors simplicity, YAML offers expressive structure, and JSON prioritizes
         precision.<br />
-        <strong>YINI</strong> focuses on keeping configuration files readable while
-        providing clear nesting and predictable behavior.
+        <strong>YINI</strong> focuses on keeping configuration readable while providing
+        clear nesting and predictable behavior.
         <ul>
             <li class="leading-relaxed">
                 <strong>Clear structure without indentation-based rules</strong>
@@ -134,6 +151,9 @@ name = "Hello"`}</code></pre>
 }
 `}</code></pre>
                     </li>
+                    <p class="text-sm text-slate-500">
+                        Nice — you just parsed your first YINI file.
+                    </p>
 
                     <li>
                         <h3>Bonus: JavaScript output</h3>
@@ -151,58 +171,55 @@ name = "Hello"`}</code></pre>
             <h2>📝 Example</h2>
             <h3>YINI code:</h3>
             <p>
-                <a href="./samples/configuration.yini.png"
+                <a href="./samples/settings.yini.png"
                     ><img
                         class="mt-0 mb-1 rounded-lg border-2 border-black/90"
-                        src="./samples/configuration.yini.png"
+                        src="./samples/settings.yini.png"
                         alt="YINI Configuration File"
                     /></a
                 >
-                Source file: <a
-                    href="./samples/configuration.yini"
-                    target="_blank">configuration.yini</a
+                Source file: <a href="./samples/settings.yini" target="_blank"
+                    >settings.yini</a
                 >
             </p>
-            <!-- <pre><code class="language-yini">{`/* YINI Configuration File */
 
-^ App
-name = "My App"
-version = "1.2.3"
-debug = off          // Predictable boolean
-pageSize = 25
-
-^^ Server            // Sub-section of App
-host = "127.0.0.1"
-port = 8080
-allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
-
-^^ Features
-enableSearch = true
-experimental = ["new-ui", "streaming-api"]
-
-# This is also a valid comment style
-
-^^ Database
-engine = "postgres"
-ssl = true
-pool = { min: 5, max: 25 }  # Inline object
-`}</code></pre> -->
-
-            <h3>Parsed output (JavaScript object):</h3>
-            <pre><code class="language-js">{`{
-  App: {
-    name: 'My App',
-    version: '1.2.3',
-    debug: false,
-    pageSize: 25,
-    Server: {
-      host: '127.0.0.1',
-      port: 8080,
-      allowedOrigins: [ 'https://myapp.com', 'http://localhost:3000' ]
-    },
-    Features: { enableSearch: true, experimental: [ 'new-ui', 'streaming-api' ] },
-    Database: { engine: 'postgres', ssl: true, pool: { min: 5, max: 25 } }
-  }
+            <h3>Parsed output (JSON):</h3>
+            <pre><code class="language-json">{`{
+    "Settings": {
+        "serviceId": "NebulaService",
+        "release": "3.2.1",
+        "debugMode": false,
+        "tagline": "\"Nebula\" is a cloud of gas and dust in outer space.",
+        "Network": {
+            "bindAddress": "127.0.0.1",
+            "bindPort": 8080,
+            "allowedOrigins": [
+                "https://myapp.com",
+                "http://localhost:3000"
+            ]
+        },
+        "Capabilities": {
+            "enableSearch": true,
+            "experimental": [
+                "new-ui",
+                "streaming-api"
+            ],
+            "pools": {
+                "min_units": 2,
+                "max_units": 5,
+                "size_mb": 128,
+                "timeout_sec": 90
+            }
+        },
+        "DB Config": {
+            "host": "db.internal",
+            "ssl": true,
+            "Security": {
+                "username": "service_user",
+                "password": "****"
+            }
+        }
+    }
 }`}</code></pre>
 
             <p class="mt-2 text-sm">
