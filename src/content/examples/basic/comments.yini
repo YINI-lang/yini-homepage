@@ -1,22 +1,22 @@
 # Line comments + inline comments + block comments.
 
-/* App configuration.
-   Block comments are useful for longer explanations. */
+/* App configuration. */
 
 ^ App
-  name = "Demo App"           // Inline comment (//)
-  debug = off                 # Inline comment (#)
-  pageSize = 25
+name = "Demo App"           // Inline comment (//)
+debug = off                 # Inline comment (#)
+pageSize = 25
 
-  ; Semicolon comments are line comments (start of line only).
+; Semicolon comments are line comments (start of line only).
 
-  # You can also use full-line comments between entries.
+# You can also use full-line comments between entries.
 
-  ^^ Logging
-    level = "info"            // "debug" during development
-    file = "logs/app.log"
+      ^^ Logging
+      level = "info"            // "debug" during development
+      file = "logs/app.log"
 
-/* Another block comment:
-   - Works across multiple lines
-   - Good for documenting sections */
+      /* Another block comment:
+         - Works across multiple lines
+         - Good for documenting sections
+      */
 

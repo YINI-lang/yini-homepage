@@ -1,0 +1,29 @@
+// Indentation example 3 of Basic App Config - indent-ex-conf3.yini
+
+/*
+ * Indentation is optional - section markers (^, ^^, ^^^)
+ * define the section nesting.
+ *
+ * Style 3: no indentation for nested sections.
+ */
+
+^ App
+name = "My Application"
+version = "1.0.0"
+debug = off // Disable debugging
+
+^^ Database    // Nested section of App
+host = "localhost"
+port = 5432
+user = "admin"
+password = "secret"
+
+^^^ Pool    // Nested section of Database
+min = 2
+max = 10
+idleTimeout = 300
+
+^^ Logging      // Another section of App
+level = "info"
+logToFile = true
+filePath = "./logs/app.log"

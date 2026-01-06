@@ -1,25 +1,26 @@
 /*
-  nested-and-structured.yini
+    nested-and-structured.yini
 
-  Example: Nestable & Structured (without indentation ambiguity).
+    Example: Nestable & Structured (without indentation ambiguity).
 */
 
+// Indentation is optional — section markers (^, ^^, ^^^) define the section nesting.
 ^ App
 name = "DemoApp"
 features = ["search", "sync", "export"]
 
-^^ Server
-host = "0.0.0.0"
-port = 8080
-options = { timeout: 30, secure: true }
+    ^^ Server
+    host = "0.0.0.0"
+    port = 8080
+    options = { timeout: 30, secure: true }
 
-^^ Database
-engine = "postgres"
-credentials = {
-    user: "admin",
-    password: "secret"
-}
+    ^^ Database
+    engine = "postgres"
+    credentials = {
+        user: "admin",
+        password: "secret"
+    }
 
-^^^ Pool
-min = 5
-max = 50
+        ^^^ Pool
+        min = 5
+        max = 50

@@ -1,42 +1,43 @@
 # lists-and-sections.yini
 # lists-and-sections.yini, section nesting + lists (no objects).
 
+// Indentation is optional — section markers (^, ^^, ^^^) define the section nesting.
 ^ App
-    name = "Demo App"
-    environment = "prod"
+name = "Demo App"
+environment = "prod"
 
-    # Simple lists
-    tags = ["web", "api", "v1"]
-    enabledFeatures = ["auth", "logging", "metrics"]
+# Simple lists
+tags = ["web", "api", "v1"]
+enabledFeatures = ["auth", "logging", "metrics"]
 
-    # List of numbers
-    ports = [80, 443, 8080]
+# List of numbers
+ports = [80, 443, 8080]
 
-    # Multi-line list for readability
-    allowedOrigins = [
-        "https://example.com",
-        "https://admin.example.com",
-        "http://localhost:3000"
-    ]
+# Multi-line list for readability
+allowedOrigins = [
+    "https://example.com",
+    "https://admin.example.com",
+    "http://localhost:3000"
+]
 
     # Nested section with its own lists
     ^^ Server
-      host = "0.0.0.0"
-      corsMethods = ["GET", "POST", "PUT", "DELETE"]
+    host = "0.0.0.0"
+    corsMethods = ["GET", "POST", "PUT", "DELETE"]
 
-      # List of paths (handy for tools / CLIs)
-      includePaths = [
-          "src/",
-          "config/",
-          "assets/"
-      ]
+    # List of paths (handy for tools / CLIs)
+    includePaths = [
+        "src/",
+        "config/",
+        "assets/"
+    ]
 
     ^^ Logging
-      level = "info"
-      outputs = ["console", "file"]
-      filePaths = ["/var/log/app.log", "/var/log/app.error.log"]
+    level = "info"
+    outputs = ["console", "file"]
+    filePaths = ["/var/log/app.log", "/var/log/app.error.log"]
 
     ^^ Users
-      admins = ["alice", "bob"]
-      editors = ["charlie", "dana"]
-      viewers = []
+    admins = ["alice", "bob"]
+    editors = ["charlie", "dana"]
+    viewers = []

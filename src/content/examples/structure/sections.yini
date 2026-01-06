@@ -1,27 +1,30 @@
 /*
-  sections.yini
-  sections + key/value basics (no lists/objects).
+    sections.yini
+    sections + key/value basics (no lists/objects).
 */
 
+// Section named App
 ^ App
-  name = "Demo App"
-  version = "1.2.3"
-  debug = off
+name = "Demo App"
+version = "1.2.3"
+debug = off
 
+// Section named Server
 ^ Server
-  host = "0.0.0.0"
-  port = 8080
-  useTLS = false
+host = "0.0.0.0"
+port = 8080
+useTLS = false
 
+// Section named Logging
 ^ Logging
-  level = "info"
-  file = "/var/log/demo-app.log"
+level = "info"
+file = "/var/log/demo-app.log"
 
 ^ Database
-  driver = "postgres"
-  host = "localhost"
-  port = 5432
-  username = "demo"
-  password = "change-me"
-  database = "demo_db"
-  poolSize = 10
+driver = "postgres"
+host = "localhost"
+port = 5432
+username = "demo"
+password = "change-me"
+database = "demo_db"
+poolSize = 10

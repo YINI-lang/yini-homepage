@@ -2,33 +2,33 @@
 # Numeric literals and where they're useful.
 
 ^ Numbers
-  # Integers
-  retries = 3
-  max_connections = 200
-  timeout_seconds = 60
+    # Integers
+    retries = 3
+    max_connections = 200
+    timeout_seconds = 60
 
-  # Floats
-  ratio = 0.75
-  threshold = 1.25
-  pi = 3.14159
+    # Floats
+    ratio = 0.75
+    threshold = 1.25
+    pi = 3.14159
 
-  # Negatives
-  offset = -12
-  temperature_c = -7.5
+    # Negatives
+    offset = -12
+    temperature_c = -7.5
 
-  # Underscore separators (readability)
-  big_int = 1000000
-  bytes = 16384
-  price = 12345.67
+    # Underscore separators (readability)
+    big_int = 1000000
+    bytes = 16384
+    price = 12345.67
 
-  # Hex (often used for colors, bitmasks, ids)
-  primary_color = #336699
-  feature_mask = 0x1F
+    # Hex (often used for colors, bitmasks, ids)
+    primary_color = #336699
+    feature_mask = 0x1F
 
-  # Scientific notation (when specs/data use it)
-  avogadro = 6.022e23
-  small = 1e-6
+    # Scientific notation (when specs/data use it)
+    avogadro = 6.022e23
+    small = 1e-6
 
-  # Edge-ish values (still normal numbers)
-  zero = 0
-  one = 1
+    # Edge-ish values (still normal numbers)
+    zero = 0
+    one = 1

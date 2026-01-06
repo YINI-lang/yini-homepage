@@ -1,38 +1,44 @@
 # nested-sections.yini — clear section nesting without indentation rules.
 
+// Indentation is optional — section markers (^, ^^, ^^^) define the section nesting.
 ^ App
-  name = "Demo App"
-  env = "production"
+name = "Demo App"
+env = "production"
 
+    // Nested sub-section of App
     ^^ Features
-      caching = on
-      telemetry = off
+    caching = on
+    telemetry = off
 
+    // Another sub-section of App
     ^^ UI
-      theme = "dark"
-      language = "en"
+    theme = "dark"
+    language = "en"
 
+        // This is sub-section of UI
         ^^^ Editor
-          font = "Fira Code"
-          tabWidth = 4
-          autosave = true
+        font = "Fira Code"
+        tabWidth = 4
+        autosave = true
 
+
+// Back to sub-section of App
 ^ Server
-  host = "0.0.0.0"
-  port = 8080
+host = "0.0.0.0"
+port = 8080
 
     ^^ TLS
-      enabled = false
-      certPath = null
-      keyPath = null
+    enabled = false
+    certPath = null
+    keyPath = null
 
     ^^ Limits
-      maxConnections = 200
-      timeoutSeconds = 60
+    maxConnections = 200
+    timeoutSeconds = 60
 
 ^ Logging
-  level = "info"
+level = "info"
 
     ^^ Output
-      format = "json"
-      color = yes
+    format = "json"
+    color = yes

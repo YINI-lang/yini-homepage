@@ -1,34 +1,35 @@
 // lists-and-objects.yini
 // Arrays (lists) + objects + nesting.
 
+// Indentation is optional — section markers (^, ^^, ^^^) define the section nesting.
 ^ App
-    name = "Demo App"
-    enabled = true
+name = "Demo App"
+enabled = true
 
-    tags = ["demo", "config", "v1"]
+tags = ["demo", "config", "v1"]
 
-    ports = [80, 443, 8080]
+ports = [80, 443, 8080]
 
-    features = [
-        "search",
-        "dark-mode",
-        "metrics"
-    ]
+features = [
+    "search",
+    "dark-mode",
+    "metrics"
+]
 
-    limits = { retries: 3, timeoutSeconds: 30, backoffMs: [250, 500, 1000] }
+limits = { retries: 3, timeoutSeconds: 30, backoffMs: [250, 500, 1000] }
 
-    database = {
-        type: "postgres",
-        host: "localhost",
-        port: 5432,
-        credentials: { user: "app", pass: "change-me" },
-        options: { ssl: off, pool: { min: 2, max: 10 } }
-    }
+database = {
+    type: "postgres",
+    host: "localhost",
+    port: 5432,
+    credentials: { user: "app", pass: "change-me" },
+    options: { ssl: off, pool: { min: 2, max: 10 } }
+}
 
     ^^ Users
-      allow = ["alice", "bob", "charlie"]
-      roles = {
-          alice: ["admin", "editor"],
-          bob: ["editor"],
-          charlie: ["viewer"]
-      }
+    allow = ["alice", "bob", "charlie"]
+    roles = {
+        alice: ["admin", "editor"],
+        bob: ["editor"],
+        charlie: ["viewer"]
+    }
