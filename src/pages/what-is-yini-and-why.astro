@@ -45,10 +45,10 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </div>
     </section>
 
-    <section class="why-yini pb-4">
+    <section class="why-yini pb-2">
         <h2>❓ What is YINI?</h2>
         <p>
-            <strong>YINI</strong> is an INI-inspired text-based data format designed
+            <strong>YINI</strong> is an INI-inspired, text-based data format designed
             for humans first.
         </p>
         It combines:
@@ -65,7 +65,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </ul>
     </section>
 
-    <section class="pb-6">
+    <section class="mt-2 pb-6">
         <!-- <h2>📝 Example</h2> -->
         <h3>Example of YINI code:</h3>
         <p>
@@ -82,7 +82,31 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </p>
     </section>
 
-    <section class="pb-4">
+    <section class="mt-2 pb-4">
+        <h2 class="mt-5">💡 What can I do with YINI?</h2>
+        Build, convert, and consume structured configuration and data with simple
+        tools.
+        <ul>
+            <li class="leading-relaxed">🛠 Convert YINI → JSON via CLI.</li>
+            <li class="leading-relaxed">
+                📦 Load YINI into your app as native objects.
+            </li>
+            <li class="leading-relaxed">
+                🧩 Use YINI for configuration, data files, pipelines, and
+                tooling.
+            </li>
+        </ul>
+    </section>
+
+    <section class="mt-2 pb-4">
+        <h2 class="mt-5">🧭 Why should I care?</h2>
+        <p>
+            Because configuration lives for years, not minutes. YINI is designed
+            to stay readable, predictable, and safe as projects grow.
+        </p>
+    </section>
+
+    <section class="mt-2 pb-4">
         <h2 class="mt-5">🧯 Why does YINI exist?</h2>
         Most config formats fail as projects grow.
         <ul>
@@ -99,8 +123,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         YINI was created to fix that.
     </section>
 
-    <section class="pb-4">
-        <h2>✨ What makes YINI different?</h2>
+    <section class="mt-2 pb-4">
+        <h2 class="mt-5">✨ What makes YINI different?</h2>
         <ul>
             <li class="leading-relaxed">
                 <strong>Clear structure without indentation rules</strong>
@@ -131,23 +155,84 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     </section>
 
     <section class="pb-4">
-        <h2 class="mt-5">💡 What can I do with YINI?</h2>
-        Build, convert, and consume structured configuration and data using simple
-        tools.
-        <ul>
-            <li class="leading-relaxed">🛠 Convert YINI → JSON via CLI.</li>
-            <li class="leading-relaxed">
-                📦 Load YINI into your app as native objects.
-            </li>
-            <li class="leading-relaxed">
-                🧩 Use YINI for configuration, data files, pipelines, and
-                tooling.
-            </li>
-        </ul>
-    </section>
-
-    <section class="pb-4">
         <h2 class="mt-5">⚖️ Quick comparison</h2>
+
+        <h3>JSON (harder to read & maintain at scale) vs YINI</h3>
+        <h3>JSON:</h3>
+        <pre><code class="language-json">{`{
+  "service": {
+    "id": "aurora-gateway",
+    "environment": "prod",
+    "telemetry": {
+      "samplingRate": 0.15,
+      "exporter": "otlp",
+      "endpoint": "http://otel-collector:4317"
+    },
+    "http": {
+      "listen": "0.0.0.0",
+      "port": 9000,
+      "trustedProxies": ["10.0.0.0/8", "192.168.0.0/16"]
+    },
+    "limits": {
+      "requestsPerMinute": 1200,
+      "burst": 60,
+      "maxBodyKb": 512
+    },
+    "webhooks": {
+      "enabled": true,
+      "targets": [
+        {
+          "name": "alerts",
+          "url": "https://hooks.example.com/alerts",
+          "secret": "****"
+        },
+        {
+          "name": "billing",
+          "url": "https://hooks.example.com/billing",
+          "secret": "****"
+        }
+      ]
+    },
+    "_comment": "JSON can't do comments; people add fields like this (or separate docs)."
+  }
+}`}</code></pre>
+        <p>
+            <strong>YINI keeps the config readable and self-documented</strong>
+            (real comments), with clear structure <strong
+                >without the JSON noise</strong
+            >. And large JSON can be annoying to maintain.
+        </p>
+
+        <h3>YINI (same config, cleaner + real comments):</h3>
+        <pre><code class="language-yini">{`/* Aurora Gateway service configuration (human-edited) */
+
+^ Service
+id          = "aurora-gateway"
+environment = "prod"
+
+^^ Telemetry
+samplingRate = 0.15          // 0.0 - 1.0
+exporter     = "otlp"
+endpoint     = "http://otel-collector:4317"
+
+^^ Http
+listen         = "0.0.0.0"
+port           = 9000
+trustedProxies = ["10.0.0.0/8", "192.168.0.0/16"]
+
+^^ Limits
+requestsPerMinute = 1200
+burst             = 60
+maxBodyKb         = 512
+
+^^ Webhooks
+enabled = true
+
+targets = [
+  { name: "alerts",  url: "https://hooks.example.com/alerts",  secret: "****" },
+  { name: "billing", url: "https://hooks.example.com/billing", secret: "****" }
+]`}</code></pre>
+
         <h3>"YAML foot-gun" vs YINI predictability (tabs/indentation)</h3>
         <h3>YAML:</h3>
         <pre><code class="language-yaml">{`# One stray indent changes the structure
@@ -167,7 +252,7 @@ app:
             This makes large configs easier to scan — and much harder to break accidentally.
         </p>
 
-        <h3>YINI:</h3>
+        <h3>YINI (same config):</h3>
         <pre><code class="language-yini">{`# Structure is defined by markers; indentation is optional
 ^ App
 name = "My App"
@@ -182,6 +267,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
             not whitespace.
         </p>
 
+        <h3 class="mt-5">Quick comparison table</h3>
         <div style="overflow-x:auto">
             <table>
                 <thead>
