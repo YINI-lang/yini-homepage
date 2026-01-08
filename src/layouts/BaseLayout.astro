@@ -1,4 +1,5 @@
 ---
+// src/layouts/BaseLayout.astro
 import '../styles/global.css'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.tsx'
@@ -207,5 +208,22 @@ const isDev = import.meta.env.DEV
             <a href="#top">Back to top </a>
         </footer>
         <Footer/>
+
+        <script>
+            function track(eventName, props = {}) {
+                if (window.plausible) {
+                    plausible(eventName, { props })
+                }
+            }
+        </script>
+        <script>
+            document.addEventListener('copy', function () {
+                const selection = document.getSelection()?.toString().trim()
+                if (selection && selection.length > 4) {
+                track('TextCopied', { length: selection.length })
+                }
+            })
+        </script>
+
     </body>
 </html>

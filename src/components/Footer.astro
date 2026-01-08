@@ -37,7 +37,6 @@ const year = new Date().getFullYear()
                         <a
                             href={CONFIG.siteLinks.secondary.downloads.url}
                             target="_blank"
-                            rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             title={CONFIG.siteLinks.secondary.downloads.title}
                             >⬇️ YINI Downloads</a
@@ -48,6 +47,7 @@ const year = new Date().getFullYear()
                             href={CONFIG.urls.external.useIt.npmYiniCli}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="track('npmYiniCliFootClicked')"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >YINI CLI on npm ↗</a
                         >
@@ -57,6 +57,7 @@ const year = new Date().getFullYear()
                             href={CONFIG.urls.external.useIt.npmYiniParser}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="track('npmYiniParserFootClicked')"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >YINI Parser on npm ↗</a
                         >
@@ -186,6 +187,7 @@ const year = new Date().getFullYear()
                             href={CONFIG.urls.external.gitHub.yiniOrg}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="track('gitHub.yiniOrgFootClicked')"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >YINI on GitHub ↗</a
                         >
@@ -195,6 +197,7 @@ const year = new Date().getFullYear()
                             href={CONFIG.urls.external.gitHub.yiniCli}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="track('gitHub.yiniCliFootClicked')"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >GitHub: yini-cli ↗</a
                         >
@@ -204,6 +207,7 @@ const year = new Date().getFullYear()
                             href={CONFIG.urls.external.gitHub.yiniParserTs}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="track('gitHub.yiniParserTsFootClicked')"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >GitHub: yini-parser ↗</a
                         >
@@ -213,6 +217,7 @@ const year = new Date().getFullYear()
                             href={CONFIG.urls.external.gitHub.yiniDemoApps}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="track('gitHub.yiniDemoAppsFootClicked')"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >GitHub: yini-demo-apps ↗</a
                         >
@@ -222,6 +227,7 @@ const year = new Date().getFullYear()
                             href={CONFIG.urls.external.gitHub.yiniSyntax}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="track('gitHub.yiniSyntaxFootClicked')"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >GitHub: yini-syntax-highlighting ↗</a
                         >
@@ -231,6 +237,7 @@ const year = new Date().getFullYear()
                             href={CONFIG.urls.external.gitHub.yiniHomepage}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="track('gitHub.yiniHomepageFootClicked')"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >GitHub: yini-homepage ↗</a
                         >
@@ -240,6 +247,7 @@ const year = new Date().getFullYear()
                             href={CONFIG.urls.external.gitHub.yiniSpec}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="track('gitHub.yiniSpecFootClicked')"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >GitHub: yini-spec ↗</a
                         >
