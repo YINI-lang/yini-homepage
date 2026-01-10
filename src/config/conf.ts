@@ -66,13 +66,17 @@ const CONFIG = {
                 url: '/intro-yini-config-format',
                 title: 'Learn what YINI is and how the format works.',
             },
-            advancedExamples: {
-                url: '/yini-advanced-examples',
-                title: 'These examples show optional syntax, edge cases, and power feature.',
+            cheatSheet: {
+                url: '/yini-cheat-sheet',
+                title: 'A quick reference for writing clean, readable YINI configuration files.',
             },
             downloads: {
                 url: '/yini-downloads',
                 title: 'Get YINI parsers, tools, and related implementations across different languages and platforms.',
+            },
+            advancedExamples: {
+                url: '/yini-advanced-examples',
+                title: 'These examples show optional syntax, edge cases, and power features.',
             },
             about: { url: '/about-yini', title: "Who's behind YINI" },
         },

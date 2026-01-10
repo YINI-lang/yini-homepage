@@ -1,0 +1,90 @@
+---
+title: 'YINI Cheat Sheet — Syntax, Examples & Quick Reference'
+description: YINI cheat sheet with syntax, examples, and quick reference for writing clean, readable configuration files. Learn sections, lists, objects, comments, and rules.
+---
+import CONFIG from '../config/conf'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+<BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
+
+# YINI Cheat Sheet
+
+A **quick reference** for writing clean, readable YINI configuration files.
+
+YINI makes data files (such as configuration files and application settings) easy for humans to read  
+**and** predictable for machines to process — like INI, but with **real structure**, lists (arrays), objects, and comments.
+
+---
+
+## 🧱 Basic Syntax
+
+| Element | YINI Syntax |
+|-------|-------------|
+| **Section (level 1)** | `^ App` |
+| **Nested section (lev. 2)** | `^^ Database` |
+| **Deeper nesting (lev. 3)** | `^^^ Pool` |
+| **String** | `"text"` or `'text'` |
+| **Number** | `42`, `3.14`, `1e4` |
+| **Boolean** | `true`, `false`, `on`, `off`, `yes`, `no` *(case-insensitive)* |
+| **Null** | `null`, `Null`, *(or blank in lenient mode)* |
+| **List / Array** | `[1, 2, 3]` |
+| **Inline object (map/dict)** | `{ a: 1, b: 2 }` |
+| **Comment** | `// Default comment` |
+| **Alt. comment** | `# Comment` *(must be `#␠` or `#\t`)* |
+| **Multi-line (block) comment** | `/* ... */` |
+| **Full-line comment** | `; This is a full-line comment (only full lines)` |
+| **Disable line** | `--debug = true` |
+| **Disable section** | `--^ Experimental` |
+
+---
+
+## 🧩 Inline Objects & Nested Data
+(Objects are also known as maps/dicts.)
+
+### Simple object
+```yini
+db = { host: "localhost", port: 5432 }
+```
+
+### Nested objects
+```yini
+service = {
+    http: { port: 8080, secure: true },
+    limits: { rpm: 1000 }
+}
+```
+
+## 🧭 Important Rules
+- **Indentation is only for humans** — structure is defined by section markers (`^`, `^^`, `^^^`, etc).
+- **Strings must always be quoted.**
+- `name: "John"` creates a **list**, not a single value.
+  Use `name = "John"` for single values.
+- Trailing commas are allowed in **lists & objects** (lenient mode).
+- Duplicate keys in the same section are **not allowed**.
+- `#` is a comment **only** if followed by space or tab.
+
+---
+
+## 🧪 Minimal Example
+```yini
+^ App
+name = "Nebula"
+version = "2.3.1"
+
+    ^^ Network
+    ports = [80, 443]
+    ssl = on
+
+    ^^ Limits
+    requests = { perMinute: 1200, burst: 60 }
+```
+
+---
+
+## Next Steps
+- ➡️ [YINI Code Examples](/yini-code-examples)  
+  *Explore real-world configurations.*
+- ➡️ [Get Tools](/yini-downloads)  
+  *CLI, parser libraries, and editors.*  
+
+</BaseLayout>

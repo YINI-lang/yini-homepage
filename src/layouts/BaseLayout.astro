@@ -48,16 +48,12 @@ function makeHtmlTitle(mainTitle: string, postTitle: string, maxLen = 60){
     return mainTitle
 }
 
-//const siteName = 'YINI'
 const {
     headTitle, // optional per-page
     headDescription,
 } = Astro.props
 
-// const postTitle = 'A Minimal, Human-Readable Configuration Format'
-// const postTitle = 'A Minimal, Human-Readable Configuration Format'
 const postTitle = 'Clear and Structured Config Files'
-// const htmlTitle = `${headTitle} · ${postTitle}`
 const htmlTitle = makeHtmlTitle(headTitle, postTitle, 60)
 
 const isProd = import.meta.env.PROD
