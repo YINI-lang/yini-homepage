@@ -8,11 +8,19 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
-# Get Started with YINI
+# Get Started with YINI  
+*💡 This guide focuses on working with YINI via the terminal (CLI). There are [other tools](/yini-downloads) available as well.*
 
-Welcome! This guide helps you create your **first working `.yini` file (text-based)** in just a few minutes. Learn how to install and use YINI from the terminal or command line (CLI).  
+Welcome! This guide helps you create your **first working `.yini` file** in just a few minutes. Learn how to install and use YINI from the terminal or command line (CLI).  
 
 YINI is a human-friendly data format — like INI, but with nested sections, comments, lists (arrays), and objects. It is suitable for configuration files, application settings, and general data-storage use cases.
+
+## What can I do with YINI?
+Build, convert, and consume structured configuration and data with simple
+tools.
+- 🛠 Convert YINI → JSON via CLI.
+- 📦 Load YINI into your app as native objects.
+- 🧩 Use YINI for configuration, data files, pipelines, and tooling.
 
 ## Prerequisite: Node.js installed
 
@@ -23,7 +31,7 @@ YINI is a human-friendly data format — like INI, but with nested sections, com
 node -v
 ```
 
-It's recommended to use **Node.js 16 or later**.
+It's recommended to use **Node.js 20 or later**.
 
 ---
 
@@ -67,6 +75,8 @@ Save this as `config2.yini`:
   auth = { user: "admin", pass: "secret" }  // Object literal
 ```
 
+💡 More syntax at a glance: [YINI Cheat Sheet](/yini-cheat-sheet).
+
 **Notes:**
 
 - **Sections:** start with `^`. Add more carets for nesting (sub-sections): (`^`, `^^`, `^^^`, ...).
@@ -77,6 +87,7 @@ Save this as `config2.yini`:
 - **Strings:** must be quoted `'like this'` or `"like this"`.
 - For more details, see: [Intro to the YINI format](/intro-yini-config-format).
 
+💡 Coming from INI? YINI keeps the same familiar key-value style but adds nesting, lists, and objects without changing how basic configs look.
 
 ## 3) Parse your `.yini` file
 
@@ -172,7 +183,7 @@ yini parse --pretty config2.yini
 - Strings must always be quoted, either `'` or `"`.
 
 ## Summary
-✅ You have just created and parsed your first YINI configuration file, into both JavaScript and JSON formats!
+✅ You have just created and parsed your first YINI configuration file into both JavaScript and JSON formats!
 
 ---
 

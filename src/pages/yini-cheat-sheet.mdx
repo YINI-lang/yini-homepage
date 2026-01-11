@@ -12,7 +12,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 A **quick reference** for writing clean, readable YINI configuration files.
 
 YINI makes data files (such as configuration files and application settings) easy for humans to read  
-**and** predictable for machines to process — like INI, but with **real structure**, lists (arrays), objects, and comments.
+**and** predictable for machines to process — like INI, but with **real structure**, lists (arrays), objects, and comments.  
+Less verbose than JSON, simpler than YAML, and more expressive than INI.
 
 ---
 
@@ -56,12 +57,29 @@ service = {
 
 ## 🧭 Important Rules
 - **Indentation is only for humans** — structure is defined by section markers (`^`, `^^`, `^^^`, etc).
-- **Strings must always be quoted.**
+- **Strings must always be quoted** using `'...'` or `"..."`.
 - `name: "John"` creates a **list**, not a single value.
   Use `name = "John"` for single values.
-- Trailing commas are allowed in **lists & objects** (lenient mode).
+- Trailing commas are allowed in **lists and objects** *(lenient mode)*.
 - Duplicate keys in the same section are **not allowed**.
 - `#` is a comment **only** if followed by space or tab.
+
+---
+
+## 🔢 Number Formats
+
+YINI supports multiple numeric formats:
+
+| Format | Example |
+|------|---------|
+| Integer | `42` |
+| Float | `3.14` |
+| Scientific | `1e6`, `5.2E-3` |
+| Hexadecimal | `#FFAA00` |
+| Binary | `0b101010` |
+| Octal | `0o755` |
+
+All numeric forms are parsed as real numbers — no quotes required.
 
 ---
 
@@ -85,6 +103,6 @@ version = "2.3.1"
 - ➡️ [YINI Code Examples](/yini-code-examples)  
   *Explore real-world configurations.*
 - ➡️ [Get Tools](/yini-downloads)  
-  *CLI, parser libraries, and editors.*  
+  *CLI, parser libraries, and editor tools.*  
 
 </BaseLayout>
