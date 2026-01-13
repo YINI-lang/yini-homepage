@@ -74,27 +74,29 @@ const isDev = import.meta.env.DEV
         <meta name="author" content={CONFIG.meta.author} />
 
         {isProd && (
-        <!-- Privacy-friendly analytics by Plausible -->
-        <script async src="https://plausible.io/js/pa-oOVpT9K5-vDjwbxRX_5n4.js"></script>
-        <script>
-        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-        plausible.init()
-        </script>
+            <>
+                <!-- Analytics by Plausible -->
+                // <script async src="https://plausible.io/js/pa-oOVpT9K5-vDjwbxRX_5n4.js"></script>
+                // <script>
+                // window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+                // plausible.init()
+                // </script>
 
-        <!-- Google tag (gtag.js) -->
-        <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-BMK7JS36XR"
-        ></script>
-        <script>
-            window.dataLayer = window.dataLayer || []
-            function gtag() {
-                dataLayer.push(arguments)
-            }
-            gtag('js', new Date())
+                <!-- Google tag (gtag.js) -->
+                <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-BMK7JS36XR"
+                ></script>
+                <script>
+                    window.dataLayer = window.dataLayer || []
+                    function gtag() {
+                        dataLayer.push(arguments)
+                    }
+                    gtag('js', new Date())
 
-            gtag('config', 'G-BMK7JS36XR')
-        </script>
+                    gtag('config', 'G-BMK7JS36XR')
+                </script>
+            </>
         )}
 
         <!-- Optional theme colors -->
@@ -221,5 +223,20 @@ const isDev = import.meta.env.DEV
             })
         </script>
 
+        {isProd && (
+            <>
+                <!-- Simple Analytics -->
+                <script 
+                    async
+                    src="https://scripts.simpleanalyticscdn.com/latest.js"
+                ></script>
+                <noscript>
+                    <img
+                    src="https://queue.simpleanalyticscdn.com/noscript.gif"
+                    alt=""
+                    referrerpolicy="no-referrer-when-downgrade"
+                /></noscript>
+            </>
+        )}
     </body>
 </html>
