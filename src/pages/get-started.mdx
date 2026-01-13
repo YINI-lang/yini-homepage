@@ -15,21 +15,32 @@ Welcome! This guide helps you create your **first working `.yini` file** in just
 
 YINI is a human-friendly data format — like INI, but with nested sections, comments, lists (arrays), and objects. It is suitable for configuration files, application settings, and general data-storage use cases.
 
+## Ways to get started with YINI
+You can use YINI in a few different ways:
+
+- 🧰 **Command line (CLI)** — the easiest and fastest way to explore YINI.  
+- 📦 **Node.js library** — embed YINI parsing directly into your application.  
+- 🌍 **Other tools & platforms** — see available downloads and integrations.
+
+This guide focuses on the **CLI**, which is the best starting point for most users.
+
 ## What can I do with YINI?
-Build, convert, and consume structured configuration and data with simple
+Build, convert, and consume structured configuration and data using simple
 tools.
-- 🛠 Convert YINI → JSON via CLI.
+- 🛠 &nbsp;Convert YINI → JSON via CLI.
 - 📦 Load YINI into your app as native objects.
 - 🧩 Use YINI for configuration, data files, pipelines, and tooling.
 
-## Prerequisite: Node.js installed
+## Prerequisite: Node.js
+Node.js is required to run the YINI command-line (CLI) tool.
 
-- The examples assume you have Node.js installed on your system.
-
-💡 Tip: You can check if you have Node installed with:
+💡 Tip: You can check if Node.js is already installed by running:
 ```bash
 node -v
 ```
+
+If Node.js is not installed, download it from:
+[https://nodejs.org ↗](https://nodejs.org)  
 
 It's recommended to use **Node.js 20 or later**.
 
@@ -59,6 +70,33 @@ npm i -D yini-cli
 
 💡 You can use either **npx yini** (no install), or just **yini** if `yini-cli` is installed globally or locally.
 
+---
+
+### Optional: Use YINI as a Node.js library
+
+If you're integrating YINI into an application, you can install the official Node.js parser ([repo here ↗](https://github.com/YINI-lang/yini-parser-typescript)):
+```bash
+npm i yini-parser
+```
+
+Then import and use it in your project:
+```ts
+import YINI from 'yini-parser';
+
+const config = YINI.parseFile('./config.yini');
+console.log(config.server.port); // 8080
+
+// Or with options
+const options = { /* see docs for options */ }
+const config2 = YINI.parseFile('./config.yini', options);
+```
+
+This lets your app load .yini files directly as JavaScript objects.
+
+💡 You can explore more tools and integrations on the [Downloads](/yini-downloads).
+
+---
+
 ## 2) Create your first .yini file
 
 Save this as `config2.yini`:
@@ -74,8 +112,6 @@ Save this as `config2.yini`:
   port = 5432
   auth = { user: "admin", pass: "secret" }  // Object literal
 ```
-
-💡 More syntax at a glance: [YINI Cheat Sheet](/yini-cheat-sheet).
 
 **Notes:**
 
@@ -183,8 +219,12 @@ yini parse --pretty config2.yini
 - Strings must always be quoted, either `'` or `"`.
 
 ## Summary
-✅ You have just created and parsed your first YINI configuration file into both JavaScript and JSON formats!
+✅ You have just created and parsed your first YINI configuration file.
 
+From here, you can:
+- continue using YINI via the CLI,
+- embed it directly in your Node.js applications, or
+- explore additional tools and platforms.
 ---
 
 ## 🧭 Next Steps
