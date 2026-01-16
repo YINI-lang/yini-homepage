@@ -63,7 +63,7 @@ const CONFIG = {
         },
         secondary: {
             introToYiniFormat: {
-                url: '/intro-yini-config-format',
+                url: '/learn-yini-config-format',
                 title: 'Learn what YINI is and how the format works.',
             },
             cheatSheet: {
