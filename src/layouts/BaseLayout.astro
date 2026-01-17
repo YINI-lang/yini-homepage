@@ -76,18 +76,18 @@ const isDev = import.meta.env.DEV
         {isProd && (
             <>
                 <!-- Analytics by Plausible -->
-                <script async src="https://plausible.io/js/pa-oOVpT9K5-vDjwbxRX_5n4.js"></script>
-                <script>
+                <script is:inline async src="https://plausible.io/js/pa-oOVpT9K5-vDjwbxRX_5n4.js"></script>
+                <script is:inline>
                 window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
                 plausible.init()
                 </script>
 
                 <!-- Google tag (gtag.js) -->
-                <script
+                <script is:inline
                     async
                     src="https://www.googletagmanager.com/gtag/js?id=G-BMK7JS36XR"
                 ></script>
-                <script>
+                <script is:inline>
                     window.dataLayer = window.dataLayer || []
                     function gtag() {
                         dataLayer.push(arguments)
@@ -159,12 +159,24 @@ const isDev = import.meta.env.DEV
                 max-width: 800px;
                 padding: 0 1rem;
             }
+            
             nav a {
                 margin-right: 1rem;
+                /* padding-left: .75rem; */
+                padding-left: .5rem;
+            }
+
+            .sidebar-active {
+                font-weight: 600;
+                color: rgb(14 116 144);
+                background: rgba(14, 116, 144, 0.12);
+                /* box-shadow: inset 5px 0 0 rgb(14 116 144); */
+                box-shadow: inset 5px 0 0 rgb(204, 10, 10);
+                /* background-color: red; */
             }
         </style>
 
-        <script type="application/ld+json">
+        <script is:inline type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@type": "SoftwareApplication",
@@ -220,7 +232,7 @@ const isDev = import.meta.env.DEV
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
                     Start here
                 </h3>
-                <ul class="space-y-1">
+                <ul class="space-y-2">
                     <li>
                     <a 
                         href={CONFIG.siteLinks.navMenu.intro.whatIsYINIAndWhy.url}
@@ -237,7 +249,7 @@ const isDev = import.meta.env.DEV
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
                     Learn YINI
                 </h3>
-                <ul class="space-y-1">
+                <ul class="space-y-2">
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
                         class="sidebar-link">
@@ -276,7 +288,7 @@ const isDev = import.meta.env.DEV
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
                     Use YINI
                 </h3>
-                <ul class="space-y-1">
+                <ul class="space-y-2">
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.useYini.getStarted.url}
                         class="sidebar-link">
@@ -297,7 +309,7 @@ const isDev = import.meta.env.DEV
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
                     References
                 </h3>
-                <ul class="space-y-1">
+                <ul class="space-y-2">
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.refs.spec.url}
                         class="sidebar-link">
@@ -318,7 +330,7 @@ const isDev = import.meta.env.DEV
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
                     About
                 </h3>
-                <ul class="space-y-1">
+                <ul class="space-y-2">
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.metaInfo.about.url}
                         class="sidebar-link">
@@ -344,14 +356,14 @@ const isDev = import.meta.env.DEV
         </footer>
         <Footer/>
 
-        <script>
+        <script is:inline>
             function track(eventName, props = {}) {
                 if (window.plausible) {
                     plausible(eventName, { props })
                 }
             }
         </script>
-        <script>
+        <script is:inline>
             document.addEventListener('copy', function () {
                 const selection = document.getSelection()?.toString().trim()
                 if (selection && selection.length > 4) {
@@ -360,10 +372,49 @@ const isDev = import.meta.env.DEV
             })
         </script>
 
+        <script is:inline>
+            function markActiveSidebarLink() {
+
+            const current = window.location.pathname.replace(/\/$/, "");
+
+            const links = document.querySelectorAll("aside a.sidebar-link");
+
+            // If sidebar not yet in DOM (Astro timing), try again shortly
+            if (!links.length) {
+                setTimeout(markActiveSidebarLink, 50);
+                return;
+            }
+
+            links.forEach(a => {
+                const href = (a.getAttribute("href") || "").replace(/\/$/, "");
+
+                // Clear previous state
+                a.classList.remove("sidebar-active");
+
+                const isMatch = href && current.startsWith(href);
+                // console.log('----------')
+                // console.log('   href = '+href)
+                // console.log('current = '+current)
+                // console.log('isMatch = '+isMatch)
+                // console.log('----------')
+
+                if (isMatch) {
+                    a.classList.add("sidebar-active");
+                }
+            });
+        }
+
+        // Run on first load.
+        document.addEventListener("DOMContentLoaded", markActiveSidebarLink);
+
+        // Run on every Astro navigation (CRITICAL).
+        document.addEventListener("astro:page-load", markActiveSidebarLink);
+        </script>
+
         {isProd && (
             <>
                 <!-- Simple Analytics -->
-                <script 
+                <script is:inline 
                     async
                     src="https://scripts.simpleanalyticscdn.com/latest.js"
                 ></script>
