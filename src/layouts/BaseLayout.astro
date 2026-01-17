@@ -209,17 +209,22 @@ const isDev = import.meta.env.DEV
             <!-- LEFT NAV (desktop only) -->
             <aside class="hidden md:block sticky top-24 self-start">
             <nav class="text-sm text-slate-700 dark:text-slate-300 space-y-6">
-                
+                <style is:inline>
+                    .sidebar-link {
+                        @apply text-slate-700 dark:text-slate-300 hover:text-sky-500;
+                    }
+                </style>
+
                 <!-- 1) Understanding YINI -->
                 <div>
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                    Start Here
+                    Start here
                 </h3>
                 <ul class="space-y-1">
                     <li>
                     <a 
                         href={CONFIG.siteLinks.navMenu.intro.whatIsYINIAndWhy.url}
-                        class="hover:text-sky-500"
+                        class="sidebar-link"
                     >
                         What is YINI & Why?
                     </a>
@@ -235,31 +240,31 @@ const isDev = import.meta.env.DEV
                 <ul class="space-y-1">
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         Learn the Format
                     </a>
                     </li>
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.learnYini.quickTutorial.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         Quick Tutorial
                     </a>
                     </li>
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.learnYini.examples.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         Code Examples
                     </a>
                     </li>
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.learnYini.cheatSheet.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         Cheat Sheet
                     </a>
                     </li>
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.learnYini.advancedExamples.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         Advanced Examples
                     </a>
                     </li>
@@ -274,13 +279,13 @@ const isDev = import.meta.env.DEV
                 <ul class="space-y-1">
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.useYini.getStarted.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         Get Started
                     </a>
                     </li>
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.useYini.getYINITools.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         Get Tools
                     </a>
                     </li>
@@ -295,13 +300,13 @@ const isDev = import.meta.env.DEV
                 <ul class="space-y-1">
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.refs.spec.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         Specification
                     </a>
                     </li>
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.refs.faq.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         FAQ
                     </a>
                     </li>
@@ -316,7 +321,7 @@ const isDev = import.meta.env.DEV
                 <ul class="space-y-1">
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.metaInfo.about.url}
-                        class="hover:text-sky-500">
+                        class="sidebar-link">
                         About YINI
                     </a>
                     </li>
