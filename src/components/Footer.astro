@@ -35,11 +35,11 @@ const year = new Date().getFullYear()
                 <ul class="mt-3 space-y-2 text-sm">
                     <li>
                         <a
-                            href={CONFIG.siteLinks.secondary.downloads.url}
+                            href={CONFIG.siteLinks.secondary.getYINITools.url}
                             target="_blank"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            title={CONFIG.siteLinks.secondary.downloads.title}
-                            >⬇️ YINI Downloads</a
+                            title={CONFIG.siteLinks.secondary.getYINITools
+                                .title}>⬇️ Get YINI Tools</a
                         >
                     </li>
                     <li>
@@ -62,6 +62,14 @@ const year = new Date().getFullYear()
                             >YINI Parser on npm ↗</a
                         >
                     </li>
+                    <li>
+                        <a
+                            href={CONFIG.siteLinks.hero.getStarted.url}
+                            title={CONFIG.siteLinks.hero.getStarted.title}
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >Get Started</a
+                        >
+                    </li>
                 </ul>
 
                 <br />
@@ -77,14 +85,6 @@ const year = new Date().getFullYear()
                             title={CONFIG.siteLinks.hero.home.title}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >Home</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.hero.getStarted.url}
-                            title={CONFIG.siteLinks.hero.getStarted.title}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Get Started</a
                         >
                     </li>
                     <!-- !!Temp disabled <li>
@@ -110,7 +110,7 @@ const year = new Date().getFullYear()
                             title={CONFIG.siteLinks.secondary.introToYiniFormat
                                 .title}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Intro to YINI format</a
+                            >Learn the YINI Format</a
                         >
                     </li>
                     <li>
@@ -127,14 +127,6 @@ const year = new Date().getFullYear()
                             title={CONFIG.siteLinks.hero.examples.title}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >YINI Examples</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.hero.faq.url}
-                            title={CONFIG.siteLinks.hero.faq.title}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >FAQ</a
                         >
                     </li>
                 </ul>
@@ -278,11 +270,10 @@ const year = new Date().getFullYear()
                         </li>
                         <li>
                             <a
-                                href={CONFIG.siteLinks.secondary.cheatSheet.url}
-                                title={CONFIG.siteLinks.secondary.cheatSheet
-                                    .title}
+                                href={CONFIG.siteLinks.hero.faq.url}
+                                title={CONFIG.siteLinks.hero.faq.title}
                                 class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >Cheat Sheet</a
+                                >FAQ</a
                             >
                         </li>
                         <li>
@@ -309,9 +300,7 @@ const year = new Date().getFullYear()
                     <br />
 
                     <!-- General -->
-                    <h2 class="text-sm font-semibold text-slate-200">
-                        General
-                    </h2>
+                    <h2 class="text-sm font-semibold text-slate-200">Info</h2>
                     <li>
                         <a
                             href={CONFIG.siteLinks.secondary.about.url}

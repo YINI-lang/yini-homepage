@@ -195,13 +195,150 @@ const isDev = import.meta.env.DEV
         <!-- React header -->
         <Header client:idle isProd={isProd} />
 
-        <!-- Main -->
-        <main class="mx-auto max-w-3xl px-4 py-10">
+        <!-- Old Main -->
+        <!-- <main class="mx-auto max-w-3xl px-4 py-10">
             <article class="prose prose-slate max-w-none">
                 <slot />
             </article>
+        </main> -->
+
+        <!-- Main layout: sidebar + content on desktop -->
+        <main class="mx-auto max-w-7xl px-4 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8">
+            
+            <!-- LEFT NAV (desktop only) -->
+            <aside class="hidden md:block sticky top-24 self-start">
+            <nav class="text-sm text-slate-700 dark:text-slate-300 space-y-6">
+                <style is:inline>
+                    .sidebar-link {
+                        @apply text-slate-700 dark:text-slate-300 hover:text-sky-500;
+                    }
+                </style>
+
+                <!-- 1) Understanding YINI -->
+                <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                    Start here
+                </h3>
+                <ul class="space-y-1">
+                    <li>
+                    <a 
+                        href={CONFIG.siteLinks.navMenu.intro.whatIsYINIAndWhy.url}
+                        class="sidebar-link"
+                    >
+                        What is YINI & Why?
+                    </a>
+                    </li>
+                </ul>
+                </div>
+
+                <!-- 2) Learn YINI -->
+                <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                    Learn YINI
+                </h3>
+                <ul class="space-y-1">
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                        class="sidebar-link">
+                        Learn the Format
+                    </a>
+                    </li>
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.learnYini.quickTutorial.url}
+                        class="sidebar-link">
+                        Quick Tutorial
+                    </a>
+                    </li>
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.learnYini.examples.url}
+                        class="sidebar-link">
+                        Code Examples
+                    </a>
+                    </li>
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.learnYini.cheatSheet.url}
+                        class="sidebar-link">
+                        Cheat Sheet
+                    </a>
+                    </li>
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.learnYini.advancedExamples.url}
+                        class="sidebar-link">
+                        Advanced Examples
+                    </a>
+                    </li>
+                </ul>
+                </div>
+
+                <!-- 3) Use YINI -->
+                <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                    Use YINI
+                </h3>
+                <ul class="space-y-1">
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.useYini.getStarted.url}
+                        class="sidebar-link">
+                        Get Started
+                    </a>
+                    </li>
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.useYini.getYINITools.url}
+                        class="sidebar-link">
+                        Get Tools
+                    </a>
+                    </li>
+                </ul>
+                </div>
+
+                <!-- 4) References -->
+                <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                    References
+                </h3>
+                <ul class="space-y-1">
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.refs.spec.url}
+                        class="sidebar-link">
+                        Specification
+                    </a>
+                    </li>
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.refs.faq.url}
+                        class="sidebar-link">
+                        FAQ
+                    </a>
+                    </li>
+                </ul>
+                </div>
+
+                <!-- 5) About -->
+                <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                    About
+                </h3>
+                <ul class="space-y-1">
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.metaInfo.about.url}
+                        class="sidebar-link">
+                        About YINI
+                    </a>
+                    </li>
+                </ul>
+                </div>
+
+            </nav>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <article class="prose prose-slate max-w-none">
+            <slot />
+            </article>
+
+        </div>
         </main>
-        
+
         <footer class="mx-auto max-w-6xl px-4 py-8 text-center">
             <a href="#top">Back to top </a>
         </footer>

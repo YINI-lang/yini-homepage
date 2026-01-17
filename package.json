@@ -8,9 +8,9 @@
         "node": ">=20"
     },
     "scripts": {
-        "dev": "astro dev",
+        "dev": "astro dev --force",
         "dev:host": "astro dev --host",
-        "build": "astro build",
+        "build": "astro build --force",
         "preview": "astro preview",
         "start": "astro preview",
         "lint": "eslint .",
@@ -19,7 +19,7 @@
         "format:check": "prettier --check .",
         "typecheck": "astro check",
         "typecheck:watch": "astro check --watch",
-        "clean": "astro clean"
+        "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true }); require('fs').rmSync('.astro', { recursive: true, force: true });\""
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.3",

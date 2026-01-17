@@ -3,13 +3,13 @@ title: 'Get Started: YINI'
 description: Create your first .yini data file, validate it, and learn the core syntax in minutes.
 ---
 
-import CONFIG from '../config/conf'
-import BaseLayout from '../layouts/BaseLayout.astro'
+import CONFIG from '../../config/conf'
+import BaseLayout from '../../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
 # Get Started with YINI  
-*💡 This guide focuses on working with YINI via the terminal (CLI). There are [other tools](/yini-downloads) available as well.*
+*💡 This guide focuses on working with YINI via the terminal (CLI). There are [other tools](../yini-downloads) available as well.*
 
 Welcome! This guide helps you create your **first working `.yini` file** in just a few minutes. Learn how to install and use YINI from the terminal or command line (CLI).  
 
@@ -79,7 +79,7 @@ If you're integrating YINI into an application, you can install the official Nod
 npm i yini-parser
 ```
 
-Then import and use it in your project:
+Then import and use it in your project (TypeScript example):
 ```ts
 import YINI from 'yini-parser';
 
@@ -93,7 +93,7 @@ const config2 = YINI.parseFile('./config.yini', options);
 
 This lets your app load .yini files directly as JavaScript objects.
 
-💡 You can explore more tools and integrations on the [Downloads](/yini-downloads).
+💡 You can explore more tools and integrations on the [Downloads](../yini-downloads).
 
 ---
 
@@ -121,7 +121,7 @@ Save this as `config2.yini`:
 - **Arrays:** `[1, 2, 'three']`
 - **Objects:** `{ key: 'value', n: 1 }`
 - **Strings:** must be quoted `'like this'` or `"like this"`.
-- For more details, see: [Intro to the YINI format](/intro-yini-config-format).
+- For more details, see: [Learn the YINI format](../learn-yini-config-format).
 
 💡 Coming from INI? YINI keeps the same familiar key-value style but adds nesting, lists, and objects without changing how basic configs look.
 
@@ -229,8 +229,8 @@ From here, you can:
 
 ## 🧭 Next Steps
 
-- ▶️ [Quick Tutorial](/yini-tutorial) — 5-minute guided walkthrough of YINI.  
-- ➡️ [YINI Examples](/yini-code-examples)  
+- ▶️ [Quick Tutorial](../yini-tutorial) — 5-minute guided walkthrough of YINI.  
+- ➡️ [YINI Examples](../yini-code-examples)  
   *Shows YINI configuration examples.*
 
 </BaseLayout>

@@ -30,14 +30,14 @@ const CONFIG = {
             "YINI is a human-friendly, INI-inspired text-based configuration format for software projects: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage.",
     },
     siteLinks: {
-        // The "hero" (heroic attention-grabber) links.
+        // The "hero" (heroic attention-grabber) Top-Menu links.
         hero: {
             home: {
                 url: '/',
                 title: 'Home – YINI homepage',
             },
             getStarted: {
-                url: '/get-started',
+                url: '/use-yini/get-started',
                 title: 'Start exploring the YINI format.',
             },
             playground: {
@@ -45,40 +45,98 @@ const CONFIG = {
                 title: 'Experiment with YINI directly in your browser.',
             },
             tutorial: {
-                url: '/yini-tutorial',
-                title: 'Get a quick overview of YINI syntax and structure.',
+                url: '/learn-yini/quick-tutorial',
+                title: 'A 5-minute guided walkthrough of YINI.',
             },
             examples: {
-                url: '/yini-code-examples',
+                url: '/learn-yini/code-examples',
                 title: 'Practical YINI configuration examples.',
             },
             spec: {
-                url: '/specification',
+                url: '/refs/specification',
                 title: 'Read the full YINI specification and syntax reference.',
             },
             faq: {
-                url: '/yini-faq',
+                url: '/refs/yini-faq',
                 title: 'Read frequently asked questions about YINI.',
             },
         },
+        // The "navigation" (Left-Menu) links.
+        navMenu: {
+            intro: {
+                whatIsYINIAndWhy: {
+                    url: '/intro/what-is-yini-and-why',
+                    title: 'Learn what YINI is and why it exists.',
+                },
+            },
+            learnYini: {
+                learnYiniFormat: {
+                    url: '/learn-yini/learn-yini-config-format',
+                    title: 'Learn what YINI is and how the format works.',
+                },
+                quickTutorial: {
+                    url: '/learn-yini/quick-tutorial',
+                    title: 'A 5-minute guided walkthrough of YINI.',
+                },
+                examples: {
+                    url: '/learn-yini/code-examples',
+                    title: 'Practical YINI configuration examples.',
+                },
+                cheatSheet: {
+                    url: '/learn-yini/yini-cheat-sheet',
+                    title: 'A quick reference for writing clean, readable YINI configuration files.',
+                },
+                advancedExamples: {
+                    url: '/learn-yini/yini-advanced-examples',
+                    title: 'Optional syntax, edge cases, and power features.',
+                },
+            },
+            useYini: {
+                getStarted: {
+                    url: '/use-yini/get-started',
+                    title: 'Start exploring the YINI format.',
+                },
+                getYINITools: {
+                    url: '/use-yini/get-yini-tools',
+                    title: 'Get YINI parsers, tools, and related implementations across different languages and platforms.',
+                },
+            },
+            refs: {
+                spec: {
+                    url: '/refs/specification',
+                    title: 'Formal YINI specification and syntax reference.',
+                },
+                faq: {
+                    url: '/refs/yini-faq',
+                    title: 'Read frequently asked questions about YINI.',
+                },
+            },
+            metaInfo: {
+                about: {
+                    url: '/info/about-yini',
+                    title: "Who's behind YINI",
+                },
+            },
+        },
+        // depricated, use the one above in navMenu
         secondary: {
             introToYiniFormat: {
                 url: '/intro-yini-config-format',
                 title: 'Learn what YINI is and how the format works.',
             },
             cheatSheet: {
-                url: '/yini-cheat-sheet',
+                url: '/learn-yini/yini-cheat-sheet',
                 title: 'A quick reference for writing clean, readable YINI configuration files.',
             },
-            downloads: {
-                url: '/yini-downloads',
+            getYINITools: {
+                url: '/yini-getYINITools',
                 title: 'Get YINI parsers, tools, and related implementations across different languages and platforms.',
             },
             advancedExamples: {
-                url: '/yini-advanced-examples',
+                url: '/learn-yini/yini-advanced-examples',
                 title: 'These examples show optional syntax, edge cases, and power features.',
             },
-            about: { url: '/about-yini', title: "Who's behind YINI" },
+            about: { url: '/info/about-yini', title: "Who's behind YINI" },
         },
         specPdf: { url: LATEST_YINI_SPEC_PDF_URL, title: '' },
     },
@@ -103,8 +161,8 @@ const CONFIG = {
                 yiniSpec: 'https://github.com/YINI-lang/YINI-spec',
             },
             yiniWiki: {
-                downloads:
-                    'https://github.com/YINI-lang/YINI-spec/wiki/YINI-Downloads',
+                getYINITools:
+                    'https://github.com/YINI-lang/YINI-spec/wiki/Get-YINI-Tools',
             },
             discussions: {
                 yiniLang: 'https://github.com/orgs/YINI-lang/discussions',
