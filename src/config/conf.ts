@@ -111,9 +111,9 @@ const CONFIG = {
                     title: 'Read frequently asked questions about YINI.',
                 },
             },
-            about: {
+            metaInfo: {
                 about: {
-                    url: '/about/about-yini',
+                    url: '/info/about-yini',
                     title: "Who's behind YINI",
                 },
             },
@@ -136,7 +136,7 @@ const CONFIG = {
                 url: '/learn-yini/yini-advanced-examples',
                 title: 'These examples show optional syntax, edge cases, and power features.',
             },
-            about: { url: '/about/about-yini', title: "Who's behind YINI" },
+            about: { url: '/info/about-yini', title: "Who's behind YINI" },
         },
         specPdf: { url: LATEST_YINI_SPEC_PDF_URL, title: '' },
     },
