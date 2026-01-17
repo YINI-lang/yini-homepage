@@ -3,8 +3,8 @@ title: 'Quick Tutorial: YINI'
 description: A 5-minute hands-on tutorial — write and validate your first YINI data file (text-based). It is suitable for configuration files, application settings, and general data-storage use cases.
 ---
 
-import CONFIG from '../config/conf'
-import BaseLayout from '../layouts/BaseLayout.astro'
+import CONFIG from '../../config/conf'
+import BaseLayout from '../../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
@@ -37,14 +37,14 @@ port = 8080
 enabled = false
 ```
 
-💡 Quick syntax reference: [YINI Cheat Sheet](/yini-cheat-sheet).
+💡 Quick syntax reference: [YINI Cheat Sheet](../yini-cheat-sheet).
 
 ### 💡 What's happening
 - `^` starts a section. More carets = nested section (`^^ Logging` is inside `Server`).
 - `key = value` defines a setting.
 - Lists (arrays): `[1, 2, 3]`, objects: `{ key: value }`.
 - Comments: `//` or `#` (include a space after `#` for inline comments).
-- Want more of YINI's syntax and structure? Read [Learn the YINI Format](/learn-yini-config-format).
+- Want more of YINI's syntax and structure? Read [Learn the YINI Format](../intro-yini-config-format).
 
 ---
 
@@ -103,11 +103,11 @@ For consistency, use just one style per file.
 That's the basics.
 
 ## Next Steps
-- ➡️ [Get Started](/get-started)  
+- ➡️ [Get Started](../get-started)  
   *Installation and CLI usage overview.*
-- ➡️ [YINI Examples](/yini-code-examples)  
+- ➡️ [YINI Examples](../yini-code-examples)  
   *Shows YINI configuration examples.*
-- 📖 [Learn the YINI format](/learn-yini-config-format) — 10–15 minute introduction to YINI format's syntax and structure.
+- 📖 [Learn the YINI format](../intro-yini-config-format) — 10–15 minute introduction to YINI format's syntax and structure.
 
 YINI is simple by design — experiment, explore, and see what you can build.
 
