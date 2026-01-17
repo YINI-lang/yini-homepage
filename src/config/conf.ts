@@ -37,7 +37,7 @@ const CONFIG = {
                 title: 'Home – YINI homepage',
             },
             getStarted: {
-                url: '/get-started',
+                url: '/use-yini/get-started',
                 title: 'Start exploring the YINI format.',
             },
             playground: {
@@ -45,19 +45,19 @@ const CONFIG = {
                 title: 'Experiment with YINI directly in your browser.',
             },
             tutorial: {
-                url: '/yini-tutorial',
+                url: '/learn-yini/quick-tutorial',
                 title: 'A 5-minute guided walkthrough of YINI.',
             },
             examples: {
-                url: '/yini-code-examples',
+                url: '/learn-yini/code-examples',
                 title: 'Practical YINI configuration examples.',
             },
             spec: {
-                url: '/specification',
+                url: '/refs/specification',
                 title: 'Read the full YINI specification and syntax reference.',
             },
             faq: {
-                url: '/yini-faq',
+                url: '/refs/yini-faq',
                 title: 'Read frequently asked questions about YINI.',
             },
         },
