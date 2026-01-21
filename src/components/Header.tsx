@@ -89,10 +89,12 @@ export default function Header({ isProd }: HeaderProps) {
         // *** HERO below ***
         return (
             <>
+                🏠
                 <a
                     href={CONFIG.siteLinks.hero.home.url}
                     title={CONFIG.siteLinks.hero.home.title}
-                    className={cssClasses}>
+                    className={cssClasses}
+                    style={{ paddingLeft: '.10em' }}>
                     Home
                 </a>
                 <a
