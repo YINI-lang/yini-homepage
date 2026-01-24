@@ -9,8 +9,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 # YINI — Frequently Asked Questions
 
-A quick, practical FAQ for the YINI data format (a human-readable text format).  
-If you're new, you might want to start with [Get Started](../get-started).
+A practical FAQ for **YINI**, a human-friendly configuration format designed to be structured, predictable, and easy to read.  
+
+If you're new, you might want to start with [Get Started](../use-yini/get-started).
 
 Below, you will find questions and answers grouped into the following topics:
 - [Understanding YINI](#1-understanding-yini)
@@ -38,7 +39,7 @@ host = "0.0.0.0"
 port = 8080
 ```
 
-### Q – What is the format of an YINI file?
+### Q – What is the format of a YINI file?
 YINI is the name of the markup format itself. A YINI file is a plain-text file with human-readable syntax. It's based on **key-value pairs**, **section markers**, and optional **comments**.
 
 It supports:
@@ -49,9 +50,9 @@ It supports:
 
 ### Q – But, why exactly another config format like YINI?
 
-**YINI** was created to offer a modern, structured, and readable configuration language that feels familiar — while addressing some of the historical limitations found in INI and YAML.
+YINI exists to offer a **modern, structured, and predictable** configuration format that feels familiar while avoiding common pitfalls in INI, YAML, and similar formats.
 
-It aims to combine **simplicity, structure, and safety**:
+It focuses on three goals: **readability, structure, and reliability**:
 
 - **Familiar and readable** – Uses key-value pairs like INI and keeps a familiar, readable layout, so it's immediately understandable.
 - **Structured and nestable** – Supports nested sections, lists, and objects cleanly, without indentation guessing or YAML-style ambiguity.
@@ -66,8 +67,9 @@ From INI it keeps the simple key/value structure, from JSON and Python it adopts
 Together, these ideas form a configuration format that is human-friendly, structured, and unambiguous — familiar to read, but much more capable than classic INI.
 
 ### Q – Why not just use INI/JSON/YAML/TOML?
-Use whatever suits your project best. YINI aims to:
+YINI does not aim to replace INI, JSON, YAML, or TOML.
 
+Use whatever suits your project best. YINI aims to:
 - Keep **INI-like simplicity**.
 - Add **clear structure** (sections, arrays, objects).
 - Keep **predictable rules** (strict mode available).
@@ -84,12 +86,31 @@ Not quite yet — but it's getting close:
 - **CLI tool:** [`yini-cli`](https://github.com/YINI-lang/yini-cli) builds on the official parser for use in the terminal (validation, conversion, formatting).  
 - Suitable for **experimentation and internal tools**, though small breaking changes may still occur before the final 1.0 release.
 
+### Q – Will YINI remain stable over time?
+Yes. The YINI specification follows **semantic versioning**, with stability as a core design goal.  
+Breaking changes are avoided whenever possible and are **clearly documented** in release notes when they do occur.
+
+Parsers and tooling are supported by **automated tests**, with a long-term goal of maintaining **70–80% test coverage** or higher.
+
 ### Q – Who maintains YINI?
-YINI is created and maintained by Marko K. Seppänen and the YINI-lang organization.
-It's an open-source project released under the Apache 2.0 license.
+YINI is created and maintained by Marko K. Seppänen under the **YINI-lang** open-source organization.  
+The project follows a **public specification**, **versioned releases**, and **transparent change tracking**, ensuring long-term clarity and stability.  
+
+It's an open-source project released under the Apache 2.0 license, with some sub-repositories published under the **MIT license**.
 
 ### Q – What encoding should I use?
 YINI files should be saved as UTF-8 without BOM for maximum compatibility.
+
+### Q – When is YINI a good choice?
+YINI is a good fit when you want:
+- Human-editable config files.
+- Predictable parsing rules.
+- Structured data without YAML complexity.
+- Clear diffs in version control.
+
+### Q – Is YINI safe for untrusted input?
+Parsers are designed to avoid code execution and unsafe evaluation.  
+However, treat configuration files as data — not executable input.
 
 ---
 
@@ -157,7 +178,7 @@ The YINI specification (1.0 RC.3) states that:
 - In **strict mode**, duplicates are disallowed and will raise an error.
 - In **lenient mode**, duplicates are also not allowed — they may trigger a warning, but must not overwrite existing entries.
 
-However, in the official YINI-lib `yini-parser` (Node.js), the behavior for handling duplicates in lenient mode is **customizable**.
+However, in the official YINI-lib `yini-parser-typescript` (Node.js), the behavior for handling duplicates in lenient mode is **customizable**.
 
 ### Q – Does the order of keys or sections matter?
 No, order may be preserved for readability but has no semantic meaning.
@@ -220,7 +241,7 @@ Triple-quoted strings are allowed for multi-line text.
 
 ### Q – Are keys and section names case-sensitive?
 Yes, keys and section names are **case-sensitive**. Keep a consistent style (e.g., `lower_snake_case`).  
-Note: However, key words for null and booleans are not!
+Note: However, keywords for null and booleans are not!
 
 ### Q – Are booleans and null case-insensitive?
 Yes, key words are **case-insensitive**.  
@@ -244,6 +265,6 @@ The repository includes definitions in tmLanguage, that enable syntax highlighti
 
 **Didn't find your answer?**
 - ➡️ [Join the discussion on GitHub ↗](https://github.com/orgs/YINI-lang/discussions)  
-- ➡️ [Get Started guide](../get-started)  
+- ➡️ [Get Started guide](../use-yini/get-started)  
 
 </BaseLayout>
