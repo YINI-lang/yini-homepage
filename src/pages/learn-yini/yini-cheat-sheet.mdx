@@ -8,12 +8,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
 # YINI Cheat Sheet
+> _Based on the official **YINI Specification (v1.0 Release Candidate)**_
 
 A **quick reference** for writing clean, readable YINI configuration files.
 
 YINI makes data files (such as configuration files and application settings) easy for humans to read  
 **and** predictable for machines to process — like INI, but with **real structure**, lists (arrays), objects, and comments.  
-Less verbose than JSON, simpler than YAML, and more expressive than INI.
+
+More structured than INI, less noisy than JSON, and less fragile than YAML.
 
 ---
 
@@ -21,9 +23,9 @@ Less verbose than JSON, simpler than YAML, and more expressive than INI.
 
 | Element | YINI Syntax |
 |-------|-------------|
-| **Section heading - level 1** | `^ App` |
-| **Section heading - level 2** | `^^ Database` |
-| **Section heading - level 3** | `^^^ Pool` |
+| **Section heading: level&nbsp;1** | `^ App` |
+| **Section heading: level&nbsp;2** | `^^ Database` |
+| **Section heading: level&nbsp;3** | `^^^ Pool` |
 | **String** | `"text"` or `'text'` |
 | **Number** | `42`, `3.14`, `1e4` |
 | **Boolean** | `true`, `false`, `on`, `off`, `yes`, `no` *(case-insensitive)* |
@@ -31,16 +33,15 @@ Less verbose than JSON, simpler than YAML, and more expressive than INI.
 | **List / Array** | `[1, 2, 3]` |
 | **Inline object (map/dict)** | `{ a: 1, b: 2 }` |
 | **Comment** | `// Default comment` |
-| **Alt. comment** | `# Comment` *(must be `#␠` or `#\t`)* |
+| **Alt. comment** | `# Comment` *(must be `#␠` or `#\t`)*<br/><br/> ❌ `#Missing space before comment start`<br/> ✅ `# This is an OK comment` |
 | **Multi-line (block) comment** | `/* ... */` |
 | **Full-line comment** | `; This is a full-line comment (only full lines)` |
 | **Disable line** | `--debug = true` |
-| **Disable section** | `--^ Experimental` |
 
 ---
 
 ## 🧩 Inline Objects & Nested Data
-(Objects are also known as maps/dicts.)
+(Objects are also called maps or dictionaries in general sense.)
 
 ### Simple object
 ```yini
@@ -58,10 +59,10 @@ service = {
 ## 🧭 Important Rules
 - **Indentation is only for humans** — structure is defined by section markers (`^`, `^^`, `^^^`, etc).
 - **Strings must always be quoted** using `'...'` or `"..."`.
-- `name: "John"` creates a **list**, not a single value.
+- In directly inside a section, not in an inline object: `name: "John"` creates a **list**, not a single value.
   Use `name = "John"` for single values.
 - Trailing commas are allowed in **lists and objects** *(lenient mode)*.
-- Duplicate keys in the same section are **not allowed**.
+- Duplicate keys are **disallowed by default** (behavior may vary in lenient mode).
 - `#` is a comment **only** if followed by space or tab.
 
 ---
@@ -72,10 +73,10 @@ YINI supports multiple numeric formats:
 
 | Format | Example |
 |------|---------|
-| Integer | `42` |
-| Float | `3.14` |
+| Integer | `42`<br/><br/> ❌ `01` (Don't use zero before a digit)<br/> ✅ `1`<br/> ✅ `0` |
+| Float | `3.14`<br/><br/> ❌ `3,14`<br/> ✅ `0.14` |
 | Scientific | `1e6`, `5.2E-3` |
-| Hexadecimal | `#FFAA00` |
+| Hexadecimal | `#FFAA00`<br/><br/> ❌ `# FFAA00` (Parsed as a comment)<br/> ✅ `#ffaa00` (Hex color literal) |
 | Binary | `0b101010` |
 | Octal | `0o755` |
 
@@ -83,7 +84,7 @@ All numeric forms are parsed as real numbers — no quotes required.
 
 ---
 
-## 🧪 Minimal Example
+## 🧪 Minimal Example (Realistic App Config)
 ```yini
 ^ App
 name = "Nebula"
@@ -100,7 +101,7 @@ version = "2.3.1"
 ---
 
 ## Next Steps
-- ➡️ [YINI Code Examples](../yini-code-examples)  
+- ➡️ [YINI Code Examples](../learn-yini/code-examples)  
   *Explore real-world configurations.*
 - ➡️ [Get YINI Tools](../use-yini/get-yini-tools)  
   *CLI, parser libraries, and editor tools.*  
