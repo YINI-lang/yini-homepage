@@ -80,13 +80,14 @@ export default function Header({ isProd }: HeaderProps) {
         return () => window.removeEventListener('resize', onResize)
     }, [])
 
-    const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
-        const cssClasses =
-            variant === 'desktop'
-                ? 'px-3'
-                : 'no-underline hover:underline text-base'
+    /* 
+        For desktop-mode/view ->     Top nav-menu.
+     */
+    // const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
+    const NavDesktopTopMenu = () => {
+        const cssClasses = 'px-3'
 
-        // *** HERO below ***
+        // *** HERO (nav links / top-menu) for desktop mode ***
         return (
             <>
                 🏠
@@ -135,6 +136,150 @@ export default function Header({ isProd }: HeaderProps) {
         )
     }
 
+    /* 
+        For mobile-mode/view ->      Pop-up nav-menu.
+
+        This menu is adapted for mobile view:
+        - More users are new, curious, or returning for a quick thing.
+        - Fewer items visible at once.
+        
+        (!) Not to overload the user and view with links and info.
+     */
+    // const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
+    const NavMobilePopupMenu = () => {
+        const cssClasses = 'no-underline hover:underline text-base'
+
+        // *** Menu for mobile (opened as via pop-up) ***
+        return (
+            <>
+                <div>
+                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
+                        🧭 Start here
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.intro
+                                        .whatIsYINIAndWhy.url
+                                }
+                                class={cssClasses}>
+                                What is YINI & Why?
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
+                        🚀 Get started
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.useYini.getStarted
+                                        .url
+                                }
+                                class={cssClasses}>
+                                <strong>Get Started</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini
+                                        .quickTutorial.url
+                                }
+                                class={cssClasses}>
+                                Quick Tutorial
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
+                        📘 Learn YINI
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini
+                                        .learnYiniFormat.url
+                                }
+                                class={cssClasses}>
+                                Learn the Format
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini
+                                        .cheatSheet.url
+                                }
+                                class={cssClasses}>
+                                Cheat Sheet
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini.examples
+                                        .url
+                                }
+                                class={cssClasses}>
+                                Code Examples
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
+                        📚 References
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a
+                                href={CONFIG.siteLinks.navMenu.refs.spec.url}
+                                class={cssClasses}>
+                                Specification
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="space-y-2">
+                        <li>
+                            <a
+                                href={CONFIG.siteLinks.navMenu.refs.faq.url}
+                                class={cssClasses}>
+                                FAQ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
+                        ℹ️ About
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.metaInfo.about.url
+                                }
+                                class={cssClasses}>
+                                About YINI
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </>
+        )
+    }
+
     if (!isMobile) {
         // "Desktop" View.
         return (
@@ -153,7 +298,8 @@ export default function Header({ isProd }: HeaderProps) {
                 </a>
 
                 <nav>
-                    <NavLinks variant="desktop" />
+                    {/* <NavLinks variant="desktop" /> */}
+                    <NavDesktopTopMenu />
                     {false && isDev && (
                         <button
                             type="button"
@@ -224,7 +370,8 @@ export default function Header({ isProd }: HeaderProps) {
                         id="mobile-nav"
                         className="border-t border-slate-200/60 md:hidden">
                         <nav className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-sm">
-                            <NavLinks variant="mobile" />
+                            {/* <NavLinks variant="mobile" /> */}
+                            {<NavMobilePopupMenu />}
                         </nav>
                     </div>
                 )}

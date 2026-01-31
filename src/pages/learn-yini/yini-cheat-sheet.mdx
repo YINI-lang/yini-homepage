@@ -34,7 +34,7 @@ More structured than INI, less noisy than JSON, and less fragile than YAML.
 | **Inline object (map/dict)** | `{ a: 1, b: 2 }` |
 | **Comment** | `// Default comment` |
 | **Alt. comment** | `# Comment` *(must be `#␠` or `#\t`)*<br/><br/> ❌ `#Missing space before comment start`<br/> ✅ `# This is an OK comment` |
-| **Multi-line (block) comment** | `/* ... */` |
+| **Multi-line (block) comment** | `/* comment */`<br/><br/>`/*`<br/>`  Multi-line`<br/>`  comment`<br/>`*/` |
 | **Full-line comment** | `; This is a full-line comment (only full lines)` |
 | **Disable line** | `--debug = true` |
 

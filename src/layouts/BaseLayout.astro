@@ -2,7 +2,7 @@
 // src/layouts/BaseLayout.astro
 import '../styles/global.css'
 import Footer from '../components/Footer.astro'
-import Header from '../components/Header.tsx'
+import Header from '../components/Header'
 import CONFIG from '../config/conf'
 
 function removeTrailingYINI(title: string): string {
@@ -217,7 +217,7 @@ const isDev = import.meta.env.DEV
         <main class="mx-auto max-w-7xl px-4 py-10">
         <div class="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8">
             
-            <!-- LEFT NAV (desktop only) -->
+            <!-- LEFT NAV menu (desktop only) -->
             <aside class="hidden md:block sticky top-24 self-start">
             <nav class="text-sm text-slate-700 dark:text-slate-300 space-y-6">
                 <style is:inline>
@@ -270,7 +270,7 @@ const isDev = import.meta.env.DEV
                     <li>
                     <a href={CONFIG.siteLinks.navMenu.learnYini.cheatSheet.url}
                         class="sidebar-link">
-                        YINI Cheat Sheet
+                        Cheat Sheet
                     </a>
                     </li>
                     <li>
@@ -391,11 +391,6 @@ const isDev = import.meta.env.DEV
                 a.classList.remove("sidebar-active");
 
                 const isMatch = href && current.startsWith(href);
-                // console.log('----------')
-                // console.log('   href = '+href)
-                // console.log('current = '+current)
-                // console.log('isMatch = '+isMatch)
-                // console.log('----------')
 
                 if (isMatch) {
                     a.classList.add("sidebar-active");
