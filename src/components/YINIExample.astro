@@ -1,9 +1,112 @@
 ---
-// src/components/YINIExample.astro component.
+// src/components/YINIExample.astro
 const { code, title } = Astro.props
 ---
 
-<section>
-    {title && <h3>{title}</h3>}
+<section class="yini-example">
+    <div class="yini-example__header">
+        {title ? <h3 class="yini-example__title">{title}</h3> : <span />}
+
+        <button
+            type="button"
+            class="yini-example__copy"
+            title="Copy example"
+            data-code={code}
+            onclick="copyYiniExample(this)"
+        >
+            📋 Copy
+        </button>
+    </div>
+
     <pre><code class="language-yini">{code}</code></pre>
 </section>
+
+<script is:inline>
+    async function copyYiniExample(btn) {
+        const text = btn?.dataset?.code ?? ''
+        if (!text) return
+
+        try {
+            // Preferred modern API (requires secure context: https or localhost)
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(text)
+            } else {
+                // Fallback for older browsers / blocked clipboard API
+                const ta = document.createElement('textarea')
+                ta.value = text
+                ta.setAttribute('readonly', '')
+                ta.style.position = 'fixed'
+                ta.style.top = '-9999px'
+                document.body.appendChild(ta)
+                ta.select()
+                document.execCommand('copy')
+                document.body.removeChild(ta)
+            }
+
+            // Track event (safe if Plausible not loaded)
+            window.plausible?.('Copy Code Example', {
+                props: { kind: 'yini-example' },
+            })
+
+            // Tiny UI feedback
+            const original = btn.textContent
+            btn.textContent = '✅ Copied!'
+            btn.disabled = true
+            setTimeout(() => {
+                btn.textContent = original
+                btn.disabled = false
+            }, 1000)
+        } catch (err) {
+            console.error('Copy failed:', err)
+            window.plausible?.('Copy Code Example Failed')
+            // Optional: quick fallback feedback
+            btn.textContent = '❌ Failed'
+            setTimeout(() => (btn.textContent = '📋 Copy'), 1000)
+        }
+    }
+</script>
+
+<style>
+    .yini-example__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .yini-example__title {
+        margin: 0; /* Important so it aligns nicely. */
+        font-size: 1.05rem;
+        line-height: 1.2;
+    }
+
+    .yini-example__copy {
+        appearance: none;
+        border: 1px solid rgba(148, 163, 184, 0.6);
+        border-radius: 0.5rem;
+        padding: 0.35rem 0.6rem;
+        margin-right: 2rem;
+        font-size: 0.9rem;
+        line-height: 1;
+        cursor: pointer;
+        background: rgba(15, 23, 42, 0.04);
+    }
+
+    .yini-example__copy:hover {
+        background: rgba(15, 23, 42, 0.08);
+    }
+
+    .yini-example__copy:active {
+        transform: translateY(1px);
+    }
+
+    /* Dark mode (works with your existing .dark class) */
+    .dark .yini-example__copy {
+        border-color: rgba(148, 163, 184, 0.35);
+        background: rgba(248, 250, 252, 0.06);
+    }
+    .dark .yini-example__copy:hover {
+        background: rgba(248, 250, 252, 0.1);
+    }
+</style>
