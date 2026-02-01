@@ -92,6 +92,21 @@ Breaking changes are avoided whenever possible and are **clearly documented** in
 
 Parsers and tooling are supported by **automated tests**, with a long-term goal of maintaining **70–80% test coverage** or higher.
 
+### Q – Why does YINI have both strict and lenient modes?
+YINI itself is just a specification and a text format — it does not “decide” how a file is parsed at runtime.
+
+The idea of strict and lenient modes belongs to parsers and tooling, not to the YINI file itself.
+
+Strict mode means the parser enforces the YINI specification rigorously and fails on any rule violation.
+This is ideal for production systems where correctness and predictability matter most.
+
+Lenient mode allows certain recoverable issues (such as trailing commas or partially written files) to be tolerated, often with warnings.
+This is useful during development, experimentation, migrations, or when working with evolving or hand-edited configs.
+
+The same .yini file can be parsed in either mode — the difference is how strictly the rules are enforced, not how the file is written.
+
+This design keeps the format itself simple and stable, while giving tools the flexibility to adapt to different use cases.
+
 ### Q – Who maintains YINI?
 YINI is created and maintained by Marko K. Seppänen under the **YINI-lang** open-source organization.  
 The project follows a **public specification**, **versioned releases**, and **transparent change tracking**, ensuring long-term clarity and stability.  
