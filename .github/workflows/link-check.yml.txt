@@ -1,0 +1,9 @@
+link-check.yml
+==============
+
+CI: Internal link checker for the docs site.
+
+1) Runs an Astro build to generate dist/
+2) Scans dist/**/*.html for broken internal links and missing anchors
+
+Fails the workflow if any dead links are found.
