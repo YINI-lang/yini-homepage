@@ -39,7 +39,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
             <a href="/playground" class="btn btn-outline"> Open Playground </a>
             -->
 
-            <a href="/yini-code-examples" class="inline-block underline">
+            <a href="/learn-yini/code-examples" class="inline-block underline">
                 View Examples
             </a>
         </div>
@@ -271,13 +271,18 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
             not whitespace.
         </p>
 
-        <h3 class="mt-5">Quick comparison table</h3>
+        <h3 class="mt-5">How YINI compares to other config formats</h3>
         <div style="overflow-x:auto">
+            <p class="mb-2 text-sm text-slate-500">
+                YINI supports both strict and lenient parsing modes, depending
+                on how much enforcement you need.
+            </p>
             <table>
                 <thead>
                     <tr>
                         <th>Feature</th>
-                        <th>YINI</th>
+                        <th>YINI (strict)</th>
+                        <th>YINI (mode)</th>
                         <th>INI</th>
                         <th>JSON</th>
                         <th>YAML</th>
@@ -289,6 +294,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                     <tr>
                         <td>Human-friendly by default</td>
                         <td>✅</td>
+                        <td>✅</td>
                         <td>➖</td>
                         <td>❌</td>
                         <td>✅</td>
@@ -296,6 +302,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                     </tr>
                     <tr>
                         <td>Readability at scale</td>
+                        <td>✅</td>
                         <td>✅</td>
                         <td>❌</td>
                         <td>❌</td>
@@ -305,6 +312,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                     <tr>
                         <td>Predictable parsing</td>
                         <td>✅</td>
+                        <td>➖</td>
                         <td>❌</td>
                         <td>✅</td>
                         <td>❌</td>
@@ -313,6 +321,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                     <tr>
                         <td>Formal grammar / spec</td>
                         <td>✅</td>
+                        <td>✅</td>
                         <td>❌</td>
                         <td>✅</td>
                         <td>❌</td>
@@ -320,6 +329,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                     </tr>
                     <tr>
                         <td>Nested structure</td>
+                        <td>✅</td>
                         <td>✅</td>
                         <td>➖</td>
                         <td>✅</td>
@@ -330,6 +340,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                         <td>Comments</td>
                         <td>✅</td>
                         <td>✅</td>
+                        <td>✅</td>
                         <td>❌</td>
                         <td>✅</td>
                         <td>✅</td>
@@ -338,14 +349,15 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                         <td>Minimal syntax noise</td>
                         <td>✅</td>
                         <td>✅</td>
+                        <td>✅</td>
                         <td>❌</td>
                         <td>➖</td>
                         <td>➖</td>
                     </tr>
 
-                    <!-- Added rows (useful for ad/landing-page visitors) -->
                     <tr>
                         <td>Designed for configuration</td>
+                        <td>✅</td>
                         <td>✅</td>
                         <td>✅</td>
                         <td>➖</td>
@@ -355,6 +367,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                     <tr>
                         <td>Clear error diagnostics</td>
                         <td>✅</td>
+                        <td>➖</td>
                         <td>❌</td>
                         <td>✅</td>
                         <td>❌</td>
@@ -363,6 +376,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                     <tr>
                         <td>Safe for large configs</td>
                         <td>✅</td>
+                        <td>➖</td>
                         <td>❌</td>
                         <td>➖</td>
                         <td>❌</td>
@@ -370,7 +384,44 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                     </tr>
                 </tbody>
             </table>
+
+            <p class="mt-2 text-sm text-slate-500">
+                <strong>Strict</strong> = safety & predictability · <strong
+                    >Lenient</strong
+                > = flexibility & convenience
+            </p>
+            <p class="mt-2 text-sm text-slate-500">
+                ✅ Strong support · ➖ Partial / debated · ❌ Poor or not
+                supported
+            </p>
         </div>
+    </section>
+
+    <section class="pb-4">
+        <h2 class="mt-5">Strict when it matters. Flexible when it helps.</h2>
+
+        <p>YINI supports <strong>two parsing modes</strong>:</p>
+        <ul>
+            <li class="leading-relaxed">
+                <strong>Strict mode</strong> enforces the full specification and
+                fails fast on errors — ideal for production, CI, and validation.
+            </li>
+            <li class="leading-relaxed">
+                <strong>Lenient mode</strong> prioritizes readability and resilience
+                — useful during development, experimentation, or when parsing partial
+                configs.
+            </li>
+        </ul>
+
+        <p>
+            The format itself is fully defined by the YINI specification.<br />
+            <strong>Strict vs lenient is a parser choice</strong>, not a change
+            to the language — the same YINI file works in both modes.
+        </p>
+        <p>
+            This lets YINI stay <strong>human-friendly</strong> without sacrificing
+            <strong>predictability</strong> when correctness matters.
+        </p>
     </section>
 
     <!-- Quick Start -->
@@ -470,7 +521,7 @@ name = "Hello"`}</code></pre>
 
         <p class="mt-2 text-sm">
             New to YINI? Read a short <a
-                href="/intro-yini-config-format"
+                href="/learn-yini/learn-yini-config-format"
                 class="underline">learn the YINI format</a
             >.
         </p>
