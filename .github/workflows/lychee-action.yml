@@ -1,4 +1,4 @@
-name: Dead-link Checker
+name: README.md-Dead-link Checker
 
 on:
     workflow_dispatch:
