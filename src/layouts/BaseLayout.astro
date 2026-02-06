@@ -356,9 +356,17 @@ const isDev = import.meta.env.DEV
         <Footer/>
 
         <script is:inline>
-            function track(eventName, props = {}) {
+            function trackClick(eventName, props = {}) {
+                // Plausible
                 if (window.plausible) {
                     plausible(eventName, { props })
+                }
+
+                // Google Analytics
+                if (typeof gtag === 'function') {
+                    gtag('event', eventName, {
+                        link_location: window.location.pathname
+                    })
                 }
             }
         </script>
@@ -366,7 +374,13 @@ const isDev = import.meta.env.DEV
             document.addEventListener('copy', function () {
                 const selection = document.getSelection()?.toString().trim()
                 if (selection && selection.length > 4) {
-                track('TextCopied', { length: selection.length })
+                    trackClick('TextCopied', { length: selection.length })
+
+                    if (typeof gtag === "function") {
+                        gtag('event', 'copy_code', {
+                            content_length: selection.length
+                        })
+                    }
                 }
             })
         </script>
