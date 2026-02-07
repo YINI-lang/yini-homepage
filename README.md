@@ -4,7 +4,7 @@ This is the official website for YINI. YINI is an INI-inspired and human-readabl
 
 Built with Astro and Tailwind CSS — the site provides an overview of the YINI format, including the specification, guides, and examples.
 
-👉 **Live site**: https://yini-lang.org ↗
+👉 **Live site**: [https://yini-lang.org](https://yini-lang.org/?utm_source=github&utm_medium=referral&utm_campaign=yini_home&utm_content=readme_top) ↗
 
 ## 🧩 Local Development
 ```bash
@@ -26,4 +26,4 @@ Then open http://localhost:4321 in your browser.
 **^YINI ≡**  
 > A structured, human-readable configuration format.  
 
-[yini-lang.org](https://yini-lang.org) · [YINI on GitHub](https://github.com/YINI-lang)  
+[yini-lang.org](https://yini-lang.org/?utm_source=github&utm_medium=referral&utm_campaign=yini_home&utm_content=readme_footer) · [YINI on GitHub](https://github.com/YINI-lang)  
