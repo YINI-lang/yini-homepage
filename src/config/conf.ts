@@ -91,13 +91,13 @@ const CONFIG = {
                         url: '/learn-yini/examples/common',
                         title: 'Common and real-world examples.',
                     },
-                    large: {
-                        url: '/learn-yini/examples/large',
-                        title: 'Large YINI examples.',
-                    },
                     advanced: {
                         url: '/learn-yini/examples/advanced',
                         title: 'Optional syntax, edge cases, and power features.',
+                    },
+                    large: {
+                        url: '/learn-yini/examples/large',
+                        title: 'Large YINI examples.',
                     },
                 },
                 cheatSheet: {

@@ -261,19 +261,13 @@ const isDev = import.meta.env.DEV
                             Quick Tutorial
                         </a>
                     </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.cheatSheet.url}
-                            class="sidebar-link">
-                            Cheat Sheet
-                        </a>
-                    </li>
                 </ul>
                 </div>
 
                 <!-- 2) Learn YINI: Examples (NAV menu) -->
                 <div>
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                    Examples
+                    Code Examples
                 </h3>
                 <ul class="space-y-2">
                     <li>
@@ -292,6 +286,12 @@ const isDev = import.meta.env.DEV
                         <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}
                             class="sidebar-link">
                             Common
+                        </a>
+                    </li>
+                    <li>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.advanced.url}
+                            class="sidebar-link">
+                            Advanced Features
                         </a>
                     </li>
                     <li>
@@ -331,16 +331,22 @@ const isDev = import.meta.env.DEV
                 </h3>
                 <ul class="space-y-2">
                     <li>
-                    <a href={CONFIG.siteLinks.navMenu.refs.spec.url}
-                        class="sidebar-link">
-                        Specification
-                    </a>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.cheatSheet.url}
+                            class="sidebar-link">
+                            Cheat Sheet
+                        </a>
                     </li>
                     <li>
-                    <a href={CONFIG.siteLinks.navMenu.refs.faq.url}
-                        class="sidebar-link">
-                        FAQ
-                    </a>
+                        <a href={CONFIG.siteLinks.navMenu.refs.spec.url}
+                            class="sidebar-link">
+                            Specification
+                        </a>
+                    </li>
+                    <li>
+                        <a href={CONFIG.siteLinks.navMenu.refs.faq.url}
+                            class="sidebar-link">
+                            FAQ
+                        </a>
                     </li>
                 </ul>
                 </div>
@@ -407,6 +413,7 @@ const isDev = import.meta.env.DEV
         </script>
 
         <script is:inline>
+            /*
             function markActiveSidebarLink() {
 
             const current = window.location.pathname.replace(/\/$/, "");
@@ -425,12 +432,48 @@ const isDev = import.meta.env.DEV
                 // Clear previous state
                 a.classList.remove("sidebar-active");
 
-                const isMatch = href && current.startsWith(href);
+                // const isMatch = href && current.startsWith(href);
+                const isMatch =
+                    href === current ||
+                    (href !== "/" && current.startsWith(href + "/"));
 
                 if (isMatch) {
                     a.classList.add("sidebar-active");
                 }
             });
+        }*/
+        function markActiveSidebarLink() {
+            const current = window.location.pathname.replace(/\/$/, "");
+            const links = document.querySelectorAll("aside a.sidebar-link");
+
+            if (!links.length) {
+                setTimeout(markActiveSidebarLink, 50);
+                return;
+            }
+
+            let matched = null;
+
+            // First pass: exact match
+            links.forEach(a => {
+                const href = (a.getAttribute("href") || "").replace(/\/$/, "");
+                if (href === current) {
+                    matched = a;
+                }
+            });
+
+            // Second pass: prefix match (only if nothing exact matched)
+            if (!matched) {
+                links.forEach(a => {
+                    const href = (a.getAttribute("href") || "").replace(/\/$/, "");
+                    if (href !== "/" && current.startsWith(href + "/")) {
+                        matched = a;
+                    }
+                });
+            }
+
+            // Apply active class
+            links.forEach(a => a.classList.remove("sidebar-active"));
+            if (matched) matched.classList.add("sidebar-active");
         }
 
         // Run on first load.
