@@ -2,68 +2,77 @@
 // learn-yini/examples/common.astro
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
-import exampleFile1 from '../../../content/examples/1-web-server-configuration.yini?raw'
-import exampleFile2 from '../../../content/examples/2-user-profile-settings.yini?raw'
-import exampleFile4 from '../../../content/examples/4-build-project-configuration.yini?raw'
+import exampleFile1 from '../../../content/examples/real-world/1-web-server-configuration.yini?raw'
+import exampleFile2 from '../../../content/examples/real-world/2-user-profile-settings.yini?raw'
+import exampleFile4 from '../../../content/examples/real-world/4-build-project-configuration.yini?raw'
+import exampleSimConfig from '../../../content/examples/real-world/sim-config.yini?raw'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout
-    headTitle={'Code Examples: YINI'}
+    headTitle={'Real-world YINI Examples'}
     headDescription={'Real-world examples written in the YINI data format, a human-readable text format for representing structured information.'}
 >
     <section class="mt-8">
-        <h1>Common / Real-world YINI Examples</h1>
-        Below are practical examples written in YINI, a text-based data format, showing
-        how the format handles structure, data types, and readability — without relying
-        on indentation-based syntax.
+        <h1>Common (Real-world) YINI Examples</h1>
+        <p>
+            Below are practical <strong
+                >real-world configuration examples</strong
+            > written in the YINI format, demonstrating how YINI handles structure,
+            data types, and readability — without relying on indentation-based syntax.
+        </p>
 
         <p>
-            <strong>New to YINI format?</strong> See <a
+            <strong>New to YINI?</strong>
+            Start with <a
                 href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
-                >Learn the YINI format</a
+                >Learn the format</a
             >
-        </p><p>
-            <strong>A compact syntax overview:</strong>
-            <a href={CONFIG.siteLinks.secondary.cheatSheet.url}
-                >YINI Cheat Sheet</a
-            >
+            or keep the <a href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                >Cheat Sheet</a
+            > open while reading.
         </p>
 
         <hr />
 
-        <p>
-            💡 <strong>Note:</strong> YINI uses indentation only for human readability.
-            Section markers (^, ^^, ^^^) define the section nesting.
-        </p>
-
-        <h2>More common examples</h2>
+        <h2>Real-world configuration examples</h2>
         <p>
             The following full examples demonstrate how YINI scales from small
             configs to complete real-world setups.
         </p>
 
+        <p>
+            💡 <strong>Note:</strong> YINI uses indentation only for human readability.
+            Section markers (^, ^^, ^^^) define the section nesting.
+        </p>
+        <br />
+
         <YINIExample
-            title="File example 1: Web server configuration (sections, numbers, booleans)"
+            title="Example: Web server configuration (sections, numbers, booleans)"
             code={exampleFile1}
-        />
+        /><br />
         <YINIExample
-            title="File example 2: User profile settings (objects, lists, and comments)"
+            title="Example: User profile settings (objects, lists, and comments)"
             code={exampleFile2}
-        />
+        /><br />
         <YINIExample
-            title="File example 4: Build project configuration (real-world example)"
+            title="Example: Build project configuration (real-world example)"
             code={exampleFile4}
+        /><br />
+        <YINIExample
+            title="Example: Environment configuration (real-world example)"
+            code={exampleSimConfig}
         />
 
-        <b>Want more?</b> See <a
-            href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}
-            >{CONFIG.siteLinks.navMenu.learnYini.examples.large.title}</a
-        >.<br />
-        <b>Or more down to earth examples?</b> See <a
-            href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
-            >{CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}</a
-        >.
+        <p class="mt-10">
+            <strong>Explore more examples:</strong><br />
+            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}
+            </a> — short introductory examples<br />
+            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.large.title}
+            </a> — full-scale configurations
+        </p>
 
         <hr />
 

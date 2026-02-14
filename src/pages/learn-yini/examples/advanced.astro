@@ -2,26 +2,40 @@
 // learn-yini/examples/advanced.astro
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
-import exampleFile3 from '../../../content/examples/3-cli-application-options.yini?raw'
-import exampleFile5 from '../../../content/examples/5-database-connection.yini?raw'
-import exampleFile6 from '../../../content/examples/6-feature-flags-example.yini?raw'
-import exampleFile7 from '../../../content/examples/7-email-smtp-configuration.yini?raw'
+import exampleFile3 from '../../../content/examples/advanced/3-cli-application-options.yini?raw'
+import exampleFile5 from '../../../content/examples/advanced/5-database-connection.yini?raw'
+import exampleFile6 from '../../../content/examples/advanced/6-feature-flags-example.yini?raw'
+import exampleFile7 from '../../../content/examples/advanced/7-email-smtp-configuration.yini?raw'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout
     headTitle={'Advanced Examples: YINI'}
-    headDescription={'Advanced code examples with optional syntax, edge cases, and power features in the YINI data format (text-based).'}
+    headDescription={'Advanced YINI configuration examples demonstrating optional syntax, edge cases, and production-level configuration patterns.'}
 >
     <section aria-labelledby="alt-formats" class="mt-8">
         <h1>Advanced YINI Code Examples</h1>
+        <p class="text-sm text-slate-500">
+            Level: Advanced / Optional features
+        </p>
 
-        ⚠️ <strong>Note:</strong> These examples demonstrate optional syntax, edge
-        cases, and advanced features. You do <b>not</b>
-        need any of these features to use YINI effectively. If you're new to YINI,
-        start with the basic examples or the <a href="/get-started"
-            >Get Started</a
-        > guide.
+        <p>
+            These examples show how YINI supports more advanced configuration
+            scenarios beyond everyday usage, including optional syntax features,
+            extended value formats, and production-level setups.
+        </p>
+
+        <p>
+            ⚠️ <strong>Note:</strong> These examples demonstrate optional syntax,
+            edge cases, and advanced capabilities. You do <strong>not</strong> need
+            these features to use YINI effectively. If you're new to YINI, start
+            with the
+            <a href={CONFIG.siteLinks.hero.getStarted.url}>Get Started</a>
+            guide or the
+            <a href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
+                >Basic examples</a
+            >.
+        </p>
 
         <p>
             See everyday <a href={CONFIG.siteLinks.hero.examples.url}
@@ -30,30 +44,31 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         </p>
 
         <YINIExample
-            title="File example 3: cli-application-options.yini"
+            title="Example: CLI application options"
             code={exampleFile3}
         />
         <YINIExample
-            title="File example 5: database-connection"
+            title="Example: Database connection configuration"
             code={exampleFile5}
         />
         <YINIExample
-            title="File example 6: feature-flags-example.yini"
+            title="Example: Feature flags configuration"
             code={exampleFile6}
         />
         <YINIExample
-            title="File example 7: email-smtp-configuration"
+            title="Example: Email SMTP configuration"
             code={exampleFile7}
         />
 
-        <b>Want more?</b> See <a
-            href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}
-            >{CONFIG.siteLinks.navMenu.learnYini.examples.common.title}</a
-        >.<br />
-        <b>Or more down to earth examples?</b> See <a
-            href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
-            >{CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}</a
-        >.
+        <p>
+            <strong>Looking for everyday examples?</strong><br />
+            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.common.title}
+            </a><br />
+            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}
+            </a>
+        </p>
 
         <hr />
 

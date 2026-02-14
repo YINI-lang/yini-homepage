@@ -2,55 +2,59 @@
 // learn-yini/examples/large.astro
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
-import exampleFile1 from '../../../content/examples/1-web-server-configuration.yini?raw'
-import exampleFile2 from '../../../content/examples/2-user-profile-settings.yini?raw'
-import exampleFile4 from '../../../content/examples/4-build-project-configuration.yini?raw'
-import exampleBasic from '../../../content/examples/basic/basic.yini?raw'
-import exampleComments from '../../../content/examples/basic/comments.yini?raw'
-import exampleListAndObjects from '../../../content/examples/general/lists-and-objects.yini?raw'
-import exampleNumbers from '../../../content/examples/general/number-formats.yini?raw'
-import exampleNestingStyle1 from '../../../content/examples/indentation/indent-ex-conf1.yini?raw'
-import exampleNestingStyle2 from '../../../content/examples/indentation/indent-ex-conf2.yini?raw'
-import exampleNestingStyle3 from '../../../content/examples/indentation/indent-ex-conf3.yini?raw'
-import exampleNestedStructured from '../../../content/examples/structure/nested-and-structured.yini?raw'
+import exampleLarge1 from '../../../content/examples/large-smoke-fixtures/a-corporate-saas-platform.smoke.yini?raw'
+import exampleLarge2 from '../../../content/examples/large-smoke-fixtures/b-high-security-distributed-control-system.smoke.yini?raw'
 import exampleNestedSections from '../../../content/examples/structure/nested-sections.yini?raw'
 import exampleSections from '../../../content/examples/structure/sections.yini?raw'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout
-    headTitle={'Code Examples: YINI'}
-    headDescription={'Real-world examples written in the YINI data format, a human-readable text format for representing structured information.'}
+    headTitle={'Large Code Examples: YINI'}
+    headDescription={'Large configuration examples written in the YINI format, demonstrating scalable structure, nested sections, and complex configuration layouts.'}
 >
     <section class="mt-8">
         <h1>Large Examples</h1>
-        Below are practical examples written in YINI, a text-based data format, showing
-        how the format handles structure, data types, and readability — without relying
-        on indentation-based syntax.
-
         <p>
-            <strong>New to YINI format?</strong> See <a
-                href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
-                >Learn the YINI format</a
-            >
-        </p><p>
-            <strong>A compact syntax overview:</strong>
-            <a href={CONFIG.siteLinks.secondary.cheatSheet.url}
-                >YINI Cheat Sheet</a
-            >
+            These examples demonstrate how <strong
+                >YINI scales to large configurations</strong
+            >, including multi-service systems, enterprise-grade setups, and
+            deeply nested structures — while remaining readable and predictable.
         </p>
 
         <hr />
 
+        <p>
+            <strong>New to YINI?</strong>
+            Start with <a
+                href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                >Learn the format</a
+            >
+            or keep the <a href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                >Cheat Sheet</a
+            > open while reading.
+        </p>
         <p>
             💡 <strong>Note:</strong> YINI uses indentation only for human readability.
             Section markers (^, ^^, ^^^) define the section nesting.
         </p>
 
         <hr />
-        <h2>Section examples</h2>
-        <YINIExample title="Sections" code={exampleSections} />
-        <YINIExample title="Nested sections" code={exampleNestedSections} />
+        <h2>Large configurations</h2>
+        <p>
+            Each example below is a complete configuration file intended to show
+            how YINI remains easy to read even when configuration size grows
+            significantly.
+        </p>
+
+        <YINIExample
+            title="Corporate SaaS platform configuration"
+            code={exampleLarge1}
+        />
+        <YINIExample
+            title="High-security distributed control system configuration"
+            code={exampleLarge2}
+        />
 
         <b>Want more?</b> See <a
             href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}

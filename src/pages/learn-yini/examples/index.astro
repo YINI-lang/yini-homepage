@@ -2,32 +2,36 @@
 // learn-yini/examples/basic.astro
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
-import exampleBasic from '../../../content/examples/basic/basic.yini?raw'
-import exampleComments from '../../../content/examples/basic/comments.yini?raw'
-import exampleListAndObjects from '../../../content/examples/general/lists-and-objects.yini?raw'
-import exampleNumbers from '../../../content/examples/general/number-formats.yini?raw'
-import exampleNestingStyle1 from '../../../content/examples/indentation/indent-ex-conf1.yini?raw'
-import exampleNestingStyle2 from '../../../content/examples/indentation/indent-ex-conf2.yini?raw'
-import exampleNestingStyle3 from '../../../content/examples/indentation/indent-ex-conf3.yini?raw'
-import exampleNestedStructured from '../../../content/examples/structure/nested-and-structured.yini?raw'
-import exampleNestedSections from '../../../content/examples/structure/nested-sections.yini?raw'
-import exampleSections from '../../../content/examples/structure/sections.yini?raw'
+import exampleHelloWorld from '../../../content/examples/basic/hello-world.yini?raw'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout
     headTitle={'Code Examples: YINI'}
-    headDescription={'Real-world examples written in the YINI data format, a human-readable text format for representing structured information.'}
+    headDescription={'Practical YINI configuration examples, from simple configs to advanced structured data examples.'}
 >
     <section class="mt-8">
         <h1>YINI Code Examples</h1>
+        <p class="text-slate-600">
+            Minimal, real-world, and advanced configuration examples in the YINI
+            format.
+        </p>
+        <p>
+            Explore practical configuration examples written in the
+            <strong>YINI configuration format</strong>, ranging from simple
+            beginner-friendly examples to larger real-world configurations.
+        </p>
 
+        <h2>Start with a quick/minimal example</h2>
+        <YINIExample title="Hello world" code={exampleHelloWorld} />
+
+        <h2>Browse examples</h2>
         <section>
             <ul>
                 <li>
                     <a
                         href={CONFIG.siteLinks.navMenu.learnYini.examples.basic
-                            .url}>Basic examples</a
+                            .url}>Core & basic examples</a
                     ><br />
                     <em
                         >{
@@ -36,10 +40,11 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                         }</em
                     >
                 </li>
+
                 <li>
                     <a
                         href={CONFIG.siteLinks.navMenu.learnYini.examples.common
-                            .url}>Common real-life examples</a
+                            .url}>Common real-world examples</a
                     ><br />
                     <em
                         >{
@@ -48,10 +53,11 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                         }</em
                     >
                 </li>
+
                 <li>
                     <a
                         href={CONFIG.siteLinks.navMenu.learnYini.examples
-                            .advanced.url}>Advanced Features (optional)</a
+                            .advanced.url}>Advanced features (optional)</a
                     ><br />
                     <em
                         >{
@@ -60,6 +66,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                         }</em
                     >
                 </li>
+
                 <li>
                     <a
                         href={CONFIG.siteLinks.navMenu.learnYini.examples.large
@@ -84,15 +91,21 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                     ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
                         >Get Started</a
                     ><br />
-                    <em>Learn how to install and use YINI.</em>
+                    <em>Install the CLI and create your first YINI file.</em>
                 </li>
                 <li>
                     ➡️ <a href={CONFIG.siteLinks.hero.tutorial.url}
                         >Quick Tutorial</a
                     ><br />
-                    <em>A 5-minute guided walkthrough of YINI basics.</em>
+                    <em>A 5-minute walkthrough of the core YINI concepts.</em>
                 </li>
             </ul>
         </section>
+
+        <p class="mt-10">
+            New to YINI? Start with the <a
+                href={CONFIG.siteLinks.hero.tutorial.url}>5-minute tutorial</a
+            >.
+        </p>
     </section>
 </BaseLayout>

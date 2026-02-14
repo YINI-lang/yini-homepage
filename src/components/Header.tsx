@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import CONFIG from '../config/conf'
 
+/*
+    NOTE:
+    This mobile menu should be **task-driven**, not category-driven.
+
+    This menu ordering follows developer onboarding psychology:
+    1. What is this?
+    2. Try it
+    3. Show examples
+    4. Learn deeper
+    5. Reference docs
+*/
+
 type HeaderProps = {
     isProd: boolean
 }
@@ -142,7 +154,13 @@ export default function Header({ isProd }: HeaderProps) {
         This menu is adapted for mobile view:
         - More users are new, curious, or returning for a quick thing.
         - Fewer items visible at once.
-        
+
+        Typically, on mobile:
+        Users are trying to do ONE of three things:
+          1. Understand what this is
+          2. Try it quickly
+          3. See examples
+
         (!) Not to overload the user and view with links and info.
      */
     // const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
@@ -153,35 +171,45 @@ export default function Header({ isProd }: HeaderProps) {
         return (
             <>
                 <div>
-                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
+                    <h3 className="my-2 font-semibold text-slate-500">
                         🧭 Start here
                     </h3>
-                    <ul class="space-y-2">
+                    <ul className="space-y-2">
                         <li>
                             <a
                                 href={
                                     CONFIG.siteLinks.navMenu.intro
                                         .whatIsYINIAndWhy.url
                                 }
-                                class={cssClasses}>
+                                className={cssClasses}>
                                 What is YINI & Why?
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini
+                                        .learnYiniFormat.url
+                                }
+                                className={cssClasses}>
+                                Learn the Format
                             </a>
                         </li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
-                        🚀 Get started
+                    <h3 className="my-2 font-semibold text-slate-500">
+                        🚀 Try YINI
                     </h3>
-                    <ul class="space-y-2">
+                    <ul className="space-y-2">
                         <li>
                             <a
                                 href={
                                     CONFIG.siteLinks.navMenu.useYini.getStarted
                                         .url
                                 }
-                                class={cssClasses}>
+                                className={cssClasses}>
                                 <strong>Get Started</strong>
                             </a>
                         </li>
@@ -191,7 +219,7 @@ export default function Header({ isProd }: HeaderProps) {
                                     CONFIG.siteLinks.navMenu.learnYini
                                         .quickTutorial.url
                                 }
-                                class={cssClasses}>
+                                className={cssClasses}>
                                 Quick Tutorial
                             </a>
                         </li>
@@ -199,61 +227,86 @@ export default function Header({ isProd }: HeaderProps) {
                 </div>
 
                 <div>
-                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
-                        📘 Learn YINI
+                    <h3 className="my-2 font-semibold text-slate-500">
+                        🧪 Examples
                     </h3>
-                    <ul class="space-y-2">
+                    <ul className="space-y-2">
                         <li>
                             <a
                                 href={
-                                    CONFIG.siteLinks.navMenu.learnYini
-                                        .learnYiniFormat.url
+                                    CONFIG.siteLinks.navMenu.learnYini.examples
+                                        .basic.url
                                 }
-                                class={cssClasses}>
-                                Learn the Format
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href={
-                                    CONFIG.siteLinks.navMenu.learnYini
-                                        .cheatSheet.url
-                                }
-                                class={cssClasses}>
-                                Cheat Sheet
+                                className={cssClasses}>
+                                Core & Basic Examples
                             </a>
                         </li>
                         <li>
                             <a
                                 href={
                                     CONFIG.siteLinks.navMenu.learnYini.examples
-                                        .url
+                                        .common.url
                                 }
-                                class={cssClasses}>
-                                Code Examples
+                                className={cssClasses}>
+                                Real-world Examples
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini.examples
+                                        .large.url
+                                }
+                                className={cssClasses}>
+                                Large Examples
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini.examples
+                                        .advanced.url
+                                }
+                                className={cssClasses}>
+                                Advanced (optional)
                             </a>
                         </li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
-                        📚 References
+                    <h3 className="my-2 font-semibold text-slate-500">
+                        📘 Learn
                     </h3>
-                    <ul class="space-y-2">
+                    <ul className="space-y-2">
                         <li>
                             <a
-                                href={CONFIG.siteLinks.navMenu.refs.spec.url}
-                                class={cssClasses}>
-                                Specification
+                                href={
+                                    CONFIG.siteLinks.navMenu.refs.cheatSheet.url
+                                }
+                                className={cssClasses}>
+                                Cheat Sheet
                             </a>
                         </li>
                     </ul>
-                    <ul class="space-y-2">
+                </div>
+
+                <div>
+                    <h3 className="my-2 font-semibold text-slate-500">
+                        📚 Docs
+                    </h3>
+                    <ul className="space-y-2">
+                        <li>
+                            <a
+                                href={CONFIG.siteLinks.navMenu.refs.spec.url}
+                                className={cssClasses}>
+                                Specification
+                            </a>
+                        </li>
                         <li>
                             <a
                                 href={CONFIG.siteLinks.navMenu.refs.faq.url}
-                                class={cssClasses}>
+                                className={cssClasses}>
                                 FAQ
                             </a>
                         </li>
@@ -261,16 +314,33 @@ export default function Header({ isProd }: HeaderProps) {
                 </div>
 
                 <div>
-                    <h3 class="my-2 font-semibold text-slate-500 dark:text-slate-500">
+                    <h3 className="my-2 font-semibold text-slate-500">
+                        ⭐ Project
+                    </h3>
+                    <ul className="space-y-2">
+                        <li>
+                            <a
+                                href={CONFIG.urls.external.gitHub.yiniOrg}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={cssClasses}>
+                                GitHub ↗
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 className="my-2 font-semibold text-slate-500">
                         ℹ️ About
                     </h3>
-                    <ul class="space-y-2">
+                    <ul className="space-y-2">
                         <li>
                             <a
                                 href={
                                     CONFIG.siteLinks.navMenu.metaInfo.about.url
                                 }
-                                class={cssClasses}>
+                                className={cssClasses}>
                                 About YINI
                             </a>
                         </li>

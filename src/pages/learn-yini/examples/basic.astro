@@ -2,7 +2,9 @@
 // learn-yini/examples/basic.astro
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
-import exampleBasic from '../../../content/examples/basic/basic.yini?raw'
+import exampleBasic1 from '../../../content/examples/basic/basic1.yini?raw'
+import exampleBasic2 from '../../../content/examples/basic/basic2.yini?raw'
+import exampleBasic3 from '../../../content/examples/basic/basic3.yini?raw'
 import exampleComments from '../../../content/examples/basic/comments.yini?raw'
 import exampleListAndObjects from '../../../content/examples/general/lists-and-objects.yini?raw'
 import exampleNumbers from '../../../content/examples/general/number-formats.yini?raw'
@@ -16,35 +18,43 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout
-    headTitle={'Code Examples: YINI'}
+    headTitle={'Core & Basic Examples: YINI'}
     headDescription={'Real-world examples written in the YINI data format, a human-readable text format for representing structured information.'}
 >
     <section class="mt-8">
-        <h1>Basic Examples</h1>
-        Below are practical examples written in YINI, a text-based data format, showing
-        how the format handles structure, data types, and readability — without relying
-        on indentation-based syntax.
+        <h1>Core & Basic Examples</h1>
+        <p>
+            Below are practical examples written in the <strong
+                >YINI configuration format</strong
+            >, showing how YINI handles structure, data types, and readability —
+            without relying on indentation-based syntax.
+        </p>
 
         <p>
-            <strong>New to YINI format?</strong> See <a
+            <strong>New to YINI?</strong>
+            Start with <a
                 href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
-                >Learn the YINI format</a
+                >Learn the format</a
             >
-        </p><p>
-            <strong>A compact syntax overview:</strong>
-            <a href={CONFIG.siteLinks.secondary.cheatSheet.url}
-                >YINI Cheat Sheet</a
-            >
+            or keep the <a href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                >Cheat Sheet</a
+            > open while reading.
         </p>
 
         <hr />
 
-        <p>
+        <p class="text-slate-600">
+            Start with these minimal examples to understand the core syntax.
+        </p>
+
+        <h2>Basic and quick examples</h2>
+        <YINIExample title="Basic example 1" code={exampleBasic1} />
+        <p class="mt-10 mb-10">
             💡 <strong>Note:</strong> YINI uses indentation only for human readability.
             Section markers (^, ^^, ^^^) define the section nesting.
         </p>
-
-        <YINIExample title="Basic example" code={exampleBasic} />
+        <YINIExample title="Basic example 2" code={exampleBasic2} />
+        <YINIExample title="Basic example 3" code={exampleBasic3} />
 
         <hr />
         <h2>Section examples</h2>
@@ -78,21 +88,22 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <YINIExample title="Lists and objects" code={exampleListAndObjects} />
 
         <hr />
-        <h2>Numbers and nesting</h2>
+        <h2>Numbers and structured nesting</h2>
         <YINIExample title="Number formats" code={exampleNumbers} />
         <YINIExample
             title="Nested and structured"
             code={exampleNestedStructured}
         />
 
-        <b>Want more?</b> See <a
-            href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}
-            >{CONFIG.siteLinks.navMenu.learnYini.examples.common.title}</a
-        >.<br />
-        <b>Or very large examples?</b> See <a
-            href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}
-            >{CONFIG.siteLinks.navMenu.learnYini.examples.large.title}</a
-        >.
+        <p class="mt-10">
+            <strong>Continue exploring:</strong><br />
+            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.common.title}
+            </a><br />
+            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.large.title}
+            </a>
+        </p>
 
         <hr />
 

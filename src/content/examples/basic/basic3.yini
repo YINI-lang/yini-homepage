@@ -1,6 +1,7 @@
-// A small, practical YINI config.
+/*
+    YINI config.
+*/
 
-// The App section starts here
 ^ App
 name = "Demo App"
 version = 1.2

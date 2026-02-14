@@ -1,0 +1,12 @@
+// A small, practical YINI config.
+
+// The App section starts here
+^ App
+name = "Nebula"
+environment = "production"
+
+    // Another section (sub-section of App)
+    ^^ Network
+    bindAddress = "127.0.0.1"
+    bindPort = 8080
+    allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
