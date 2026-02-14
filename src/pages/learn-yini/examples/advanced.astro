@@ -1,5 +1,5 @@
 ---
-// yini-advanced-examples.astro
+// learn-yini/examples/advanced.astro
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
 import exampleFile3 from '../../../content/examples/3-cli-application-options.yini?raw'
@@ -45,6 +45,15 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
             title="File example 7: email-smtp-configuration"
             code={exampleFile7}
         />
+
+        <b>Want more?</b> See <a
+            href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}
+            >{CONFIG.siteLinks.navMenu.learnYini.examples.common.title}</a
+        >.<br />
+        <b>Or more down to earth examples?</b> See <a
+            href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
+            >{CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}</a
+        >.
 
         <hr />
 

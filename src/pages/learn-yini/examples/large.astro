@@ -1,7 +1,10 @@
 ---
-// learn-yini/examples/basic.astro
+// learn-yini/examples/large.astro
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
+import exampleFile1 from '../../../content/examples/1-web-server-configuration.yini?raw'
+import exampleFile2 from '../../../content/examples/2-user-profile-settings.yini?raw'
+import exampleFile4 from '../../../content/examples/4-build-project-configuration.yini?raw'
 import exampleBasic from '../../../content/examples/basic/basic.yini?raw'
 import exampleComments from '../../../content/examples/basic/comments.yini?raw'
 import exampleListAndObjects from '../../../content/examples/general/lists-and-objects.yini?raw'
@@ -21,48 +24,42 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 >
     <section class="mt-8">
         <h1>YINI Code Examples</h1>
+        Below are practical examples written in YINI, a text-based data format, showing
+        how the format handles structure, data types, and readability — without relying
+        on indentation-based syntax.
 
-        <section>
-            <h2>YINI Code Examples</h2>
-            <ul>
-                <li>
-                    ➡️ <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.basic
-                            .url}>Basic Examples</a
-                    ><br />
-                    <em
-                        >{
-                            CONFIG.siteLinks.navMenu.learnYini.examples.basic
-                                .title
-                        }</em
-                    >
-                </li>
-                <li>
-                    ➡️ <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.common
-                            .url}>Common / Real-life Examples</a
-                    ><br />
-                    <em
-                        >{
-                            CONFIG.siteLinks.navMenu.learnYini.examples.common
-                                .title
-                        }</em
-                    >
-                </li>
-                <li>
-                    ➡️ <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.large
-                            .url}>Large Examples</a
-                    ><br />
-                    <em
-                        >{
-                            CONFIG.siteLinks.navMenu.learnYini.examples.large
-                                .title
-                        }</em
-                    >
-                </li>
-            </ul>
-        </section>
+        <p>
+            <strong>New to YINI format?</strong> See <a
+                href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                >Learn the YINI format</a
+            >
+        </p><p>
+            <strong>A compact syntax overview:</strong>
+            <a href={CONFIG.siteLinks.secondary.cheatSheet.url}
+                >YINI Cheat Sheet</a
+            >
+        </p>
+
+        <hr />
+
+        <p>
+            💡 <strong>Note:</strong> YINI uses indentation only for human readability.
+            Section markers (^, ^^, ^^^) define the section nesting.
+        </p>
+
+        <hr />
+        <h2>Section examples</h2>
+        <YINIExample title="Sections" code={exampleSections} />
+        <YINIExample title="Nested sections" code={exampleNestedSections} />
+
+        <b>Want more?</b> See <a
+            href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}
+            >{CONFIG.siteLinks.navMenu.learnYini.examples.common.title}</a
+        >.<br />
+        <b>Or more down to earth examples?</b> See <a
+            href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
+            >{CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}</a
+        >.
 
         <hr />
 

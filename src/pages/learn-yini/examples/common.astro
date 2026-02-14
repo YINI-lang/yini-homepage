@@ -1,0 +1,88 @@
+---
+// learn-yini/examples/common.astro
+import YINIExample from '../../../components/YINIExample.astro'
+import CONFIG from '../../../config/conf'
+import exampleFile1 from '../../../content/examples/1-web-server-configuration.yini?raw'
+import exampleFile2 from '../../../content/examples/2-user-profile-settings.yini?raw'
+import exampleFile4 from '../../../content/examples/4-build-project-configuration.yini?raw'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Code Examples: YINI'}
+    headDescription={'Real-world examples written in the YINI data format, a human-readable text format for representing structured information.'}
+>
+    <section class="mt-8">
+        <h1>Common / Real-world YINI Examples</h1>
+        Below are practical examples written in YINI, a text-based data format, showing
+        how the format handles structure, data types, and readability — without relying
+        on indentation-based syntax.
+
+        <p>
+            <strong>New to YINI format?</strong> See <a
+                href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                >Learn the YINI format</a
+            >
+        </p><p>
+            <strong>A compact syntax overview:</strong>
+            <a href={CONFIG.siteLinks.secondary.cheatSheet.url}
+                >YINI Cheat Sheet</a
+            >
+        </p>
+
+        <hr />
+
+        <p>
+            💡 <strong>Note:</strong> YINI uses indentation only for human readability.
+            Section markers (^, ^^, ^^^) define the section nesting.
+        </p>
+
+        <h2>More common examples</h2>
+        <p>
+            The following full examples demonstrate how YINI scales from small
+            configs to complete real-world setups.
+        </p>
+
+        <YINIExample
+            title="File example 1: Web server configuration (sections, numbers, booleans)"
+            code={exampleFile1}
+        />
+        <YINIExample
+            title="File example 2: User profile settings (objects, lists, and comments)"
+            code={exampleFile2}
+        />
+        <YINIExample
+            title="File example 4: Build project configuration (real-world example)"
+            code={exampleFile4}
+        />
+
+        <b>Want more?</b> See <a
+            href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}
+            >{CONFIG.siteLinks.navMenu.learnYini.examples.large.title}</a
+        >.<br />
+        <b>Or more down to earth examples?</b> See <a
+            href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
+            >{CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}</a
+        >.
+
+        <hr />
+
+        <section>
+            <h2>Next steps</h2>
+            <ul>
+                <li>
+                    ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
+                        >Get Started</a
+                    ><br />
+                    <em>Learn how to install and use YINI.</em>
+                </li>
+                <li>
+                    ➡️ <a href={CONFIG.siteLinks.hero.tutorial.url}
+                        >Quick Tutorial</a
+                    ><br />
+                    <em>A 5-minute guided walkthrough of YINI basics.</em>
+                </li>
+            </ul>
+        </section>
+    </section>
+</BaseLayout>

@@ -79,16 +79,30 @@ const CONFIG = {
                     title: 'A 5-minute guided walkthrough of YINI.',
                 },
                 examples: {
-                    url: '/learn-yini/examples/',
-                    title: 'Practical YINI configuration examples.',
+                    index: {
+                        url: '/learn-yini/examples/',
+                        title: 'Practical YINI configuration examples.',
+                    },
+                    basic: {
+                        url: '/learn-yini/examples/basic',
+                        title: 'Practical YINI configuration examples.',
+                    },
+                    common: {
+                        url: '/learn-yini/examples/common',
+                        title: 'Common and real-world examples.',
+                    },
+                    large: {
+                        url: '/learn-yini/examples/large',
+                        title: 'Large YINI examples.',
+                    },
+                    advanced: {
+                        url: '/learn-yini/examples/advanced',
+                        title: 'Optional syntax, edge cases, and power features.',
+                    },
                 },
                 cheatSheet: {
                     url: '/learn-yini/yini-cheat-sheet',
                     title: 'A quick reference for writing clean, readable YINI configuration files.',
-                },
-                advancedExamples: {
-                    url: '/learn-yini/examples/advanced',
-                    title: 'Optional syntax, edge cases, and power features.',
                 },
             },
             useYini: {
