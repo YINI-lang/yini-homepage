@@ -23,12 +23,11 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <h1>YINI Code Examples</h1>
 
         <section>
-            <h2>YINI Code Examples</h2>
             <ul>
                 <li>
-                    ➡️ <a
+                    <a
                         href={CONFIG.siteLinks.navMenu.learnYini.examples.basic
-                            .url}>Basic Examples</a
+                            .url}>Basic examples</a
                     ><br />
                     <em
                         >{
@@ -38,9 +37,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                     >
                 </li>
                 <li>
-                    ➡️ <a
+                    <a
                         href={CONFIG.siteLinks.navMenu.learnYini.examples.common
-                            .url}>Common / Real-life Examples</a
+                            .url}>Common real-life examples</a
                     ><br />
                     <em
                         >{
@@ -50,13 +49,25 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                     >
                 </li>
                 <li>
-                    ➡️ <a
+                    <a
                         href={CONFIG.siteLinks.navMenu.learnYini.examples.large
-                            .url}>Large Examples</a
+                            .url}>Large examples</a
                     ><br />
                     <em
                         >{
                             CONFIG.siteLinks.navMenu.learnYini.examples.large
+                                .title
+                        }</em
+                    >
+                </li>
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples
+                            .advanced.url}>OPTIONAL: Advanced examples</a
+                    ><br />
+                    <em
+                        >{
+                            CONFIG.siteLinks.navMenu.learnYini.examples.advanced
                                 .title
                         }</em
                     >
