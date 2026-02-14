@@ -49,7 +49,7 @@ const CONFIG = {
                 title: 'A 5-minute guided walkthrough of YINI.',
             },
             examples: {
-                url: '/learn-yini/code-examples',
+                url: '/learn-yini/examples/',
                 title: 'Practical YINI configuration examples.',
             },
             spec: {
@@ -79,7 +79,7 @@ const CONFIG = {
                     title: 'A 5-minute guided walkthrough of YINI.',
                 },
                 examples: {
-                    url: '/learn-yini/code-examples',
+                    url: '/learn-yini/examples/',
                     title: 'Practical YINI configuration examples.',
                 },
                 cheatSheet: {
@@ -87,7 +87,7 @@ const CONFIG = {
                     title: 'A quick reference for writing clean, readable YINI configuration files.',
                 },
                 advancedExamples: {
-                    url: '/learn-yini/yini-advanced-examples',
+                    url: '/learn-yini/examples/advanced',
                     title: 'Optional syntax, edge cases, and power features.',
                 },
             },
@@ -133,7 +133,7 @@ const CONFIG = {
                 title: 'Get YINI parsers, tools, and related implementations across different languages and platforms.',
             },
             advancedExamples: {
-                url: '/learn-yini/yini-advanced-examples',
+                url: '/learn-yini/examples/advanced',
                 title: 'These examples show optional syntax, edge cases, and power features.',
             },
             about: { url: '/info/about-yini', title: "Who's behind YINI" },
