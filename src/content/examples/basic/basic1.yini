@@ -1,0 +1,10 @@
+// YINI config with lists and objects.
+
+^ App
+name = "Nebula"
+features = ["search", "dark-mode"]
+
+^ Server
+host = "0.0.0.0"
+port = 8080
+limits = { rpm: 1200, burst: 60 }

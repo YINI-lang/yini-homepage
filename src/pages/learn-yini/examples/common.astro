@@ -1,0 +1,97 @@
+---
+// learn-yini/examples/common.astro
+import YINIExample from '../../../components/YINIExample.astro'
+import CONFIG from '../../../config/conf'
+import exampleFile1 from '../../../content/examples/real-world/1-web-server-configuration.yini?raw'
+import exampleFile2 from '../../../content/examples/real-world/2-user-profile-settings.yini?raw'
+import exampleFile4 from '../../../content/examples/real-world/4-build-project-configuration.yini?raw'
+import exampleSimConfig from '../../../content/examples/real-world/sim-config.yini?raw'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Real-world YINI Examples'}
+    headDescription={'Real-world examples written in the YINI data format, a human-readable text format for representing structured information.'}
+>
+    <section class="mt-8">
+        <h1>Common (Real-world) YINI Examples</h1>
+        <p>
+            Below are practical <strong
+                >real-world configuration examples</strong
+            > written in the YINI format, demonstrating how YINI handles structure,
+            data types, and readability — without relying on indentation-based syntax.
+        </p>
+
+        <p>
+            <strong>New to YINI?</strong>
+            Start with <a
+                href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                >Learn the format</a
+            >
+            or keep the <a href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                >Cheat Sheet</a
+            > open while reading.
+        </p>
+
+        <hr />
+
+        <h2>Real-world configuration examples</h2>
+        <p>
+            The following full examples demonstrate how YINI scales from small
+            configs to complete real-world setups.
+        </p>
+
+        <p>
+            💡 <strong>Note:</strong> YINI uses indentation only for human readability.
+            Section markers (^, ^^, ^^^) define the section nesting.
+        </p>
+        <br />
+
+        <YINIExample
+            title="Example: Web server configuration (sections, numbers, booleans)"
+            code={exampleFile1}
+        /><br />
+        <YINIExample
+            title="Example: User profile settings (objects, lists, and comments)"
+            code={exampleFile2}
+        /><br />
+        <YINIExample
+            title="Example: Build project configuration (real-world example)"
+            code={exampleFile4}
+        /><br />
+        <YINIExample
+            title="Example: Environment configuration (real-world example)"
+            code={exampleSimConfig}
+        />
+
+        <p class="mt-10">
+            <strong>Explore more examples:</strong><br />
+            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}
+            </a> — short introductory examples<br />
+            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.large.title}
+            </a> — full-scale configurations
+        </p>
+
+        <hr />
+
+        <section>
+            <h2>Next steps</h2>
+            <ul>
+                <li>
+                    ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
+                        >Get Started</a
+                    ><br />
+                    <em>Learn how to install and use YINI.</em>
+                </li>
+                <li>
+                    ➡️ <a href={CONFIG.siteLinks.hero.tutorial.url}
+                        >Quick Tutorial</a
+                    ><br />
+                    <em>A 5-minute guided walkthrough of YINI basics.</em>
+                </li>
+            </ul>
+        </section>
+    </section>
+</BaseLayout>

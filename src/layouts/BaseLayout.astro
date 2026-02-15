@@ -218,17 +218,18 @@ const isDev = import.meta.env.DEV
         <div class="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8">
             
             <!-- LEFT NAV menu (desktop only) -->
-            <aside class="hidden md:block sticky top-24 self-start">
-            <nav class="text-sm text-slate-700 dark:text-slate-300 space-y-6">
+            <aside class="hidden md:block sticky top-24 self-start
+              max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
+            <nav class="text-sm text-slate-700 dark:text-slate-300 space-y-6 mb-6">
                 <style is:inline>
                     .sidebar-link {
                         @apply text-slate-700 dark:text-slate-300 hover:text-sky-500;
                     }
                 </style>
 
-                <!-- 1) Understanding YINI -->
+                <!-- 1) Understanding YINI (NAV menu) -->
                 <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
                     Start here
                 </h3>
                 <ul class="space-y-2">
@@ -243,48 +244,30 @@ const isDev = import.meta.env.DEV
                 </ul>
                 </div>
 
-                <!-- 2) Learn YINI -->
+                <!-- 2) Learn YINI (NAV menu) -->
                 <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
                     Learn YINI
                 </h3>
                 <ul class="space-y-2">
                     <li>
-                    <a href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
-                        class="sidebar-link">
-                        Learn the Format
-                    </a>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                            class="sidebar-link">
+                            Learn the Format
+                        </a>
                     </li>
                     <li>
-                    <a href={CONFIG.siteLinks.navMenu.learnYini.quickTutorial.url}
-                        class="sidebar-link">
-                        Quick Tutorial
-                    </a>
-                    </li>
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.learnYini.examples.url}
-                        class="sidebar-link">
-                        Code Examples
-                    </a>
-                    </li>
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.learnYini.cheatSheet.url}
-                        class="sidebar-link">
-                        Cheat Sheet
-                    </a>
-                    </li>
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.learnYini.advancedExamples.url}
-                        class="sidebar-link">
-                        Advanced Examples
-                    </a>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.quickTutorial.url}
+                            class="sidebar-link">
+                            Quick Tutorial
+                        </a>
                     </li>
                 </ul>
                 </div>
 
-                <!-- 3) Use YINI -->
+                <!-- 3) Use YINI (NAV menu) -->
                 <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
                     Use YINI
                 </h3>
                 <ul class="space-y-2">
@@ -303,30 +286,94 @@ const isDev = import.meta.env.DEV
                 </ul>
                 </div>
 
-                <!-- 4) References -->
+                <!-- 4) Learn YINI: Examples (NAV menu) -->
                 <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
+                    Examples
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.index.url}
+                            class="sidebar-link">
+                            Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
+                            class="sidebar-link">
+                            Core & Basic
+                        </a>
+                    </li>
+                    <li>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}
+                            class="sidebar-link">
+                            Common & Real-world
+                        </a>
+                    </li>
+                    <li>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.advanced.url}
+                            class="sidebar-link">
+                            Advanced Features
+                        </a>
+                    </li>
+                    <li>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}
+                            class="sidebar-link">
+                            Large
+                        </a>
+                    </li>
+                </ul>
+                </div>
+
+                <!-- 5) References (NAV menu) -->
+                <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
                     References
                 </h3>
                 <ul class="space-y-2">
                     <li>
-                    <a href={CONFIG.siteLinks.navMenu.refs.spec.url}
-                        class="sidebar-link">
-                        Specification
-                    </a>
+                        <a href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                            class="sidebar-link">
+                            Cheat Sheet
+                        </a>
                     </li>
                     <li>
-                    <a href={CONFIG.siteLinks.navMenu.refs.faq.url}
-                        class="sidebar-link">
-                        FAQ
+                        <a href={CONFIG.siteLinks.navMenu.refs.spec.url}
+                            class="sidebar-link">
+                            Specification
+                        </a>
+                    </li>
+                    <li>
+                        <a href={CONFIG.siteLinks.navMenu.refs.faq.url}
+                            class="sidebar-link">
+                            FAQ
+                        </a>
+                    </li>
+                </ul>
+                </div>
+
+                <!-- 6) GitHub (NAV menu) -->
+                <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
+                    Project
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                    <a href={CONFIG.urls.external.gitHub.yiniOrg}
+                        class="sidebar-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onclick="trackClick('gitHub.yiniOrgLeftNavClicked')"
+                        >
+                        GitHub ↗
                     </a>
                     </li>
                 </ul>
                 </div>
 
-                <!-- 5) About -->
+                <!-- 7) About (NAV menu) -->
                 <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
                     About
                 </h3>
                 <ul class="space-y-2">
@@ -386,6 +433,7 @@ const isDev = import.meta.env.DEV
         </script>
 
         <script is:inline>
+            /*
             function markActiveSidebarLink() {
 
             const current = window.location.pathname.replace(/\/$/, "");
@@ -404,12 +452,48 @@ const isDev = import.meta.env.DEV
                 // Clear previous state
                 a.classList.remove("sidebar-active");
 
-                const isMatch = href && current.startsWith(href);
+                // const isMatch = href && current.startsWith(href);
+                const isMatch =
+                    href === current ||
+                    (href !== "/" && current.startsWith(href + "/"));
 
                 if (isMatch) {
                     a.classList.add("sidebar-active");
                 }
             });
+        }*/
+        function markActiveSidebarLink() {
+            const current = window.location.pathname.replace(/\/$/, "");
+            const links = document.querySelectorAll("aside a.sidebar-link");
+
+            if (!links.length) {
+                setTimeout(markActiveSidebarLink, 50);
+                return;
+            }
+
+            let matched = null;
+
+            // First pass: exact match
+            links.forEach(a => {
+                const href = (a.getAttribute("href") || "").replace(/\/$/, "");
+                if (href === current) {
+                    matched = a;
+                }
+            });
+
+            // Second pass: prefix match (only if nothing exact matched)
+            if (!matched) {
+                links.forEach(a => {
+                    const href = (a.getAttribute("href") || "").replace(/\/$/, "");
+                    if (href !== "/" && current.startsWith(href + "/")) {
+                        matched = a;
+                    }
+                });
+            }
+
+            // Apply active class
+            links.forEach(a => a.classList.remove("sidebar-active"));
+            if (matched) matched.classList.add("sidebar-active");
         }
 
         // Run on first load.

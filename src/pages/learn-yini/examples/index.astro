@@ -1,0 +1,111 @@
+---
+// learn-yini/examples/basic.astro
+import YINIExample from '../../../components/YINIExample.astro'
+import CONFIG from '../../../config/conf'
+import exampleHelloWorld from '../../../content/examples/basic/hello-world.yini?raw'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Code Examples: YINI'}
+    headDescription={'Practical YINI configuration examples, from simple configs to advanced structured data examples.'}
+>
+    <section class="mt-8">
+        <h1>YINI Code Examples</h1>
+        <p class="text-slate-600">
+            Minimal, real-world, and advanced configuration examples in the YINI
+            format.
+        </p>
+        <p>
+            Explore practical configuration examples written in the
+            <strong>YINI configuration format</strong>, ranging from simple
+            beginner-friendly examples to larger real-world configurations.
+        </p>
+
+        <h2>Start with a quick/minimal example</h2>
+        <YINIExample title="Hello world" code={exampleHelloWorld} />
+
+        <h2>Browse examples</h2>
+        <section>
+            <ul>
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples.basic
+                            .url}>Core & basic examples</a
+                    ><br />
+                    <em
+                        >{
+                            CONFIG.siteLinks.navMenu.learnYini.examples.basic
+                                .title
+                        }</em
+                    >
+                </li>
+
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples.common
+                            .url}>Common real-world examples</a
+                    ><br />
+                    <em
+                        >{
+                            CONFIG.siteLinks.navMenu.learnYini.examples.common
+                                .title
+                        }</em
+                    >
+                </li>
+
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples
+                            .advanced.url}>Advanced features (optional)</a
+                    ><br />
+                    <em
+                        >{
+                            CONFIG.siteLinks.navMenu.learnYini.examples.advanced
+                                .title
+                        }</em
+                    >
+                </li>
+
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples.large
+                            .url}>Large examples</a
+                    ><br />
+                    <em
+                        >{
+                            CONFIG.siteLinks.navMenu.learnYini.examples.large
+                                .title
+                        }</em
+                    >
+                </li>
+            </ul>
+        </section>
+
+        <hr />
+
+        <section>
+            <h2>Next steps</h2>
+            <ul>
+                <li>
+                    ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
+                        >Get Started</a
+                    ><br />
+                    <em>Install the CLI and create your first YINI file.</em>
+                </li>
+                <li>
+                    ➡️ <a href={CONFIG.siteLinks.hero.tutorial.url}
+                        >Quick Tutorial</a
+                    ><br />
+                    <em>A 5-minute walkthrough of the core YINI concepts.</em>
+                </li>
+            </ul>
+        </section>
+
+        <p class="mt-10">
+            New to YINI? Start with the <a
+                href={CONFIG.siteLinks.hero.tutorial.url}>5-minute tutorial</a
+            >.
+        </p>
+    </section>
+</BaseLayout>

@@ -20,7 +20,7 @@ const CONFIG = {
         ],
         tagLine:
             //'INI-familiar syntax with nesting, comments, and clear, simple rules.',
-            'Human-readable configuration files with clear structure.',
+            'Human-readable configuration files with clear structure and predictable parsing.',
         elevatorPitch:
             //'YINI is a human-friendly configuration format — like INI, but with nested structures, clear rules, and zero ambiguity.',
             //'YINI is a human-friendly config format—familiar like INI, with clear nesting, predictable rules, and a formal spec.',
@@ -49,7 +49,7 @@ const CONFIG = {
                 title: 'A 5-minute guided walkthrough of YINI.',
             },
             examples: {
-                url: '/learn-yini/code-examples',
+                url: '/learn-yini/examples/',
                 title: 'Practical YINI configuration examples.',
             },
             spec: {
@@ -79,16 +79,26 @@ const CONFIG = {
                     title: 'A 5-minute guided walkthrough of YINI.',
                 },
                 examples: {
-                    url: '/learn-yini/code-examples',
-                    title: 'Practical YINI configuration examples.',
-                },
-                cheatSheet: {
-                    url: '/learn-yini/yini-cheat-sheet',
-                    title: 'A quick reference for writing clean, readable YINI configuration files.',
-                },
-                advancedExamples: {
-                    url: '/learn-yini/yini-advanced-examples',
-                    title: 'Optional syntax, edge cases, and power features.',
+                    index: {
+                        url: '/learn-yini/examples/',
+                        title: 'Practical YINI configuration examples.',
+                    },
+                    basic: {
+                        url: '/learn-yini/examples/basic',
+                        title: 'Core and practical YINI config examples.',
+                    },
+                    common: {
+                        url: '/learn-yini/examples/common',
+                        title: 'Common real-world examples.',
+                    },
+                    advanced: {
+                        url: '/learn-yini/examples/advanced',
+                        title: 'Optional syntax, edge cases, and power features.',
+                    },
+                    large: {
+                        url: '/learn-yini/examples/large',
+                        title: 'Large YINI configuration examples.',
+                    },
                 },
             },
             useYini: {
@@ -102,6 +112,10 @@ const CONFIG = {
                 },
             },
             refs: {
+                cheatSheet: {
+                    url: '/learn-yini/yini-cheat-sheet',
+                    title: 'A quick reference for writing clean, readable YINI configuration files.',
+                },
                 spec: {
                     url: '/refs/specification',
                     title: 'Formal YINI specification and syntax reference.',
@@ -118,8 +132,8 @@ const CONFIG = {
                 },
             },
         },
-        // depricated, use the one above in navMenu
-        secondary: {
+        // deprecated, use the one above in navMenu
+        legacySecondary: {
             introToYiniFormat: {
                 url: '/intro-yini-config-format',
                 title: 'Learn what YINI is and how the format works.',
@@ -133,12 +147,15 @@ const CONFIG = {
                 title: 'Get YINI parsers, tools, and related implementations across different languages and platforms.',
             },
             advancedExamples: {
-                url: '/learn-yini/yini-advanced-examples',
+                url: '/learn-yini/examples/advanced',
                 title: 'These examples show optional syntax, edge cases, and power features.',
             },
             about: { url: '/info/about-yini', title: "Who's behind YINI" },
         },
-        specPdf: { url: LATEST_YINI_SPEC_PDF_URL, title: '' },
+        specPdf: {
+            url: LATEST_YINI_SPEC_PDF_URL,
+            title: 'Download the latest YINI specification (PDF)',
+        },
     },
     urls: {
         external: {

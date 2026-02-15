@@ -1,0 +1,88 @@
+---
+// learn-yini/examples/large.astro
+import YINIExample from '../../../components/YINIExample.astro'
+import CONFIG from '../../../config/conf'
+import exampleLarge1 from '../../../content/examples/large-smoke-fixtures/a-corporate-saas-platform.smoke.yini?raw'
+import exampleLarge2 from '../../../content/examples/large-smoke-fixtures/b-high-security-distributed-control-system.smoke.yini?raw'
+import exampleNestedSections from '../../../content/examples/structure/nested-sections.yini?raw'
+import exampleSections from '../../../content/examples/structure/sections.yini?raw'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Large Code Examples: YINI'}
+    headDescription={'Large configuration examples written in the YINI format, demonstrating scalable structure, nested sections, and complex configuration layouts.'}
+>
+    <section class="mt-8">
+        <h1>Large Examples</h1>
+        <p>
+            These examples demonstrate how <strong
+                >YINI scales to large configurations</strong
+            >, including multi-service systems, enterprise-grade setups, and
+            deeply nested structures — while remaining readable and predictable.
+        </p>
+
+        <hr />
+
+        <p>
+            <strong>New to YINI?</strong>
+            Start with <a
+                href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                >Learn the format</a
+            >
+            or keep the <a href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                >Cheat Sheet</a
+            > open while reading.
+        </p>
+        <p>
+            💡 <strong>Note:</strong> YINI uses indentation only for human readability.
+            Section markers (^, ^^, ^^^) define the section nesting.
+        </p>
+
+        <hr />
+        <h2>Large configurations</h2>
+        <p>
+            Each example below is a complete configuration file intended to show
+            how YINI remains easy to read even when configuration size grows
+            significantly.
+        </p>
+
+        <YINIExample
+            title="Corporate SaaS platform configuration"
+            code={exampleLarge1}
+        />
+        <YINIExample
+            title="High-security distributed control system configuration"
+            code={exampleLarge2}
+        />
+
+        <b>Want more?</b> See <a
+            href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}
+            >{CONFIG.siteLinks.navMenu.learnYini.examples.common.title}</a
+        >.<br />
+        <b>Or more down to earth examples?</b> See <a
+            href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
+            >{CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}</a
+        >.
+
+        <hr />
+
+        <section>
+            <h2>Next steps</h2>
+            <ul>
+                <li>
+                    ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
+                        >Get Started</a
+                    ><br />
+                    <em>Learn how to install and use YINI.</em>
+                </li>
+                <li>
+                    ➡️ <a href={CONFIG.siteLinks.hero.tutorial.url}
+                        >Quick Tutorial</a
+                    ><br />
+                    <em>A 5-minute guided walkthrough of YINI basics.</em>
+                </li>
+            </ul>
+        </section>
+    </section>
+</BaseLayout>

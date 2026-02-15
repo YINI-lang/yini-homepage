@@ -1,0 +1,25 @@
+^ Environment
+# Overall environment definition
+Version = 1.0
+
+    # ------------------------------------------------------------------
+    # Enabled tools
+    ^^ Tools
+    items = [
+        { Tool: "PyPip_deps", Version: "2.1.0" },
+        { Tool: "Python", Version: "3.9.12" },
+        { Tool: "7zip", Version: "18.0.1" }
+    ]
+
+    # ------------------------------------------------------------------
+    # Installed but currently disabled / not enabled tools
+    ^^ Tools_not_enabled
+    items = [
+        { Tool: "Eclipse", Version: "javabundle14-cpp-2020-03-R-incubation-win32-x86_64" },
+        { Tool: "Python", Version: "3.6.8-64-with-libs_rev2" },
+        { Tool: "FOP", Version: "1.0.3.rev1" },
+        { Tool: "Pandoc", Version: "2.17.1.1" },
+        { Tool: "VisualCpp2015Redistributable", Version: "14.0.23026" },
+        { Tool: "VisualCpp2019Redistributable", Version: "14.24.28127" },
+        { Tool: "MatlabInstaller", Version: "2021b" }
+    ]
