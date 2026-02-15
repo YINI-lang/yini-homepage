@@ -264,10 +264,31 @@ const isDev = import.meta.env.DEV
                 </ul>
                 </div>
 
-                <!-- 2) Learn YINI: Examples (NAV menu) -->
+                <!-- 3) Use YINI (NAV menu) -->
                 <div>
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                    Code Examples
+                    Use YINI
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.useYini.getStarted.url}
+                        class="sidebar-link">
+                        Get Started
+                    </a>
+                    </li>
+                    <li>
+                    <a href={CONFIG.siteLinks.navMenu.useYini.getYINITools.url}
+                        class="sidebar-link">
+                        Get YINI Tools
+                    </a>
+                    </li>
+                </ul>
+                </div>
+
+                <!-- 4) Learn YINI: Examples (NAV menu) -->
+                <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                    Examples
                 </h3>
                 <ul class="space-y-2">
                     <li>
@@ -303,28 +324,7 @@ const isDev = import.meta.env.DEV
                 </ul>
                 </div>
 
-                <!-- 3) Use YINI (NAV menu) -->
-                <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
-                    Use YINI
-                </h3>
-                <ul class="space-y-2">
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.useYini.getStarted.url}
-                        class="sidebar-link">
-                        Get Started
-                    </a>
-                    </li>
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.useYini.getYINITools.url}
-                        class="sidebar-link">
-                        Get YINI Tools
-                    </a>
-                    </li>
-                </ul>
-                </div>
-
-                <!-- 4) References (NAV menu) -->
+                <!-- 5) References (NAV menu) -->
                 <div>
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
                     References
@@ -351,7 +351,26 @@ const isDev = import.meta.env.DEV
                 </ul>
                 </div>
 
-                <!-- 5) About (NAV menu) -->
+                <!-- 6) GitHub (NAV menu) -->
+                <div>
+                <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
+                    Project
+                </h3>
+                <ul class="space-y-2">
+                    <li>
+                    <a href={CONFIG.urls.external.gitHub.yiniOrg}
+                        class="sidebar-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onclick="trackClick('gitHub.yiniOrgLeftNavClicked')"
+                        >
+                        GitHub ↗
+                    </a>
+                    </li>
+                </ul>
+                </div>
+
+                <!-- 7) About (NAV menu) -->
                 <div>
                 <h3 class="font-semibold text-slate-900 dark:text-slate-100 mb-2">
                     About
