@@ -37,7 +37,7 @@ jobs:
                       --exclude-mail
                       --crawl
                       --max-concurrency 8
-                      --root-dir ./dist # IMPORTANT: So internal link starting with / are resolved correctly.
-                      "./dist/**/*.html"
+                      --root-dir ./dist
+                      ./dist/**/*.html
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
