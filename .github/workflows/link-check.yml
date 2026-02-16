@@ -34,7 +34,8 @@ jobs:
                       --no-progress
                       --accept 200,204
                       --exclude-mail
-                      --crawl
+                      --crawl   # IMPORTANT: To see links inside pages.
+                      --max-concurrency 8
                       --root-dir ./dist # IMPORTANT: So internal link starting with / are resolved correctly.
                       "./dist/**/*.html"
               env:
