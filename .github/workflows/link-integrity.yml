@@ -1,0 +1,47 @@
+# Check built site integrity (links + assets)
+name: Check site integrity
+
+on:
+    pull_request:
+    push:
+        branches: [main]
+
+jobs:
+    link-check:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: npm
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build Astro site
+              run: npm run build
+
+            # IMPORTANT: serve the built site so routing works exactly like production
+            - name: Start static server
+              run: npx serve dist -l 5000 &
+
+            # Give server time to start
+            - name: Wait for server
+              run: sleep 5
+
+            - name: Check links and assets
+              uses: lycheeverse/lychee-action@v1
+              with:
+                  args: >
+                      --verbose
+                      --no-progress
+                      --accept 200,204
+                      --exclude-mail
+                      http://localhost:5000
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

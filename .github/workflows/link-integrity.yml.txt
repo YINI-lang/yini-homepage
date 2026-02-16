@@ -1,0 +1,6 @@
+# link-integrity.yml
+
+This Astro link-integrity CI should catch:
+- broken internal links
+- broken assets (images, CSS, JS)
+- absolute / links
