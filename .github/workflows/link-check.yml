@@ -34,6 +34,7 @@ jobs:
                       --no-progress
                       --accept 200,204
                       --exclude-mail
+                      --crawl
                       --root-dir ./dist # IMPORTANT: So internal link starting with / are resolved correctly.
                       "./dist/**/*.html"
               env:
