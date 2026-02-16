@@ -34,6 +34,7 @@ jobs:
                       --verbose
                       --no-progress
                       --accept 200,204
+                      --fail-if 404
                       --exclude-mail
                       --crawl
                       --max-concurrency 8
