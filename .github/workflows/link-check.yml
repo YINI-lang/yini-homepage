@@ -29,12 +29,13 @@ jobs:
             - name: Check internal links with Lychee
               uses: lycheeverse/lychee-action@v1
               with:
+                  #  IMPORTANT: --crawl To see links inside pages.
                   args: >
                       --verbose
                       --no-progress
                       --accept 200,204
                       --exclude-mail
-                      --crawl   # IMPORTANT: To see links inside pages.
+                      --crawl
                       --max-concurrency 8
                       --root-dir ./dist # IMPORTANT: So internal link starting with / are resolved correctly.
                       "./dist/**/*.html"

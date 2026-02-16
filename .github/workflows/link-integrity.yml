@@ -37,12 +37,13 @@ jobs:
             - name: Check links and assets
               uses: lycheeverse/lychee-action@v1
               with:
+                  #  IMPORTANT: --crawl To see links inside pages.
                   args: >
                       --verbose
                       --no-progress
                       --accept 200,204
                       --exclude-mail
-                      --crawl   # IMPORTANT: To see links inside pages.
+                      --crawl
                       --max-concurrency 8
                       http://localhost:5000
               env:
