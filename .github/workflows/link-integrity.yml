@@ -44,7 +44,10 @@ jobs:
                       --accept 200,204
                       --exclude-mail
                       --crawl
+                      --root-dir ./dist
                       --max-concurrency 8
+                      ./dist/**/*.html
                       http://localhost:5000
+                      http://localhost:5000/sitemap-0.xml
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
