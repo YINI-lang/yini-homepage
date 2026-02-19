@@ -110,6 +110,21 @@
     background: #f2f2ff;
 }
 
+/* Custom blockquote styling */
+.prose blockquote {
+    @apply border-l-4 border-slate-300 pl-4 not-italic;
+}
+
+.prose blockquote p {
+    @apply not-italic;
+}
+
+/* Remove decorative quote marks added by typography plugin */
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+    content: none !important;
+}
+
 /* ── Auto dark via OS preference ─────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
     /* Page base */
@@ -162,5 +177,9 @@
 
     .try-under-a-minute {
         background: #192429;
+    }
+
+    .prose blockquote {
+        @apply border-slate-700;
     }
 }

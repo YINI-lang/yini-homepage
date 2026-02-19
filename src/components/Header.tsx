@@ -165,7 +165,7 @@ export default function Header({ isProd }: HeaderProps) {
      */
     // const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
     const NavMobilePopupMenu = () => {
-        const cssClasses = 'no-underline hover:underline text-base'
+        const cssClasses = 'no-underline hover:underline text-sm'
 
         // *** Menu for mobile (opened as via pop-up) ***
         return (
