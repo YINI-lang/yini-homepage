@@ -112,17 +112,17 @@ const CONFIG = {
                 },
             },
             refs: {
-                cheatSheet: {
-                    url: '/learn-yini/yini-cheat-sheet',
-                    title: 'A quick reference for writing clean, readable YINI configuration files.',
+                faq: {
+                    url: '/refs/yini-faq',
+                    title: 'Read frequently asked questions about YINI.',
                 },
                 spec: {
                     url: '/refs/specification',
                     title: 'Formal YINI specification and syntax reference.',
                 },
-                faq: {
-                    url: '/refs/yini-faq',
-                    title: 'Read frequently asked questions about YINI.',
+                cheatSheet: {
+                    url: '/learn-yini/yini-cheat-sheet',
+                    title: 'A quick reference for writing clean, readable YINI configuration files.',
                 },
             },
             metaInfo: {

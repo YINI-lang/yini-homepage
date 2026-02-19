@@ -20,13 +20,21 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </p>
 
         <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a href="/get-started" class="btn btn-primary"> Get Started </a>
+            <a
+                href={CONFIG.siteLinks.hero.getStarted.url}
+                class="btn btn-primary"
+            >
+                Get Started
+            </a>
 
             <!-- !!Temp disabled
             <a href="/playground" class="btn btn-outline"> Open Playground </a>
             -->
 
-            <a href="/yini-tutorial" class="inline-block underline">
+            <a
+                href={CONFIG.siteLinks.hero.tutorial.url}
+                class="inline-block underline"
+            >
                 Quick tutorial
             </a>
         </div>
@@ -88,8 +96,9 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </ul>
 
         <p class="mt-2">
-            More info: <a href="/what-is-yini-and-why" class="underline"
-                >What is YINI and Why?</a
+            More info: <a
+                href={CONFIG.siteLinks.navMenu.intro.whatIsYINIAndWhy.url}
+                class="underline">What is YINI and Why?</a
             >
         </p>
 
@@ -226,7 +235,8 @@ name = "Hello"`}</code></pre>
 
             <p class="mt-2 text-sm">
                 New to YINI? Read a short <a
-                    href="/intro-yini-config-format"
+                    href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat
+                        .url}
                     class="underline">learn the YINI format</a
                 >.
             </p>
@@ -320,7 +330,7 @@ title = "MyApp"</code></pre>
 
                 <p>
                     💡 For syntax & quick reference: See <a
-                        href="/learn-yini/yini-cheat-sheet"
+                        href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
                         class="inline-block underline"
                     >
                         YINI Cheat Sheet

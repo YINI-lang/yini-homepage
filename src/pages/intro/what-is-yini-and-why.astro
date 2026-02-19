@@ -33,13 +33,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
         </p>
 
         <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a href="/get-started" class="btn btn-primary"> Get Started </a>
+            <a
+                href={CONFIG.siteLinks.hero.getStarted.url}
+                class="btn btn-primary"
+            >
+                Get Started
+            </a>
 
             <!-- !!Temp disabled
             <a href="/playground" class="btn btn-outline"> Open Playground </a>
             -->
 
-            <a href="/learn-yini/code-examples" class="inline-block underline">
+            <a
+                href={CONFIG.siteLinks.hero.examples.url}
+                class="inline-block underline"
+            >
                 View Examples
             </a>
         </div>
