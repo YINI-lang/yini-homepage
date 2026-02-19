@@ -110,6 +110,22 @@
     background: #f2f2ff;
 }
 
+/* Custom blockquote styling */
+.prose blockquote {
+    /* @apply border-l-4 border-slate-300 pl-4 not-italic; */
+    @apply border-l-4 border-slate-300 pl-4 text-sm font-normal text-slate-600 not-italic;
+}
+
+.prose blockquote p {
+    @apply font-normal not-italic;
+}
+
+/* Remove decorative quote marks added by typography plugin */
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+    content: none !important;
+}
+
 /* ── Auto dark via OS preference ─────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
     /* Page base */
@@ -162,5 +178,14 @@
 
     .try-under-a-minute {
         background: #192429;
+    }
+
+    .prose blockquote {
+        /* @apply border-slate-700; */
+        @apply border-slate-700 text-sm text-slate-400;
+    }
+
+    .prose blockquote strong {
+        @apply font-normal;
     }
 }
