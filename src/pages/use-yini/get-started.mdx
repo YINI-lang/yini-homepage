@@ -8,39 +8,45 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
-# Get Started with YINI  
-*💡 This guide focuses on working with YINI via the terminal (CLI). There are [other tools](/use-yini/get-yini-tools) available as well.*
+# Get Started with YINI
 
-Welcome! This guide helps you create your **first working `.yini` file** in just a few minutes. Learn how to install and use YINI from the terminal or command line (CLI).  
+_💡 This guide focuses on working with YINI via the terminal (CLI). There are [other tools](/use-yini/get-yini-tools) available as well._
 
-YINI is a human-friendly data format — like INI, but with nested sections, comments, lists (arrays), and objects. It is suitable for configuration files, application settings, and general data-storage use cases.
+Welcome! This guide helps you create your **first working `.yini` file** in under 2 minutes. Learn how to install and use YINI from the terminal or command line (CLI).
+
+YINI is a human-friendly configuration file format inspired by INI, extended with nested sections, arrays, objects, and comments.
 
 ## Ways to get started with YINI
+
 You can use YINI in a few different ways:
 
-- 🧰 **Command line (CLI)** — the easiest and fastest way to explore YINI.  
-- 📦 **Node.js library** — embed YINI parsing directly into your application.  
+- 🧰 **Command line (CLI)** — the easiest and fastest way to explore YINI.
+- 📦 **Node.js library** — embed YINI parsing directly into your application.
 - 🌍 **Other tools & platforms** — see available downloads and integrations.
 
 This guide focuses on the **CLI**, which is the best starting point for most users.
 
 ## What can I do with YINI?
+
 Build, convert, and consume structured configuration and data using simple
 tools.
+
 - 🛠 &nbsp;Convert YINI → JSON via CLI.
 - 📦 Load YINI into your app as native objects.
 - 🧩 Use YINI for configuration, data files, pipelines, and tooling.
 
 ## Prerequisite: Node.js
+
 Node.js is required to run the YINI command-line (CLI) tool.
 
 💡 Tip: You can check if Node.js is already installed by running:
+
 ```bash
 node -v
 ```
 
 If Node.js is not installed, download it from:
-[https://nodejs.org ↗](https://nodejs.org)  
+[https://nodejs.org ↗](https://nodejs.org)
 
 It's recommended to use **Node.js 20 or later**.
 
@@ -66,29 +72,35 @@ npm i -g yini-cli
 npm i -D yini-cli
 ```
 
+💡 By default, `yini parse` prints formatted JSON to the terminal.
+
 > After installing, you can run npx yini-cli or add an npm script like "yini": "yini".
 
-💡 You can use either **npx yini** (no install), or just **yini** if `yini-cli` is installed globally or locally.
+> You can use `npx yini-cli` (no installation) or `yini` if installed globally or locally.
 
 ---
 
 ### Optional: Use YINI as a Node.js library
 
 If you're integrating YINI into an application, you can install the official Node.js parser ([repo here ↗](https://github.com/YINI-lang/yini-parser-typescript)):
+
 ```bash
 npm i yini-parser
 ```
 
 Then import and use it in your project (TypeScript example):
-```ts
-import YINI from 'yini-parser';
 
-const config = YINI.parseFile('./config.yini');
-console.log(config.server.port); // 8080
+```ts
+import YINI from 'yini-parser'
+
+const config = YINI.parseFile('./config.yini')
+console.log(config.server.port) // 8080
 
 // Or with options
-const options = { /* see docs for options */ }
-const config2 = YINI.parseFile('./config.yini', options);
+const options = {
+    /* see docs for options */
+}
+const config2 = YINI.parseFile('./config.yini', options)
 ```
 
 This lets your app load .yini files directly as JavaScript objects.
@@ -129,19 +141,81 @@ Save this as `config2.yini`:
 
 Once your file is saved, parse it with the CLI:
 
-If you used **option A** (with npx) in step 1, type the following:
+If you used **option A** (with npx) in step 1:
+
 ```bash
 npx yini-cli parse config2.yini
 ```
 
 Or, if you used **option B or C** in step 1:
+
 ```bash
 yini parse config2.yini
+```
+
+#### JSON Output:
+
+By default, `parse` outputs formatted JSON:
+
+```json
+{
+    "App": {
+        "name": "Demo",
+        "version": "1.0.0",
+        "features": ["search", "dark-mode"]
+    },
+    "Database": {
+        "host": "localhost",
+        "port": 5432,
+        "auth": { "user": "admin", "pass": "secret" }
+    }
+}
+```
+
+## 4) Output styles
+
+### 4.1) Compact JSON
+
+To output minified JSON (no whitespace):
+
+If you used **option A** (with npx) in step 1, type the following:
+
+```bash
+npx yini-cli parse config2.yini --compact
+```
+
+Or, if you used **option B or C** in step 1:
+
+```bash
+yini parse config2.yini --compact
+```
+
+Output:
+
+```json-compact
+{"App":{"name":"Demo","version":"1.0.0","features":["search","dark-mode"]},"Database":{"host":"localhost","port":5432,"auth":{"user":"admin","pass":"secret"}}}
+```
+
+### 4.2) JavaScript-style output
+
+To output a JavaScript-style object instead of JSON, use the `--js` flag.
+
+If you used **option A** (with npx) in step 1, type the following:
+
+```bash
+npx yini-cli parse --js config2.yini
+```
+
+Or, if you used **option B or C** in step 1:
+
+```bash
+yini parse --js config2.yini
 ```
 
 #### JS Output:
 
 You should see output like (JavaScript Object):
+
 ```yini
 {
   App: {
@@ -157,80 +231,66 @@ You should see output like (JavaScript Object):
 }
 ```
 
-## 4) Other output styles
+### 4.3) Explicit JSON flag
 
-### 4.1) Results in JSON
+You can also explicitly request formatted JSON:
 
-If you want the **output in pure JSON**, use the `--json` flag.
-
-If you used **option A** (with npx) in step 1, type the following:
 ```bash
-npx yini-cli parse --json config2.yini
+yini parse config2.yini --json
 ```
 
-Or, if you used **option B or C** in step 1:
+This is equivalent to the default behavior.
+
+## 5) Write output to a file
+
+To save the result:
+
 ```bash
-yini parse --json config2.yini
+yini parse config2.yini -o output.json
 ```
 
-#### JSON Output:
-```json
-{"App":{"name":"Demo","version":"1.0.0","features":["search","dark-mode"]},"Database":{"host":"localhost","port":5432,"auth":{"user":"admin","pass":"secret"}}}
-```
+YINI CLI protects you from accidentally overwriting newer files.
 
-### 4.2) Results in pretty JSON
+By default, output is written only if:
 
-If you want the **output in pretty JSON** so it's easier to read, use the `--pretty` flag.
+- It does not already exist, or
+- it is older than the source `.yini` file.
 
-If you used **option A** (with npx) in step 1, type the following:
+You can control overwrite behavior:
+
 ```bash
-npx yini-cli parse --pretty config2.yini
-```
-
-Or, if you used **option B or C** in step 1:
-```bash
-yini parse --pretty config2.yini
-```
-
-#### Pretty JSON Output:
-```json
-{
-    "App": {
-        "name": "Demo",
-        "version": "1.0.0",
-        "features": [
-            "search",
-            "dark-mode"
-        ]
-    },
-    "Database": {
-        "host": "localhost",
-        "port": 5432,
-        "auth": {
-            "user": "admin",
-            "pass": "secret"
-        }
-    }
-}
+--overwrite     # Always replace existing file
+--no-overwrite  # Never replace existing file
 ```
 
 💡 Common tips:
+
 - Keys and section names are case-sensitive.
 - Strings must always be quoted, either `'` or `"`.
 
 ## Summary
+
 ✅ You have just created and parsed your first YINI configuration file.
 
+You now know how to:
+
+- Install YINI CLI
+- Create a structured `.yini` file
+- Parse it to JSON or JavaScript
+- Safely write output to disk
+
 From here, you can:
+
 - continue using YINI via the CLI,
 - embed it directly in your Node.js applications, or
 - explore additional tools and platforms.
+
 ---
 
 ## 🧭 Next Steps
 
-- ▶️ [Quick Tutorial](/learn-yini/quick-tutorial) — 5-minute guided walkthrough of YINI.  
+- ▶️ [Quick Tutorial](/learn-yini/quick-tutorial) — 5-minute guided walkthrough of YINI.
 - ➡️ [YINI Examples](/learn-yini/code-examples)  
-  *Shows YINI configuration examples.*
+  _Shows YINI configuration examples._
 
 </BaseLayout>

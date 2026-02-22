@@ -120,7 +120,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
     <section class="mt-2 pb-4">
         <h2 class="mt-5">🧯 Why does YINI exist?</h2>
-        Most config formats fail as projects grow.
+        Many configuration formats become harder to maintain as projects grow.
         <ul>
             <li class="leading-relaxed">
                 <strong>INI</strong> becomes flat and unstructured
@@ -132,7 +132,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                 <strong>YAML</strong> becomes fragile and unpredictable
             </li>
         </ul>
-        YINI was created to fix that.
+        YINI was designed to address these issues.
     </section>
 
     <section class="mt-2 pb-4">
@@ -436,7 +436,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
     <div class="try-under-a-minute full-bleed pr-8">
         <section class="mx-auto max-w-3xl pt-1 pb-6">
             <h2>⚡ Try YINI in under a minute</h2>
-            <blockquote>No build step. No installation. No setup.</blockquote>
+            <blockquote>No build step. No setup required.</blockquote>
             <ul class="space-y-6">
                 <li>
                     Save the two lines below as <code>config.yini</code>: <i
@@ -447,7 +447,10 @@ name = "Hello"`}</code></pre>
 
                 <li>
                     <p>From your terminal, run this:</p>
-                    <pre><code class="language-bash">npx yini-cli parse --pretty config.yini</code></pre>
+                    <pre><code class="language-bash">npx yini-cli parse config.yini</code></pre>
+                    <p class="text-sm text-slate-500">
+                        JSON is the default output format.
+                    </p>
                 </li>
 
                 <li>
