@@ -19,7 +19,18 @@ import BaseLayout from '../layouts/BaseLayout.astro'
             {CONFIG.text.elevatorPitch}
         </p>
 
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <div
+            class="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 py-3 text-sm text-slate-700 md:text-base dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+        >
+            <span class="ml-1"
+                >Looks like INI, handles structure like JSON — without YAML's
+                indentation pitfalls.</span
+            >
+        </div>
+
+        <div
+            class="mt-6 flex flex-wrap items-center justify-center gap-3 pt-6 pb-4"
+        >
             <a
                 href={CONFIG.siteLinks.hero.getStarted.url}
                 class="btn btn-primary"
@@ -40,8 +51,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </div>
     </section>
 
-    <section class="pb-6">
-        <!-- <h2>📝 Example</h2> -->
+    <section class="">
         <h3>Example of YINI code:</h3>
         <p>
             <a href="./samples/config.yini.png"
@@ -57,6 +67,20 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </p>
     </section>
 
+    <section class="pb-6">
+        <h2>✨ The big idea</h2>
+        <p>
+            YINI is configuration that looks familiar — but stays clean even as
+            it grows.
+        </p>
+        <ul class="mt-2">
+            <li class="leading-relaxed">Simple at first.</li>
+            <li class="leading-relaxed">Structured when needed.</li>
+            <li class="leading-relaxed">Easy to maintain.</li>
+            <li class="leading-relaxed">Readable all the way.</li>
+        </ul>
+    </section>
+
     <section class="why-yini pb-4">
         <h2 class="mt-1">💡 Why YINI?</h2>
         INI, YAML, and JSON all approach configuration differently, each with tradeoffs:<br
@@ -67,31 +91,28 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         clear nesting and predictable behavior.
         <ul>
             <li class="leading-relaxed">
-                <strong>Clear structure without indentation-based rules</strong>
-                — YINI uses explicit structure instead of indentation-based semantics,
-                so files stay readable and predictable.
+                <strong>No indentation traps.</strong>
+                Clear structure without YAML-style surprises.
             </li>
+
             <li class="leading-relaxed">
-                <strong
-                    >Readable section nesting that scales with file size</strong
-                > — YINI supports nesting and structured data while keeping configuration
-                files easy to scan and maintain.
+                <strong>Readable as files grow.</strong>
+                Nest sections without losing clarity.
             </li>
+
             <li class="leading-relaxed">
-                <strong>Optimized for human-edited configuration</strong> — The format
-                prioritizes clarity, comments, and consistency for day-to-day configuration
-                work.
+                <strong>Designed for humans.</strong>
+                Easy to edit, comment, and maintain.
             </li>
+
             <li class="leading-relaxed">
-                <strong>Predictable behavior defined by clear rules</strong> — YINI
-                has a formal grammar and well-defined parsing rules, reducing surprises
-                across tools.
+                <strong>Predictable behavior.</strong>
+                Clear rules. Fewer edge cases.
             </li>
+
             <li class="leading-relaxed">
-                <strong
-                    >A balanced middle ground between simplicity and structure</strong
-                > — It offers more structure than INI, less noise than XML/JSON,
-                and fewer edge cases than YAML.
+                <strong>The right balance.</strong>
+                More structure than INI, less noise than JSON.
             </li>
         </ul>
 
@@ -104,18 +125,21 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
         <section class="pb-4">
             <h2>💡 How can YINI be used?</h2>
-            Build, convert, and consume structured configuration and data using simple
-            tools.
-            <ul>
+
+            <p class="mt-1">
+                Use YINI wherever you need structured configuration — without
+                the usual complexity.
+            </p>
+
+            <ul class="mt-2">
                 <li class="leading-relaxed">
-                    🛠 &nbsp;Convert YINI → JSON via CLI.
+                    🛠 Convert YINI → JSON with a simple CLI.
                 </li>
                 <li class="leading-relaxed">
-                    📦 Load YINI into your app as native objects.
+                    📦 Load YINI directly into your app as native objects.
                 </li>
                 <li class="leading-relaxed">
-                    🧩 Use YINI for configuration, data files, pipelines, and
-                    tooling.
+                    🧩 Use it for configs, data files, pipelines, and tooling.
                 </li>
             </ul>
         </section>
@@ -174,6 +198,29 @@ name = "Hello"`}</code></pre>
                 </ul>
             </section>
         </div>
+
+        <section class="mx-auto max-w-5xl px-4 py-2 text-center">
+            <div
+                class="mt-6 flex flex-wrap items-center justify-center gap-3 pt-6 pb-4"
+            >
+                <a
+                    href={CONFIG.siteLinks.hero.getStarted.url}
+                    class="btn btn-primary"
+                >
+                    Get Started
+                </a>
+
+                <a
+                    href={CONFIG.urls.external.gitHub.yiniOrg}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onclick="trackClick('gitHub.yiniOrgCtaClicked')"
+                    class="inline-block underline"
+                >
+                    View on GitHub ↗
+                </a>
+            </div>
+        </section>
 
         <section class="pb-6">
             <h2>📝 Example</h2>
