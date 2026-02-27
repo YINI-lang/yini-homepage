@@ -179,7 +179,7 @@ export default function Header({ isProd }: HeaderProps) {
                         <li>
                             <a
                                 href={
-                                    CONFIG.siteLinks.navMenu.intro
+                                    CONFIG.siteLinks.navMenu.start
                                         .whatIsYINIAndWhy.url
                                 }
                                 className={cssClasses}>

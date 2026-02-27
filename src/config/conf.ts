@@ -63,9 +63,9 @@ const CONFIG = {
         },
         // The "navigation" (Left-Menu) links.
         navMenu: {
-            intro: {
+            start: {
                 whatIsYINIAndWhy: {
-                    url: '/intro/what-is-yini-and-why',
+                    url: '/start/what-is-yini-and-why',
                     title: 'Learn what YINI is and why it exists.',
                 },
             },
