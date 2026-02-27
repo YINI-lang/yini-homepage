@@ -172,9 +172,10 @@ export default function Header({ isProd }: HeaderProps) {
             <>
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        🧭 Start here
+                        {/* 🧭 Start here */}
+                        Start here
                     </h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 pl-4">
                         <li>
                             <a
                                 href={
@@ -200,9 +201,10 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        🚀 Try YINI
+                        {/* 🚀 Try YINI */}
+                        Try YINI
                     </h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 pl-4">
                         <li>
                             <a
                                 href={
@@ -228,9 +230,10 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        🧪 Examples
+                        {/* 🧪 Examples */}
+                        Examples
                     </h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 pl-4">
                         <li>
                             <a
                                 href={
@@ -276,9 +279,10 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        📘 Learn
+                        {/* 📘 Learn */}
+                        Learn
                     </h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 pl-4">
                         <li>
                             <a
                                 href={
@@ -293,9 +297,10 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        📚 Docs
+                        {/* 📚 Docs */}
+                        Docs
                     </h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 pl-4">
                         <li>
                             <a
                                 href={CONFIG.siteLinks.navMenu.refs.spec.url}
@@ -315,9 +320,10 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        ⭐ Project
+                        {/* ⭐ Project */}
+                        Project
                     </h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 pl-4">
                         <li>
                             <a
                                 href={CONFIG.urls.external.gitHub.yiniOrg}
@@ -332,9 +338,10 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        ℹ️ About
+                        {/* ℹ️ About */}
+                        About
                     </h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 pl-4">
                         <li>
                             <a
                                 href={
