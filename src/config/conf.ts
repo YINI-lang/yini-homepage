@@ -8,6 +8,7 @@ const CONFIG = {
     text: {
         headline: [
             'YINI — A Human-Friendly Configuration Format',
+            'YINI: INI familiarity. Structured clarity. Predictable behavior.',
             'YINI — Readable Like INI, Structured Like JSON',
             "YINI — Configuration Without YAML's Surprises",
             'YINI — A Predictable Format for Real-World Configs',
@@ -121,7 +122,7 @@ const CONFIG = {
                     title: 'Formal YINI specification and syntax reference.',
                 },
                 cheatSheet: {
-                    url: '/learn-yini/yini-cheat-sheet',
+                    url: '/refs/yini-cheat-sheet',
                     title: 'A quick reference for writing clean, readable YINI configuration files.',
                 },
             },
@@ -139,7 +140,7 @@ const CONFIG = {
                 title: 'Learn what YINI is and how the format works.',
             },
             cheatSheet: {
-                url: '/learn-yini/yini-cheat-sheet',
+                url: '/refs/yini-cheat-sheet',
                 title: 'A quick reference for writing clean, readable YINI configuration files.',
             },
             getYINITools: {
