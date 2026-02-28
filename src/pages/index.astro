@@ -4,11 +4,63 @@ import DivStatusBadges from '../components/DivStatusBadges.astro'
 import { RandomHeadlineH1 } from '../components/RandomHeadline'
 import CONFIG from '../config/conf'
 import BaseLayout from '../layouts/BaseLayout.astro'
+
+type EcosystemStatus = 'done' | 'inprogress' | 'planned' | '' | null
+
+export interface EcosystemCell {
+    label: string | null
+    status: EcosystemStatus
+}
+
+export interface EcosystemRow {
+    core: EcosystemCell
+    impl: EcosystemCell
+    adopt: EcosystemCell
+}
+
+export type EcosystemMatrix = EcosystemRow[]
+
+const rows: EcosystemMatrix = [
+    {
+        core: { label: 'Language Specification', status: 'done' },
+        impl: { label: 'TypeScript Parser (Primary)', status: 'done' },
+        adopt: { label: 'Homepage & Docs', status: 'done' },
+    },
+    {
+        core: { label: 'Parsing Rules (Strict & Lenient)', status: 'done' },
+        impl: { label: 'CLI Tool (Parse & Convert YINI)', status: 'done' },
+        adopt: { label: 'Cheat Sheet (Quick Syntax Guide)', status: 'done' },
+    },
+    {
+        core: { label: 'Formal Grammar (ANTLR)', status: 'done' },
+        impl: { label: 'Python Parser', status: 'planned' },
+        adopt: { label: 'Example Projects', status: 'inprogress' },
+    },
+    {
+        core: { label: '', status: '' },
+        impl: {
+            label: 'Editor Syntax Highlighting (VS Code / TextMate)',
+            status: 'done',
+        },
+        adopt: {
+            label: null /*'Community & Contributors'*/,
+            status: null /* 'planned'*/,
+        },
+    },
+]
+
+const statusIcon = (status: EcosystemStatus) => {
+    if (status === 'done') return '✔'
+    if (status === 'inprogress') return '◐'
+    if (status === 'planned') return '○'
+
+    return '' // Empty.
+}
 ---
 
 <BaseLayout
-    headTitle="YINI — Human-Friendly Configuration Format with Real Structure"
-    headDescription="YINI is a human-friendly, text-based configuration format with clear structure, nested sections, and predictable parsing."
+    headTitle={CONFIG.text.mainPage.headTitle}
+    headDescription={CONFIG.text.mainPage.headDescription}
 >
     <section class="mx-auto max-w-5xl px-4 py-2 text-center">
         <!-- <h1 class="text-3xl font-semibold tracking-tight md:text-5xl">
@@ -224,6 +276,88 @@ name = "Hello"`}</code></pre>
                 >
                     View on GitHub ↗
                 </a>
+            </div>
+        </section>
+
+        <section class="mt-20 pb-4">
+            <h2 class="mb-4 text-center text-2xl font-semibold">
+                🌐 The YINI Ecosystem
+            </h2>
+
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr
+                            class="border-b border-slate-300 dark:border-slate-700"
+                        >
+                            <th class="py-3 text-left font-semibold">🧠 Core</th
+                            >
+                            <th class="py-3 text-left font-semibold"
+                                >🛠 Implementation</th
+                            >
+                            <th class="py-3 text-left font-semibold"
+                                >🌍 Adoption</th
+                            >
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {
+                            rows.map((row) => (
+                                <tr class="border-b border-slate-200 transition hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900">
+                                    <td class="py-3 pr-4">
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-green-600">
+                                                {statusIcon(row.core.status)}
+                                            </span>
+                                            {row.core.label}
+                                        </div>
+                                    </td>
+
+                                    <td class="py-3 pr-4">
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class={
+                                                    row.impl.status === 'done'
+                                                        ? 'text-green-600'
+                                                        : row.impl.status ===
+                                                            'inprogress'
+                                                          ? 'text-yellow-500'
+                                                          : 'text-slate-400'
+                                                }>
+                                                {statusIcon(row.impl.status)}
+                                            </span>
+                                            {row.impl.label}
+                                        </div>
+                                    </td>
+
+                                    <td class="py-3">
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class={
+                                                    row.adopt.status === 'done'
+                                                        ? 'text-green-600'
+                                                        : row.adopt.status ===
+                                                            'inprogress'
+                                                          ? 'text-yellow-500'
+                                                          : 'text-slate-400'
+                                                }>
+                                                {statusIcon(row.adopt.status)}
+                                            </span>
+                                            {row.adopt.label}
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div
+                class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
+            >
+                ✔ Complete &nbsp; ◐ In progress &nbsp; ○ Planned
             </div>
         </section>
 

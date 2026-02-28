@@ -6,6 +6,12 @@ const CONFIG = {
         author: 'Marko K. Seppänen',
     },
     text: {
+        mainPage: {
+            headTitle:
+                'YINI — Human-Friendly Configuration Format with Real Structure',
+            headDescription:
+                'YINI is a human-friendly, text-based configuration format with clear structure, nested sections, and predictable parsing.',
+        },
         headline: [
             'YINI — A Human-Friendly Configuration Format',
             'YINI: INI familiarity. Structured clarity. Predictable behavior.',
