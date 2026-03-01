@@ -14,7 +14,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 A **quick reference** for writing clean, readable YINI configuration files.
 
-YINI makes data files (such as configuration files and application settings) easy for humans to read  
+YINI makes data files (such as configuration files and application settings) easy for humans to read 
 **and** predictable for machines to process — like INI, but with **real structure**, lists (arrays), objects, and comments.
 
 More structured than INI, less noisy than JSON, and less fragile than YAML.
@@ -101,18 +101,19 @@ YINI supports multiple numeric formats:
 
 | Format      | Example                                                                                       |
 | ----------- | --------------------------------------------------------------------------------------------- |
-| Integer     | `42`<br/><br/> ❌ `01` (Don't use zero before a digit)<br/> ✅ `1`<br/> ✅ `0`                |
-| Float       | `3.14`<br/><br/> ❌ `3,14`<br/> ✅ `0.14`                                                     |
-| Scientific  | `1e6`, `5.2E-3`                                                                               |
-| Hexadecimal | `#FFAA00`<br/><br/> ❌ `# FFAA00` (Parsed as a comment)<br/> ✅ `#ffaa00` (Hex color literal) |
-| Binary      | `0b101010`                                                                                    |
-| Octal       | `0o755`                                                                                       |
+| **Integer**     | `42`<br/><br/> ❌ `01` (leading zero not allowed)<br/> ✅ `1`<br/> ✅ `0`                |
+| **Float**       | `3.14`<br/><br/> ❌ `3,14`<br/> ✅ `0.14`                                                     |
+| **Scientific (base-10)** | `1e6`, `5.2E-3`                                                                               |
+| **Hexadecimal (base-16)** | `#FFAA00`<br/><br/> ❌ `# FFAA00` (parsed as a comment)<br/> ✅ `#ffaa00` |
+| **Binary (base-2)** | `0b101010`                                                                                    |
+| **Octal (base-8)** | `0o755`                                                                                       |
+| **Duodecimal (base-12)** | `0z2BA9`, `0z2EX9`<br/><br/>Digits: `0–9`, `A` or `X` = 10, `B` or `E` = 11 _(case-insensitive)_<br/>💡 `0z10` equals decimal 12. |
 
 All numeric forms are parsed as real numbers — no quotes required.
 
 ---
 
-## 🧪 Minimal Real-World Example
+## 🧪 Example 1 — Minimal Real-World
 
 ```yini
 ^ App
@@ -130,7 +131,7 @@ timeout = null
 
 ---
 
-## 🧪 Example 2 — Alternate Styles & Comments
+## 🧪 Example 2 — Practical Config with Comments
 
 ```yini
 # Optional YINI marker
