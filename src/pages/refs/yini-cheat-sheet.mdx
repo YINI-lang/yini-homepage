@@ -29,7 +29,7 @@ More structured than INI, less noisy than JSON, and less fragile than YAML.
 | **Section heading: level&nbsp;2** | `^^ Database`                                                                                                              |
 | **Section heading: level&nbsp;3** | `^^^ Pool`                                                                                                                 |
 | **String**                        | `"text"`, `'text'`, `"C:\Users\Robin"` <br/>👉 Strings are raw by default — `\` and `\n` are treated as normal text |
-| **Number**                        | `42`, `3.14`, `1e4`                                                                                                        |
+| **Number**                        | `42`, `3.14`, `-10`, `1e4`                                                                                                        |
 | **Boolean**                       | `true`, `false`, `on`, `off`, `yes`, `no` _(case-insensitive)_                                                             |
 | **Null**                          | `null`, `Null`, _(or blank in lenient mode)_                                                                               |
 | **List / Array**                  | `[1, 2, 3]`                                                                                                                |
@@ -101,8 +101,8 @@ YINI supports multiple numeric formats:
 
 | Format      | Example                                                                                       |
 | ----------- | --------------------------------------------------------------------------------------------- |
-| **Integer**     | `42`<br/><br/> ❌ `01` (leading zero not allowed)<br/> ✅ `1`<br/> ✅ `0`                |
-| **Float**       | `3.14`<br/><br/> ❌ `3,14`<br/> ✅ `0.14`                                                     |
+| **Integer**     | `42`, `-42`<br/><br/> ❌ `01` (leading zero not allowed)<br/> ✅ `1`<br/> ✅ `0`                |
+| **Float**       | `3.14`, `-3.14`<br/><br/> ❌ `3,14`<br/> ✅ `0.14`                                                     |
 | **Scientific (base-10)** | `1e6`, `5.2E-3`                                                                               |
 | **Hexadecimal (base-16)** | `#FFAA00`<br/><br/> ❌ `# FFAA00` (parsed as a comment)<br/> ✅ `#ffaa00` |
 | **Binary (base-2)** | `0b101010`                                                                                    |
