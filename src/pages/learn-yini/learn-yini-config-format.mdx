@@ -56,7 +56,11 @@ Key names with spaces/special characters can be backticked:
 
 Values can be:
 
-- **Strings** (always quoted): `'hello'` or `"world"` (either single or double quoted)
+- **Strings** (always quoted): `'hello'`, `"world"`, or `"C:\Users\john"`  
+
+  👉 Strings are **raw by default** — no escape sequences are interpreted.  
+  Backslashes (`\`), slashes (`/`), and even `\n` are treated as normal text.  
+
 - **Numbers:** `42`, `3.14` or `-10`
 - **Booleans:** `true`, `false`, `on`, `off`, `yes`, `no` (all case-insensitive)
 - **Nulls:** Use `null` or leave the value blank after `=` (in lenient mode)

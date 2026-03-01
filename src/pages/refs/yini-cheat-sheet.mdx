@@ -28,7 +28,7 @@ More structured than INI, less noisy than JSON, and less fragile than YAML.
 | **Section heading: level&nbsp;1** | `^ App`                                                                                                                    |
 | **Section heading: level&nbsp;2** | `^^ Database`                                                                                                              |
 | **Section heading: level&nbsp;3** | `^^^ Pool`                                                                                                                 |
-| **String**                        | `"text"` or `'text'`                                                                                                       |
+| **String**                        | `"text"`, `'text'`, `"C:\Users\Robin"` <br/>👉 Strings are raw by default — `\` and `\n` are treated as normal text |
 | **Number**                        | `42`, `3.14`, `1e4`                                                                                                        |
 | **Boolean**                       | `true`, `false`, `on`, `off`, `yes`, `no` _(case-insensitive)_                                                             |
 | **Null**                          | `null`, `Null`, _(or blank in lenient mode)_                                                                               |
@@ -121,11 +121,38 @@ version = "2.3.1"
 
 ^^ Network
 ports = [80, 443]
-ssl = Yes   // boolean (case-insensitive)
+ssl = true   // boolean (case-insensitive)
 
 ^^ `Rate Limits`
 requests = { perMinute: 1200, burst: 60 }
 timeout = null
+```
+
+---
+
+## 🧪 Example 2 — Alternate Styles & Comments
+
+```yini
+# Optional YINI marker
+@yini
+
+^ Service
+name = 'Aurora'                 # Single quotes
+path = 'C:\Program Files\App'   # Backslashes are raw (no escaping needed)
+enabled = Off                   # Boolean (case-insensitive)
+retries = 3
+
+    ^^ Database
+    host = 'localhost'
+    port = 5432
+    color = #336699             # Hex number literal
+
+    ; This is a full-line comment
+    --password = 'secret'       # Disabled line (line ignored)
+
+        ^^^ Limits
+        maxUsers = 1000
+        timeout =               # Blank value → null (lenient mode)
 ```
 
 ---
