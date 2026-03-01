@@ -148,14 +148,21 @@ retries = 3
     port = 5432
     color = #336699             # Hex number literal
 
-    ; This is a full-line comment
-    --password = 'secret'       # Disabled line (line ignored)
+    ; This is a full-line comment (for humans)
+    --password = 'secret'       # Disabled line (ignored by parser)
 
         ^^^ Limits
         maxUsers = 1000
         timeout =               # Blank value → null (lenient mode)
 ```
 
+> 💡 **Note:**  
+> Lines prefixed with `--` are **disabled configuration lines**.  
+> They behave like comments (the parser ignores them), but are intended to temporarily disable
+> real configuration — not to serve as documentation.
+>
+> In editors, they are typically highlighted differently from normal comments to indicate
+> “disabled code” rather than explanatory text.
 ---
 
 ## Next Steps
