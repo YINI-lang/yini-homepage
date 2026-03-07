@@ -100,7 +100,7 @@ const CONFIG = {
                     },
                     advanced: {
                         url: '/learn-yini/examples/advanced',
-                        title: 'Optional syntax, edge cases, and power features.',
+                        title: 'Examples with optional syntax, edge cases, and power features.',
                     },
                     large: {
                         url: '/learn-yini/examples/large',

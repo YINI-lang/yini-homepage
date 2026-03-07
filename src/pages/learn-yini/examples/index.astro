@@ -12,24 +12,31 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 >
     <section class="mt-8">
         <h1>YINI Code Examples</h1>
-        <p class="text-slate-600">
-            Minimal, real-world, and advanced configuration examples in the YINI
-            format.
-        </p>
-        <p>
-            Explore practical configuration examples written in the
-            <strong>YINI configuration format</strong>, ranging from simple
-            beginner-friendly examples to larger real-world configurations.
-        </p>
+        <div class="text-sm">
+            <p class="text-slate-600">
+                Minimal, real-world, and advanced configuration examples in the
+                YINI format.
+            </p>
+            <p>
+                Explore practical configuration examples written in the
+                <strong>YINI configuration format</strong>, ranging from simple
+                beginner-friendly examples to larger real-world configurations.
+            </p>
+        </div>
 
         <h2>Start with a quick/minimal example</h2>
         <YINIExample title="Hello world" code={exampleHelloWorld} />
 
-        <h2>Browse examples</h2>
+        <h2>Explore example collections</h2>
+        <p class="text-sm">
+            Sub-pages leading to separate example pages, each containing
+            multiple YINI examples.
+        </p>
         <section>
             <ul>
-                <li>
-                    <a
+                <li class="mb-3">
+                    ➡️ <a
+                        class="text-lg"
                         href={CONFIG.siteLinks.navMenu.learnYini.examples.basic
                             .url}>Core & basic examples</a
                     ><br />
@@ -41,8 +48,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                     >
                 </li>
 
-                <li>
-                    <a
+                <li class="mb-3">
+                    ➡️ <a
+                        class="text-lg"
                         href={CONFIG.siteLinks.navMenu.learnYini.examples.common
                             .url}>Common real-world examples</a
                     ><br />
@@ -54,10 +62,12 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                     >
                 </li>
 
-                <li>
-                    <a
+                <li class="mb-3">
+                    ➡️ <a
+                        class="text-lg"
                         href={CONFIG.siteLinks.navMenu.learnYini.examples
-                            .advanced.url}>Advanced features (optional)</a
+                            .advanced.url}
+                        >Advanced features examples (optional)</a
                     ><br />
                     <em
                         >{
@@ -67,8 +77,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                     >
                 </li>
 
-                <li>
-                    <a
+                <li class="mb-3">
+                    ➡️ <a
+                        class="text-lg"
                         href={CONFIG.siteLinks.navMenu.learnYini.examples.large
                             .url}>Large examples</a
                     ><br />
