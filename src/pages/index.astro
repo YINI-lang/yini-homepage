@@ -23,18 +23,23 @@ export type EcosystemMatrix = EcosystemRow[]
 const rows: EcosystemMatrix = [
     {
         core: { label: 'Language Specification', status: 'done' },
-        impl: { label: 'TypeScript Parser (Primary)', status: 'done' },
-        adopt: { label: 'Homepage & Docs', status: 'done' },
+        impl: { label: null, status: null },
+        adopt: { label: null, status: null },
     },
     {
         core: { label: 'Parsing Rules (Strict & Lenient)', status: 'done' },
-        impl: { label: 'CLI Tool (Parse & Convert YINI)', status: 'done' },
-        adopt: { label: 'Cheat Sheet (Quick Syntax Guide)', status: 'done' },
+        impl: { label: 'TypeScript Parser (Primary)', status: 'done' },
+        adopt: { label: null, status: null },
     },
     {
         core: { label: 'Formal Grammar (ANTLR)', status: 'done' },
+        impl: { label: 'CLI Tool (Parse & Convert YINI)', status: 'done' },
+        adopt: { label: 'Homepage & Docs', status: 'done' },
+    },
+    {
+        core: { label: null, status: null },
         impl: { label: 'Python Parser', status: 'planned' },
-        adopt: { label: 'Example Projects', status: 'inprogress' },
+        adopt: { label: 'Cheat Sheet (Quick Syntax Guide)', status: 'done' },
     },
     {
         core: { label: '', status: '' },
@@ -42,11 +47,16 @@ const rows: EcosystemMatrix = [
             label: 'Editor Syntax Highlighting (VS Code / TextMate)',
             status: 'done',
         },
-        adopt: {
-            label: null /*'Community & Contributors'*/,
-            status: null /* 'planned'*/,
-        },
+        adopt: { label: 'Example Projects', status: 'inprogress' },
     },
+    // {
+    //     core: { label: null, status: null },
+    //     impl: { label: null, status: null },
+    //     adopt: {
+    //         label: null /*'Community & Contributors'*/,
+    //         status: null /* 'planned'*/,
+    //     },
+    // },
 ]
 
 const statusIcon = (status: EcosystemStatus) => {
