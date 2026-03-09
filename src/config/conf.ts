@@ -140,25 +140,25 @@ const CONFIG = {
             },
         },
         // deprecated, use the one above in navMenu
-        legacySecondary: {
-            introToYiniFormat: {
-                url: '/intro-yini-config-format',
-                title: 'Learn what YINI is and how the format works.',
-            },
-            cheatSheet: {
-                url: '/refs/yini-cheat-sheet',
-                title: 'A quick reference for writing clean, readable YINI configuration files.',
-            },
-            getYINITools: {
-                url: '/yini-getYINITools',
-                title: 'Get YINI parsers, tools, and related implementations across different languages and platforms.',
-            },
-            advancedExamples: {
-                url: '/learn-yini/examples/advanced',
-                title: 'These examples show optional syntax, edge cases, and power features.',
-            },
-            about: { url: '/info/about-yini', title: "Who's behind YINI" },
-        },
+        // legacySecondary: {
+        //     introToYiniFormat: {
+        //         url: '/intro-yini-config-format',
+        //         title: 'Learn what YINI is and how the format works.',
+        //     },
+        //     cheatSheet: {
+        //         url: '/refs/yini-cheat-sheet',
+        //         title: 'A quick reference for writing clean, readable YINI configuration files.',
+        //     },
+        //     getYINITools: {
+        //         url: '/yini-getYINITools',
+        //         title: 'Get YINI parsers, tools, and related implementations across different languages and platforms.',
+        //     },
+        //     advancedExamples: {
+        //         url: '/learn-yini/examples/advanced',
+        //         title: 'These examples show optional syntax, edge cases, and power features.',
+        //     },
+        //     about: { url: '/info/about-yini', title: "Who's behind YINI" },
+        // },
         specPdf: {
             url: LATEST_YINI_SPEC_PDF_URL,
             title: 'Download the latest YINI specification (PDF)',
