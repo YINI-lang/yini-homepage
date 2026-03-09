@@ -8,8 +8,11 @@
         "node": ">=20"
     },
     "scripts": {
+        "gen:config": "npx yini-cli parse src/config/config.yini --output src/config/config.json",
+        "predev": "npm run gen:config",
         "dev": "astro dev --force",
         "dev:host": "astro dev --host",
+        "prebuild": "npm run gen:config",
         "build": "astro build --force",
         "preview": "astro preview",
         "start": "astro preview",

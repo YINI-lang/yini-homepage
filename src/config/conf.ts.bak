@@ -1,8 +1,5 @@
 const LATEST_YINI_SPEC_PDF_URL = '/specs/YINI-Specification-1.0.0-RC.3.pdf'
 
-@todo use the produces config.json from the yini file
-@todo substitute LATEST_YINI_SPEC_PDF_URL 
-
 const CONFIG = {
     meta: {
         homepageURL: 'https://yini-lang.org/',
