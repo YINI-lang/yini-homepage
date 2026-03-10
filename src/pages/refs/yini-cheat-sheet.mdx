@@ -14,7 +14,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 A **quick reference** for writing clean, readable YINI configuration files.
 
-YINI makes data files (such as configuration files and application settings) easy for humans to read 
+YINI makes data files (such as configuration files and application settings) easy for humans to read
 **and** predictable for machines to process — like INI, but with **real structure**, lists (arrays), objects, and comments.
 
 More structured than INI, less noisy than JSON, and less fragile than YAML.
@@ -23,22 +23,22 @@ More structured than INI, less noisy than JSON, and less fragile than YAML.
 
 ## 🧱 Basic Syntax
 
-| Element                           | YINI Syntax                                                                                                                |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| **Section heading: level&nbsp;1** | `^ App`                                                                                                                    |
-| **Section heading: level&nbsp;2** | `^^ Database`                                                                                                              |
-| **Section heading: level&nbsp;3** | `^^^ Pool`                                                                                                                 |
-| **String**                        | `"text"`, `'text'`, `"C:\Users\Robin"` <br/>👉 Strings are raw by default — `\` and `\n` are treated as normal text |
-| **Number**                        | `42`, `3.14`, `-10`, `1e4`                                                                                                        |
-| **Boolean**                       | `true`, `false`, `on`, `off`, `yes`, `no` _(case-insensitive)_                                                             |
-| **Null**                          | `null`, `Null`, _(or blank in lenient mode)_                                                                               |
-| **List / Array**                  | `[1, 2, 3]`                                                                                                                |
-| **Inline object (map/dict)**      | `{ a: 1, b: 2 }`                                                                                                           |
-| **Comment**                       | `// Default comment`                                                                                                       |
-| **Alt. comment**                  | `# Comment` _(must be `#␠` or `#\t`)_<br/><br/> ❌ `#Missing space before comment start`<br/> ✅ `# This is an OK comment` |
-| **Multi-line (block) comment**    | `/* comment */`<br/><br/>`/*`<br/>`  Multi-line`<br/>`  comment`<br/>`*/`                                                  |
-| **Full-line comment**             | `; This is a full-line comment (only full lines)`                                                                          |
-| **Disable line**                  | `--debug = true`                                                                                                           |
+| Element                           | YINI Syntax                                                                                                                                                                                                                                |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Section heading: level&nbsp;1** | `^ App`                                                                                                                                                                                                                                    |
+| **Section heading: level&nbsp;2** | `^^ Database`                                                                                                                                                                                                                              |
+| **Section heading: level&nbsp;3** | `^^^ Pool`                                                                                                                                                                                                                                 |
+| **String**                        | `"text"`, `'text'`, `"C:\Users\Robin"` <br/>👉 Strings are raw by default — `\` and `\n` are treated as normal text<br/>👉 Use `C"..."` or `c'...'` for escape sequences like `\n`, `\t`, `\\` (escapes are transformed during parse time) |
+| **Number**                        | `42`, `3.14`, `-10`, `1e4`                                                                                                                                                                                                                 |
+| **Boolean**                       | `true`, `false`, `on`, `off`, `yes`, `no` _(case-insensitive)_                                                                                                                                                                             |
+| **Null**                          | `null`, `Null`, _(or blank in lenient mode)_                                                                                                                                                                                               |
+| **List / Array**                  | `[1, 2, 3]`                                                                                                                                                                                                                                |
+| **Inline object (map/dict)**      | `{ a: 1, b: 2 }`                                                                                                                                                                                                                           |
+| **Comment**                       | `// Default comment`                                                                                                                                                                                                                       |
+| **Alt. comment**                  | `# Comment` _(must be `#␠` or `#\t`)_<br/><br/> ❌ `#Missing space before comment start`<br/> ✅ `# This is an OK comment`                                                                                                                 |
+| **Multi-line (block) comment**    | `/* comment */`<br/><br/>`/*`<br/>`  Multi-line`<br/>`  comment`<br/>`*/`                                                                                                                                                                  |
+| **Full-line comment**             | `; This is a full-line comment (only full lines)`                                                                                                                                                                                          |
+| **Disable line**                  | `--debug = true`                                                                                                                                                                                                                           |
 
 ---
 
@@ -87,6 +87,7 @@ service = {
 
 - **Indentation is cosmetic** — structure is defined by section markers (`^`, `^^`, `^^^`, etc.).
 - **Strings must be quoted** using `'...'` or `"..."`.
+- **Strings are raw by default**. Use `C"..."` or `c'...'` only when you need escape sequences like `\n` or `\t`.
 - Inside a section, `name: "John"` creates a **list**.  
   Use `name = "John"` for a single value.
 - Trailing commas are allowed in **lists and objects** _(lenient mode)_.
@@ -99,15 +100,15 @@ service = {
 
 YINI supports multiple numeric formats:
 
-| Format      | Example                                                                                       |
-| ----------- | --------------------------------------------------------------------------------------------- |
-| **Integer**     | `42`, `-42`<br/><br/> ❌ `01` (leading zero not allowed)<br/> ✅ `1`<br/> ✅ `0`                |
-| **Float**       | `3.14`, `-3.14`<br/><br/> ❌ `3,14`<br/> ✅ `0.14`                                                     |
-| **Scientific (base-10)** | `1e6`, `5.2E-3`                                                                               |
-| **Hexadecimal (base-16)** | `#FFAA00`<br/><br/> ❌ `# FFAA00` (parsed as a comment)<br/> ✅ `#ffaa00` |
-| **Binary (base-2)** | `0b101010`                                                                                    |
-| **Octal (base-8)** | `0o755`                                                                                       |
-| **Duodecimal (base-12)** | `0z2BA9`, `0z2EX9`<br/><br/>Digits: `0–9`, `A` or `X` = 10, `B` or `E` = 11 _(case-insensitive)_<br/>💡 `0z10` equals decimal 12. |
+| Format                    | Example                                                                                                                           |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Integer**               | `42`, `-42`<br/><br/> ❌ `01` (leading zero not allowed)<br/> ✅ `1`<br/> ✅ `0`                                                  |
+| **Float**                 | `3.14`, `-3.14`<br/><br/> ❌ `3,14`<br/> ✅ `0.14`                                                                                |
+| **Scientific (base-10)**  | `1e6`, `5.2E-3`                                                                                                                   |
+| **Hexadecimal (base-16)** | `#FFAA00`<br/><br/> ❌ `# FFAA00` (parsed as a comment)<br/> ✅ `#ffaa00`                                                         |
+| **Binary (base-2)**       | `0b101010`                                                                                                                        |
+| **Octal (base-8)**        | `0o755`                                                                                                                           |
+| **Duodecimal (base-12)**  | `0z2BA9`, `0z2EX9`<br/><br/>Digits: `0–9`, `A` or `X` = 10, `B` or `E` = 11 _(case-insensitive)_<br/>💡 `0z10` equals decimal 12. |
 
 All numeric forms are parsed as real numbers — no quotes required.
 
@@ -139,7 +140,8 @@ timeout = null
 
 ^ Service
 name = 'Aurora'                 # Single quotes
-path = 'C:\Program Files\App'   # Backslashes are raw (no escaping needed)
+message = C"Server started\nReady."   # C-string with newline escape
+path = 'E:\Program Files\App'   # Backslashes are raw (no escaping needed)
 enabled = Off                   # Boolean (case-insensitive)
 retries = 3
 
@@ -156,6 +158,10 @@ retries = 3
         timeout =               # Blank value → null (lenient mode)
 ```
 
+> 💡 **Strings:**  
+> Regular strings are raw by default.  
+> Use `C"..."` or `c'...'` only when escape sequences are needed.
+
 > 💡 **Note:**  
 > Lines prefixed with `--` are **disabled configuration lines**.  
 > They behave like comments (the parser ignores them), but are intended to temporarily disable
@@ -163,6 +169,7 @@ retries = 3
 >
 > In editors, they are typically highlighted differently from normal comments to indicate
 > “disabled code” rather than explanatory text.
+
 ---
 
 ## Next Steps
