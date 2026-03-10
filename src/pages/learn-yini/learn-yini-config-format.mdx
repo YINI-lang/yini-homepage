@@ -15,6 +15,8 @@ A clear, 10–15 minute step-by-step guide to the YINI configuration format — 
 
 ## 1. Sections
 
+Sections group related configuration settings under a named header.
+
 Group settings under a named header. A section header name starts with `^`.
 
 Start a section with `^`, e.g.:
@@ -28,7 +30,11 @@ title = "AppName"
 
 > See section 9 for more advanced marker and naming options.
 
-## 2. Key = Value
+---
+
+## 2. Keys and Values
+
+Each configuration setting is written as a key and value pair.
 
 Each line inside a section is a **key** (name) and **value**, separated by `=`.
 
@@ -52,14 +58,32 @@ Key names with spaces/special characters can be backticked:
 `user id` = 1            # Valid ✅
 ```
 
+---
+
 ## 3. Values
+
+Values define the actual configuration data and support several common data types.
 
 Values can be:
 
-- **Strings** (always quoted): `'hello'`, `"world"`, or `"C:\Users\john"`  
+- **Strings** (always quoted): `'hello'` or `"world"`. (Either single or double quotes.)
 
-  👉 Strings are **raw by default** — no escape sequences are interpreted.  
-  Backslashes (`\`), slashes (`/`), and even `\n` are treated as normal text.  
+    ```yini
+    file = "C:\Users\john"  // Backslashes work without escaping
+    ```
+
+    👉 Strings are **raw by default** — no escape sequences are interpreted.  
+     Backslashes (`\`), slashes (`/`), and even `\n` are treated as normal text.
+
+    👉 If you need escape sequences (such as `\n` for newline), use a **C-string** by prefixing the string with `C` or `c`:
+
+    ```yini
+    path = "E:\logs\app.log"      // Raw string (recommended for paths)
+
+    message = C"Server started\nReady."
+    ```
+
+    C-strings interpret common escape sequences like `\n`, `\t`, and `\\`.
 
 - **Numbers:** `42`, `3.14` or `-10`
 - **Booleans:** `true`, `false`, `on`, `off`, `yes`, `no` (all case-insensitive)
@@ -68,17 +92,24 @@ Values can be:
     - JSON‑style: `["red", "green", "blue"]`
     - Colon‑style: _(Planned – not yet implemented in parser)_
 
+---
+
 ## 4. Comments
+
+Comments help document configuration files and are ignored by the parser.
 
 Various commenting styles are supported:
 
 ```yini
 // This is a line comment
 timeout = 30  // inline comment
+
 # This is also a line comment (must have a space after #)
 interval = 30  # inline comment (must have a space after #)
+
 /* Block comment spanning
    multiple lines */
+
 ; Full line comment (must be whole line).
 ```
 
@@ -93,7 +124,11 @@ interval = 30  # inline comment (must have a space after #)
 💡**Tip:** You can use any comment style in your file.
 For best readability, try to stick to one style per file.
 
+---
+
 ## 5. Nested Sections
+
+Nested sections allow hierarchical configuration structures.
 
 Use extra carets `^` for sub‑sections:
 
@@ -152,7 +187,11 @@ The above Yini code will produce the following JavaScript object:
 
 > See section 9 for more advanced marker and naming options.
 
+---
+
 ## 6. Lists
+
+Lists store multiple values in a single configuration field.
 
 ```yini
 // JSON‑style lists
@@ -175,7 +214,11 @@ fruits:
 
 > You can use either single or double quotes for string values in YINI.
 
+---
+
 ## 7. Document Terminator (strict mode)
+
+The optional document terminator explicitly marks the end of a configuration file.
 
 The `/END` marker is optional in both lenient (default) and in strict mode.
 
@@ -188,7 +231,11 @@ title = "MyTitle"
 /END    // Is only optional.
 ```
 
+---
+
 ## 8. Disabled Lines
+
+Disabled lines allow temporarily turning off configuration entries.
 
 Prefix any valid line with `--` to skip it entirely:
 
@@ -196,7 +243,11 @@ Prefix any valid line with `--` to skip it entirely:
 --maxRetries = 5
 ```
 
+---
+
 ## 9. Advanced: Alternative Section Markers & Naming
+
+Advanced syntax options provide additional flexibility for section markers and naming.
 
 In addition to the standard syntax, YINI supports several advanced options:
 
@@ -230,7 +281,11 @@ In addition to the standard syntax, YINI supports several advanced options:
 - (d.) **More features:**  
   The YINI format supports even more features than listed here, such as additional number notations, string types, and advanced escaping. For full details, see the [YINI Specification](../refs/specification).
 
+---
+
 ## 10. Complete Example
+
+This example combines the most common YINI features in a single configuration file.
 
 ```yini
 @yini       # Optional marker to identify YINI format.
