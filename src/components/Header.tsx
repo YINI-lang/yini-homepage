@@ -171,6 +171,13 @@ export default function Header({ isProd }: HeaderProps) {
         return (
             <>
                 <div>
+                    <div className="mb-4">
+                        <a
+                            href={CONFIG.siteLinks.hero.home.url}
+                            className={cssClasses}>
+                            Home
+                        </a>
+                    </div>
                     <h3 className="my-2 font-semibold text-slate-500">
                         {/* 🧭 Start here */}
                         Start here
