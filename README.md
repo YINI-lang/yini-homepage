@@ -1,10 +1,10 @@
 # yini-homepage
 
-Configuration for the official **YINI website**, built with Astro and Tailwind.
+This is the official **YINI website**, built with Astro and Tailwind.
 
 This website is **configured using YINI**.
 
-This is the official website for YINI. YINI is an INI-inspired and human-readable text format for representing structured information. It is designed to be clear, predictable, and easy for humans to read and write. It is suitable for configuration files, application settings, and general data-storage use cases. 
+YINI is an INI-inspired and human-readable text format for representing structured information. It is designed to be clear, predictable, and easy for humans to read and write. It is suitable for configuration files, application settings, and general data-storage use cases. 
 
 Built with Astro and Tailwind CSS — the site provides an overview of the YINI format, including the specification, guides, and examples.
 
