@@ -140,9 +140,7 @@ elevatorPitch = "YINI is a human-friendly, INI-inspired text-based configuration
 
     ^^ external
 
-        ^^^ specOnGitHubAtProd
-        value = "https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md"
-        title = ""
+        specOnGitHubAtProd = "https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md"
 
         ^^^ useIt
         npmYiniCli = "https://www.npmjs.com/package/yini-cli"

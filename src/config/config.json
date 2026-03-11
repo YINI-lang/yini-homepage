@@ -132,10 +132,7 @@
     },
     "urls": {
         "external": {
-            "specOnGitHubAtProd": {
-                "value": "https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md",
-                "title": ""
-            },
+            "specOnGitHubAtProd": "https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md",
             "useIt": {
                 "npmYiniCli": "https://www.npmjs.com/package/yini-cli",
                 "npmYiniParser": "https://www.npmjs.com/package/yini-parser"
