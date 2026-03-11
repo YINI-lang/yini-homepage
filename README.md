@@ -42,11 +42,11 @@ Example snippet (from `config.yini`):
             title = 'Start exploring the YINI format.'
 ```
 
-View the full configuration in the repository:  
+View the full configuration file in the repository:  
 [`src/config/config.yini`](src/config/config.yini)
 
 ### YINI Build Pipeline Used on This Site
-During the build process the configuration is converted automatically:
+During the build process the configuration is converted automatically (by [yini-cli](https://github.com/YINI-lang/yini-cli)):
 ```
 config.yini
  ↓
@@ -61,7 +61,7 @@ Astro
 
 This allows YINI to act as a human-friendly source configuration, while the application consumes standard JSON/TypeScript objects.
 
-If you prefer runtime parsing instead, you can also use yini-parser directly.
+If you prefer runtime parsing instead, you can also use [yini-parser](https://github.com/YINI-lang/yini-parser-typescript) directly.
 
 ---
 
