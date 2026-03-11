@@ -33,4 +33,4 @@ const CONFIG = {
     },
 } satisfies IConfig // NOTE: Use satisfies when assigning (not at export).
 
-export default CONFIG
+export default Object.freeze(CONFIG)
