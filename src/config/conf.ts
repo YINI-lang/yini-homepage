@@ -1,8 +1,21 @@
+import conf from './config.json'
+
 const LATEST_YINI_SPEC_PDF_URL = '/specs/YINI-Specification-1.0.0-RC.3.pdf'
 
-@todo use the produces config.json from the yini file
-@todo substitute LATEST_YINI_SPEC_PDF_URL 
+// @todo use the produces config.json from the yini file
+// @todo substitute LATEST_YINI_SPEC_PDF_URL
 
+const CONFIG = conf
+
+CONFIG.siteLinks.specPdf.url = LATEST_YINI_SPEC_PDF_URL
+
+console.log('CONFIG.text.headline[0]:')
+console.log(CONFIG.text.headline[0])
+
+console.log('CONFIG.urls.external.gitHub.yiniOrg:')
+console.log(CONFIG.urls.external.gitHub.yiniOrg)
+
+/*
 const CONFIG = {
     meta: {
         homepageURL: 'https://yini-lang.org/',
@@ -202,5 +215,6 @@ const CONFIG = {
         },
     },
 } as const
+*/
 
 export default CONFIG

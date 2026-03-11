@@ -4,24 +4,24 @@
         "author": "Marko K. Seppänen"
     },
     "text": {
+        "headline": [
+            "YINI — A Human-Friendly Configuration Format",
+            "YINI: INI familiarity. Structured clarity. Predictable behavior.",
+            "YINI — Readable Like INI, Structured Like JSON",
+            "YINI — Configuration Without YAML's Surprises",
+            "YINI — A Predictable Format for Real-World Configs",
+            "YINI — Structured Configuration That Stays Readable",
+            "YINI — Clean, Calm Configuration for Complex Systems",
+            "YINI — Simple to Read, Structured by Design",
+            "YINI — Configuration with Clear Rules",
+            "YINI — A Better Way to Write Configuration Files",
+            "YINI — Configuration That Grows Without the Pain"
+        ],
+        "tagLine": "Human-readable configuration files with clear structure and predictable parsing.",
+        "elevatorPitch": "YINI is a human-friendly, INI-inspired text-based configuration format for software projects: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage.",
         "mainPage": {
             "headTitle": "YINI — Human-Friendly Configuration Format with Real Structure",
-            "headDescription": "YINI is a human-friendly, text-based configuration format with clear structure, nested sections, and predictable parsing.",
-            "headline": [
-                "YINI — A Human-Friendly Configuration Format",
-                "YINI: INI familiarity. Structured clarity. Predictable behavior.",
-                "YINI — Readable Like INI, Structured Like JSON",
-                "YINI — Configuration Without YAML's Surprises",
-                "YINI — A Predictable Format for Real-World Configs",
-                "YINI — Structured Configuration That Stays Readable",
-                "YINI — Clean, Calm Configuration for Complex Systems",
-                "YINI — Simple to Read, Structured by Design",
-                "YINI — Configuration with Clear Rules",
-                "YINI — A Better Way to Write Configuration Files",
-                "YINI — Configuration That Grows Without the Pain"
-            ],
-            "tagLine": "Human-readable configuration files with clear structure and predictable parsing.",
-            "elevatorPitch": "YINI is a human-friendly, INI-inspired text-based configuration format for software projects: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage."
+            "headDescription": "YINI is a human-friendly, text-based configuration format with clear structure, nested sections, and predictable parsing."
         }
     },
     "siteLinks": {
@@ -133,57 +133,30 @@
     "urls": {
         "external": {
             "specOnGitHubAtProd": {
-                "value": "https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md"
+                "value": "https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md",
+                "title": ""
             },
             "useIt": {
-                "npmYiniCli": {
-                    "url": "https://www.npmjs.com/package/yini-cli"
-                },
-                "npmYiniParser": {
-                    "url": "https://www.npmjs.com/package/yini-parser"
-                }
+                "npmYiniCli": "https://www.npmjs.com/package/yini-cli",
+                "npmYiniParser": "https://www.npmjs.com/package/yini-parser"
             },
             "gitHub": {
-                "yiniOrg": {
-                    "url": "https://github.com/YINI-lang"
-                },
-                "yiniCli": {
-                    "url": "https://github.com/YINI-lang/yini-cli"
-                },
-                "yiniParserTs": {
-                    "url": "https://github.com/YINI-lang/yini-parser-typescript"
-                },
-                "yiniDemoApps": {
-                    "url": "https://github.com/YINI-lang/yini-demo-apps"
-                },
-                "yiniSyntax": {
-                    "url": "https://github.com/YINI-lang/syntax-highlighting"
-                },
-                "yiniHomepage": {
-                    "url": "https://github.com/YINI-lang/yini-homepage"
-                },
-                "yiniSpec": {
-                    "url": "https://github.com/YINI-lang/YINI-spec"
-                }
+                "yiniOrg": "https://github.com/YINI-lang",
+                "yiniCli": "https://github.com/YINI-lang/yini-cli",
+                "yiniParserTs": "https://github.com/YINI-lang/yini-parser-typescript",
+                "yiniDemoApps": "https://github.com/YINI-lang/yini-demo-apps",
+                "yiniSyntax": "https://github.com/YINI-lang/syntax-highlighting",
+                "yiniHomepage": "https://github.com/YINI-lang/yini-homepage",
+                "yiniSpec": "https://github.com/YINI-lang/YINI-spec"
             },
             "yiniWiki": {
-                "getYINITools": {
-                    "url": "https://github.com/YINI-lang/YINI-spec/wiki/Get-YINI-Tools"
-                }
+                "getYINITools": "https://github.com/YINI-lang/YINI-spec/wiki/Get-YINI-Tools"
             },
             "discussions": {
-                "yiniLang": {
-                    "url": "https://github.com/orgs/YINI-lang/discussions"
-                },
-                "yiniCli": {
-                    "url": "https://github.com/YINI-lang/yini-cli/discussions"
-                },
-                "yiniParserTs": {
-                    "url": "https://github.com/YINI-lang/yini-parser-typescript/discussions"
-                },
-                "yiniHomepage": {
-                    "url": "https://github.com/YINI-lang/yini-homepage/discussions"
-                }
+                "yiniLang": "https://github.com/orgs/YINI-lang/discussions",
+                "yiniCli": "https://github.com/YINI-lang/yini-cli/discussions",
+                "yiniParserTs": "https://github.com/YINI-lang/yini-parser-typescript/discussions",
+                "yiniHomepage": "https://github.com/YINI-lang/yini-homepage/discussions"
             }
         }
     }
