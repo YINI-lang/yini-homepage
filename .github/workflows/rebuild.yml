@@ -1,0 +1,21 @@
+# GitHub Action rebuild Astro once per day.
+name: rebuild-site
+
+on:
+    schedule:
+        - cron: '0 6 * * *'
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - run: npm install
+            - run: npm run build
