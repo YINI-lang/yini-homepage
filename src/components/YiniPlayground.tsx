@@ -1,15 +1,15 @@
+// src/components/YiniPlayground.tsx
 import React, { useEffect, useRef, useState } from 'react'
-// import YINI, { ParseOptions, PreferredFailLevel } from 'yini-parser'
-// import YINI from 'yini-parser'
 import YINI from '../YiniWrapper.ts'
 
-type OutputMode = 'json' | 'pojo' | 'meta'
-type FailLevel = 'ignore-errors' | 'errors' | 'warnings-and-errors'
+type OutputMode = 'json' | 'pojo'
+type FailLevel = 'auto' | 'ignore-errors'
+type IndentSize = 2 | 3 | 4 | 6 | 8
 
 const DEFAULT_SNIPPET = `^ App
 name = "Demo"
 version = "1.0.0"
-features = ["search", "dark-mode"] # comments allowed
+features = ["search", "dark-mode"] // comments allowed
 
 ^ Database
 host = "localhost"
@@ -17,12 +17,101 @@ port = 5432
 auth = { user: "admin", pass: "secret" }
 `
 
+const LS_CODE_KEY = 'yini:playground:code'
+const LS_INDENT_KEY = 'yini:playground:indent-size'
+
+function isIndentSize(value: unknown): value is IndentSize {
+    return (
+        value === 2 || value === 3 || value === 4 || value === 6 || value === 8
+    )
+}
+
+function toPrettyPojo(value: unknown, indentStep: IndentSize = 2): string {
+    const seen = new WeakSet<object>()
+
+    const render = (val: unknown, indent = 0): string => {
+        const pad = ' '.repeat(indent)
+        const padInner = ' '.repeat(indent + indentStep)
+
+        if (val === null) return 'null'
+        if (val === undefined) return 'undefined'
+
+        const t = typeof val
+
+        if (t === 'string') {
+            return JSON.stringify(val)
+        }
+
+        if (t === 'number' || t === 'boolean') {
+            return String(val)
+        }
+
+        if (Array.isArray(val)) {
+            if (val.length === 0) return '[]'
+
+            const items = val.map(
+                (item) => `${padInner}${render(item, indent + indentStep)}`,
+            )
+            return `[\n${items.join(',\n')}\n${pad}]`
+        }
+
+        if (t === 'object') {
+            const obj = val as Record<string, unknown>
+
+            if (seen.has(obj)) return '[Circular]'
+            seen.add(obj)
+
+            const keys = Object.keys(obj)
+            if (keys.length === 0) return '{}'
+
+            const props = keys.map((key) => {
+                const safeKey = /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(key)
+                    ? key
+                    : JSON.stringify(key)
+
+                return `${padInner}${safeKey}: ${render(obj[key], indent + indentStep)}`
+            })
+
+            return `{\n${props.join(',\n')}\n${pad}}`
+        }
+
+        return String(val)
+    }
+
+    return render(value)
+}
+
+function buildOutput(
+    mode: OutputMode,
+    parsedData: unknown,
+    meta: unknown,
+    includeMeta: boolean,
+    indentSize: IndentSize,
+): string {
+    const main =
+        mode === 'pojo'
+            ? toPrettyPojo(parsedData, indentSize)
+            : JSON.stringify(parsedData, null, indentSize)
+
+    if (!includeMeta) {
+        return main
+    }
+
+    const metaBlock =
+        mode === 'pojo'
+            ? toPrettyPojo(meta, indentSize)
+            : JSON.stringify(meta, null, indentSize)
+
+    return `${main}\n\n/* Metadata */\n${metaBlock}`
+}
+
 export default function YiniPlayground() {
     const [code, setCode] = useState<string>(DEFAULT_SNIPPET)
     const [mode, setMode] = useState<OutputMode>('json')
     const [strict, setStrict] = useState(false)
     const [includeMeta, setIncludeMeta] = useState(false)
-    const [failLevel, setFailLevel] = useState<FailLevel>('errors')
+    const [failLevel, setFailLevel] = useState<FailLevel>('auto')
+    const [indentSize, setIndentSize] = useState<IndentSize>(2)
     const [auto, setAuto] = useState(true)
 
     const [output, setOutput] = useState<string>('')
@@ -32,34 +121,35 @@ export default function YiniPlayground() {
 
     function parseNow(src = code) {
         setError('')
+
         try {
             const opts = {
                 strictMode: strict,
                 failLevel,
-                includeMetadata: includeMeta,
-                includeDiagnostics: includeMeta,
+                includeMetadata: true,
+                includeDiagnostics: true,
                 requireDocTerminator: 'optional' as const,
                 throwOnError: false,
-                quiet: true,
             }
 
-            const result = YINI.parse(src, opts)
+            const parsed = YINI.parse(src, opts) as any
+            const parsedData = parsed?.result ?? parsed
+            const meta = parsed?.meta ?? {}
+            const errorCount = meta?.diagnostics?.errors?.errorCount ?? 0
 
-            if (includeMeta) {
-                if (mode === 'meta') {
-                    setOutput(
-                        JSON.stringify((result as any).meta ?? {}, null, 2),
-                    )
-                } else {
-                    setOutput(JSON.stringify((result as any).result, null, 2))
+            setOutput(
+                buildOutput(mode, parsedData, meta, includeMeta, indentSize),
+            )
+
+            if (errorCount > 0 && failLevel !== 'ignore-errors') {
+                const firstErr = meta?.diagnostics?.errors?.payload?.[0]
+                if (firstErr?.message) {
+                    setError(firstErr.message)
                 }
-            } else {
-                setOutput(JSON.stringify(result, null, 2)) // POJO/JSON printed the same
             }
 
-            // persist last snippet (optional)
             try {
-                localStorage.setItem('yini:playground:code', src)
+                localStorage.setItem(LS_CODE_KEY, src)
             } catch {}
         } catch (e: any) {
             setOutput('')
@@ -67,35 +157,50 @@ export default function YiniPlayground() {
         }
     }
 
-    // auto-validate with small debounce
     useEffect(() => {
         if (!auto) return
         if (debounce.current) window.clearTimeout(debounce.current)
         debounce.current = window.setTimeout(() => parseNow(), 250)
+
         return () => {
             if (debounce.current) window.clearTimeout(debounce.current)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [code, mode, strict, includeMeta, failLevel, auto])
+    }, [code, mode, strict, includeMeta, failLevel, indentSize, auto])
 
-    // load from URL/localStorage on first mount
     useEffect(() => {
         try {
             const params = new URLSearchParams(location.search)
             const fromUrl = params.get('code')
-            const saved = localStorage.getItem('yini:playground:code')
+            const savedCode = localStorage.getItem(LS_CODE_KEY)
+            const savedIndentRaw = localStorage.getItem(LS_INDENT_KEY)
+
             if (fromUrl) {
                 setCode(decodeURIComponent(fromUrl))
-            } else if (saved) {
-                setCode(saved)
+            } else if (savedCode) {
+                setCode(savedCode)
+            }
+
+            if (savedIndentRaw) {
+                const parsedIndent = Number(savedIndentRaw)
+                if (isIndentSize(parsedIndent)) {
+                    setIndentSize(parsedIndent)
+                }
             }
         } catch {
-            /* ignore */
+            //
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    // keyboard: Ctrl/Cmd+Enter to parse (when auto is off)
+    useEffect(() => {
+        try {
+            localStorage.setItem(LS_INDENT_KEY, String(indentSize))
+        } catch {
+            //
+        }
+    }, [indentSize])
+
     useEffect(() => {
         function onKey(e: KeyboardEvent) {
             if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && !auto) {
@@ -103,9 +208,10 @@ export default function YiniPlayground() {
                 parseNow()
             }
         }
+
         window.addEventListener('keydown', onKey)
         return () => window.removeEventListener('keydown', onKey)
-    }, [auto, code, strict, includeMeta, failLevel, mode])
+    }, [auto, code, strict, includeMeta, failLevel, indentSize, mode])
 
     const copy = async (text: string) => {
         try {
@@ -119,17 +225,17 @@ export default function YiniPlayground() {
                 <h1 className="text-3xl font-semibold md:text-4xl">
                     Playground
                 </h1>
+
                 <p className="mt-2 text-slate-600">
                     Paste YINI on the left, see parsed output on the right.
-                    Choose <strong>JSON</strong> or <strong>POJO</strong>, view{' '}
-                    <strong>Meta</strong>, and toggle strict mode.
+                    Choose <strong>JSON</strong> or <strong>POJO</strong>, and
+                    toggle strict mode.
                 </p>
 
-                {/* Controls */}
                 <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
-                    {/* Output mode */}
                     <div className="flex items-center gap-3">
                         <span className="font-medium">Output:</span>
+
                         <label className="inline-flex items-center gap-1">
                             <input
                                 type="radio"
@@ -140,6 +246,7 @@ export default function YiniPlayground() {
                             />
                             <span>JSON</span>
                         </label>
+
                         <label className="inline-flex items-center gap-1">
                             <input
                                 type="radio"
@@ -150,25 +257,26 @@ export default function YiniPlayground() {
                             />
                             <span>POJO</span>
                         </label>
-                        <label className="inline-flex items-center gap-1">
-                            <input
-                                type="radio"
-                                name="out"
-                                value="meta"
-                                checked={mode === 'meta'}
-                                onChange={() => setMode('meta')}
-                                disabled={!includeMeta}
-                                title={
-                                    !includeMeta
-                                        ? 'Enable metadata to view'
-                                        : ''
-                                }
-                            />
-                            <span>Meta</span>
-                        </label>
                     </div>
 
-                    {/* Parser options */}
+                    <label className="inline-flex items-center gap-2">
+                        <span className="font-medium">Indent:</span>
+                        <select
+                            className="rounded border border-slate-300 px-2 py-1"
+                            value={indentSize}
+                            onChange={(e) =>
+                                setIndentSize(
+                                    Number(e.target.value) as IndentSize,
+                                )
+                            }>
+                            <option value={2}>2 spaces</option>
+                            <option value={3}>3 spaces</option>
+                            <option value={4}>4 spaces</option>
+                            <option value={6}>6 spaces</option>
+                            <option value={8}>8 spaces</option>
+                        </select>
+                    </label>
+
                     <label className="inline-flex items-center gap-2">
                         <input
                             type="checkbox"
@@ -195,11 +303,8 @@ export default function YiniPlayground() {
                             onChange={(e) =>
                                 setFailLevel(e.target.value as FailLevel)
                             }>
-                            <option value="errors">errors</option>
+                            <option value="auto">auto</option>
                             <option value="ignore-errors">ignore-errors</option>
-                            <option value="warnings-and-errors">
-                                warnings-and-errors
-                            </option>
                         </select>
                     </label>
 
@@ -215,27 +320,23 @@ export default function YiniPlayground() {
                     <button
                         type="button"
                         className="btn btn-primary ms-auto"
-                        onClick={() => {
-                            console.log('here')
-                            parseNow()
-                        }}
-                        // disabled={auto}
+                        onClick={() => parseNow()}
                         title={
                             auto
-                                ? 'Disable Auto-validate to use'
+                                ? 'Disable Auto-validate to use manually'
                                 : 'Parse (Ctrl/Cmd+Enter)'
                         }>
                         Parse
                     </button>
                 </div>
 
-                {/* Panels */}
                 <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div className="flex flex-col">
                         <div className="mb-2 flex items-center justify-between">
                             <label className="text-sm font-medium text-slate-600">
                                 Input (.yini)
                             </label>
+
                             <div className="flex gap-2">
                                 <button
                                     type="button"
@@ -245,6 +346,7 @@ export default function YiniPlayground() {
                                 </button>
                             </div>
                         </div>
+
                         <textarea
                             value={code}
                             onChange={(e) => setCode(e.target.value)}
@@ -257,12 +359,9 @@ export default function YiniPlayground() {
                     <div className="flex flex-col">
                         <div className="mb-2 flex items-center justify-between">
                             <label className="text-sm font-medium text-slate-600">
-                                Output (
-                                {includeMeta && mode === 'meta'
-                                    ? 'Meta'
-                                    : mode.toUpperCase()}
-                                )
+                                Output ({mode.toUpperCase()})
                             </label>
+
                             <div className="flex gap-2">
                                 <button
                                     type="button"
