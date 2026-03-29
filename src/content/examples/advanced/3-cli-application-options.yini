@@ -6,7 +6,7 @@ Features:
   - No newline at end of file
   - Sections
   - Strings (double quotes), numbers, booleans
-  - Lists (bracket and colon syntax)
+  - List
   - Line comment with ;
 
 */
