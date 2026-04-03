@@ -99,6 +99,10 @@ const isDev = import.meta.env.DEV
             </>
         )}
 
+        {isProd && (
+            <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="fc9fad19-a82f-429a-a0b5-d2376198c87d"></script>
+        )}
+
         <!-- Optional theme colors -->
         <meta name="theme-color" content="#111827" />
         <meta name="msapplication-TileColor" content="#111827" />
@@ -505,21 +509,5 @@ const isDev = import.meta.env.DEV
         // Run on every Astro navigation (CRITICAL).
         document.addEventListener("astro:page-load", markActiveSidebarLink);
         </script>
-
-        {isProd && (
-            <>
-                <!-- Simple Analytics -->
-                <script is:inline 
-                    async
-                    src="https://scripts.simpleanalyticscdn.com/latest.js"
-                ></script>
-                <noscript>
-                    <img
-                    src="https://queue.simpleanalyticscdn.com/noscript.gif"
-                    alt=""
-                    referrerpolicy="no-referrer-when-downgrade"
-                /></noscript>
-            </>
-        )}
     </body>
 </html>
