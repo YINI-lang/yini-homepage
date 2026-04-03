@@ -1,0 +1,166 @@
+---
+title: 'YINI CLI'
+description: 'Validate, parse, and convert YINI configuration files from the command line with the official YINI CLI.'
+---
+
+import CONFIG from '../../../config/conf'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+
+<BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
+
+# YINI CLI
+
+**Validate, inspect, and convert YINI files from the command line.**
+
+The **YINI CLI** is the official command-line tool for working with YINI files. It is designed to make everyday configuration work simple and predictable — whether you want to quickly inspect a file, validate it, or convert it to JSON or JavaScript.
+
+If you prefer configuration that stays readable without depending on indentation, YINI CLI gives you a straightforward way to work with it from your terminal.
+
+---
+
+## Why use YINI CLI?
+
+YINI CLI is useful when you want to:
+
+- Validate configuration files before running an app or deploying.
+- Inspect YINI files quickly from the terminal.
+- Convert YINI into JSON or JavaScript for tooling and automation.
+- Work with configuration that stays explicit, structured, and easy to read.
+
+It is especially helpful for developer workflows, scripts, CI checks, and local debugging.
+
+---
+
+## Install
+
+Install the CLI globally with npm:
+```bash
+npm install -g yini-cli
+```
+
+After installation, you can verify that it works with:
+```bash
+yini --version
+yini --help
+```
+
+## Quick example
+
+Suppose you have a file called `config.yini`:
+
+```yini
+^ App
+name = "My App Title"
+version = "1.2.3"
+pageSize = 25
+darkTheme = off
+```
+
+You can parse it like this:
+
+```bash
+yini parse config.yini
+```
+
+Output:
+
+```json
+{
+    "App": {
+        "name": "My App Title",
+        "version": "1.2.3",
+        "pageSize": 25,
+        "darkTheme": false
+    }
+}
+```
+
+## Common commands
+
+### Parse a YINI file
+```bash
+yini parse config.yini
+```
+
+### Output compact JSON
+```bash
+yini parse config.yini --compact
+```
+
+### Output JavaScript-style object syntax
+```bash
+yini parse config.yini --js
+```
+
+### Write output to a file
+```bash
+yini parse config.yini -o out.json
+```
+
+### Validate a file
+```bash
+yini validate config.yini
+```
+
+### Validate in strict mode
+```bash
+yini validate --strict config.yini
+```
+
+## A quick look at YINI
+YINI is a human-friendly configuration format with explicit structure, nested sections, comment support, and predictable parsing.
+
+```yini
+// This is a comment in YINI
+
+^ App
+name = 'My Title'
+items = 25
+darkMode = true
+
+    ^^ Special
+    primaryColor = #336699
+    isCaching = false
+```
+
+That becomes:
+```js
+{
+    App: {
+        name: 'My Title',
+        items: 25,
+        darkMode: true,
+        Special: {
+            primaryColor: 3368601,
+            isCaching: false
+        }
+    }
+}
+```
+
+## When YINI CLI is a good fit
+YINI CLI is a good fit if you want:
+- A simple command-line tool for structured configuration.
+- Human-readable config files without indentation-based structure.
+- Easy conversion to JSON or JavaScript.
+- A clear way to validate configuration during development or deployment.
+
+## Learn more
+
+- ➡️ [YINI format overview](/start/what-is-yini-and-why)  
+  *What YINI is and why it exists.*
+- ➡️ [Learn the YINI syntax](/learn-yini/learn-yini-config-format)  
+  *A simple introduction to sections, values, nesting, and comments.*
+- ➡️ [Examples](/learn-yini/examples)  
+  *See YINI examples from simple to more advanced.*
+- ➡️ [YINI Specification](/refs/specification)  
+  *The formal specification for the YINI format.*
+
+## Links
+If you want to try the CLI or explore the project further, these links are a good place to continue.
+
+- [YINI CLI on npm ↗](https://www.npmjs.com/package/yini-cli)
+- [YINI CLI on GitHub ↗](https://github.com/YINI-lang/yini-cli)
+- [YINI Parser on npm ↗](https://www.npmjs.com/package/yini-parser)
+
+</BaseLayout>
