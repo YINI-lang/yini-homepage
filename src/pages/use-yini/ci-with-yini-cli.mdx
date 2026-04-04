@@ -1,5 +1,5 @@
 ---
-title: 'CI with YINI CLI'
+title: 'CI with YINI CLI – Validate Config in CI Pipelines'
 description: 'Use YINI CLI in CI to validate configuration files, catch mistakes early, and keep human-friendly config reliable in automated workflows.'
 ---
 
@@ -42,15 +42,23 @@ If the file is valid, the command exits successfully.
 
 If the file has errors, the command returns a non-zero exit code, which makes it useful in CI pipelines and build scripts.
 
+---
+
 ## Example: npm script
-A simple way to add validation to a project is to define a script in `package.json`:
+A simple way to add validation to a project is to define a script in `package.json` (Node.js):
 
 ```json
 {
   "scripts": {
     "config:check": "npx yini-cli validate ./config.yini"
   }
-}```
+}
+```
+
+Then run:
+```bash
+npm run config:check
+```
 
 ## Example: use strict mode
 If you want stricter validation, use:
@@ -62,6 +70,8 @@ npx yini-cli validate --strict ./config.yini
 This is useful when you want CI to enforce a stricter interpretation of the format.
 
 ## Example: GitHub Actions
+Here is a small GitHub Actions workflow that validates a YINI file on push and pull request:
+
 ```yaml
 name: Validate YINI config
 
@@ -86,8 +96,10 @@ jobs:
 
 This is often enough to catch accidental mistakes early.
 
+---
+
 ## Real configuration used by this site
-The website itself uses a YINI configuration file.
+This website itself uses a YINI configuration file, which makes the workflow shown on this page a real example rather than just a theoretical one.
 
 Example snippet from `config.yini`:
 ```yini
@@ -132,6 +144,8 @@ That can be a good pattern when you want:
 - Validation in build steps before bad config reaches production.
 
 If you prefer runtime parsing instead, you can also use the [YINI Parser](/tools/yini-parser-ts).
+
+---
 
 ## When this approach works well
 Using YINI CLI in CI is a good fit when you want:
