@@ -1,0 +1,256 @@
+---
+title: 'NestedText vs YINI'
+description: 'Compare NestedText and YINI: NestedText favors minimal indentation-based structure, while YINI favors explicit configuration syntax, section markers, and parser predictability.'
+---
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+<BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
+
+# NestedText vs YINI: What's the difference?
+
+Both NestedText and YINI are human-friendly text formats, but they optimize for different goals.
+
+**NestedText** prioritizes minimal, indentation-based readability.  
+**YINI** prioritizes explicit structure, configuration clarity, and parser predictability.
+
+> This comparison is written from the perspective of the YINI project, but aims to describe the tradeoffs fairly.
+
+## In short
+
+Choose **NestedText** if you want the lightest possible syntax for simple hierarchical data.
+
+Choose **YINI** if you want explicit structure, indentation-independent parsing, and a format that is more directly aimed at configuration files.
+
+## Small example
+
+### NestedText
+
+```text
+server:
+    host: localhost
+    port: 8080
+    tls: true
+    # Indentation is required to define nested structure
+    auth:
+        username: admin
+        password: secret
+```
+
+### YINI
+
+```yini
+^ server
+host = 'localhost'
+port = 8080
+tls = true
+
+    // Indentation is optional, structure is defined by section markers
+    ^^ auth
+    username = 'admin'
+    password = 'secret'
+```
+
+## At a glance
+
+| Area            | NestedText             | YINI                         |
+| --------------- | ---------------------- | ---------------------------- |
+| Structure       | Indentation-based      | Explicit section markers     |
+| Syntax style    | Minimal                | More explicit                |
+| Best suited for | Simple nested data     | Configuration files          |
+| Main risk       | Indentation mistakes   | More syntax to type          |
+| Tooling fit     | Human-first simplicity | Stronger grammar/tooling fit |
+
+## High-level difference
+
+### NestedText
+
+- Structure is driven by indentation.
+- Focuses on a very small data model.
+- Aims for readability and low syntax noise.
+- Feels closer to **structured plain text**.
+
+### YINI
+
+- Structure is driven by explicit section markers and syntax.
+- Focuses on configuration use cases.
+- Aims for predictability, explicitness, and formal grammar.
+- Feels closer to an INI-inspired configuration format with modern typing and explicit structure.
+
+## Comparing NestedText and YINI
+
+### 1) Structure model
+
+#### NestedText
+
+- Indentation defines hierarchy.
+- No separate section-marker concept.
+- Visually clean, but indentation is semantically important.
+
+#### YINI
+
+- Section markers define hierarchy explicitly.
+- Indentation is optional for readability only.
+- Easier to re-indent without changing meaning.
+
+**Practical takeaway:**
+
+- **NestedText:** cleaner-looking source.
+- **YINI:** safer against indentation mistakes.
+
+---
+
+### 2) Syntax noise
+
+#### NestedText
+
+- Very low syntax noise.
+- Elegant for simple nested data.
+- Often looks cleaner at first glance.
+
+#### YINI
+
+- More syntax: `=`, quotes, explicit section markers, brackets for lists.
+- Less minimal visually.
+- More explicit about what each construct means.
+
+**Practical takeaway:**
+
+- **NestedText:** lighter and more elegant.
+- **YINI:** more explicit and less interpretive.
+
+---
+
+### 3) Predictability / explicitness
+
+#### NestedText
+
+- Simple overall, but indentation carries meaning.
+- Relies more on layout discipline.
+- May feel more implicit in how structure is expressed.
+
+#### YINI
+
+- Structure is explicit.
+- Strings are quoted.
+- Lists and objects are explicitly marked.
+- Easier to define a stricter parser contract.
+
+**Advantage:**
+
+- **YINI**, if the priority is explicit structure and formal predictability.
+
+---
+
+### 4) Best fit for configuration files
+
+#### NestedText
+
+- Good for human-edited hierarchical data.
+- Can work for config, especially simple config.
+- Less obviously “INI-like”.
+
+#### YINI
+
+- More directly aimed at config/settings use cases.
+- Sections and key-value members map naturally to configuration thinking.
+- Feels more directly oriented toward app and system configuration.
+
+**Advantage:**
+
+- **YINI** for classic configuration scenarios.
+
+---
+
+### 5) Lists / objects / typing
+
+#### NestedText
+
+- Supports structured values, but with a deliberately small and restrained style.
+- Simpler mental model.
+- Not trying to be a heavily featured typed config language.
+
+#### YINI
+
+- Explicit strings, numbers, booleans, null, lists, and objects.
+- More of a configuration-language feel.
+- Closer to JSON-style typing, but with section-based structure.
+
+**Advantage:**
+
+- **YINI** for richer typed config.
+- **NestedText** for simpler hierarchical content.
+
+---
+
+### 6) Formal grammar and tooling orientation
+
+#### NestedText
+
+- Intentionally simple, elegant, and human-centered.
+- Less about a config language with many policy knobs.
+
+#### YINI
+
+- More aligned with formal grammar, parser behavior, strict/lenient parsing, and validation-oriented tooling.
+- A stronger fit when formal grammar and tightly defined parser behavior are important.
+
+**Advantage:**
+
+- **YINI** for parser/tooling-heavy ecosystems.
+
+---
+
+### 7) Error risk in practice
+
+#### NestedText
+
+- The biggest risk area is indentation mistakes.
+- Copy/paste or editor reformatting can matter.
+
+#### YINI
+
+- The biggest cost is more syntax to type.
+- But structure is less likely to change accidentally through indentation.
+
+**Advantage:**
+
+- **NestedText:** less syntax burden.
+- **YINI:** lower indentation-related risk.
+
+## Short judgment
+
+### NestedText is stronger if you want:
+
+- Minimal syntax.
+- Very clean human-readable nested data.
+- Indentation-based structure.
+- A more elegant and restrained format.
+
+### YINI is stronger if you want:
+
+- Explicit structure.
+- Indentation-independent parsing.
+- Stronger configuration semantics.
+- Formal grammar and validation-oriented behavior.
+- A format that feels like **INI with modern typing and structured nesting**.
+
+## Most objective one-line comparison
+
+**NestedText prioritizes minimal, indentation-based readability; YINI prioritizes explicit, configuration-oriented structure and parser predictability.**
+
+Bottom line:
+Neither format is universally better — the better choice depends on whether you value minimal, layout-driven structure or explicit, configuration-oriented syntax.
+
+---
+
+**Learn more:**
+
+- ➡️ [What is YINI?](/intro/what-is-yini-and-why)  
+  _What is YINI and Why?_
+- ➡️ [Learn the YINI format](/learn-yini/learn-yini-config-format)  
+  _10–15 minute introduction to YINI format's syntax and structure._
+- ➡️ [Read the specification](/refs/specification)  
+  _YINI format rules with full technical details._
+
+</BaseLayout>

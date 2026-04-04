@@ -31,9 +31,9 @@ This guide focuses on the **CLI**, which is the best starting point for most use
 Build, convert, and consume structured configuration and data using simple
 tools.
 
-- 🛠 &nbsp;Convert YINI → JSON via CLI. (Can export parsed data as YAML, XML, JS too.)
-- 📦 Load YINI into your app as native objects.
-- 🧩 Use YINI for configuration, data files, pipelines, and tooling.
+- 🛠 &nbsp;Convert YINI → JSON via [YINI CLI](/tools/yini-cli). (Can export parsed data as YAML, XML, JS too.)
+- 📦 Load YINI into your app as native objects, with the [YINI Parser](/tools/yini-parser-ts).
+- 🧩 Use YINI for configuration, data files, tooling, and [CI workflows](/use-yini/ci-with-yini-cli).
 
 ## Prerequisite: Node.js
 
@@ -72,6 +72,8 @@ npm i -g yini-cli
 npm i -D yini-cli
 ```
 
+If you want a fuller introduction, examples, and common commands, see the [YINI CLI page](/tools/yini-cli/).
+
 💡 By default, `yini parse` prints formatted JSON to the terminal.
 
 > After installing, you can run npx yini-cli or add an npm script like "yini": "yini".
@@ -82,7 +84,7 @@ npm i -D yini-cli
 
 ### Optional: Use YINI as a Node.js library
 
-If you're integrating YINI into an application, you can install the official Node.js parser ([repo here ↗](https://github.com/YINI-lang/yini-parser-typescript)):
+If you're integrating YINI into an application, you can install the official [Node.js parser](/tools/yini-parser-ts):
 
 ```bash
 npm i yini-parser
@@ -290,7 +292,7 @@ From here, you can:
 ## 🧭 Next Steps
 
 - ▶️ [Quick Tutorial](/learn-yini/quick-tutorial) — 5-minute guided walkthrough of YINI.
-- ➡️ [YINI Examples](/learn-yini/code-examples)  
+- ➡️ [YINI Examples](/learn-yini/examples)  
   _Shows YINI configuration examples._
 
 </BaseLayout>

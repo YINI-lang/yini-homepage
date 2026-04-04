@@ -85,4 +85,4 @@ Then open http://localhost:4321 in your browser.
 **^YINI ≡**  
 > Readable like INI. Structured like JSON. No indentation surprises.  
 
-[yini-lang.org](https://yini-lang.org/?utm_source=github&utm_medium=referral&utm_campaign=yini_home&utm_content=readme_footer) · [YINI on GitHub](https://github.com/YINI-lang)  
+[yini-lang.org](https://yini-lang.org/?utm_source=github&utm_medium=referral&utm_campaign=yini_home&utm_content=readme_footer) · [YINI-lang on GitHub](https://github.com/YINI-lang)  

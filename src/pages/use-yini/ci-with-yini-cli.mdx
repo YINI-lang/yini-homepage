@@ -1,0 +1,175 @@
+---
+title: 'CI with YINI CLI – Validate Config in CI Pipelines'
+description: 'Use YINI CLI in CI to validate configuration files, catch mistakes early, and keep human-friendly config reliable in automated workflows.'
+---
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+<BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
+
+# CI with YINI CLI
+
+**Validate YINI files in CI and catch configuration mistakes early.**
+
+If you use YINI for configuration, one of the simplest and most useful things you can do is validate your files automatically during development and in CI.
+
+The **YINI CLI** makes that easy. You can run a single command to check that your configuration is valid before a build, deploy, or release step continues.
+
+---
+
+## Why use YINI CLI in CI?
+
+Using YINI CLI in CI helps you:
+
+- catch broken configuration before it reaches production
+- keep configuration changes safe in pull requests
+- make config validation part of a normal build workflow
+- work with human-friendly config without giving up automation
+
+This is especially useful when configuration is edited by multiple people or used across different environments.
+
+---
+
+## Basic validation command
+
+The simplest CI-friendly command is:
+
+```bash
+npx yini-cli validate ./config.yini
+```
+
+If the file is valid, the command exits successfully.
+
+If the file has errors, the command returns a non-zero exit code, which makes it useful in CI pipelines and build scripts.
+
+---
+
+## Example: npm script
+A simple way to add validation to a project is to define a script in `package.json` (Node.js):
+
+```json
+{
+  "scripts": {
+    "config:check": "npx yini-cli validate ./config.yini"
+  }
+}
+```
+
+Then run:
+```bash
+npm run config:check
+```
+
+## Example: use strict mode
+If you want stricter validation, use:
+
+```bash
+npx yini-cli validate --strict ./config.yini
+```
+
+This is useful when you want CI to enforce a stricter interpretation of the format.
+
+## Example: GitHub Actions
+Here is a small GitHub Actions workflow that validates a YINI file on push and pull request:
+
+```yaml
+name: Validate YINI config
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-config:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate config
+        run: npx yini-cli validate ./config.yini
+```
+
+This is often enough to catch accidental mistakes early.
+
+---
+
+## Real configuration used by this site
+This website itself uses a YINI configuration file, which makes the workflow shown on this page a real example rather than just a theoretical one.
+
+Example snippet from `config.yini`:
+```yini
+^ siteLinks
+
+    ^^ hero
+
+        ^^^ home
+        url = '/'
+        title = 'Home – YINI homepage'
+
+        ^^^ getStarted
+        url = '/use-yini/get-started'
+        title = 'Start exploring the YINI format.'
+```
+
+The full configuration file lives in the repository under:
+```
+src/config/config.yini
+```
+
+## YINI build pipeline used on this site
+During the build process, the configuration is converted automatically with [YINI CLI](/tools/yini-cli):
+
+```txt
+config.yini
+ ↓
+yini-cli
+ ↓
+config.json
+ ↓
+config.ts (consumed by the Astro application)
+ ↓
+Astro
+```
+
+This makes YINI the human-friendly source format, while the application still consumes standard JSON or TypeScript-friendly objects.
+
+That can be a good pattern when you want:
+- Readable source configuration for humans.
+- Predictable machine-readable output for your app.
+- Validation in build steps before bad config reaches production.
+
+If you prefer runtime parsing instead, you can also use the [YINI Parser](/tools/yini-parser-ts).
+
+---
+
+## When this approach works well
+Using YINI CLI in CI is a good fit when you want:
+- Config files reviewed and validated in pull requests.
+- Safer builds and deployments.
+- A human-friendly source config format.
+- A simple validation step that works well with npm scripts and CI pipelines.
+
+## Related tools
+
+- ➡️ [YINI CLI](/tools/yini-cli)  
+  _Validate, inspect, and convert YINI files from CLI._
+- ➡️ [YINI Parser](/tools/yini-parser-ts)  
+  _Load YINI directly in a Node.js app at runtime._
+
+## Learn more
+
+- ➡️ [Get Started](/use-yini/get-started)  
+  _Installation and CLI usage overview._
+- ➡️ [Learn the YINI syntax](/learn-yini/learn-yini-config-format)  
+  *A simple introduction to sections, values, nesting, and comments.*
+- ➡️ [Examples](/learn-yini/examples)  
+  *See YINI examples from simple to more advanced.*
+- ➡️ [YINI Specification](/refs/specification)  
+  *The formal specification for the YINI format.*
+
+</BaseLayout>
