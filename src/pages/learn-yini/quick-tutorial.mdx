@@ -77,7 +77,20 @@ npx yini-cli --help
 
 If you want a fuller introduction, examples, and common commands, see the [YINI CLI page](/tools/yini-cli/).
 
-## 4) npm script
+## 4) Load YINI in your app
+
+If you want to use YINI at runtime in a TypeScript/JavaScript (Node.js) app, you can load the same file as native objects, with the [YINI Parser](/tools/yini-parser-ts).
+
+```ts
+import YINI from 'yini-parser'
+
+const config = YINI.parseFile('./config3.yini')
+
+console.log(config.App.name)
+console.log(config.Server.host)
+```
+
+## 5) npm script
 
 Use this in **CI** to catch config mistakes early:
 
