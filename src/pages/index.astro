@@ -256,12 +256,15 @@ const statusIcon = (status: EcosystemStatus) => {
             <section class="mx-auto max-w-3xl pt-1 pb-6">
                 <h2>⚡ TL;DR — Quick Start</h2>
                 <h3 class="pl-4">Try YINI in three simple steps:</h3>
+                <p class="pl-4 text-sm text-slate-500">
+                    Requires Node.js installed.
+                </p>
 
                 <ul class="space-y-6">
                     <li>
                         <h3>1) Create a file</h3>
-                        Save the two lines below as <code>config.yini</code>: <i
-                            >(no build step, no dependencies required)</i
+                        Save these two lines as <code>config.yini</code>: <i
+                            >(No build step or project setup required.)</i
                         >
                         <pre><code class="language-yini">{`^ App
 name = "Hello"`}</code></pre>
@@ -298,7 +301,8 @@ name = "Hello"`}</code></pre>
                         <h3>Bonus: JavaScript output</h3>
                         <pre><code class="language-bash">npx yini-cli parse config.yini --js</code></pre>
                         <p>
-                            Use <code>--js</code> to output a JavaScript-style object:
+                            Use <code>--js</code> to output a JavaScript-style object
+                            instead:
                         </p>
                         <pre><code class="language-js">{`{
     App: {
