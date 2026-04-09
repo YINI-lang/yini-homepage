@@ -1,3 +1,4 @@
+// src/components/Header.tsx
 import React, { useEffect, useState } from 'react'
 import CONFIG from '../config/conf'
 
@@ -57,11 +58,48 @@ function useMediaQuery(query: string) {
     return matches
 }
 
+/*
+    Small, quiet branding text under / beside the logo.
+
+    Intention:
+    - Clarify what YINI is at a glance.
+    - Add a slightly more professional / project-like feel.
+    - Stay secondary to the logo and the main page hero.
+
+    Styling choice:
+    - First line: normal text for clarity.
+    - Second line: italic and lighter, to feel more like attribution.
+*/
+function HeaderTagline({ mobile = false }: { mobile?: boolean }) {
+    return (
+        <div className={mobile ? 'leading-tight' : 'mt-0.5 leading-tight'}>
+            <div
+                className={
+                    mobile
+                        ? 'text-[11px] text-slate-600 dark:text-slate-300'
+                        : 'text-sm text-slate-600 dark:text-slate-300'
+                }>
+                {CONFIG.text.logoTagLine}
+            </div>
+
+            <div
+                className={
+                    mobile
+                        ? 'mt-0.5 text-[10px] text-slate-400 italic dark:text-slate-500'
+                        : 'mt-1 text-xs text-slate-400 italic dark:text-slate-500'
+                }>
+                By the YINI-lang project
+            </div>
+        </div>
+    )
+}
+
 export default function Header({ isProd }: HeaderProps) {
     const isDev = !isProd
+
     useEffect(() => {
         console.log('isDev: ' + isDev)
-    }, [])
+    }, [isDev])
 
     const [open, setOpen] = useState(false)
     const [dark, setDark] = useState(false)
@@ -92,10 +130,9 @@ export default function Header({ isProd }: HeaderProps) {
         return () => window.removeEventListener('resize', onResize)
     }, [])
 
-    /* 
-        For desktop-mode/view ->     Top nav-menu.
+    /*
+        For desktop-mode/view -> Top nav-menu.
      */
-    // const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
     const NavDesktopTopMenu = () => {
         const cssClasses = 'px-3'
 
@@ -148,8 +185,8 @@ export default function Header({ isProd }: HeaderProps) {
         )
     }
 
-    /* 
-        For mobile-mode/view ->      Pop-up nav-menu.
+    /*
+        For mobile-mode/view -> Pop-up nav-menu.
 
         This menu is adapted for mobile view:
         - More users are new, curious, or returning for a quick thing.
@@ -163,7 +200,6 @@ export default function Header({ isProd }: HeaderProps) {
 
         (!) Not to overload the user and view with links and info.
      */
-    // const NavLinks = ({ variant = 'desktop' }: NavLinksProps) => {
     const NavMobilePopupMenu = () => {
         const cssClasses = 'no-underline hover:underline text-sm'
 
@@ -179,7 +215,6 @@ export default function Header({ isProd }: HeaderProps) {
                         </a>
                     </div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        {/* 🧭 Start here */}
                         Start here
                     </h3>
                     <ul className="space-y-2 pl-4">
@@ -208,7 +243,6 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        {/* 🚀 Try YINI */}
                         Try YINI
                     </h3>
                     <ul className="space-y-2 pl-4">
@@ -237,7 +271,6 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        {/* 🧪 Examples */}
                         Examples
                     </h3>
                     <ul className="space-y-2 pl-4">
@@ -285,10 +318,7 @@ export default function Header({ isProd }: HeaderProps) {
                 </div>
 
                 <div>
-                    <h3 className="my-2 font-semibold text-slate-500">
-                        {/* 📘 Learn */}
-                        Learn
-                    </h3>
+                    <h3 className="my-2 font-semibold text-slate-500">Learn</h3>
                     <ul className="space-y-2 pl-4">
                         <li>
                             <a
@@ -303,10 +333,7 @@ export default function Header({ isProd }: HeaderProps) {
                 </div>
 
                 <div>
-                    <h3 className="my-2 font-semibold text-slate-500">
-                        {/* 📚 Docs */}
-                        Docs
-                    </h3>
+                    <h3 className="my-2 font-semibold text-slate-500">Docs</h3>
                     <ul className="space-y-2 pl-4">
                         <li>
                             <a
@@ -327,7 +354,6 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        {/* ⭐ Project */}
                         Project
                     </h3>
                     <ul className="space-y-2 pl-4">
@@ -344,10 +370,7 @@ export default function Header({ isProd }: HeaderProps) {
                 </div>
 
                 <div>
-                    <h3 className="my-2 font-semibold text-slate-500">
-                        {/* ℹ️ About */}
-                        About
-                    </h3>
+                    <h3 className="my-2 font-semibold text-slate-500">About</h3>
                     <ul className="space-y-2 pl-4">
                         <li>
                             <a
@@ -367,13 +390,11 @@ export default function Header({ isProd }: HeaderProps) {
     if (!isMobile) {
         // "Desktop" View.
         return (
-            // <header className="site-header text-center">
             <header className="site-header text-center">
                 {/* Logo. */}
                 <a href="/" aria-label="YINI home" className="logo m-1">
                     <img
                         className="mx-auto block h-1/4 w-1/4"
-                        // className="mx-auto block h-1/3 w-1/3 pr-14.5"
                         src="/gfx/YINI-logo-cyan-on-tr.png"
                         alt="YINI logo"
                         loading="eager"
@@ -381,8 +402,10 @@ export default function Header({ isProd }: HeaderProps) {
                     />
                 </a>
 
-                <nav>
-                    {/* <NavLinks variant="desktop" /> */}
+                {/* Quiet supporting descriptor under the logo. */}
+                <HeaderTagline />
+
+                <nav className="mt-5">
                     <NavDesktopTopMenu />
                     {false && isDev && (
                         <button
@@ -404,7 +427,7 @@ export default function Header({ isProd }: HeaderProps) {
                     <a
                         href="/"
                         aria-label="YINI home"
-                        className="inline-flex items-center gap-2 no-underline">
+                        className="inline-flex items-center gap-3 no-underline">
                         <img
                             className="h-8 w-auto"
                             src="/gfx/YINI-logo-cyan-on-tr.png"
@@ -412,13 +435,13 @@ export default function Header({ isProd }: HeaderProps) {
                             loading="eager"
                             decoding="async"
                         />
-                        <span className="sr-only">YINI</span>
-                    </a>
 
-                    {/* Normal (desktop) menu */}
-                    {/* <nav className="ms-auto hidden items-center gap-5 text-sm md:flex">
-                        <NavLinks variant="desktop" />
-                    </nav> */}
+                        {/* Small supporting text next to the logo in mobile view. */}
+                        <div className="min-w-0">
+                            <span className="sr-only">YINI</span>
+                            <HeaderTagline mobile />
+                        </div>
+                    </a>
 
                     {/* Controls */}
                     <div className="ms-3 ml-auto flex items-center gap-2">
@@ -454,7 +477,6 @@ export default function Header({ isProd }: HeaderProps) {
                         id="mobile-nav"
                         className="border-t border-slate-200/60 md:hidden">
                         <nav className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-sm">
-                            {/* <NavLinks variant="mobile" /> */}
                             {<NavMobilePopupMenu />}
                         </nav>
                     </div>

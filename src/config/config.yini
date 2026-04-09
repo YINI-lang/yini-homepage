@@ -22,6 +22,12 @@
 // ============================================================
 
 ^ text
+    // Branding tagLine.
+    // A small, restrained subtitle under (or to the right) of the logo.
+    // NOTE: This line is only secondary to the logo.
+    // Must stay quiet and NOT compete with the hero or main tagLine.
+    logoTagLine = 'A clear and structured config format'
+
     headline = [
         'YINI — Readable like INI. Structured like JSON. No indentation surprises.',
         'YINI — Readable like INI, structured like JSON — no indentation surprises.',

@@ -4,6 +4,7 @@
         "author": "Marko K. Seppänen"
     },
     "text": {
+        "logoTagLine": "A clear and structured config format",
         "headline": [
             "YINI — Readable like INI. Structured like JSON. No indentation surprises.",
             "YINI — Readable like INI, structured like JSON — no indentation surprises.",
