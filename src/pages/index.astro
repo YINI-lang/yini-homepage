@@ -182,8 +182,19 @@ const statusIcon = (status: EcosystemStatus) => {
 
     <section class="why-yini pb-4">
         <h2 class="mt-1">💡 Why YINI?</h2>
-        INI, YAML, and JSON all approach configuration differently, each with tradeoffs:<br
-        />
+        INI, <a
+            href="https://yaml.org/"
+            target="_blank"
+            rel="noopener noreferrer">YAML</a
+        >, <a
+            href="https://www.w3.org/TR/xml/"
+            target="_blank"
+            rel="noopener noreferrer">XML</a
+        >, and <a
+            href="https://www.json.org"
+            target="_blank"
+            rel="noopener noreferrer">JSON</a
+        > all approach configuration differently, each with tradeoffs:<br />
         INI favors simplicity, YAML offers expressive structure, and JSON prioritizes
         precision.<br />
         <strong>YINI</strong> focuses on keeping configuration readable while providing
@@ -232,8 +243,9 @@ const statusIcon = (status: EcosystemStatus) => {
 
             <ul class="mt-2">
                 <li class="leading-relaxed">
-                    🛠 Convert YINI → JSON with a simple <a
-                        href="/tools/yini-cli">CLI tool</a
+                    🛠 Validate and convert <strong>YINI files →</strong>
+                    JSON with the simple <a href="/tools/yini-cli"
+                        >YINI CLI tool</a
                     >.
                     <div class="text-sm">
                         (Can export parsed data as YAML, XML, JS too.)
