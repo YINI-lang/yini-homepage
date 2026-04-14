@@ -1,33 +1,34 @@
 # yini-homepage
 
-This is the official **YINI website**, built with Astro and Tailwind.
+Official website repository for YINI, built with Astro, React, and Tailwind CSS.
 
-This website is **configured using YINI**.
+This website uses a YINI config file for part of its configuration.
 
-YINI is an INI-inspired and human-readable text format for representing structured information. It is designed to be clear, predictable, and easy for humans to read and write. It is suitable for configuration files, application settings, and general data-storage use cases. 
+YINI is an INI-inspired, human-readable text format for representing structured information. It is intended for configuration files, application settings, and general data-storage use cases. 
 
-Built with Astro and Tailwind CSS — the site provides an overview of the YINI format, including the specification, guides, and examples.
+The site provides an overview of the YINI format, including the specification, guides, and examples.
 
+Example of a YINI file:
 ```yini
 ^ server
     host = 'localhost'
     port = 8080
+    allowedOrigins = ['http://localhost:3000', 'https://app.example.com']
 
     ^^ database
         user = 'admin'
         password = 'secret'
+        logging = { level: 'info', file: 'logs/server.log' }
 ```
 
-👉 **Live site:** [https://yini-lang.org](https://yini-lang.org/?utm_source=github&utm_medium=referral&utm_campaign=yini_home&utm_content=readme_top) ↗
-
-⭐ If you find **YINI interesting or useful**, consider giving the project a star on GitHub.
+**Live site:** [yini-lang.org](https://yini-lang.org/?utm_source=github&utm_medium=referral&utm_campaign=yini_home&utm_content=readme_top)  
 
 ---
 
 ## Real Configuration Used by This Site
-The website itself is configured using a **YINI configuration file**.
+Part of the website configuration (including internal links and descriptive text) is defined in a YINI file.
 
-Example snippet (from `config.yini`):
+Example snippet from the real file (`config.yini`):
 ```yini
 ^ siteLinks
 
@@ -46,7 +47,8 @@ View the full configuration file in the repository:
 [`src/config/config.yini`](src/config/config.yini)
 
 ### YINI Build Pipeline Used on This Site
-During the build process the configuration is converted automatically (by [yini-cli](https://github.com/YINI-lang/yini-cli)):
+During the build process, the configuration is converted automatically using [yini-cli](https://github.com/YINI-lang/yini-cli).
+
 ```
 config.yini
  ↓
@@ -59,13 +61,13 @@ config.ts (consumed by the Astro application)
 Astro
 ```
 
-This allows YINI to act as a human-friendly source configuration, while the application consumes standard JSON/TypeScript objects.
+This allows YINI to be used as the source configuration format, while the application consumes generated JSON/TypeScript objects.
 
-If you prefer runtime parsing instead, you can also use [yini-parser](https://github.com/YINI-lang/yini-parser-typescript) directly.
+Runtime parsing can also be done directly with [yini-parser](https://github.com/YINI-lang/yini-parser-typescript).
 
 ---
 
-## 🧩 Local Development
+## Local Development
 ```bash
 # Clone
 git clone https://github.com/YINI-lang/yini-homepage.git
@@ -83,6 +85,8 @@ Then open http://localhost:4321 in your browser.
 ---
 
 **^YINI ≡**  
-> Readable like INI. Structured like JSON. No indentation surprises.  
+> YINI is a human-readable configuration format designed for clarity, readability, explicit structure, predictability, and deterministic parsing.
+> 
+> See the specification for syntax and format details.  
 
 [yini-lang.org](https://yini-lang.org/?utm_source=github&utm_medium=referral&utm_campaign=yini_home&utm_content=readme_footer) · [YINI-lang on GitHub](https://github.com/YINI-lang)  
