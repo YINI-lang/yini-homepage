@@ -6,6 +6,17 @@ import { RandomHeadlineH1 } from '../components/RandomHeadline'
 import CONFIG from '../config/conf'
 import BaseLayout from '../layouts/BaseLayout.astro'
 
+/*
+    NOTE: This page is the main front door to the project.
+    - Its job is to help different kinds of visitors quickly understand:
+
+    1. What YINI is
+    2. What kind of project it is
+    3. Where to go next
+
+    Wording here should not be too promotional. It should be shorter and more neutral than on a ads landing page.
+*/
+
 type EcosystemStatus = 'done' | 'inprogress' | 'planned' | '' | null
 
 export interface EcosystemCell {
@@ -21,38 +32,6 @@ export interface EcosystemRow {
 
 export type EcosystemMatrix = EcosystemRow[]
 
-// // --- npm downloads ---------
-// const res1 = await fetch(
-//     'https://api.npmjs.org/downloads/point/last-week/yini-parser',
-// )
-// const data1 = await res1.json()
-
-// const res2 = await fetch(
-//     'https://api.npmjs.org/downloads/point/last-week/yini-cli',
-// )
-// const data2 = await res2.json()
-
-// const weeklyDownloads = data1.downloads + data2.downloads
-// // ---
-
-// // --- GitHub stars ---------
-// const repos = [
-//     'yini-spec',
-//     'yini-parser-typescript',
-//     'yini-cli',
-//     'yini-demo-apps',
-//     'yini-syntax',
-// ]
-
-// let totalStars = 0
-
-// for (const repo of repos) {
-//     const res = await fetch(`https://api.github.com/repos/YINI-lang/${repo}`)
-//     const data = await res.json()
-//     totalStars += data.stargazers_count
-// }
-// // --------------------------
-
 const rows: EcosystemMatrix = [
     {
         core: { label: 'Language Specification', status: 'done' },
@@ -60,7 +39,7 @@ const rows: EcosystemMatrix = [
         adopt: { label: null, status: null },
     },
     {
-        core: { label: 'Parsing Rules (Strict & Lenient)', status: 'done' },
+        core: { label: 'Parsing Rules (Lenient & Strict)', status: 'done' },
         impl: { label: 'TypeScript Parser (Primary)', status: 'done' },
         adopt: { label: null, status: null },
     },
@@ -109,11 +88,14 @@ const statusIcon = (status: EcosystemStatus) => {
         <!-- <h1 class="text-3xl font-semibold tracking-tight md:text-5xl">
             {CONFIG.text.headline}
         </h1> -->
+        {/* HERO: Headline */}
         <RandomHeadlineH1 headlines={CONFIG.text.headline} client:load />
+
         <div class="pb-8">
             <GitHubSocialProof />
 
             <p class="mt-3 text-base md:text-lg">
+                {/* HERO: Elevator pitch */}
                 {CONFIG.text.elevatorPitch}
             </p>
         </div>
@@ -121,6 +103,7 @@ const statusIcon = (status: EcosystemStatus) => {
         <div
             class="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 py-3 text-sm text-slate-700 md:text-base dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
         >
+            {/* Positioning line */}
             <span class="ml-1"
                 >Looks like INI, handles structure like JSON — without YAML's
                 indentation pitfalls.</span
@@ -166,8 +149,9 @@ const statusIcon = (status: EcosystemStatus) => {
         </p>
     </section>
 
-    <section class="pb-6">
-        <h2>✨ The big idea</h2>
+    <!-- <section class="pb-6">
+        {/* The "big idea" */}
+        <h2>🧠 The big idea</h2>
         <p>
             YINI is configuration that looks familiar — but stays clean even as
             it grows.
@@ -178,23 +162,16 @@ const statusIcon = (status: EcosystemStatus) => {
             <li class="leading-relaxed">Easy to maintain.</li>
             <li class="leading-relaxed">Readable all the way.</li>
         </ul>
-    </section>
+    </section> -->
 
-    <section class="why-yini pb-4">
+    <section class="why-yini pt-4 pb-4">
         <h2 class="mt-1">💡 Why YINI?</h2>
-        INI, <a
-            href="https://yaml.org/"
-            target="_blank"
-            rel="noopener noreferrer">YAML</a
-        >, <a
+        INI, YAML, <a
             href="https://www.w3.org/TR/xml/"
             target="_blank"
             rel="noopener noreferrer">XML</a
-        >, and <a
-            href="https://www.json.org"
-            target="_blank"
-            rel="noopener noreferrer">JSON</a
-        > all approach configuration differently, each with tradeoffs:<br />
+        >, and JSON all approach configuration differently, each with tradeoffs:<br
+        />
         INI favors simplicity, YAML offers expressive structure, and JSON prioritizes
         precision.<br />
         <strong>YINI</strong> focuses on keeping configuration readable while providing
@@ -202,16 +179,20 @@ const statusIcon = (status: EcosystemStatus) => {
         <ul>
             <li class="leading-relaxed">
                 <strong>No indentation traps.</strong>
-                Clear structure without YAML-style surprises.
+                Clear structure without <a
+                    href="https://yaml.org/"
+                    target="_blank"
+                    rel="noopener noreferrer">YAML</a
+                >-style surprises.
             </li>
 
             <li class="leading-relaxed">
-                <strong>Readable as files grow.</strong>
+                <strong>Designed to remain readable as files grow.</strong>
                 Nest sections without losing clarity.
             </li>
 
             <li class="leading-relaxed">
-                <strong>Designed for humans.</strong>
+                <strong>Designed for human readability.</strong>
                 Easy to edit, comment, and maintain.
             </li>
 
@@ -221,8 +202,13 @@ const statusIcon = (status: EcosystemStatus) => {
             </li>
 
             <li class="leading-relaxed">
-                <strong>The right balance.</strong>
-                More structure than INI, less noise than JSON.
+                <strong>A practical balance of simplicity and structure.</strong
+                >
+                More structure than INI, less noise than <a
+                    href="https://www.json.org"
+                    target="_blank"
+                    rel="noopener noreferrer">JSON</a
+                >.
             </li>
         </ul>
 
@@ -233,8 +219,26 @@ const statusIcon = (status: EcosystemStatus) => {
             >
         </p>
 
-        <section class="pb-4">
-            <h2>💡 How can YINI be used?</h2>
+        <section class="mt-2 pt-4 pb-4">
+            <h2 class="mt-5">🧯 Why YINI was created</h2>
+            Many configuration formats become harder to maintain as projects grow.
+            <ul>
+                <li class="leading-relaxed">
+                    <strong>INI</strong> becomes flat and unstructured.
+                </li>
+                <li class="leading-relaxed">
+                    <strong>JSON</strong> becomes noisy and hard to edit.
+                </li>
+                <li class="leading-relaxed">
+                    <strong>YAML</strong> becomes fragile and unpredictable.
+                </li>
+            </ul>
+            YINI was designed to address these issues.
+        </section>
+
+        {/* Tooling + Practical usage section */}
+        <section class="pb-6">
+            <h2>💡 How YINI is used in practice</h2>
 
             <p class="mt-1">
                 Use YINI wherever you need structured configuration — without
@@ -243,22 +247,23 @@ const statusIcon = (status: EcosystemStatus) => {
 
             <ul class="mt-2">
                 <li class="leading-relaxed">
-                    🛠 Validate and convert <strong>YINI files →</strong>
-                    JSON with the simple <a href="/tools/yini-cli"
-                        >YINI CLI tool</a
+                    🛠 Validate and convert YINI files to JSON with the <a
+                        href="/tools/yini-cli">YINI CLI tool</a
                     >.
                     <div class="text-sm">
-                        (Can export parsed data as YAML, XML, JS too.)
+                        (It can also export parsed data as YAML, XML, and
+                        JavaScript.)
                     </div>
                 </li>
                 <li class="leading-relaxed">
-                    📦 Load YINI directly into your app as native objects, with
-                    the <a href="/tools/yini-parser-ts">YINI Parser</a>.
+                    📦 Load YINI directly into your application as native
+                    objects with the <a href="/tools/yini-parser-ts"
+                        >YINI Parser</a
+                    >.
                 </li>
                 <li class="leading-relaxed">
-                    🧩 You can use it for configs, data files, tooling, and <a
-                        href="/use-yini/ci-with-yini-cli">CI workflows</a
-                    >.
+                    🧩 Use YINI for configuration files, data files, tooling,
+                    and <a href="/use-yini/ci-with-yini-cli">CI workflows</a>.
                 </li>
             </ul>
         </section>
@@ -595,10 +600,6 @@ title = "MyApp"</code></pre>
 
         <section class="mt-3 text-base md:text-base">
             <h2>ℹ️ About</h2>
-            <p>
-                YINI is an INI-inspired configuration format designed for
-                clarity, simple nesting, and predictable parsing.
-            </p>
             <p>
                 The format is defined by a formal, versioned specification and
                 maintained as an open-source project under the YINI-lang
