@@ -166,7 +166,7 @@ const statusIcon = (status: EcosystemStatus) => {
     </section> -->
 
     <section class="why-yini pt-4 pb-4">
-        <h2 class="mt-1">💡 Why YINI?</h2>
+        <h2 class="mt-1">Why YINI?</h2>
         INI, YAML, <a
             href="https://www.w3.org/TR/xml/"
             target="_blank"
@@ -221,7 +221,7 @@ const statusIcon = (status: EcosystemStatus) => {
         </p>
 
         <section class="mt-2 pt-4 pb-4">
-            <h2 class="mt-5">🧯 Why YINI was created</h2>
+            <h2 class="mt-5">Why YINI was created</h2>
             Many configuration formats become harder to maintain as projects grow.
             <ul>
                 <li class="leading-relaxed">
@@ -239,7 +239,7 @@ const statusIcon = (status: EcosystemStatus) => {
 
         {/* Tooling + Practical usage section */}
         <section class="pb-6">
-            <h2>💡 How YINI is used in practice</h2>
+            <h2>How YINI is used in practice</h2>
 
             <p class="mt-1">
                 Use YINI wherever you need structured configuration — without
@@ -287,7 +287,7 @@ const statusIcon = (status: EcosystemStatus) => {
                         <pre><code class="language-yini">{`^ App
 name = "Hello"`}</code></pre>
                         <p>
-                            <span role="img" aria-label="warning">⚠️</span>
+                            <span role="img" aria-label="warning">💡</span>
                             Make sure you save the file with the <code
                                 >.yini</code
                             > extension (not <code>.txt</code>).
@@ -606,15 +606,16 @@ title = "MyApp"</code></pre>
             <h1 class="mt-5">⚖️ How YINI compares to other config formats</h1>
             <div style="overflow-x:auto">
                 <p class="mb-2 text-sm text-slate-500">
-                    YINI supports both strict and lenient parsing modes,
-                    depending on how much enforcement you need.
+                    YINI supports both lenient and strict parsing modes,
+                    depending on how much enforcement you need. Lenient mode is
+                    the default.
                 </p>
                 <table>
                     <thead>
                         <tr>
                             <th>Feature</th>
+                            <th>YINI (lenient)</th>
                             <th>YINI (strict)</th>
-                            <th>YINI (mode)</th>
                             <th>INI</th>
                             <th>JSON</th>
                             <th>YAML</th>
@@ -624,7 +625,7 @@ title = "MyApp"</code></pre>
 
                     <tbody>
                         <tr>
-                            <td>Human-friendly by default</td>
+                            <td>Human readability by default</td>
                             <td>✅</td>
                             <td>✅</td>
                             <td>➖</td>
@@ -644,14 +645,14 @@ title = "MyApp"</code></pre>
                         <tr>
                             <td>Predictable parsing</td>
                             <td>✅</td>
-                            <td>➖</td>
+                            <td>✅</td>
                             <td>❌</td>
                             <td>✅</td>
                             <td>❌</td>
                             <td>✅</td>
                         </tr>
                         <tr>
-                            <td>Formal grammar / spec</td>
+                            <td>Formal specification / grammar</td>
                             <td>✅</td>
                             <td>✅</td>
                             <td>❌</td>
@@ -678,7 +679,7 @@ title = "MyApp"</code></pre>
                             <td>✅</td>
                         </tr>
                         <tr>
-                            <td>Minimal syntax noise</td>
+                            <td>Syntax overhead</td>
                             <td>✅</td>
                             <td>✅</td>
                             <td>✅</td>
@@ -688,7 +689,7 @@ title = "MyApp"</code></pre>
                         </tr>
 
                         <tr>
-                            <td>Designed for configuration</td>
+                            <td>Configuration-oriented design</td>
                             <td>✅</td>
                             <td>✅</td>
                             <td>✅</td>
@@ -697,34 +698,64 @@ title = "MyApp"</code></pre>
                             <td>✅</td>
                         </tr>
                         <tr>
-                            <td>Clear error diagnostics</td>
+                            <td>Diagnostic clarity</td>
                             <td>✅</td>
-                            <td>➖</td>
+                            <td>✅</td>
                             <td>❌</td>
                             <td>✅</td>
                             <td>❌</td>
                             <td>✅</td>
                         </tr>
                         <tr>
-                            <td>Safe for large configs</td>
+                            <td>Suitability for larger configurations</td>
                             <td>✅</td>
-                            <td>➖</td>
+                            <td>✅</td>
                             <td>❌</td>
                             <td>➖</td>
                             <td>❌</td>
                             <td>➖</td>
+                        </tr>
+                        <tr>
+                            <td>Ecosystem maturity</td>
+                            <td>Limited / growing</td>
+                            <td>Limited / growing</td>
+                            <td>Mature but fragmented</td>
+                            <td>Very strong</td>
+                            <td>Very strong</td>
+                            <td>Strong</td>
+                        </tr>
+                        <tr>
+                            <td>Industry familiarity</td>
+                            <td>Low</td>
+                            <td>Low</td>
+                            <td>Very strong</td>
+                            <td>Very strong</td>
+                            <td>Very strong</td>
+                            <td>Moderate</td>
+                        </tr>
+                        <tr>
+                            <td>Native tooling availability</td>
+                            <td>Limited / growing</td>
+                            <td>Limited / growing</td>
+                            <td>Moderate</td>
+                            <td>Very strong</td>
+                            <td>Very strong</td>
+                            <td>Strong</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <p class="mt-2 text-sm text-slate-500">
-                    <strong>Strict</strong> = safety & predictability · <strong
-                        >Lenient</strong
-                    > = flexibility & convenience
+                    <strong>Lenient</strong> = flexibility & convenience ·
+                    <strong>Strict</strong> = safety & predictability
                 </p>
                 <p class="mt-2 text-sm text-slate-500">
                     ✅ Strong support · ➖ Partial / debated · ❌ Poor or not
                     supported
+                </p>
+                <p class="mt-1 text-sm text-slate-500">
+                    The final three rows use text labels to describe ecosystem
+                    and adoption maturity.
                 </p>
             </div>
         </section>
@@ -732,7 +763,7 @@ title = "MyApp"</code></pre>
         <hr />
 
         <section class="mt-3 text-base md:text-base">
-            <h2>ℹ️ About</h2>
+            <h2>About</h2>
             <p>
                 The format is defined by a formal, versioned specification and
                 maintained as an open-source project under the YINI-lang
@@ -741,7 +772,7 @@ title = "MyApp"</code></pre>
         </section>
 
         <section>
-            <h2>🛠️ Contribute & Get Involved</h2>
+            <h2>Contribute & Get Involved</h2>
             <p class="mt-3">
                 YINI is open-source and actively maintained. You can get
                 involved by trying it, reporting issues, contributing code, or
