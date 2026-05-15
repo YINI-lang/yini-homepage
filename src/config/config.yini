@@ -191,11 +191,13 @@
         ^^^ useIt
             npmYiniCli = 'https://www.npmjs.com/package/yini-cli'
             npmYiniParser = 'https://www.npmjs.com/package/yini-parser'
+            pypiYiniParser = 'https://pypi.org/project/yini-parser/'
 
         ^^^ gitHub
             yiniOrg = 'https://github.com/YINI-lang'
             yiniCli = 'https://github.com/YINI-lang/yini-cli'
             yiniParserTs = 'https://github.com/YINI-lang/yini-parser-typescript'
+            yiniParserPython = 'https://github.com/YINI-lang/yini-parser-python'
             yiniDemoApps = 'https://github.com/YINI-lang/yini-demo-apps'
             yiniSyntax = 'https://github.com/YINI-lang/syntax-highlighting'
             yiniHomepage = 'https://github.com/YINI-lang/yini-homepage'
