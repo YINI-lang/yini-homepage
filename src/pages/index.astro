@@ -35,31 +35,31 @@ export type EcosystemMatrix = EcosystemRow[]
 
 const rows: EcosystemMatrix = [
     {
-        core: { label: 'Language Specification', status: 'done' },
+        core: { label: 'Language Specification RC', status: 'done' },
         impl: { label: null, status: null },
         adopt: { label: null, status: null },
     },
     {
-        core: { label: 'Parsing Rules (Lenient & Strict)', status: 'done' },
+        core: { label: 'Parsing Rules (Lenient & Strict) RC', status: 'done' },
         impl: { label: 'TypeScript Parser (Primary)', status: 'done' },
         adopt: { label: null, status: null },
     },
     {
-        core: { label: 'Formal Grammar (ANTLR)', status: 'done' },
+        core: { label: 'Formal Grammar (ANTLR) RC', status: 'done' },
         impl: { label: 'CLI Tool (Parse & Convert YINI)', status: 'done' },
         adopt: { label: 'Homepage & Docs', status: 'done' },
     },
     {
         core: { label: null, status: null },
-        impl: { label: 'Python Parser', status: 'planned' },
+        impl: {
+            label: 'Editor Syntax Highlighting grammar (VS Code / TextMate)',
+            status: 'done',
+        },
         adopt: { label: 'Cheat Sheet (Quick Syntax Guide)', status: 'done' },
     },
     {
         core: { label: '', status: '' },
-        impl: {
-            label: 'Editor Syntax Highlighting (VS Code / TextMate)',
-            status: 'done',
-        },
+        impl: { label: 'Python Parser - Alpha', status: 'planned' },
         adopt: { label: 'Example Projects', status: 'inprogress' },
     },
     // {
@@ -360,9 +360,7 @@ name = "Hello"`}</code></pre>
         </section>
 
         <section class="mt-20 pb-4">
-            <h2 class="mb-4 text-center text-2xl font-semibold">
-                🌐 The YINI Ecosystem
-            </h2>
+            <h2>🌐 The YINI Ecosystem</h2>
 
             <div class="overflow-x-auto">
                 <table class="w-full border-collapse text-sm">
@@ -438,6 +436,11 @@ name = "Hello"`}</code></pre>
                 class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
             >
                 ✔ Complete &nbsp; ◐ In progress &nbsp; ○ Planned
+            </div>
+            <div
+                class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
+            >
+                RC &nbsp;=&nbsp; Release Candidate
             </div>
         </section>
 
