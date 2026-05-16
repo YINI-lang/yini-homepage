@@ -59,7 +59,7 @@ const rows: EcosystemMatrix = [
     },
     {
         core: { label: '', status: '' },
-        impl: { label: 'Python Parser - Alpha', status: 'planned' },
+        impl: { label: 'Python Parser (Alpha, PyPI)', status: 'inprogress' },
         adopt: { label: 'Example Projects', status: 'inprogress' },
     },
     // {
@@ -256,12 +256,20 @@ const statusIcon = (status: EcosystemStatus) => {
                         JavaScript.)
                     </div>
                 </li>
+
                 <li class="leading-relaxed">
-                    📦 Load YINI directly into your application as native
-                    objects with the <a href="/tools/yini-parser-ts"
-                        >YINI Parser</a
+                    📦 Load YINI directly in TypeScript/JavaScript applications
+                    with the <a href="/tools/yini-parser-ts"
+                        >YINI Parser for TypeScript</a
                     >.
                 </li>
+                <li class="leading-relaxed">
+                    🐍 Load YINI directly in Python scripts, tools, and
+                    applications with the <a href="/tools/yini-parser-python"
+                        >YINI Parser for Python</a
+                    >.
+                </li>
+
                 <li class="leading-relaxed">
                     🧩 Use YINI for configuration files, data files, tooling,
                     and <a href="/use-yini/ci-with-yini-cli">CI workflows</a>.

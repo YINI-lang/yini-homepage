@@ -1,0 +1,170 @@
+---
+title: 'YINI Parser for Python'
+description: 'Parse YINI configuration files in Python with the official alpha YINI parser for structured, human-friendly configuration.'
+---
+
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+
+<BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
+
+# Official Python YINI Parser
+
+**Parse YINI configuration files in Python.**
+
+The official Python parser for YINI is available as an alpha package for early testing, examples, integrations, and feedback.
+
+It lets Python applications, scripts, tools, and services load YINI configuration files as ordinary Python data structures.
+
+> **Status:** Alpha  
+> The parser is usable for testing and early integration, but the public API and edge-case behavior may still change before `1.0.0`.
+
+---
+
+## Install
+
+```bash
+pip install yini-parser
+```
+
+The package name on PyPI is:
+
+```
+yini-parser
+```
+
+The Python import name is:
+
+```python
+import yini_parser
+```
+
+---
+
+## Quick example
+
+Suppose you have this YINI file:
+
+```yini
+^ App
+name = "Demo App"
+version = 1.2
+debug = false
+
+    ^^ Server
+    host = "localhost"
+    port = 8080
+```
+
+Parse it in Python:
+
+```python
+from yini_parser import load
+
+config = load("config.yini")
+
+print(config["App"]["name"])
+print(config["App"]["Server"]["port"])
+```
+
+Output:
+
+```
+Demo App
+8080
+```
+
+---
+
+## Parse from a string
+
+Use `loads(...)` when the YINI input is already available as a string:
+
+```python
+from yini_parser import loads
+
+config = loads("""
+^ App
+name = "Demo App"
+debug = false
+""")
+
+print(config["App"]["debug"])
+```
+
+Output:
+
+```
+False
+```
+
+---
+
+## What you get back
+
+The parser returns normal Python values such as dictionaries, lists, strings, numbers, booleans, and `None`.
+
+```yini
+^ App
+name = "Demo App"
+features = ["search", "logs"]
+debug = false
+```
+
+becomes:
+
+```python
+{
+    "App": {
+        "name": "Demo App",
+        "features": ["search", "logs"],
+        "debug": False,
+    }
+}
+```
+
+---
+
+## Good fit for
+
+The Python parser is useful for:
+
+- Application configuration.
+- Python scripts and tools.
+- Small services and internal utilities.
+- Testing YINI files in Python projects.
+- Trying YINI outside the TypeScript/JavaScript ecosystem.
+
+---
+
+## Related tools and examples
+
+- [YINI CLI page](/tools/yini-cli)  
+  Validate and convert YINI files from the command line.
+- [YINI examples](/learn-yini/examples)  
+  Validate and convert YINI files from the command line.
+- [YINI demo apps](https://github.com/YINI-lang/yini-demo-apps)  
+  Example projects showing YINI usage in Python, JavaScript, and TypeScript.
+
+---
+
+## Learn more
+
+- ➡️ [YINI format overview](/start/what-is-yini-and-why)  
+  _What YINI is and why it exists._
+- ➡️ [Learn the YINI syntax](/learn-yini/learn-yini-config-format)  
+  _A simple introduction to sections, values, nesting, and comments._
+- ➡️ [Examples](/learn-yini/examples)  
+  _See YINI examples from simple to more advanced._
+- ➡️ [YINI Specification](/refs/specification)  
+  _The formal specification for the YINI format._
+
+---
+
+## Links
+
+If you want to try the parser or explore the project further, these links are a good place to continue.
+
+- [yini-parser-python on GitHub ↗](https://github.com/YINI-lang/yini-parser-python)
+- [YINI CLI on npm ↗](https://www.npmjs.com/package/yini-cli)
+
+</BaseLayout>
