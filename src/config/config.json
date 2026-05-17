@@ -103,6 +103,10 @@
                     "url": "/use-yini/get-started",
                     "title": "Start exploring the YINI format."
                 },
+                "yiniParsers": {
+                    "url": "/tools/yini-parsers",
+                    "title": "YINI parsers to load YINI files in app code."
+                },
                 "getYINITools": {
                     "url": "/use-yini/get-yini-tools",
                     "title": "Get YINI parsers, tools, and related implementations across different languages and platforms."

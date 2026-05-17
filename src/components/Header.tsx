@@ -228,16 +228,6 @@ export default function Header({ isProd }: HeaderProps) {
                                 What is YINI & Why?
                             </a>
                         </li>
-                        <li>
-                            <a
-                                href={
-                                    CONFIG.siteLinks.navMenu.learnYini
-                                        .learnYiniFormat.url
-                                }
-                                className={cssClasses}>
-                                Learn the Format
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
@@ -264,6 +254,16 @@ export default function Header({ isProd }: HeaderProps) {
                                 }
                                 className={cssClasses}>
                                 Quick Tutorial
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.useYini.yiniParsers
+                                        .url
+                                }
+                                className={cssClasses}>
+                                YINI Parsers
                             </a>
                         </li>
                     </ul>
@@ -320,6 +320,16 @@ export default function Header({ isProd }: HeaderProps) {
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">Learn</h3>
                     <ul className="space-y-2 pl-4">
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini
+                                        .learnYiniFormat.url
+                                }
+                                className={cssClasses}>
+                                Learn the Format
+                            </a>
+                        </li>
                         <li>
                             <a
                                 href={

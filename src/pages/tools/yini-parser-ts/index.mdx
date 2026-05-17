@@ -1,4 +1,5 @@
 ---
+# File: src/pages/tools/yini-parser-ts/index.mdx
 title: 'YINI Parser for TypeScript/JavaScript and Node.js'
 description: 'Parse YINI configuration files in TypeScript/JavaScript and Node.js with the official YINI parser for structured, human-friendly configuration.'
 ---
@@ -7,26 +8,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
-# Official YINI Parser (Node.js)
+# Official TypeScript / JavaScript YINI Parser
 
 **Parse YINI configuration files in TypeScript/JavaScript and Node.js.**
 
-YINI currently has official parser support for TypeScript/JavaScript and an alpha Python parser for early testing. It is designed to make YINI easy to use in real applications, scripts, tools, and services.
+The official TypeScript/JavaScript parser is the primary YINI parser implementation. It is designed to make YINI easy to use in Node.js applications, scripts, tools, and services.
 
-If you want a configuration format that stays readable for humans while still being structured and predictable for software, an YINI Parser gives you a simple way to work with it in code.
-
----
-
-## Why YINI Parser?
-
-YINI Parser is useful when you want to:
-
-- Load YINI configuration files directly in TypeScript or Node.js.
-- Parse YINI from a string or from a file.
-- Work with configuration that is explicit, structured, and easy to read.
-- Use a parser built specifically for the YINI format.
-
-It is a good fit for applications, internal tools, CLIs, build scripts, and other developer workflows.
+If you want a configuration format that stays readable for humans while still being structured and predictable for software, a YINI parser gives you a simple way to work with it in code.
 
 ---
 
@@ -107,7 +95,7 @@ items = 25
 darkMode = true
 
     ^^ Special
-    primaryColor = #336699
+    primaryColor = 0x336699
     isCaching = false
 ```
 
@@ -142,8 +130,7 @@ YINI is designed to be:
 
 ## Common use cases
 
-YINI Parser is a good fit if you want:
-
+This parser is a good fit if you want:
 - Application configuration loaded at runtime.
 - Readable configuration files for internal tools.
 - A parser for Node.js or TypeScript projects.
@@ -157,10 +144,12 @@ YINI Parser is a good fit if you want:
 If you want to work with YINI from the command line, see the [YINI CLI page](/tools/yini-cli).
 
 The CLI is useful for:
-
 - Validating YINI files from the CLI/terminal.
 - Converting YINI to JSON or JavaScript.
 - Inspecting configuration from the terminal.
+
+For example projects showing YINI usage in Python, JavaScript, and TypeScript see:  
+[YINI demo apps ↗](https://github.com/YINI-lang/yini-demo-apps)
 
 ---
 
@@ -172,8 +161,6 @@ The CLI is useful for:
   _A simple introduction to sections, values, nesting, and comments._
 - ➡️ [Examples](/learn-yini/examples)  
   _See YINI examples from simple to more advanced._
-- ➡️ [YINI Specification](/refs/specification)  
-  _The formal specification for the YINI format._
 
 ---
 

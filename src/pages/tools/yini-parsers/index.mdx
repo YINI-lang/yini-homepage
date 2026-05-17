@@ -1,0 +1,165 @@
+---
+# File: src/pages/tools/yini-parsers/index.mdx
+title: 'YINI Parsers'
+description: 'Use official YINI parsers to load structured, human-friendly YINI configuration files in application code.'
+---
+
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+
+<BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
+
+# YINI Parsers
+
+**Use YINI configuration files directly in application code.**
+
+YINI parsers let applications load `.yini` files and turn them into ordinary data structures such as objects, dictionaries, arrays, strings, numbers, booleans, and null values.
+
+They are useful when you want configuration files that stay readable for humans while still being structured and predictable for software.
+
+However, If you are looking for only validating YINI files, see [YINI CLI](/tools/yini-cli).
+
+---
+
+## Why use a parser?
+
+YINI parsers are useful when you want to:
+
+- Load YINI configuration files directly in application code.
+- Parse YINI from a string or from a file.
+- Work with configuration that is explicit, structured, and easy to read.
+- Use a parser built specifically for the YINI format.
+
+They are a good fit for applications, internal tools, CLIs, build scripts, and other developer workflows.
+
+---
+
+## Official parsers
+
+The YINI project currently provides official parser implementations for:
+
+- [TypeScript / JavaScript / Node.js](/tools/yini-parser-ts)
+- [Python](/tools/yini-parser-python)
+- [Other YINI tools ↗](https://github.com/YINI-lang/YINI-spec/wiki/Get-YINI-Tools)
+
+The TypeScript parser is the primary implementation. The Python parser is currently available as an alpha package for early testing, examples, integrations, and feedback.
+
+---
+
+## What parsers are used for
+
+Parsers are typically used to:
+
+- Load application configuration at runtime.
+- Parse YINI from a file or string.
+- Use readable configuration in scripts, services, tools, and CLIs.
+- Work with nested sections and typed values in normal application code.
+- Keep configuration editable by humans without relying on indentation for structure.
+
+---
+
+## Simple example
+
+A YINI file can look like this:
+
+```yini
+^ App
+name = "Demo App"
+version = 1.2
+debug = false
+
+    ^^ Server
+    host = "localhost"
+    port = 8080
+```
+
+A parser turns that into a normal structured value.
+
+In JavaScript, that means an object:
+
+```js
+{
+    App: {
+        name: "Demo App",
+        version: 1.2,
+        debug: false,
+        Server: {
+            host: "localhost",
+            port: 8080
+        }
+    }
+}
+```
+
+In Python, that means a dictionary:
+
+```python
+{
+    "App": {
+        "name": "Demo App",
+        "version": 1.2,
+        "debug": False,
+        "Server": {
+            "host": "localhost",
+            "port": 8080,
+        },
+    }
+}
+```
+
+---
+
+## TypeScript / JavaScript parser (official)
+
+Use the TypeScript parser when working with Node.js, JavaScript, or TypeScript projects.
+
+```bash
+npm install yini-parser
+```
+
+```ts
+import YINI from 'yini-parser'
+
+const config = YINI.parseFile('./config.yini')
+
+console.log(config.App.name)
+```
+
+For more details, see the page [YINI Parser for Node.js](/tools/yini-parser-ts/)
+
+---
+
+## Python parser (official)
+
+Use the Python parser when working with Python applications, scripts, tools, or services.
+
+```bash
+pip install yini-parser
+```
+
+```python
+from yini_parser import load
+
+config = load("config.yini")
+
+print(config["App"]["name"])
+```
+
+For more details, see the page [YINI Parser for Python](/tools/yini-parser-python/)
+
+---
+
+## YINI demo apps
+
+For complete demo projects, see the GitHub repository:  
+[YINI demo apps ↗](https://github.com/YINI-lang/yini-demo-apps)
+
+---
+
+## Learn more
+
+- ➡️ [YINI format overview](/start/what-is-yini-and-why)  
+  _What YINI is and why it exists._
+- ➡️ [Learn the YINI syntax](/learn-yini/learn-yini-config-format)  
+  _A simple introduction to sections, values, nesting, and comments._
+
+</BaseLayout>

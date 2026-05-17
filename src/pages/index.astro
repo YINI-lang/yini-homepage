@@ -35,17 +35,20 @@ export type EcosystemMatrix = EcosystemRow[]
 
 const rows: EcosystemMatrix = [
     {
-        core: { label: 'Language Specification RC', status: 'done' },
+        core: { label: 'Language Specification (RC)', status: 'done' },
         impl: { label: null, status: null },
         adopt: { label: null, status: null },
     },
     {
-        core: { label: 'Parsing Rules (Lenient & Strict) RC', status: 'done' },
+        core: {
+            label: 'Parsing Rules (Lenient & Strict) (RC)',
+            status: 'done',
+        },
         impl: { label: 'TypeScript Parser (Primary)', status: 'done' },
         adopt: { label: null, status: null },
     },
     {
-        core: { label: 'Formal Grammar (ANTLR) RC', status: 'done' },
+        core: { label: 'Formal Grammar (ANTLR) (RC)', status: 'done' },
         impl: { label: 'CLI Tool (Parse & Convert YINI)', status: 'done' },
         adopt: { label: 'Homepage & Docs', status: 'done' },
     },

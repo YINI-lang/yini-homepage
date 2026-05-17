@@ -285,6 +285,12 @@ const isDev = import.meta.env.DEV
                     </a>
                     </li>
                     <li>
+                    <a href={CONFIG.siteLinks.navMenu.useYini.yiniParsers.url}
+                        class="sidebar-link">
+                        YINI Parsers
+                    </a>
+                    </li>
+                    <li>
                     <a href={CONFIG.siteLinks.navMenu.useYini.getYINITools.url}
                         class="sidebar-link">
                         Get YINI Tools ⬇️
@@ -440,35 +446,6 @@ const isDev = import.meta.env.DEV
         </script>
 
         <script is:inline>
-            /*
-            function markActiveSidebarLink() {
-
-            const current = window.location.pathname.replace(/\/$/, "");
-
-            const links = document.querySelectorAll("aside a.sidebar-link");
-
-            // If sidebar not yet in DOM (Astro timing), try again shortly
-            if (!links.length) {
-                setTimeout(markActiveSidebarLink, 50);
-                return;
-            }
-
-            links.forEach(a => {
-                const href = (a.getAttribute("href") || "").replace(/\/$/, "");
-
-                // Clear previous state
-                a.classList.remove("sidebar-active");
-
-                // const isMatch = href && current.startsWith(href);
-                const isMatch =
-                    href === current ||
-                    (href !== "/" && current.startsWith(href + "/"));
-
-                if (isMatch) {
-                    a.classList.add("sidebar-active");
-                }
-            });
-        }*/
         function markActiveSidebarLink() {
             const current = window.location.pathname.replace(/\/$/, "");
             const links = document.querySelectorAll("aside a.sidebar-link");
