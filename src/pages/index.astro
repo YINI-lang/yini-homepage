@@ -62,7 +62,7 @@ const rows: EcosystemMatrix = [
     },
     {
         core: { label: '', status: '' },
-        impl: { label: 'Python Parser (Alpha, PyPI)', status: 'inprogress' },
+        impl: { label: 'Python Parser (Alpha)', status: 'inprogress' },
         adopt: { label: 'Example Projects', status: 'inprogress' },
     },
     // {
@@ -170,49 +170,42 @@ const statusIcon = (status: EcosystemStatus) => {
 
     <section class="why-yini pt-4 pb-4">
         <h2 class="mt-1">Why YINI?</h2>
-        INI, YAML, <a
-            href="https://www.w3.org/TR/xml/"
-            target="_blank"
-            rel="noopener noreferrer">XML</a
-        >, and JSON all approach configuration differently, each with tradeoffs:<br
-        />
-        INI favors simplicity, YAML offers expressive structure, and JSON prioritizes
-        precision.<br />
-        <strong>YINI</strong> focuses on keeping configuration readable while providing
-        clear nesting and predictable behavior.
+
+        <p>
+            INI, <a
+                href="https://www.json.org"
+                target="_blank"
+                rel="noopener noreferrer">JSON</a
+            >, <a
+                href="https://yaml.org/"
+                target="_blank"
+                rel="noopener noreferrer">YAML</a
+            >, <a
+                href="https://www.w3.org/TR/xml/"
+                target="_blank"
+                rel="noopener noreferrer">XML</a
+            >, and TOML all solve configuration in different ways. YINI focuses
+            on a practical middle ground: readable files, explicit structure,
+            useful data types, and predictable parsing.
+        </p>
+
         <ul>
             <li class="leading-relaxed">
                 <strong>No indentation traps.</strong>
-                Clear structure without <a
-                    href="https://yaml.org/"
-                    target="_blank"
-                    rel="noopener noreferrer">YAML</a
-                >-style surprises.
+                Structure is defined by section markers, not whitespace.
             </li>
-
             <li class="leading-relaxed">
-                <strong>Designed to remain readable as files grow.</strong>
-                Nest sections without losing clarity.
+                <strong>Readable as files grow.</strong>
+                Nested sections help larger configurations stay easy to scan.
             </li>
-
             <li class="leading-relaxed">
-                <strong>Designed for human readability.</strong>
-                Easy to edit, comment, and maintain.
+                <strong>Human-friendly editing.</strong>
+                Comments, simple key-value pairs, and familiar syntax keep files
+                approachable.
             </li>
-
             <li class="leading-relaxed">
                 <strong>Predictable behavior.</strong>
-                Clear rules. Fewer edge cases.
-            </li>
-
-            <li class="leading-relaxed">
-                <strong>A practical balance of simplicity and structure.</strong
-                >
-                More structure than INI, less noise than <a
-                    href="https://www.json.org"
-                    target="_blank"
-                    rel="noopener noreferrer">JSON</a
-                >.
+                Clear rules and a formal grammar help tools parse YINI consistently.
             </li>
         </ul>
 
@@ -222,256 +215,235 @@ const statusIcon = (status: EcosystemStatus) => {
                 class="underline">What is YINI and Why?</a
             >
         </p>
+    </section>
 
-        <section class="mt-2 pt-4 pb-4">
-            <h2 class="mt-5">Why YINI was created</h2>
-            Many configuration formats become harder to maintain as projects grow.
-            <ul>
-                <li class="leading-relaxed">
-                    <strong>INI</strong> becomes flat and unstructured.
-                </li>
-                <li class="leading-relaxed">
-                    <strong>JSON</strong> becomes noisy and hard to edit.
-                </li>
-                <li class="leading-relaxed">
-                    <strong>YAML</strong> becomes fragile and unpredictable.
-                </li>
-            </ul>
-            YINI was designed to address these issues.
-        </section>
+    {/* Tooling + Practical usage section */}
+    <section class="pb-6">
+        <h2>How YINI is used in practice</h2>
 
-        {/* Tooling + Practical usage section */}
-        <section class="pb-6">
-            <h2>How YINI is used in practice</h2>
+        <p class="mt-1">
+            Use YINI wherever you need structured configuration — without the
+            usual complexity.
+        </p>
 
-            <p class="mt-1">
-                Use YINI wherever you need structured configuration — without
-                the usual complexity.
+        <ul class="mt-2">
+            <li class="leading-relaxed">
+                🛠 Validate and convert YINI files from the command line with
+                the <a href="/tools/yini-cli">YINI CLI tool</a>.
+                <div class="text-sm">
+                    It can export parsed data as JSON, YAML, XML, or JavaScript.
+                </div>
+            </li>
+
+            <li class="leading-relaxed">
+                📦 Load YINI directly in TypeScript/JavaScript applications with
+                the <a href="/tools/yini-parser-ts"
+                    >YINI Parser for TypeScript</a
+                >.
+            </li>
+            <li class="leading-relaxed">
+                🐍 Load YINI directly in Python scripts, tools, and applications
+                with the <a href="/tools/yini-parser-python"
+                    >YINI Parser for Python</a
+                >.
+            </li>
+
+            <li class="leading-relaxed">
+                🧩 Use YINI for configuration files, data files, tooling, and <a
+                    href="/use-yini/ci-with-yini-cli">CI workflows</a
+                >.
+            </li>
+        </ul>
+    </section>
+
+    <!-- Quick Start -->
+    <div class="yini-quick-start full-bleed px-8">
+        <section class="mx-auto max-w-3xl pt-1 pb-6">
+            <h2>⚡ TL;DR — Quick Start</h2>
+            <h3 class="pl-4">Try YINI in three simple steps:</h3>
+            <p class="pl-4 text-sm text-slate-500">
+                This quick start uses the Node.js-based YINI CLI.
             </p>
 
-            <ul class="mt-2">
-                <li class="leading-relaxed">
-                    🛠 Validate and convert YINI files to JSON from the command
-                    line with the <a href="/tools/yini-cli">YINI CLI tool</a>.
-                    <div class="text-sm">
-                        (It can also export parsed data as YAML, XML, and
-                        JavaScript.)
-                    </div>
-                </li>
-
-                <li class="leading-relaxed">
-                    📦 Load YINI directly in TypeScript/JavaScript applications
-                    with the <a href="/tools/yini-parser-ts"
-                        >YINI Parser for TypeScript</a
-                    >.
-                </li>
-                <li class="leading-relaxed">
-                    🐍 Load YINI directly in Python scripts, tools, and
-                    applications with the <a href="/tools/yini-parser-python"
-                        >YINI Parser for Python</a
-                    >.
-                </li>
-
-                <li class="leading-relaxed">
-                    🧩 Use YINI for configuration files, data files, tooling,
-                    and <a href="/use-yini/ci-with-yini-cli">CI workflows</a>.
-                </li>
-            </ul>
-        </section>
-
-        <!-- Quick Start -->
-        <div class="yini-quick-start full-bleed px-8">
-            <section class="mx-auto max-w-3xl pt-1 pb-6">
-                <h2>⚡ TL;DR — Quick Start</h2>
-                <h3 class="pl-4">Try YINI in three simple steps:</h3>
-                <p class="pl-4 text-sm text-slate-500">
-                    Requires Node.js installed.
-                </p>
-
-                <ul class="space-y-6">
-                    <li>
-                        <h3>1) Create a file</h3>
-                        Save these two lines as <code>config.yini</code>: <i
-                            >(No build step or project setup required.)</i
-                        >
-                        <pre><code class="language-yini">{`^ App
+            <ul class="space-y-6">
+                <li>
+                    <h3>1) Create a file</h3>
+                    Save these two lines as <code>config.yini</code>: <i
+                        >(No build step or project setup required.)</i
+                    >
+                    <pre><code class="language-yini">{`^ App
 name = "Hello"`}</code></pre>
-                        <p>
-                            <span role="img" aria-label="warning">💡</span>
-                            Make sure you save the file with the <code
-                                >.yini</code
-                            > extension (not <code>.txt</code>).
-                        </p>
-                    </li>
+                    <p>
+                        <span role="img" aria-label="warning">💡</span>
+                        Make sure you save the file with the <code>.yini</code> extension
+                        (not <code>.txt</code>).
+                    </p>
+                </li>
 
-                    <li>
-                        <h3>2) Run this in your terminal</h3>
-                        <p>
-                            From your terminal (with Node.js installed), in the
-                            same folder where you saved the file, run this:
-                        </p>
-                        <pre><code class="language-bash">npx yini-cli parse config.yini</code></pre>
-                        <p>JSON is the default output format.</p>
-                    </li>
+                <li>
+                    <h3>2) Run this in your terminal</h3>
+                    <p>
+                        From your terminal (with Node.js installed), in the same
+                        folder where you saved the file, run this:
+                    </p>
+                    <pre><code class="language-bash">npx yini-cli parse config.yini</code></pre>
+                    <p>JSON is the default output format.</p>
+                </li>
 
-                    <li>
-                        <h3>3) See the result</h3>
-                        <p>You should now see the following (JSON):</p>
-                        <pre><code class="language-json">{`{
+                <li>
+                    <h3>3) See the result</h3>
+                    <p>You should now see the following (JSON):</p>
+                    <pre><code class="language-json">{`{
     "App": {
         "name": "Hello"
     }
 }
 `}</code></pre>
-                    </li>
-                    <p class="text-sm text-slate-500">
-                        Nice — you just parsed your first YINI file.
-                    </p>
+                </li>
+                <p class="text-sm text-slate-500">
+                    Nice — you just parsed your first YINI file.
+                </p>
 
-                    <li>
-                        <h3>Bonus: JavaScript output</h3>
-                        <pre><code class="language-bash">npx yini-cli parse config.yini --js</code></pre>
-                        <p>
-                            Use <code>--js</code> to output a JavaScript-style object
-                            instead:
-                        </p>
-                        <pre><code class="language-js">{`{
+                <li>
+                    <h3>Bonus: JavaScript output</h3>
+                    <pre><code class="language-bash">npx yini-cli parse config.yini --js</code></pre>
+                    <p>
+                        Use <code>--js</code> to output a JavaScript-style object
+                        instead:
+                    </p>
+                    <pre><code class="language-js">{`{
     App: {
         name: "Hello"
     }
 }
 `}</code></pre>
-                    </li>
-                </ul>
-            </section>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <section class="mx-auto max-w-5xl px-4 py-2 text-center">
+        <div
+            class="mt-6 flex flex-wrap items-center justify-center gap-3 pt-6 pb-4"
+        >
+            <a
+                href={CONFIG.siteLinks.hero.getStarted.url}
+                class="btn btn-primary"
+            >
+                Get Started
+            </a>
+
+            <a
+                href={CONFIG.urls.external.gitHub.yiniOrg}
+                target="_blank"
+                rel="noopener noreferrer"
+                onclick="trackClick('gitHub.yiniOrgCtaClicked')"
+                class="inline-block underline"
+            >
+                View on GitHub ↗
+            </a>
+        </div>
+    </section>
+
+    <section class="mt-20 pb-4">
+        <h2>🌐 The YINI Ecosystem</h2>
+
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse text-sm">
+                <thead>
+                    <tr class="border-b border-slate-300 dark:border-slate-700">
+                        <th class="py-3 text-left font-semibold">🧠 Core</th>
+                        <th class="py-3 text-left font-semibold"
+                            >🛠 Implementation</th
+                        >
+                        <th class="py-3 text-left font-semibold">🌍 Adoption</th
+                        >
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {
+                        rows.map((row) => (
+                            <tr class="border-b border-slate-200 transition hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900">
+                                <td class="py-3 pr-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-green-600">
+                                            {statusIcon(row.core.status)}
+                                        </span>
+                                        {row.core.label}
+                                    </div>
+                                </td>
+
+                                <td class="py-3 pr-4">
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            class={
+                                                row.impl.status === 'done'
+                                                    ? 'text-green-600'
+                                                    : row.impl.status ===
+                                                        'inprogress'
+                                                      ? 'text-yellow-500'
+                                                      : 'text-slate-400'
+                                            }>
+                                            {statusIcon(row.impl.status)}
+                                        </span>
+                                        {row.impl.label}
+                                    </div>
+                                </td>
+
+                                <td class="py-3">
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            class={
+                                                row.adopt.status === 'done'
+                                                    ? 'text-green-600'
+                                                    : row.adopt.status ===
+                                                        'inprogress'
+                                                      ? 'text-yellow-500'
+                                                      : 'text-slate-400'
+                                            }>
+                                            {statusIcon(row.adopt.status)}
+                                        </span>
+                                        {row.adopt.label}
+                                    </div>
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
         </div>
 
-        <section class="mx-auto max-w-5xl px-4 py-2 text-center">
-            <div
-                class="mt-6 flex flex-wrap items-center justify-center gap-3 pt-6 pb-4"
+        <div
+            class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
+        >
+            ✔ Complete &nbsp; ◐ In progress &nbsp; ○ Planned
+        </div>
+        <div
+            class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
+        >
+            RC &nbsp;=&nbsp; Release Candidate
+        </div>
+    </section>
+
+    <section class="pb-6">
+        <h2>📝 Example</h2>
+        <h3>YINI code:</h3>
+        <p>
+            <a href="./samples/settings.yini.png"
+                ><img
+                    class="mt-0 mb-1 rounded-lg border-2 border-black/90"
+                    src="./samples/settings.yini.png"
+                    alt="File settings.yini"
+                /></a
             >
-                <a
-                    href={CONFIG.siteLinks.hero.getStarted.url}
-                    class="btn btn-primary"
-                >
-                    Get Started
-                </a>
-
-                <a
-                    href={CONFIG.urls.external.gitHub.yiniOrg}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onclick="trackClick('gitHub.yiniOrgCtaClicked')"
-                    class="inline-block underline"
-                >
-                    View on GitHub ↗
-                </a>
-            </div>
-        </section>
-
-        <section class="mt-20 pb-4">
-            <h2>🌐 The YINI Ecosystem</h2>
-
-            <div class="overflow-x-auto">
-                <table class="w-full border-collapse text-sm">
-                    <thead>
-                        <tr
-                            class="border-b border-slate-300 dark:border-slate-700"
-                        >
-                            <th class="py-3 text-left font-semibold">🧠 Core</th
-                            >
-                            <th class="py-3 text-left font-semibold"
-                                >🛠 Implementation</th
-                            >
-                            <th class="py-3 text-left font-semibold"
-                                >🌍 Adoption</th
-                            >
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {
-                            rows.map((row) => (
-                                <tr class="border-b border-slate-200 transition hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900">
-                                    <td class="py-3 pr-4">
-                                        <div class="flex items-center gap-2">
-                                            <span class="text-green-600">
-                                                {statusIcon(row.core.status)}
-                                            </span>
-                                            {row.core.label}
-                                        </div>
-                                    </td>
-
-                                    <td class="py-3 pr-4">
-                                        <div class="flex items-center gap-2">
-                                            <span
-                                                class={
-                                                    row.impl.status === 'done'
-                                                        ? 'text-green-600'
-                                                        : row.impl.status ===
-                                                            'inprogress'
-                                                          ? 'text-yellow-500'
-                                                          : 'text-slate-400'
-                                                }>
-                                                {statusIcon(row.impl.status)}
-                                            </span>
-                                            {row.impl.label}
-                                        </div>
-                                    </td>
-
-                                    <td class="py-3">
-                                        <div class="flex items-center gap-2">
-                                            <span
-                                                class={
-                                                    row.adopt.status === 'done'
-                                                        ? 'text-green-600'
-                                                        : row.adopt.status ===
-                                                            'inprogress'
-                                                          ? 'text-yellow-500'
-                                                          : 'text-slate-400'
-                                                }>
-                                                {statusIcon(row.adopt.status)}
-                                            </span>
-                                            {row.adopt.label}
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
-            </div>
-
-            <div
-                class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
+            Source file: <a href="./samples/settings.yini" target="_blank"
+                >settings.yini</a
             >
-                ✔ Complete &nbsp; ◐ In progress &nbsp; ○ Planned
-            </div>
-            <div
-                class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
-            >
-                RC &nbsp;=&nbsp; Release Candidate
-            </div>
-        </section>
+        </p>
 
-        <section class="pb-6">
-            <h2>📝 Example</h2>
-            <h3>YINI code:</h3>
-            <p>
-                <a href="./samples/settings.yini.png"
-                    ><img
-                        class="mt-0 mb-1 rounded-lg border-2 border-black/90"
-                        src="./samples/settings.yini.png"
-                        alt="File settings.yini"
-                    /></a
-                >
-                Source file: <a href="./samples/settings.yini" target="_blank"
-                    >settings.yini</a
-                >
-            </p>
-
-            <h3>Parsed output (JSON):</h3>
-            <pre><code class="language-json">{`{
+        <h3>Parsed output (JSON):</h3>
+        <pre><code class="language-json">{`{
     "Settings": {
         "serviceId": "NebulaService",
         "release": "3.2.1",
@@ -509,419 +481,410 @@ name = "Hello"`}</code></pre>
     }
 }`}</code></pre>
 
-            <p class="mt-2 text-sm">
-                New to YINI? Read a short <a
-                    href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat
-                        .url}
-                    class="underline">learn the YINI format</a
-                >.
-            </p>
-        </section>
+        <p class="mt-2 text-sm">
+            New to YINI? Read a short <a
+                href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                class="underline">learn the YINI format</a
+            >.
+        </p>
+    </section>
 
-        <div class="yini-features full-bleed px-8">
-            <section class="mx-auto max-w-3xl pt-1 pb-6">
-                <h2>🧩 Key Features</h2>
-                <ol>
-                    <li>
-                        <strong>Clear section markers</strong>
-                        <p class="mt-2 leading-normal">
-                            Sections start with <code>^</code> by default:
-                        </p>
-                        <pre><code>^ App
-title = "MyApp"</code></pre>
-                        <p>
-                            Nested sections use repeated <code>^</code> markers to
-                            indicate section levels — similar concept like Markdown's
-                            heading levels:
-                            <code>^ App</code>, <code>^^ Server</code>, <code
-                                >^^^ Logging</code
-                            >. This creates a clear section hierarchy without
-                            relying on indentation.
-                        </p>
-                        <p>
-                            YINI also supports alternative section markers such
-                            as <code>&lt;</code>.
-                        </p>
-                    </li>
-                    <li>
-                        <strong>Predictable and well-defined</strong>
-                        <p class="mt-2">
-                            Defined by a formal, versioned specification and
-                            grammar (<code>ANTLR4</code>) to ensure consistent
-                            behavior across tools.
-                        </p>
-                    </li>
-                    <li>
-                        <strong>Simple key–value pairs</strong>
-                        <p class="mt-2 leading-normal">
-                            Inside a section, configuration is written as:
-                        </p>
-                        <pre><code>key = value</code></pre>
-                        <p>
-                            This keeps files readable and familiar, inspired by
-                            classic INI.
-                        </p>
-                    </li>
-                    <li>
-                        <strong>Structured like YAML, readable like INI</strong>
-                        <p class="mt-2 leading-normal">
-                            Useful data types (similar to JSON):
-                        </p>
-                        <ul>
-                            <li>Nested sections</li>
-                            <li>Lists (arrays)</li>
-                            <li>Objects (JavaScript objects)</li>
-                            <li>Strings and numbers</li>
-                            <li>Booleans and nulls</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Comments where you expect them</strong>
-                        <p class="mt-2 leading-normal">
-                            Supports both line comments (<code>#</code>, <code
-                                >//</code
-                            >, <code>;</code> and block/multi-line comments <code
-                                >/* ... */</code
-                            >), making it easy to document configuration
-                            directly in the file.
-                        </p>
-                    </li>
-                    <li>
-                        <strong>Reduced syntax noise</strong>
-                        <p class="mt-2 leading-normal">
-                            Keeps files readable by avoiding excessive brackets,
-                            quotes, and long dotted key paths such as <code
-                                >server.database.advanced.param</code
-                            >.
-                        </p>
-                    </li>
-                    <li>
-                        <strong>Free and open source</strong>
-                        <p class="mt-2">
-                            YINI is open-source software, free to use, inspect,
-                            and build upon.
-                        </p>
-                    </li>
-                </ol>
-
-                <p>
-                    💡 For syntax & quick reference: See <a
-                        href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
-                        class="inline-block underline"
-                    >
-                        YINI Cheat Sheet
-                    </a>
-                </p>
-            </section>
-        </div>
-
-        <section class="my-6 pt-4">
-            <h1 class="mt-5">⚖️ How YINI compares to other config formats</h1>
-            <div style="overflow-x:auto">
-                <p class="mb-2 text-sm text-slate-500">
-                    YINI supports both lenient and strict parsing modes,
-                    depending on how much enforcement you need. Lenient mode is
-                    the default.
-                </p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>YINI (lenient)</th>
-                            <th>YINI (strict)</th>
-                            <th>INI</th>
-                            <th>JSON</th>
-                            <th>YAML</th>
-                            <th>TOML</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>Human readability by default</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                        </tr>
-                        <tr>
-                            <td>Readability at scale</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>➖</td>
-                        </tr>
-                        <tr>
-                            <td>Predictable parsing</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Formal specification / grammar</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Nested structure</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Comments</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Syntax overhead</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>➖</td>
-                        </tr>
-
-                        <tr>
-                            <td>Configuration-oriented design</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Diagnostic clarity</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td
-                                >Tolerance for incomplete or hand-edited input</td
-                            >
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>❌</td>
-                        </tr>
-                        <tr>
-                            <td>Strength of structural validation</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Suitability for larger configurations</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>➖</td>
-                            <td>➖</td>
-                        </tr>
-                        <tr>
-                            <td>Industry familiarity</td>
-                            <td>Low</td>
-                            <td>Low</td>
-                            <td>Very strong</td>
-                            <td>Very strong</td>
-                            <td>Very strong</td>
-                            <td>Moderate</td>
-                        </tr>
-                        <tr>
-                            <td>Native tooling availability</td>
-                            <td>Limited / growing</td>
-                            <td>Limited / growing</td>
-                            <td>Moderate</td>
-                            <td>Very strong</td>
-                            <td>Very strong</td>
-                            <td>Strong</td>
-                        </tr>
-                        <tr>
-                            <td>Ecosystem maturity</td>
-                            <td>Limited / growing</td>
-                            <td>Limited / growing</td>
-                            <td>Mature but fragmented</td>
-                            <td>Very strong</td>
-                            <td>Very strong</td>
-                            <td>Strong</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <p class="mt-2 text-sm text-slate-500">
-                    <strong>Lenient</strong> = flexibility & convenience ·
-                    <strong>Strict</strong> = safety & predictability
-                </p>
-                <p class="mt-2 text-sm text-slate-500">
-                    ✅ Strong support · ➖ Partial / debated · ❌ Poor or not
-                    supported
-                </p>
-                <p class="mt-1 text-sm text-slate-500">
-                    The final three rows use text labels to describe ecosystem
-                    and adoption maturity.
-                </p>
-            </div>
-        </section>
-
-        <hr />
-
-        <section class="mt-3 text-base md:text-base">
-            <h2>About</h2>
-            <p>
-                The format is defined by a formal, versioned specification and
-                maintained as an open-source project under the YINI-lang
-                organization on GitHub.
-            </p>
-        </section>
-
-        <section>
-            <h2>Contribute & Get Involved</h2>
-            <p class="mt-3">
-                YINI is open-source and actively maintained. You can get
-                involved by trying it, reporting issues, contributing code, or
-                just ⭐ the project on GitHub.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-3">
-                <a
-                    href={CONFIG.urls.external.yiniWiki.getYINITools}
-                    target="_blank"
-                    rel="noreferrer"
-                    class="inline-flex items-center rounded-lg border px-4 py-2"
-                >
-                    ⬇️ Get YINI Tools ↗
-                </a>
-                <a
-                    href={CONFIG.urls.external.gitHub.yiniOrg}
-                    target="_blank"
-                    rel="noreferrer"
-                    class="inline-flex items-center rounded-lg border px-4 py-2"
-                    >GitHub Org ↗</a
-                >
-            </div>
-        </section>
-
-        <hr />
-
-        <section>
-            <h2>🔭 Next steps</h2>
-            <ul>
+    <div class="yini-features full-bleed px-8">
+        <section class="mx-auto max-w-3xl pt-1 pb-6">
+            <h2>🧩 Key Features</h2>
+            <ol>
                 <li>
-                    {
-                        /*
+                    <strong>Clear section markers</strong>
+                    <p class="mt-2 leading-normal">
+                        Sections start with <code>^</code> by default:
+                    </p>
+                    <pre><code>^ App
+title = "MyApp"</code></pre>
+                    <p>
+                        Nested sections use repeated <code>^</code> markers to indicate
+                        section levels — similar concept like Markdown's heading
+                        levels:
+                        <code>^ App</code>, <code>^^ Server</code>, <code
+                            >^^^ Logging</code
+                        >. This creates a clear section hierarchy without
+                        relying on indentation.
+                    </p>
+                    <p>
+                        YINI also supports alternative section markers such as <code
+                            >&lt;</code
+                        >.
+                    </p>
+                </li>
+                <li>
+                    <strong>Predictable and well-defined</strong>
+                    <p class="mt-2">
+                        Defined by a formal, versioned specification and grammar
+                        (<code>ANTLR4</code>) to ensure consistent behavior
+                        across tools.
+                    </p>
+                </li>
+                <li>
+                    <strong>Simple key–value pairs</strong>
+                    <p class="mt-2 leading-normal">
+                        Inside a section, configuration is written as:
+                    </p>
+                    <pre><code>key = value</code></pre>
+                    <p>
+                        This keeps files readable and familiar, inspired by
+                        classic INI.
+                    </p>
+                </li>
+                <li>
+                    <strong>Structured like YAML, readable like INI</strong>
+                    <p class="mt-2 leading-normal">
+                        Useful data types (similar to JSON):
+                    </p>
+                    <ul>
+                        <li>Nested sections</li>
+                        <li>Lists (arrays)</li>
+                        <li>Objects (JavaScript objects)</li>
+                        <li>Strings and numbers</li>
+                        <li>Booleans and nulls</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Comments where you expect them</strong>
+                    <p class="mt-2 leading-normal">
+                        Supports both line comments (<code>#</code>, <code
+                            >//</code
+                        >, <code>;</code> and block/multi-line comments <code
+                            >/* ... */</code
+                        >), making it easy to document configuration directly in
+                        the file.
+                    </p>
+                </li>
+                <li>
+                    <strong>Reduced syntax noise</strong>
+                    <p class="mt-2 leading-normal">
+                        Keeps files readable by avoiding excessive brackets,
+                        quotes, and long dotted key paths such as <code
+                            >server.database.advanced.param</code
+                        >.
+                    </p>
+                </li>
+                <li>
+                    <strong>Free and open source</strong>
+                    <p class="mt-2">
+                        YINI is open-source software, free to use, inspect, and
+                        build upon.
+                    </p>
+                </li>
+            </ol>
+
+            <p>
+                💡 For syntax & quick reference: See <a
+                    href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                    class="inline-block underline"
+                >
+                    YINI Cheat Sheet
+                </a>
+            </p>
+        </section>
+    </div>
+
+    <section class="my-6 pt-4">
+        <h1 class="mt-5">⚖️ How YINI compares to other config formats</h1>
+        <div style="overflow-x:auto">
+            <p class="mb-2 text-sm text-slate-500">
+                YINI supports both lenient and strict parsing modes, depending
+                on how much enforcement you need. Lenient mode is the default.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>YINI (lenient)</th>
+                        <th>YINI (strict)</th>
+                        <th>INI</th>
+                        <th>JSON</th>
+                        <th>YAML</th>
+                        <th>TOML</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Human readability by default</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>➖</td>
+                        <td>➖</td>
+                        <td>✅</td>
+                        <td>➖</td>
+                    </tr>
+                    <tr>
+                        <td>Readability at scale</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>➖</td>
+                        <td>➖</td>
+                    </tr>
+                    <tr>
+                        <td>Predictable parsing</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Formal specification / grammar</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Nested structure</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>➖</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Comments</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Syntax overhead</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>➖</td>
+                        <td>➖</td>
+                    </tr>
+
+                    <tr>
+                        <td>Configuration-oriented design</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>➖</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Diagnostic clarity</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>➖</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Tolerance for incomplete or hand-edited input</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>➖</td>
+                        <td>❌</td>
+                        <td>➖</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Strength of structural validation</td>
+                        <td>➖</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>➖</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Suitability for larger configurations</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>➖</td>
+                        <td>➖</td>
+                        <td>➖</td>
+                    </tr>
+                    <tr>
+                        <td>Industry familiarity</td>
+                        <td>Low</td>
+                        <td>Low</td>
+                        <td>Very strong</td>
+                        <td>Very strong</td>
+                        <td>Very strong</td>
+                        <td>Moderate</td>
+                    </tr>
+                    <tr>
+                        <td>Native tooling availability</td>
+                        <td>Limited / growing</td>
+                        <td>Limited / growing</td>
+                        <td>Moderate</td>
+                        <td>Very strong</td>
+                        <td>Very strong</td>
+                        <td>Strong</td>
+                    </tr>
+                    <tr>
+                        <td>Ecosystem maturity</td>
+                        <td>Limited / growing</td>
+                        <td>Limited / growing</td>
+                        <td>Mature but fragmented</td>
+                        <td>Very strong</td>
+                        <td>Very strong</td>
+                        <td>Strong</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="mt-2 text-sm text-slate-500">
+                <strong>Lenient</strong> = flexibility & convenience ·
+                <strong>Strict</strong> = safety & predictability
+            </p>
+            <p class="mt-2 text-sm text-slate-500">
+                ✅ Strong support · ➖ Partial / debated · ❌ Poor or not
+                supported
+            </p>
+            <p class="mt-1 text-sm text-slate-500">
+                The final three rows use text labels to describe ecosystem and
+                adoption maturity.
+            </p>
+        </div>
+    </section>
+
+    <hr />
+
+    <section class="mt-3 text-base md:text-base">
+        <h2>About</h2>
+        <p>
+            The format is defined by a formal, versioned specification and
+            maintained as an open-source project under the YINI-lang
+            organization on GitHub.
+        </p>
+    </section>
+
+    <section>
+        <h2>Contribute & Get Involved</h2>
+        <p class="mt-3">
+            YINI is open-source and actively maintained. You can get involved by
+            trying it, reporting issues, contributing code, or starring the
+            project on GitHub.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-3">
+            <a
+                href={CONFIG.urls.external.yiniWiki.getYINITools}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center rounded-lg border px-4 py-2"
+            >
+                ⬇️ Get YINI Tools ↗
+            </a>
+            <a
+                href={CONFIG.urls.external.gitHub.yiniOrg}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center rounded-lg border px-4 py-2"
+                >GitHub Org ↗</a
+            >
+        </div>
+    </section>
+
+    <hr />
+
+    <section>
+        <h2>🔭 Next steps</h2>
+        <ul>
+            <li>
+                {
+                    /*
                     STEP:    Get Started
                     PURPOSE: Immediate action
                     EFFECT:  Momentum
                     */
-                    }
-                    <a href={CONFIG.siteLinks.hero.getStarted.url}
-                        >Get Started</a
-                    ><br />
-                    <p class="mt-2">
-                        Learn how to install and parse your first config in
-                        minutes.
-                    </p>
-                </li>
-                <!--li>
+                }
+                <a href={CONFIG.siteLinks.hero.getStarted.url}>Get Started</a
+                ><br />
+                <p class="mt-2">
+                    Learn how to install and parse your first config in minutes.
+                </p>
+            </li>
+            <!--li>
             <a href="/yini-playground">Try it Online</a><br />
             <p class="mt-2">Try it in the Playground.</p>
         </li-->
-                <li>
-                    {
-                        /*
+            <li>
+                {
+                    /*
                     STEP:    Quick Tutorial
                     PURPOSE: Rapid understanding
                     EFFECT:  Confidence
                     */
-                    }
-                    <a href={CONFIG.siteLinks.hero.tutorial.url}
-                        >Quick Tutorial</a
-                    ><br />
-                    <p class="mt-2">
-                        5-minute guided walkthrough of the YINI format and
-                        validation basics.
-                    </p>
-                </li>
-                <li>
-                    {
-                        /*
+                }
+                <a href={CONFIG.siteLinks.hero.tutorial.url}>Quick Tutorial</a
+                ><br />
+                <p class="mt-2">
+                    5-minute guided walkthrough of the YINI format and
+                    validation basics.
+                </p>
+            </li>
+            <li>
+                {
+                    /*
                     STEP:    Code Examples
                     PURPOSE: Visual reinforcement
                     EFFECT:  Trust
                     */
-                    }
-                    <a href={CONFIG.siteLinks.hero.examples.url}
-                        >Code Examples</a
-                    ><br />
-                    <p class="mt-2">
-                        Real-world YINI examples showing common configuration
-                        patterns.
-                    </p>
-                </li>
-                <li>
-                    {
-                        /*
+                }
+                <a href={CONFIG.siteLinks.hero.examples.url}>Code Examples</a
+                ><br />
+                <p class="mt-2">
+                    Real-world YINI examples showing common configuration
+                    patterns.
+                </p>
+            </li>
+            <li>
+                {
+                    /*
                     STEP:    FAQ
                     PURPOSE: Reduce friction
                     EFFECT:  Reassurance
                     */
-                    }
-                    <a href={CONFIG.siteLinks.hero.faq.url}>FAQ</a><br />
-                    <p class="mt-2">
-                        Common questions about using YINI in real projects.
-                    </p>
-                </li>
-                <li>
-                    {
-                        /*
+                }
+                <a href={CONFIG.siteLinks.hero.faq.url}>FAQ</a><br />
+                <p class="mt-2">
+                    Common questions about using YINI in real projects.
+                </p>
+            </li>
+            <li>
+                {
+                    /*
                     STEP:    Specification
                     PURPOSE: Technical validation
                     EFFECT:  Commitment
                     */
-                    }
-                    <a href={CONFIG.siteLinks.hero.spec.url}>Specification</a
-                    ><br />
-                    <p class="mt-2">
-                        Official YINI format rules with full technical details
-                        of the YINI format.
-                    </p>
-                </li>
-            </ul>
-        </section>
+                }
+                <a href={CONFIG.siteLinks.hero.spec.url}>Specification</a><br />
+                <p class="mt-2">
+                    Official YINI format rules with full technical details of
+                    the YINI format.
+                </p>
+            </li>
+        </ul>
+    </section>
 
-        <section>
-            <hr />
-            <h3>Project status</h3>
-            <DivStatusBadges />
-        </section>
+    <section>
+        <hr />
+        <h3>Project status</h3>
+        <DivStatusBadges />
     </section>
 </BaseLayout>
