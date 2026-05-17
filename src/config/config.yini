@@ -29,20 +29,21 @@
     logoTagLine = 'A clear and structured config format'
 
     headline = [
-        'YINI — Readable like INI. Structured like JSON. No indentation surprises.',
-        'YINI — Readable like INI, structured like JSON — no indentation surprises.',
         'YINI — Readable like INI, structured like JSON, without indentation pitfalls.',
-        'YINI — A Human-Friendly Configuration Format',
-        'YINI: INI familiarity. Structured clarity. Predictable behavior.',
-        'YINI — Readable Like INI, Structured Like JSON',
-        "YINI — Configuration Without YAML's Surprises", // Double quotes used due to ' in the string.
-        'YINI — A Predictable Format for Real-World Configs',
+        'YINI — Readable like INI, structured like JSON — no indentation surprises.',
+        'YINI — Readable like INI. Structured like JSON. No indentation surprises.',
         'YINI — Structured Configuration That Stays Readable',
-        'YINI — Clean, Calm Configuration for Complex Systems',
         'YINI — Simple to Read, Structured by Design',
+        'YINI: INI familiarity. Structured clarity. Predictable behavior.',
+        'YINI — A Predictable Format for Real-World Configs',
         'YINI — Configuration with Clear Rules',
-        'YINI — A Better Way to Write Configuration Files',
-        'YINI — Configuration That Grows Without the Pain'
+        'YINI — A Human-Friendly Configuration Format',
+        'YINI — Readable Like INI, Structured Like JSON',
+        "YINI — Configuration Without YAML's Surprises",
+        'YINI — Less verbose than JSON, simpler than YAML, and more expressive than INI, while staying clear.',
+        'YINI — Configuration That Grows Without the Pain',
+        'YINI — Clean, Calm Configuration for Complex Systems',
+        'YINI — A human-friendly, text-based configuration format that stays clear and predictable.'
     ]
 
     tagLine = 'Human-readable configuration files with clear structure and predictable parsing.'
