@@ -588,8 +588,12 @@ title = "MyApp"</code></pre>
     </div>
 
     <section class="my-6 pt-4">
-        <h1 class="mt-5">⚖️ How YINI compares to other config formats</h1>
+        <h2 class="mt-5">⚖️ How YINI compares to other config formats</h2>
         <div style="overflow-x:auto">
+            <p class="mb-2 text-sm">
+                This is a high-level comparison focused on configuration-file
+                use cases.
+            </p>
             <p class="mb-2 text-sm text-slate-500">
                 YINI supports both lenient and strict parsing modes, depending
                 on how much enforcement you need. Lenient mode is the default.
@@ -645,13 +649,25 @@ title = "MyApp"</code></pre>
                         <td>✅</td>
                     </tr>
                     <tr>
-                        <td>Nested structure</td>
+                        <td>Nested sections / structured data</td>
                         <td>✅</td>
                         <td>✅</td>
                         <td>➖</td>
                         <td>✅</td>
                         <td>✅</td>
                         <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td
+                            >Nested structure without dotted keys or indentation
+                            rules (*)</td
+                        >
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>➖</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>➖</td>
                     </tr>
                     <tr>
                         <td>Comments</td>
@@ -756,8 +772,8 @@ title = "MyApp"</code></pre>
                 supported
             </p>
             <p class="mt-1 text-sm text-slate-500">
-                The final three rows use text labels to describe ecosystem and
-                adoption maturity.
+                *) YINI keeps hierarchy visible through nested sections while
+                remaining indentation-insensitive and predictable.
             </p>
         </div>
     </section>
