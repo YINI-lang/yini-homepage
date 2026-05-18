@@ -19,23 +19,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
     </section>
 
     <section class="mx-auto max-w-3xl px-4 pb-8 text-center">
-        <div class="rounded-xl border p-6 shadow-sm">
+        <div class="rounded-xl border px-6 py-1 shadow-sm">
             <h2 class="text-xl font-semibold">
                 Start here, get tools for YINI:
             </h2>
-            <p class="mt-2 text-sm text-slate-600">
-                Browse available YINI tools and implementations across languages
-                and platforms.
-            </p>
 
             <a
                 href={CONFIG.urls.external.yiniWiki.getYINITools}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="mt-4 inline-flex items-center gap-2 rounded-lg border px-5 py-2 text-base font-medium hover:bg-slate-50"
+                class="my-5 inline-flex items-center gap-2 rounded-lg border px-5 py-2 text-base font-medium hover:bg-slate-50"
             >
                 ⬇️ Open 'Get YINI Tools' on Wiki ↗
             </a>
+
+            <p class="mt-2 text-sm text-slate-600">
+                Browse available YINI tools and implementations across languages
+                and platforms.
+            </p>
         </div>
     </section>
 </BaseLayout>

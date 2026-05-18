@@ -16,7 +16,7 @@ YINI parsers let applications load `.yini` files and turn them into ordinary dat
 
 They are useful when you want configuration files that stay readable for humans while still being structured and predictable for software.
 
-However, If you are looking for only validating YINI files, see [YINI CLI](/tools/yini-cli).
+However, if you are looking for only validating YINI files from the command line, see the [YINI CLI](/tools/yini-cli).
 
 ---
 
@@ -39,21 +39,21 @@ The YINI project currently provides official parser implementations for:
 
 - [TypeScript / JavaScript / Node.js](/tools/yini-parser-ts)
 - [Python](/tools/yini-parser-python)
-- [Other YINI tools ↗](https://github.com/YINI-lang/YINI-spec/wiki/Get-YINI-Tools)
+- [Other YINI tools](/use-yini/get-yini-tools)
 
 The TypeScript parser is the primary implementation. The Python parser is currently available as an alpha package for early testing, examples, integrations, and feedback.
 
 ---
 
-## What parsers are used for
+## Typical use cases
 
-Parsers are typically used to:
+Parsers are typically used for:
 
-- Load application configuration at runtime.
-- Parse YINI from a file or string.
-- Use readable configuration in scripts, services, tools, and CLIs.
-- Work with nested sections and typed values in normal application code.
-- Keep configuration editable by humans without relying on indentation for structure.
+- Loading application settings at startup.
+- Reading configuration for scripts, tools, and services.
+- Sharing the same config format across CLI tools and application code.
+- Working with nested sections and typed values as normal language data.
+- Keeping configuration editable by humans without relying on indentation for structure.
 
 ---
 
@@ -124,7 +124,7 @@ const config = YINI.parseFile('./config.yini')
 console.log(config.App.name)
 ```
 
-For more details, see the page [YINI Parser for Node.js](/tools/yini-parser-ts/)
+For more details, see the page [YINI Parser for Node.js](/tools/yini-parser-ts/).
 
 ---
 
@@ -144,7 +144,13 @@ config = load("config.yini")
 print(config["App"]["name"])
 ```
 
-For more details, see the page [YINI Parser for Python](/tools/yini-parser-python/)
+For more details, see the page [YINI Parser for Python](/tools/yini-parser-python/).
+
+---
+
+## Other YINI tools
+
+For related tools and implementations across different languages and platforms, see [Get YINI tools](/use-yini/get-yini-tools).
 
 ---
 
