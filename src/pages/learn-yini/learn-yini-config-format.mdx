@@ -15,18 +15,14 @@ A clear, 10–15 minute step-by-step guide to the YINI configuration format — 
 
 ## 1. Sections
 
-Sections group related configuration settings under a named header.
-
-Group related settings under a named header. A section starts with a section marker such as `^`.
-
-Start a section with `^`, e.g.:
+Sections group related configuration settings under a named header. A section starts with a section marker such as `^`.
 
 ```yini
 ^ App
 title = "AppName"
 ```
 
-> Alternative section markers to `^` are also supported if `^` causes issues: `<` or `§` (e.g. `< Section`).
+> If `^` causes issues in a specific environment, `§` may be used as a Unicode-based alternative.
 
 > See section 9 for more advanced marker and naming options.
 
@@ -34,29 +30,21 @@ title = "AppName"
 
 ## 2. Keys and Values
 
-Each configuration setting is written as a key and value pair.
-
-Each line inside a section is a **key** (name) and **value**, separated by `=`.
-
-Write settings as `key = value`:
+Each configuration setting is written as a **key-value pair**, separated by `=`:
 
 ```yini
 maxConnections = 100
 enableLogging  = true
 ```
 
-> See section 9 for more advanced marker and naming options.
-
-### 💡Tip
-
-Use backticks (\`) to quote section or key names that contain spaces or special characters.
-
-Key names with spaces/special characters can be backticked:
+Use backticks for section or key names that contain spaces, punctuation, or special characters:
 
 ```yini
- user id  = 1            # Invalid ❌
-`user id` = 1            # Valid ✅
+user id = 1      # ❌ Invalid
+`user id` = 1    # ✅ Valid
 ```
+
+> See section 9 for more advanced marker and naming options.
 
 ---
 
@@ -85,10 +73,25 @@ Values can be:
 
     C-strings interpret common escape sequences like `\n`, `\t`, and `\\`.
 
-- **Numbers:** `42`, `3.14` or `-10`
+    **For multi-line text**, use triple-quoted strings:
+
+    ```yini
+    description = """
+    This is a longer text.
+    It can span multiple lines.
+    """
+    ```
+
+    Triple-quoted strings are raw by default. Use `C"""..."""` only when a multi-line string needs escape sequences.
+
+- **Numbers:** `42`, `3.14`, `-10` or `10_000_000`
+
+    Underscores may be used as visual separators in numbers.  
+    `10_000_000` has the same value as `10000000`.
 - **Booleans:** `true`, `false`, `on`, `off`, `yes`, `no` (all case-insensitive)
 - **Nulls:** Use `null` or leave the value blank after `=` (in lenient mode)
 - **Lists:** `["red", "green", "blue"]` (JSON‑style)
+- **Inline objects:** `{ host: "localhost", port: 5432 }`
 
 ---
 
@@ -111,13 +114,12 @@ interval = 30  #inline comment
 ; Full line comment (must be whole line).
 ```
 
-> **Tip:** You can add comments anywhere—above, beside, or below any setting or section.
+> **Tip:** `//`, `#`, and block comments can be used inline or around settings. `;` is only for full-line comments.
 >
 > 👆 **Caveat 1:** In RC 6, `#` always starts a comment outside string literals.
 > No whitespace is required after `#`, and `#336699` is a comment, not a hex number.
 
-> 👆 **Caveat 2:** `;` is used only for full-line comments. The `;` must be the first non-whitespace character on a line (only spaces or tabs are allowed before it).
-> (If `;` appears later in the line, the parser may treat it as part of a value or as a line delimiter, not as a comment.)
+> 👆 **Caveat 2:** `;` is only a full-line comment marker. It must be the first non-whitespace character on the line.
 
 💡**Tip:** You can use any comment style in your file.
 For best readability, try to stick to one style per file.
@@ -138,6 +140,8 @@ Use extra carets `^` for sub‑sections:
 // of the previous section, and so...
 ^^^ SubChild
 ```
+
+Repeated markers are supported up to level 9; for deeper levels, use numeric shorthand such as `^10 VeryDeep`.
 
 If you prefer, you can indent the nested section for visibility:
 
@@ -204,7 +208,7 @@ numberList = [
 ]
 ```
 
-Lists can contain different supported value types, such as strings, numbers, booleans, null, objects, and even other lists.
+Lists can contain different supported value types, such as strings, numbers, booleans, null, inline objects, and even other lists.
 
 ```yini
 mixed = [
@@ -256,29 +260,35 @@ Advanced syntax options provide additional flexibility for section markers and n
 
 In addition to the standard syntax, YINI supports several advanced options:
 
-- (a.) **Alternative section markers:**  
-  Besides `^`, you can use `<` or `§` as section header markers.
+- (a.) **Alternative section marker:**  
+  The recommended section marker is `^`. If `^` causes problems in a specific environment, `§` may be used as a Unicode alternative.
 
     ```yini
-    < MySection
+    ^ App
     § Settings
     ```
 
+    For most files, prefer `^`.  
+
+    Other marker forms exist for compatibility or special cases, but they are not recommended for normal YINI files.
+
 - (b.) **Backticked section names and key names:**  
-  Use backticks (`) to allow spaces or special characters in section or key names:
+  Use backticks (<code>`</code>) to allow spaces or special characters in section or key names:
 
     ```yini
-      ^ `Section name with spaces`
-      `user id` = 42
+    ^ `Section name with spaces`
+    `user id` = 42
     ```
 
 - (c.) **Numeric shorthand section markers:**  
-  To create deeply nested sections at level 10 or deeper, use numeric shorthand:
+  Repeated section markers are supported up to level 9. For deeper nesting, use numeric shorthand:
 
     ```yini
-    ^9 DeepSection    # Equivalent to 9 carets: ^^^^^^^^^ DeepSection
-    <10 VeryDeep      # Level 10; repeated marker form would be invalid.
+    ^^^^^^^^^ DeepSection  # Level 9, maximum repeated-marker form.
+    ^10 VeryDeep           # Level 10, use numeric shorthand.
     ```
+
+    Numeric shorthand requires a space after the number: `^10 VeryDeep`, not `^10VeryDeep`.
 
 - (d.) **More features:**  
   The YINI format supports even more features than listed here, such as additional number notations, string types, and advanced escaping. For full details, see the [YINI Specification](../refs/specification).
@@ -302,9 +312,9 @@ host     = "db.local"
 port     = 5432
 --user   = "secret"  # This line is disabled due to --.
 userList = ["alice", "bob", "carol"]
-
-/END // Optional in lenient mode; required in strict mode.
 ```
+
+> This example uses lenient mode (the default), so `/END` is not required.
 
 ---
 
