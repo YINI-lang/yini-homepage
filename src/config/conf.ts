@@ -1,6 +1,6 @@
 import jsonConf from './config.json' // JSON generated from a YINI file (with yini-cli).
 
-const LATEST_YINI_SPEC_PDF_URL = '/specs/YINI-Specification-1.0.0-RC.5.pdf'
+const LATEST_YINI_SPEC_PDF_URL = '/specs/YINI-Specification-1.0.0-RC.6.pdf'
 
 interface IConfig {
     meta: {

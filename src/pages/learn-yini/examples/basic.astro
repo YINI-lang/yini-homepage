@@ -8,9 +8,6 @@ import exampleBasic3 from '../../../content/examples/basic/basic3.yini?raw'
 import exampleComments from '../../../content/examples/basic/comments.yini?raw'
 import exampleListAndObjects from '../../../content/examples/general/lists-and-objects.yini?raw'
 import exampleNumbers from '../../../content/examples/general/number-formats.yini?raw'
-import exampleNestingStyle1 from '../../../content/examples/indentation/indent-ex-conf1.yini?raw'
-import exampleNestingStyle2 from '../../../content/examples/indentation/indent-ex-conf2.yini?raw'
-import exampleNestingStyle3 from '../../../content/examples/indentation/indent-ex-conf3.yini?raw'
 import exampleNestedStructured from '../../../content/examples/structure/nested-and-structured.yini?raw'
 import exampleNestedSections from '../../../content/examples/structure/nested-sections.yini?raw'
 import exampleSections from '../../../content/examples/structure/sections.yini?raw'
@@ -64,23 +61,19 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <hr />
         <h2>Indentation examples</h2>
         <p>
-            Indentation in YINI is only used for human readability — how you
-            indent your YINI is up to you 🙂 However, it is recommended to stick
-            to one style per file.
+            Indentation in YINI is only used for human readability. Section
+            markers define the structure, so you can choose a formatting style
+            that works for your file.
         </p>
 
-        <YINIExample
-            title="Indentation style 1: Indenting whole nested sections."
-            code={exampleNestingStyle1}
-        />
-        <YINIExample
-            title="Indentation style 2: Indenting only the section body in nested sections."
-            code={exampleNestingStyle2}
-        />
-        <YINIExample
-            title="Indentation style 3: Flat sections nesting, not indenting at all."
-            code={exampleNestingStyle3}
-        />
+        <p>
+            See the dedicated <a
+                href={CONFIG.siteLinks.navMenu.learnYini.examples.indentation
+                    .url}
+                >indentation examples</a
+            >
+            for side-by-side formatting styles.
+        </p>
 
         <hr />
         <h2>Comments & compound types</h2>

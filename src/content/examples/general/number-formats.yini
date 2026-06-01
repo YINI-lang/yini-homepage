@@ -22,7 +22,7 @@
     price = 12345.67
 
     # Hex (often used for colors, bitmasks, ids)
-    primary_color = #336699
+    primary_color = 0x336699
     feature_mask = 0x1F
 
     # Scientific notation (when specs/data use it)
