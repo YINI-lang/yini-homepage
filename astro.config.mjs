@@ -1,3 +1,4 @@
+// astro.config.mjs
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'astro/config'
 import rehypeSlug from 'rehype-slug'

@@ -18,46 +18,6 @@ type HeaderProps = {
     isProd: boolean
 }
 
-type NavLinksProps = { variant?: 'mobile' | 'desktop' }
-const maxWidthMobile: number = 767
-
-// ---- Hook: media query -------------------------------------------------------
-/**
- * React hook that tells you whether a given CSS media query currently matches.
- *   Useful for rendering different components/markup at specific breakpoints
- *   (e.g., mobile vs desktop) or honoring user preferences.
- * Example:
- *   const isMobile = useMediaQuery("(max-width: 767px)");
- *   return isMobile ? <MobileHeader /> : <DesktopHeader />;
- */
-function useMediaQuery(query: string) {
-    const [matches, setMatches] = useState(false)
-
-    useEffect(() => {
-        const mql = window.matchMedia(query)
-        const onChange = (e: MediaQueryListEvent | MediaQueryList) =>
-            setMatches(
-                'matches' in e ? e.matches : (e as MediaQueryList).matches,
-            )
-
-        // Set initial on mount (in case initialValue differs).
-        setMatches(mql.matches)
-
-        // Support old Safari.
-        if (mql.addEventListener)
-            mql.addEventListener('change', onChange as any)
-        else mql.addListener(onChange as any)
-
-        return () => {
-            if (mql.removeEventListener)
-                mql.removeEventListener('change', onChange as any)
-            else mql.removeListener(onChange as any)
-        }
-    }, [query])
-
-    return matches
-}
-
 /*
     Small, quiet branding text under / beside the logo.
 
@@ -101,10 +61,7 @@ export default function Header({ isProd }: HeaderProps) {
         console.log('isDev: ' + isDev)
     }, [isDev])
 
-    const [open, setOpen] = useState(false)
     const [dark, setDark] = useState(false)
-
-    const isMobile = useMediaQuery(`(max-width: ${maxWidthMobile}px)`)
 
     // Load initial theme (persisted or system preference)
     useEffect(() => {
@@ -120,15 +77,6 @@ export default function Header({ isProd }: HeaderProps) {
         document.documentElement.classList.toggle('dark', dark)
         localStorage.setItem('theme', dark ? 'dark' : 'light')
     }, [dark])
-
-    // Close mobile menu when resizing up to desktop
-    useEffect(() => {
-        const onResize = () => {
-            if (window.innerWidth > maxWidthMobile) setOpen(false)
-        }
-        window.addEventListener('resize', onResize)
-        return () => window.removeEventListener('resize', onResize)
-    }, [])
 
     /*
         For desktop-mode/view -> Top nav-menu.
@@ -397,10 +345,9 @@ export default function Header({ isProd }: HeaderProps) {
         )
     }
 
-    if (!isMobile) {
-        // "Desktop" View.
-        return (
-            <header className="site-header text-center">
+    return (
+        <>
+            <header className="site-header hidden text-center md:block">
                 {/* Logo. */}
                 <a href="/" aria-label="YINI home" className="logo m-1">
                     <img
@@ -428,11 +375,15 @@ export default function Header({ isProd }: HeaderProps) {
                     )}
                 </nav>
             </header>
-        )
-    } else {
-        // "Mobile" View.
-        return (
-            <header className="border-b border-slate-200/60">
+
+            <header className="border-b border-slate-200/60 md:hidden">
+                <input
+                    id="mobile-nav-toggle"
+                    type="checkbox"
+                    className="peer sr-only"
+                    aria-hidden="true"
+                />
+
                 <div className="mx-auto flex max-w-6xl items-center px-4 py-4">
                     <a
                         href="/"
@@ -468,30 +419,27 @@ export default function Header({ isProd }: HeaderProps) {
                             </button>
                         )}
 
-                        {/* Mobile menu toggle (hidden on md+) */}
-                        <button
-                            type="button"
-                            className="rounded-lg border border-slate-300 px-2 py-1 text-xl hover:bg-slate-100 md:hidden"
-                            onClick={() => setOpen((o) => !o)}
-                            aria-expanded={open}
+                        {/* Mobile menu toggle. Native label/input behavior works before hydration. */}
+                        <label
+                            htmlFor="mobile-nav-toggle"
+                            className="cursor-pointer rounded-lg border border-slate-300 px-2 py-1 text-xl select-none hover:bg-slate-100"
                             aria-controls="mobile-nav"
-                            aria-label="Toggle menu">
+                            aria-label="Toggle menu"
+                            title="Toggle menu">
                             ☰
-                        </button>
+                        </label>
                     </div>
                 </div>
 
                 {/* Mobile menu (collapsible) */}
-                {open && (
-                    <div
-                        id="mobile-nav"
-                        className="border-t border-slate-200/60 md:hidden">
-                        <nav className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-sm">
-                            {<NavMobilePopupMenu />}
-                        </nav>
-                    </div>
-                )}
+                <div
+                    id="mobile-nav"
+                    className="hidden border-t border-slate-200/60 peer-checked:block">
+                    <nav className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 text-sm">
+                        {<NavMobilePopupMenu />}
+                    </nav>
+                </div>
             </header>
-        )
-    }
+        </>
+    )
 }
