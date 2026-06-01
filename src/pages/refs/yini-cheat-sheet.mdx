@@ -109,7 +109,7 @@ service = {
 - **Strings must be quoted** using `'...'` or `"..."`.
 - **Strings are raw by default**. Use `C"..."` or `c'...'` only when you need escape sequences like `\n` or `\t`.
 - `key = value` assigns a single value.
-- `key:` introduces a colon-list/list-style member. Use `key = "John"` for a normal single string value.
+- Lists are assigned with `=` and square brackets, for example `items = ["one", "two"]`.
 - Trailing commas are allowed in **lists and objects** _(lenient mode)_.
 - Duplicate keys are **disallowed by default**.
 - `#` **starts a comment** outside string literals.

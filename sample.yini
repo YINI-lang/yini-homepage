@@ -21,5 +21,5 @@
 
     // Sub-section of the "App" section
     ^^ Special
-        primaryColor = #336699   // Hex number format
+        primaryColor = 0x336699  // Hex number format
         isCaching    = false     // "OFF" and "NO" works too

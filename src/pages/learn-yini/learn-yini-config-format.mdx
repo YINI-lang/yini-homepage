@@ -102,8 +102,8 @@ Various commenting styles are supported:
 // This is a line comment
 timeout = 30  // inline comment
 
-# This is also a line comment (must have a space after #)
-interval = 30  # inline comment (must have a space after #)
+#This is also a line comment
+interval = 30  #inline comment
 
 /* Block comment spanning
    multiple lines */
@@ -113,8 +113,8 @@ interval = 30  # inline comment (must have a space after #)
 
 > **Tip:** You can add comments anywhere—above, beside, or below any setting or section.
 >
-> 👆 **Caveat 1:** If you use `#` for comments, always put a space after the `#`.
-> (Otherwise, the parser might misinterpret it as part of a value.)
+> 👆 **Caveat 1:** In RC 6, `#` always starts a comment outside string literals.
+> No whitespace is required after `#`, and `#336699` is a comment, not a hex number.
 
 > 👆 **Caveat 2:** `;` is used only for full-line comments. The `;` must be the first non-whitespace character on a line (only spaces or tabs are allowed before it).
 > (If `;` appears later in the line, the parser may treat it as part of a value or as a line delimiter, not as a comment.)
@@ -223,9 +223,9 @@ mixed = [
 
 ## 7. Document Terminator (strict mode)
 
-The optional document terminator explicitly marks the end of a configuration file.
+The document terminator explicitly marks the end of a configuration file.
 
-The `/END` marker is optional in both lenient mode (the default) and strict mode.
+The `/END` marker is optional in lenient mode (the default) and required in strict mode.
 
 End a file explicitly with:
 
@@ -233,7 +233,7 @@ End a file explicitly with:
 ^ App
 title = "MyTitle"
 
-/END    // Is only optional.
+/END    // Required in strict mode; optional in lenient mode.
 ```
 
 ---
@@ -273,11 +273,11 @@ In addition to the standard syntax, YINI supports several advanced options:
     ```
 
 - (c.) **Numeric shorthand section markers:**  
-  To create deeply nested sections (beyond 6 levels), use numeric shorthand:
+  To create deeply nested sections at level 10 or deeper, use numeric shorthand:
 
     ```yini
-    ^7 DeepSection    # Equivalent to 7 carets: ^^^^^^^ DeepSection
-    <10 VeryDeep      # Equivalent to <<<<<<<<<<< VeryDeep
+    ^9 DeepSection    # Equivalent to 9 carets: ^^^^^^^^^ DeepSection
+    <10 VeryDeep      # Level 10; repeated marker form would be invalid.
     ```
 
 - (d.) **More features:**  
@@ -303,7 +303,7 @@ port     = 5432
 --user   = "secret"  # This line is disabled due to --.
 userList = ["alice", "bob", "carol"]
 
-/END // (optional)
+/END // Optional in lenient mode; required in strict mode.
 ```
 
 ---
