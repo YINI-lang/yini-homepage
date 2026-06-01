@@ -236,6 +236,16 @@ export default function Header({ isProd }: HeaderProps) {
                             <a
                                 href={
                                     CONFIG.siteLinks.navMenu.learnYini.examples
+                                        .indentation.url
+                                }
+                                className={cssClasses}>
+                                Indentation & Structure
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini.examples
                                         .common.url
                                 }
                                 className={cssClasses}>
