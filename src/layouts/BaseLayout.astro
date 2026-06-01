@@ -224,7 +224,7 @@ const isDev = import.meta.env.DEV
         <main class="mx-auto max-w-7xl px-4 py-10">
         <div class="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8">
             
-            <!-- LEFT NAV menu (desktop only) -->
+            <!-- LEFT NAV menu (left menu, desktop only) -->
             <aside class="hidden md:block sticky top-24 self-start
               max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
             <nav class="text-sm text-slate-700 dark:text-slate-300 space-y-6 mb-6">
@@ -318,6 +318,12 @@ const isDev = import.meta.env.DEV
                         </a>
                     </li>
                     <li>
+                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.indentation.url}
+                            class="sidebar-link">
+                            Indentation & Structure
+                        </a>
+                    </li>
+                    <li>
                         <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}
                             class="sidebar-link">
                             Common & Real-world
@@ -332,7 +338,7 @@ const isDev = import.meta.env.DEV
                     <li>
                         <a href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}
                             class="sidebar-link">
-                            Large
+                            Large Examples
                         </a>
                     </li>
                 </ul>
