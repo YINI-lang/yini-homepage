@@ -10,7 +10,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 # YINI Cheat Sheet
 
-> _Based on the official **YINI Specification (v1.0 Release Candidate)**_
+> _Based on the official **YINI Specification (v1.0 Release Candidate 6)**_
 
 A **quick reference** for writing clean, readable YINI configuration files.
 
@@ -28,6 +28,7 @@ More structured than INI, less noisy than JSON, and less fragile than YAML.
 | **Section heading: level&nbsp;1** | `^ App`                                                                                                                                                                                                                                    |
 | **Section heading: level&nbsp;2** | `^^ Database`                                                                                                                                                                                                                              |
 | **Section heading: level&nbsp;3** | `^^^ Pool`                                                                                                                                                                                                                                 |
+| **Section marker separator**      | `^^^_^^^_^^^ DeepSection`<br/>`_` may visually separate repeated section markers and does not count toward section depth.                                                                                                                  |
 | **String**                        | `"text"`, `'text'`, `"C:\Users\Robin"` <br/>👉 Strings are raw by default — `\` and `\n` are treated as normal text<br/>👉 Use `C"..."` or `c'...'` for escape sequences like `\n`, `\t`, `\\` (escapes are transformed during parse time) |
 | **Number**                        | `42`, `3.14`, `-10`, `1e4`                                                                                                                                                                                                                 |
 | **Boolean**                       | `true`, `false`, `on`, `off`, `yes`, `no` _(case-insensitive)_                                                                                                                                                                             |
@@ -35,7 +36,7 @@ More structured than INI, less noisy than JSON, and less fragile than YAML.
 | **List / Array**                  | `[1, 2, 3]`                                                                                                                                                                                                                                |
 | **Inline object (map/dict)**      | `{ a: 1, b: 2 }`                                                                                                                                                                                                                           |
 | **Comment**                       | `// Default comment`                                                                                                                                                                                                                       |
-| **Alt. comment**                  | `# Comment` _(must be `#␠` or `#\t`)_<br/><br/> ❌ `#Missing space before comment start`<br/> ✅ `# This is an OK comment`                                                                                                                 |
+| **Alt. comment**                  | `# Comment`<br/>`#Comment`<br/>`#` starts a comment outside string literals.                                                                                                                                                               |
 | **Multi-line (block) comment**    | `/* comment */`<br/><br/>`/*`<br/>`  Multi-line`<br/>`  comment`<br/>`*/`                                                                                                                                                                  |
 | **Full-line comment**             | `; This is a full-line comment (only full lines)`                                                                                                                                                                                          |
 | **Disable line**                  | `--debug = true`                                                                                                                                                                                                                           |
@@ -44,8 +45,8 @@ More structured than INI, less noisy than JSON, and less fragile than YAML.
 
 ### 📝 Naming Rules
 
-- **Section names** and **keys** can include spaces.
-- Use backticks (<code>`</code>) for special characters or reserved words:
+- Simple section names and keys should use normal identifier-like names.
+- Use backticks for spaces, punctuation, special characters, or reserved-looking names:
 
 ```yini
 ^ `My App`
@@ -55,16 +56,34 @@ More structured than INI, less noisy than JSON, and less fragile than YAML.
 
 #### 💡 Style Convention (Optional)
 
-- Section names typically start with a Capital letter.
-- Keys typically start with a lowercase letter.
+- Section names typically start with a capital letter, like: `Title`.
+- Keys typically start with a lowercase letter, like: `key`.
 
 _This is a readability convention — not a requirement._
 
 ---
 
+---
+
+## 🔤 String Types
+
+YINI strings are quoted and are **raw by default**.
+
+| String type                   | Example                 | Meaning                                                            |
+| ----------------------------- | ----------------------- | ------------------------------------------------------------------ |
+| **Raw string**                | `"C:\Users\Robin"`      | Default string type. Backslashes are treated as normal characters. |
+| **Single-quoted raw string**  | `'hello'`               | Same raw behavior, using single quotes.                            |
+| **Classic string / C-string** | `C"hello\nworld"`       | Escape sequences such as `\n`, `\t`, and `\\` are interpreted.     |
+| **Triple-quoted raw string**  | `"""multi-line text"""` | Multi-line raw string. Escapes are not interpreted.                |
+| **C-triple-quoted string**    | `C"""line 1\nline 2"""` | Multi-line string with escape sequences interpreted.               |
+
+Use normal raw strings for most values. Use `C"..."` or `C"""..."""` only when you need escape sequences.
+
+---
+
 ## 🧩 Inline Objects & Nested Data
 
-(Objects are also called maps or dictionaries in general sense.)
+Objects are also called maps or dictionaries in many languages.
 
 ### Simple object
 
@@ -86,13 +105,27 @@ service = {
 ## 🧭 Important Rules
 
 - **Indentation is cosmetic** — structure is defined by section markers (`^`, `^^`, `^^^`, etc.).
+- Repeated section markers are supported **up to level 9**. For deeper nesting, use numeric shorthand such as `^10 DeepSection`.
 - **Strings must be quoted** using `'...'` or `"..."`.
 - **Strings are raw by default**. Use `C"..."` or `c'...'` only when you need escape sequences like `\n` or `\t`.
-- Inside a section, `name: "John"` creates a **list**.  
-  Use `name = "John"` for a single value.
+- `key = value` assigns a single value.
+- `key:` introduces a colon-list/list-style member. Use `key = "John"` for a normal single string value.
 - Trailing commas are allowed in **lists and objects** _(lenient mode)_.
 - Duplicate keys are **disallowed by default**.
-- `#` starts a comment **only if followed by a space or tab**.
+- `#` **starts a comment** outside string literals.
+- `_` may be used as a visual separator in number literals and repeated section markers. It improves readability and does not change the value or section depth.
+
+    ```yini
+    maxUploadSize = 10_000_000
+    ```
+
+    Meaning: same as `10000000`, but easier to read.
+
+    ```yini
+    ^^^_^^^_^^^ DeepSettings
+    ```
+
+    Meaning: same section depth (9 in this case) as `^^^^^^^^^ DeepSettings`; the `_` separators are only visual and do not count as section markers.
 
 ---
 
@@ -100,15 +133,16 @@ service = {
 
 YINI supports multiple numeric formats:
 
-| Format                    | Example                                                                                                                           |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Integer**               | `42`, `-42`<br/><br/> ❌ `01` (leading zero not allowed)<br/> ✅ `1`<br/> ✅ `0`                                                  |
-| **Float**                 | `3.14`, `-3.14`<br/><br/> ❌ `3,14`<br/> ✅ `0.14`                                                                                |
-| **Scientific (base-10)**  | `1e6`, `5.2E-3`                                                                                                                   |
-| **Hexadecimal (base-16)** | `#FFAA00`<br/><br/> ❌ `# FFAA00` (parsed as a comment)<br/> ✅ `#ffaa00`                                                         |
-| **Binary (base-2)**       | `0b101010`                                                                                                                        |
-| **Octal (base-8)**        | `0o755`                                                                                                                           |
-| **Duodecimal (base-12)**  | `0z2BA9`, `0z2EX9`<br/><br/>Digits: `0–9`, `A` or `X` = 10, `B` or `E` = 11 _(case-insensitive)_<br/>💡 `0z10` equals decimal 12. |
+| Format                    | Example                                                                                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Integer**               | `42`, `-42`<br/><br/> ❌ `01` (leading zero not allowed)<br/> ✅ `1`<br/> ✅ `0`                                                           |
+| **Float**                 | `3.14`, `-3.14`<br/><br/> ❌ `3,14`<br/> ✅ `0.14`                                                                                         |
+| **Scientific (base-10)**  | `1e6`, `5.2E-3`                                                                                                                            |
+| **Hexadecimal (base-16)** | `0xFFAA00`, `0X3fa`, `hex:FFAA00`<br/><br/> ❌ `#FFAA00` — `#` starts a comment, not a hex number.<br/> ✅ `0xffaa00`<br/> ✅ `hex:ffaa00` |
+| **Binary (base-2)**       | `0b101010`                                                                                                                                 |
+| **Octal (base-8)**        | `0o755`                                                                                                                                    |
+| **Duodecimal (base-12)**  | `0z2BA9`, `0z2EX9`<br/><br/>Digits: `0–9`, `A` or `X` = 10, `B` or `E` = 11 _(case-insensitive)_<br/>💡 `0z10` equals decimal 12.          |
+| **Digit separators**      | `1_000`, `0x_FF_AA_00`, `0b_1010_1100`, `hex:FF_AA_00`<br/><br/>Underscores are for readability and do not change the numeric value.       |
 
 All numeric forms are parsed as real numbers — no quotes required.
 
@@ -148,7 +182,7 @@ retries = 3
     ^^ Database
     host = 'localhost'
     port = 5432
-    color = #336699             # Hex number literal
+    color = 0x336699            # Hex number literal
 
     ; This is a full-line comment (for humans)
     --password = 'secret'       # Disabled line (ignored by parser)
