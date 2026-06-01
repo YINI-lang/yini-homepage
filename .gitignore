@@ -7,6 +7,8 @@ node_modules
 .astro
 *.log
 
+*.log
+
 *.local
 
 .env
