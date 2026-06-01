@@ -127,6 +127,10 @@
                     url = '/learn-yini/examples/basic'
                     title = 'Core and practical YINI config examples.'
 
+                ^^^^^ indentation
+                    url = '/learn-yini/examples/indentation'
+                    title = 'Indentation and section nesting examples.'
+
                 ^^^^^ common
                     url = '/learn-yini/examples/common'
                     title = 'Common real-world examples.'

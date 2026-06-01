@@ -1,0 +1,80 @@
+---
+// learn-yini/examples/indentation.astro
+import YINIExample from '../../../components/YINIExample.astro'
+import CONFIG from '../../../config/conf'
+import exampleNestingStyle1 from '../../../content/examples/indentation/indent-ex-conf1.yini?raw'
+import exampleNestingStyle2 from '../../../content/examples/indentation/indent-ex-conf2.yini?raw'
+import exampleNestingStyle3 from '../../../content/examples/indentation/indent-ex-conf3.yini?raw'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Indentation Examples: YINI'}
+    headDescription={'YINI indentation examples showing that section markers define nesting while indentation remains a readability choice.'}
+>
+    <section class="mt-8">
+        <h1>Indentation Examples</h1>
+
+        <p>
+            YINI is not indentation-sensitive. Indentation can make a file easier
+            to scan, but the structure is defined by explicit section markers
+            such as <code>^</code>, <code>^^</code>, and <code>^^^</code>.
+        </p>
+
+        <p>
+            The examples below show the same kind of nested structure formatted
+            in different readable styles. Pick one style per file and keep it
+            consistent.
+        </p>
+
+        <p>
+            <strong>New to the core syntax?</strong>
+            Start with the <a
+                href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
+                >basic examples</a
+            >
+            or the <a
+                href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                >format guide</a
+            >.
+        </p>
+
+        <hr />
+
+        <h2>Indentation styles</h2>
+        <YINIExample
+            title="Style 1: Indent whole nested sections"
+            code={exampleNestingStyle1}
+        />
+        <YINIExample
+            title="Style 2: Indent only section bodies"
+            code={exampleNestingStyle2}
+        />
+        <YINIExample
+            title="Style 3: Keep section headers flat"
+            code={exampleNestingStyle3}
+        />
+
+        <hr />
+
+        <section>
+            <h2>Next steps</h2>
+            <ul>
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples.basic
+                            .url}>Basic examples</a
+                    ><br />
+                    <em>Review the core syntax and smaller examples.</em>
+                </li>
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples.common
+                            .url}>Common real-world examples</a
+                    ><br />
+                    <em>See everyday configuration patterns.</em>
+                </li>
+            </ul>
+        </section>
+    </section>
+</BaseLayout>
