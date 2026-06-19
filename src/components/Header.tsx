@@ -294,7 +294,7 @@ export default function Header({ isProd }: HeaderProps) {
                                     CONFIG.siteLinks.navMenu.refs.cheatSheet.url
                                 }
                                 className={cssClasses}>
-                                Cheat Sheet
+                                Cheat Sheet ⭐
                             </a>
                         </li>
                     </ul>
@@ -331,7 +331,7 @@ export default function Header({ isProd }: HeaderProps) {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={cssClasses}>
-                                GitHub ↗
+                                YINI project on GitHub ↗
                             </a>
                         </li>
                     </ul>
