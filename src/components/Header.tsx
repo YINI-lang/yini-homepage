@@ -124,10 +124,10 @@ export default function Header({ isProd }: HeaderProps) {
                     Specification
                 </a>
                 <a
-                    href={CONFIG.siteLinks.hero.faq.url}
-                    title={CONFIG.siteLinks.hero.faq.title}
+                    href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                    title={CONFIG.siteLinks.navMenu.refs.cheatSheet.title}
                     className={cssClasses}>
-                    FAQ
+                    ⭐ Cheat Sheet
                 </a>
             </>
         )
@@ -320,7 +320,7 @@ export default function Header({ isProd }: HeaderProps) {
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
-                        Docs / Reference
+                        Reference
                     </h3>
                     <ul className="space-y-2 pl-4">
                         <li>
