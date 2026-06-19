@@ -155,16 +155,17 @@ export default function Header({ isProd }: HeaderProps) {
         return (
             <>
                 <div>
-                    <div className="mb-4">
+                    <div className="mb-2">
                         <a
                             href={CONFIG.siteLinks.hero.home.url}
                             className={cssClasses}>
                             Home
                         </a>
                     </div>
-                    <h3 className="my-2 font-semibold text-slate-500">
-                        Start here
-                    </h3>
+                </div>
+
+                <div>
+                    <h3 className="my-2 font-semibold text-slate-500">Start</h3>
                     <ul className="space-y-2 pl-4">
                         <li>
                             <a
@@ -176,14 +177,6 @@ export default function Header({ isProd }: HeaderProps) {
                                 What is YINI & Why?
                             </a>
                         </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 className="my-2 font-semibold text-slate-500">
-                        Try YINI
-                    </h3>
-                    <ul className="space-y-2 pl-4">
                         <li>
                             <a
                                 href={
@@ -191,7 +184,7 @@ export default function Header({ isProd }: HeaderProps) {
                                         .url
                                 }
                                 className={cssClasses}>
-                                <strong>Get Started</strong>
+                                Get Started 🚀
                             </a>
                         </li>
                         <li>
@@ -204,16 +197,6 @@ export default function Header({ isProd }: HeaderProps) {
                                 Quick Tutorial
                             </a>
                         </li>
-                        <li>
-                            <a
-                                href={
-                                    CONFIG.siteLinks.navMenu.useYini.yiniParsers
-                                        .url
-                                }
-                                className={cssClasses}>
-                                YINI Parsers
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
@@ -224,12 +207,29 @@ export default function Header({ isProd }: HeaderProps) {
                     <ul className="space-y-2 pl-4">
                         <li>
                             <a
+                                href="/learn-yini/examples/"
+                                className={cssClasses}>
+                                Overview
+                            </a>
+                        </li>
+                        <li>
+                            <a
                                 href={
                                     CONFIG.siteLinks.navMenu.learnYini.examples
                                         .basic.url
                                 }
                                 className={cssClasses}>
-                                Core & Basic Examples
+                                Core & Basic
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini.examples
+                                        .common.url
+                                }
+                                className={cssClasses}>
+                                Real-world
                             </a>
                         </li>
                         <li>
@@ -246,20 +246,10 @@ export default function Header({ isProd }: HeaderProps) {
                             <a
                                 href={
                                     CONFIG.siteLinks.navMenu.learnYini.examples
-                                        .common.url
-                                }
-                                className={cssClasses}>
-                                Real-world Examples
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href={
-                                    CONFIG.siteLinks.navMenu.learnYini.examples
                                         .large.url
                                 }
                                 className={cssClasses}>
-                                Large Examples
+                                Large
                             </a>
                         </li>
                         <li>
@@ -285,7 +275,7 @@ export default function Header({ isProd }: HeaderProps) {
                                         .learnYiniFormat.url
                                 }
                                 className={cssClasses}>
-                                Learn the Format
+                                Learn the Format 🎓
                             </a>
                         </li>
                         <li>
@@ -301,7 +291,37 @@ export default function Header({ isProd }: HeaderProps) {
                 </div>
 
                 <div>
-                    <h3 className="my-2 font-semibold text-slate-500">Docs</h3>
+                    <h3 className="my-2 font-semibold text-slate-500">
+                        Use YINI
+                    </h3>
+                    <ul className="space-y-2 pl-4">
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.useYini.yiniParsers
+                                        .url
+                                }
+                                className={cssClasses}>
+                                YINI Parsers
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.useYini
+                                        .getYINITools.url
+                                }
+                                className={cssClasses}>
+                                Get YINI Tools
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 className="my-2 font-semibold text-slate-500">
+                        Docs / Reference
+                    </h3>
                     <ul className="space-y-2 pl-4">
                         <li>
                             <a
@@ -335,10 +355,6 @@ export default function Header({ isProd }: HeaderProps) {
                             </a>
                         </li>
                     </ul>
-                </div>
-
-                <div>
-                    <h3 className="my-2 font-semibold text-slate-500">About</h3>
                     <ul className="space-y-2 pl-4">
                         <li>
                             <a
