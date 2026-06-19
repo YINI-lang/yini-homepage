@@ -55,24 +55,24 @@ const rows: EcosystemMatrix = [
     {
         core: { label: null, status: null },
         impl: {
-            label: 'Editor Syntax Highlighting grammar (VS Code / TextMate)',
+            label: 'Editor Syntax Highlighting Grammar (VS Code / TextMate)',
             status: 'done',
         },
         adopt: { label: 'Cheat Sheet (Quick Syntax Guide)', status: 'done' },
     },
     {
-        core: { label: '', status: '' },
-        impl: { label: 'Python Parser (Alpha)', status: 'inprogress' },
+        core: { label: null, status: null },
+        impl: {
+            label: 'YINI Test Suite / Parser Compatibility Tests',
+            status: 'done',
+        },
         adopt: { label: 'Example Projects', status: 'inprogress' },
     },
-    // {
-    //     core: { label: null, status: null },
-    //     impl: { label: null, status: null },
-    //     adopt: {
-    //         label: null /*'Community & Contributors'*/,
-    //         status: null /* 'planned'*/,
-    //     },
-    // },
+    {
+        core: { label: null, status: null },
+        impl: { label: 'Python Parser (Alpha)', status: 'inprogress' },
+        adopt: { label: null, status: null },
+    },
 ]
 
 const statusIcon = (status: EcosystemStatus) => {
@@ -347,6 +347,11 @@ name = "Hello"`}</code></pre>
 
     <section class="mt-20 pb-4">
         <h2>🌐 The YINI Ecosystem</h2>
+
+        <p class="mb-4 text-sm text-slate-500 dark:text-slate-400">
+            A high-level overview of the main YINI specification, tooling,
+            implementation, and adoption pieces.
+        </p>
 
         <div class="overflow-x-auto">
             <table class="w-full border-collapse text-sm">
