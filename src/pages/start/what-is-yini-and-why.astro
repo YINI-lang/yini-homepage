@@ -97,25 +97,58 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
     <section class="my-6 pb-6">
         <h2>🧯 Why does YINI exist?</h2>
-        Many configuration formats become harder to maintain as projects grow.
+        Many configuration formats are useful, but each comes with trade-offs when
+        files are written and maintained by humans:
         <ul>
             <li class="leading-relaxed">
-                <strong>INI</strong> is simple, but often too flat as configs grow.
+                <strong>INI</strong> is simple, but often too flat.
+                <blockquote style="margin-top: .5rem; margin-bottom: .25rem">
+                    <strong
+                        >YINI keeps <code>key = value</code>, but adds nested
+                        sections.</strong
+                    >
+                </blockquote>
             </li>
             <li class="leading-relaxed">
-                <strong>JSON</strong> is explicit, but can become noisy to edit.
+                <strong>JSON</strong> is explicit, but punctuation-heavy to edit
+                by hand.
+                <blockquote style="margin-top: .5rem; margin-bottom: .25rem">
+                    YINI keeps structured values with less required punctuation.
+                </blockquote>
             </li>
             <li class="leading-relaxed">
-                <strong>YAML</strong> is flexible, but indentation can make it fragile.
+                <strong>YAML</strong> is flexible, but indentation can affect meaning.
+                <blockquote style="margin-top: .5rem; margin-bottom: .25rem">
+                    YINI uses section markers instead of whitespace to define
+                    structure.
+                </blockquote>
             </li>
             <li class="leading-relaxed">
-                <strong>XML</strong> is structured, but often adds more syntax than
-                needed.
+                <strong>XML</strong> is structured, but verbose for configuration.
+                <blockquote style="margin-top: .5rem; margin-bottom: .25rem">
+                    YINI supports hierarchy without opening and closing tags.
+                </blockquote>
+            </li>
+            <li class="leading-relaxed">
+                <strong>TOML</strong> is configuration-oriented, but deeply nested
+                tables can become harder to scan.
+                <blockquote style="margin-top: .5rem; margin-bottom: .25rem">
+                    YINI makes nesting visible through repeated section markers.
+                </blockquote>
             </li>
         </ul>
-        YINI was designed to address these issues: to stay readable, predictable,
-        and manageable as projects grow. Configuration often lives for years, not
-        minutes.
+        <p>
+            YINI is designed as a practical middle ground: familiar
+            configuration syntax, explicit nested sections, useful data types,
+            indentation-insensitive structure, and predictable parsing rules.
+        </p>
+        <p>
+            The goal is not to replace every configuration format. YINI is
+            intentionally JSON-friendly: JSON remains a strong choice for APIs,
+            generated output, data exchange, and many existing tools. YINI
+            focuses on human-authored configuration, and the CLI can convert
+            YINI files to JSON when JSON is the better format for the next step.
+        </p>
     </section>
 
     <section class="mt-2 pb-6">
