@@ -28,7 +28,7 @@ Example of a YINI file:
 ## Real Configuration Used by This Site
 Part of the website configuration (including internal links and descriptive text) is defined in a YINI file.
 
-Example snippet from the real file (`config.yini`):
+Example snippet from the real file (`site-config.yini`):
 ```yini
 ^ siteLinks
 
@@ -44,13 +44,13 @@ Example snippet from the real file (`config.yini`):
 ```
 
 View the full configuration file in the repository:  
-[`src/config/config.yini`](src/config/config.yini)
+[`site-config.yini`](site-config.yini)
 
 ### YINI Build Pipeline Used on This Site
 During the build process, the configuration is converted automatically using [yini-cli](https://github.com/YINI-lang/yini-cli).
 
 ```
-config.yini
+site-config.yini
  ↓
 yini-cli
  ↓

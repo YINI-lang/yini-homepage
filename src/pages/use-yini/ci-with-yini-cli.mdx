@@ -101,7 +101,7 @@ This is often enough to catch accidental mistakes early.
 ## Real configuration used by this site
 This website itself uses a YINI configuration file, which makes the workflow shown on this page a real example rather than just a theoretical one.
 
-Example snippet from `config.yini`:
+Example snippet from `site-config.yini`:
 ```yini
 ^ siteLinks
 
@@ -118,14 +118,14 @@ Example snippet from `config.yini`:
 
 The full configuration file lives in the repository under:
 ```
-src/config/config.yini
+site-config.yini
 ```
 
 ## YINI build pipeline used on this site
 During the build process, the configuration is converted automatically with [YINI CLI](/tools/yini-cli):
 
 ```txt
-config.yini
+site-config.yini
  ↓
 yini-cli
  ↓
