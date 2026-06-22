@@ -49,16 +49,16 @@ View the full configuration file in the repository:
 ### YINI Build Pipeline Used on This Site
 During the build process, the configuration is converted automatically using [yini-cli](https://github.com/YINI-lang/yini-cli).
 
-```
-site-config.yini
+```txt
+site-config.yini (source of truth)
  ↓
-yini-cli
+yini-cli (converts YINI to JSON)
  ↓
-site-config.json
+site-config.json (generated file; do not edit directly)
  ↓
-config.ts (consumed by the Astro application)
+config.ts (reads the generated JSON)
  ↓
-Astro
+Astro application
 ```
 
 This allows YINI to be used as the source configuration format, while the application consumes generated JSON/TypeScript objects.

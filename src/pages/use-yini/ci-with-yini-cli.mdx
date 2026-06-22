@@ -125,15 +125,15 @@ site-config.yini
 During the build process, the configuration is converted automatically with [YINI CLI](/tools/yini-cli):
 
 ```txt
-site-config.yini
+site-config.yini (source of truth)
  ↓
-yini-cli
+yini-cli (converts YINI to JSON)
  ↓
-site-config.json
+site-config.json (generated file; do not edit directly)
  ↓
-config.ts (consumed by the Astro application)
+config.ts (reads the generated JSON)
  ↓
-Astro
+Astro application
 ```
 
 This makes YINI the human-friendly source format, while the application still consumes standard JSON or TypeScript-friendly objects.
