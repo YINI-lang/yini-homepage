@@ -1,4 +1,11 @@
-// YINI settings/configuration file.
+/*
+    Source configuration for the yini-lang.org website.
+    
+    This human-authored YINI file defines shared site metadata, public text,
+    navigation links, and external URLs used by Astro pages and components.
+    Before development and build, `npm run gen:config` converts this file to
+    `src/config/site-config.json`, which is then loaded by `src/config/conf.ts`.
+*/
 
 @yini
 
