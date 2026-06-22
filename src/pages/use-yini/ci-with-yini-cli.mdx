@@ -99,9 +99,21 @@ This is often enough to catch accidental mistakes early.
 ---
 
 ## Real configuration used by this site
-This website itself uses a YINI configuration file, which makes the workflow shown on this page a real example rather than just a theoretical one.
+
+This website itself uses a YINI configuration file, so the workflow shown on this page is a real example rather than only a theoretical one.
+
+The source configuration file lives in the `yini-homepage` repository:
+
+```txt
+site-config.yini
+```
+
+You can view the repository here:
+
+[github.com/YINI-lang/yini-homepage](https://github.com/YINI-lang/yini-homepage)
 
 Example snippet from `site-config.yini`:
+
 ```yini
 ^ siteLinks
 
@@ -116,13 +128,17 @@ Example snippet from `site-config.yini`:
         title = 'Start exploring the YINI format.'
 ```
 
-The full configuration file lives in the repository under:
-```
-site-config.yini
+## YINI build workflow/pipeline used on this site
+
+During the build workflow, the YINI file is converted to JSON with [yini-cli](/tools/yini-cli):
+
+```bash
+npx yini-cli parse site-config.yini --output src/config/site-config.json
 ```
 
-## YINI build pipeline used on this site
-During the build process, the configuration is converted automatically with [YINI CLI](/tools/yini-cli):
+This parses `site-config.yini` and generates `src/config/site-config.json` for the Astro application to use.
+
+The generated JSON file is then read by the Astro application through `config.ts`.
 
 ```txt
 site-config.yini (source of truth)
@@ -136,14 +152,15 @@ config.ts (reads the generated JSON)
 Astro application
 ```
 
-This makes YINI the human-friendly source format, while the application still consumes standard JSON or TypeScript-friendly objects.
+This makes `site-config.yini` the human-friendly source file, while the application still consumes generated JSON in a predictable way.
 
-That can be a good pattern when you want:
-- Readable source configuration for humans.
-- Predictable machine-readable output for your app.
-- Validation in build steps before bad config reaches production.
+This pattern works well when you want:
 
-If you prefer runtime parsing instead, you can also use the [YINI Parser](/tools/yini-parser-ts).
+* Readable source configuration for humans.
+* JSON output for existing tools or application code.
+* Validation during build or CI before bad configuration reaches production.
+
+If you prefer runtime parsing instead, you can also use a [YINI parser for your programming language](/tools/yini-parsers) and load YINI files directly in your application.
 
 ---
 
