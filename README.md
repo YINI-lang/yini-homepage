@@ -54,7 +54,7 @@ site-config.yini
  ↓
 yini-cli
  ↓
-config.json
+site-config.json
  ↓
 config.ts (consumed by the Astro application)
  ↓
