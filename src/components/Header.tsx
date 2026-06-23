@@ -118,16 +118,16 @@ export default function Header({ isProd }: HeaderProps) {
                     Examples
                 </a>
                 <a
-                    href={CONFIG.siteLinks.hero.spec.url}
-                    title={CONFIG.siteLinks.hero.spec.title}
-                    className={cssClasses}>
-                    Specification
-                </a>
-                <a
                     href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
                     title={CONFIG.siteLinks.navMenu.refs.cheatSheet.title}
                     className={cssClasses}>
                     ⭐ Cheat Sheet
+                </a>
+                <a
+                    href={CONFIG.siteLinks.hero.spec.url}
+                    title={CONFIG.siteLinks.hero.spec.title}
+                    className={cssClasses}>
+                    Specification
                 </a>
             </>
         )
