@@ -257,6 +257,7 @@ const statusIcon = (status: EcosystemStatus) => {
     </section>
 
     <!-- Quick Start -->
+    <!--
     <div class="yini-quick-start full-bleed px-8">
         <section class="mx-auto max-w-3xl pt-1 pb-6">
             <h2>⚡ TL;DR — Quick Start</h2>
@@ -321,6 +322,7 @@ name = "Hello"`}</code></pre>
             </ul>
         </section>
     </div>
+-->
 
     <section class="mx-auto max-w-5xl px-4 py-2 text-center">
         <div
@@ -429,6 +431,67 @@ name = "Hello"`}</code></pre>
         >
             RC &nbsp;=&nbsp; Release Candidate
         </div>
+    </section>
+
+    <section class="mt-20 pb-4">
+        <h2>Who is YINI for?</h2>
+        <p>YINI configuration files are a good fit for:</p>
+        <ul>
+            <li>
+                Human-edited configuration files and internal tooling where you
+                control the stack.
+            </li>
+            <li>
+                Developers who want readable, structured configuration without
+                relying on indentation-sensitive syntax.
+            </li>
+            <li>
+                Teams that want comments, useful data types, and nested sections
+                without JSON workarounds or flat INI-style sections.
+            </li>
+            <li>
+                Projects that benefit from predictable parsing in tools, CI, and
+                application configuration.
+            </li>
+        </ul>
+        <p>
+            YINI is early-stage: tooling is growing, community is small —
+            However the specification is in release-candidate state, and the
+            official parsers, CLI, and test suite are suitable to try in
+            projects where you control the stack.
+        </p>
+
+        <h3>Real YINI configuration used by this site</h3>
+
+        <p>
+            This site uses <code>site-config.yini</code> as a real YINI configuration
+            file in the <code>yini-homepage</code> repository.
+        </p>
+
+        <p>
+            During the build workflow, <a href="/tools/yini-cli"
+                ><code>yini-cli</code></a
+            > converts it to JSON:
+        </p>
+
+        <pre><code class="language-bash">npx yini-cli parse site-config.yini --output src/config/site-config.json</code></pre>
+
+        <p>
+            This generates <code>src/config/site-config.json</code>, which is
+            read by
+            <code>config.ts</code> and used by this Astro site.
+        </p>
+
+        <p>
+            Repository:
+            <a
+                href="https://github.com/YINI-lang/yini-homepage"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                github.com/YINI-lang/yini-homepage
+            </a>
+        </p>
     </section>
 
     <section class="pb-6">
