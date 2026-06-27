@@ -215,6 +215,7 @@
             yiniParserTs = 'https://github.com/YINI-lang/yini-parser-typescript'
             yiniParserPython = 'https://github.com/YINI-lang/yini-parser-python'
             yiniDemoApps = 'https://github.com/YINI-lang/yini-demo-apps'
+            yiniTestSuite = 'https://github.com/YINI-lang/yini-test-suite'
             yiniSyntax = 'https://github.com/YINI-lang/syntax-highlighting'
             yiniHomepage = 'https://github.com/YINI-lang/yini-homepage'
             yiniSpec = 'https://github.com/YINI-lang/YINI-spec'
