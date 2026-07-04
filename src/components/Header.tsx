@@ -275,7 +275,7 @@ export default function Header({ isProd }: HeaderProps) {
                                         .learnYiniFormat.url
                                 }
                                 className={cssClasses}>
-                                Learn the Format 🎓
+                                Beginner's Guide to YINI 🎓
                             </a>
                         </li>
                         <li>

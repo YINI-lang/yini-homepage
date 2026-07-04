@@ -1,5 +1,5 @@
 ---
-title: 'Learn the YINI Config Format'
+title: 'Learn the YINI Configuration Format'
 description: Learn the YINI configuration format&colon; syntax, sections, lists, objects, comments, and nesting - with practical examples.
 ---
 
@@ -7,22 +7,51 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
-# Learn the YINI Config Format
+# Learn the YINI Configuration Format
+
+**A Beginner's Guide to the Configuration Format**
 
 A clear, 10–15 minute step-by-step guide to the YINI configuration format — covering syntax, structure, and practical features.
 
 **Prefer examples?** See [real YINI configs](../learn-yini/examples).
 
+### On the page we go through:
+
+#### A - The Basics
+
+1. Sections
+2. Keys and Values
+3. Values
+4. Comments
+
+#### B - Structure and Richer Values
+
+5. Nested Sections
+6. Data Type: Lists
+7. Data Type: Inline Objects
+
+#### C - Validation and Practical Usage
+
+8. Lenient vs. Strict
+9. Advanced: Alternative Section Markers & Naming
+10. Complete Example
+
+---
+
 ## 1. Sections
 
-Sections group related configuration settings under a named header. A section starts with a section marker such as `^`.
+Sections group related configuration settings under a named header.
+
+A section starts with a _section marker_, usually `^`, followed by the section name.
 
 ```yini
 ^ App
 title = "AppName"
 ```
 
-> If `^` causes issues in a specific environment, `§` may be used as a Unicode-based alternative.
+Here, `title` belongs to the `App` section.
+
+> `^` is the recommended section marker. `§` may be used as a Unicode-based alternative.
 
 > See section 9 for more advanced marker and naming options.
 
@@ -35,63 +64,134 @@ Each configuration setting is written as a **key-value pair**, separated by `=`:
 ```yini
 maxConnections = 100
 enableLogging  = true
+appName        = "My App"
 ```
 
-Use backticks for section or key names that contain spaces, punctuation, or special characters:
+The text before `=` is the key. The text after `=` is the value.
+
+Values can be different types, such as strings, numbers, booleans, null, lists, and inline objects:
+
+```yini
+title    = "Demo App"
+port     = 8080
+debug    = true
+theme    = null
+colors   = ["red", "green", "blue"]
+database = { host: "localhost", port: 5432 }
+```
+
+Use backticks for section or key names that contain spaces, punctuation, or other characters that are not allowed in plain names:
 
 ```yini
 user id = 1      # ❌ Invalid
 `user id` = 1    # ✅ Valid
+
+api.version = "v1"   # ❌ Invalid
+`api.version` = "v1" # ✅ Valid
+
+1stUser = "Alice"    # ❌ Invalid
+`1stUser` = "Alice"  # ✅ Valid
 ```
 
-> See section 9 for more advanced marker and naming options.
+> See section 9 for more advanced naming rules.
 
 ---
 
 ## 3. Values
 
-Values define the actual configuration data and support several common data types.
+Values define the actual configuration data (settings).
 
-Values can be:
+In YINI, values can be several common data types:
 
-- **Strings** (always quoted): `'hello'` or `"world"`. (Either single or double quotes.)
+### Strings
 
-    ```yini
-    file = "C:\Users\john"  // Backslashes work without escaping
-    ```
+Strings are text values and are written with quotes.
 
-    👉 Strings are **raw by default** — no escape sequences are interpreted.  
-     Backslashes (`\`), slashes (`/`), and even `\n` are treated as normal text.
+You can use either single (`'`) or double quotes (`"`):
 
-    👉 If you need escape sequences (such as `\n` for newline), use a **C-string** by prefixing the string with `C` or `c`:
+```yini
+name = "Alice"
+city = 'Gothenburg'
+```
 
-    ```yini
-    path = "E:\logs\app.log"      // Raw string (recommended for paths)
+Strings in YINI are raw by default. This means backslashes are treated as normal text, which is useful for file paths:
 
-    message = C"Server started\nReady."
-    ```
+```yini
+path = "C:\Users\john\Documents"
+```
 
-    C-strings interpret common escape sequences like `\n`, `\t`, and `\\`.
+If you need escape sequences such as `\n` for a newline, use a C-string by prefixing the string with `C` or `c`:
 
-    **For multi-line text**, use triple-quoted strings:
+```yini
+message = C"Server started\nReady."
+```
 
-    ```yini
-    description = """
-    This is a longer text.
-    It can span multiple lines.
-    """
-    ```
+For longer multi-line text, use _triple-quoted strings_:
 
-    Triple-quoted strings are raw by default. Use `C"""..."""` only when a multi-line string needs escape sequences.
+```yini
+description = """
+This is a longer text.
+It can span multiple lines.
+"""
+```
 
-- **Numbers:** `42`, `3.14`, `-10` or `10_000_000`
+### Numbers
 
-    Underscores may be used as visual separators in numbers.  
-    `10_000_000` has the same value as `10000000`.
-- **Booleans:** `true`, `false`, `on`, `off`, `yes`, `no` (all case-insensitive)
-- **Nulls:** Use `null` or leave the value blank after `=` (in lenient mode)
-- **Lists:** `["red", "green", "blue"]` (JSON‑style)
-- **Inline objects:** `{ host: "localhost", port: 5432 }`
+Numbers can be integers, decimals, negative numbers, or numbers with visual separators:
+
+```yini
+port = 8080
+price = 19.99
+offset = -10
+population = 10_000_000
+```
+
+Underscores can make large numbers easier to read. `10_000_000` has the same value as `10000000`.
+
+### Booleans
+
+Booleans represent true/false values:
+
+```yini
+debug = true
+enabled = false
+```
+
+YINI also accepts boolean-like words such as `on`, `off`, `yes`, and `no`.
+
+### Null
+
+Use `null` when a value is intentionally empty or not set:
+
+```yini
+theme = null
+```
+
+In lenient mode, a blank value after `=` may also be accepted:
+
+```yini
+theme =
+```
+
+### Lists
+
+Lists store multiple values under one key:
+
+```yini
+colors = ["red", "green", "blue"]
+```
+
+Lists are explained in section 6.
+
+### Inline Objects
+
+Inline objects group small related values inside one value:
+
+```yini
+database = { host: "localhost", port: 5432 }
+```
+
+Inline objects are explained in section 7.
 
 ---
 
@@ -99,116 +199,144 @@ Values can be:
 
 Comments help document configuration files and are ignored by the parser.
 
-Various commenting styles are supported:
+YINI supports several comment styles:
 
 ```yini
 // This is a line comment
 timeout = 30  // inline comment
 
-#This is also a line comment
-interval = 30  #inline comment
+# This is also a line comment
+interval = 30  # Inline comment
 
 /* Block comment spanning
    multiple lines */
 
-; Full line comment (must be whole line).
+; Full line comment
 ```
 
-> **Tip:** `//`, `#`, and block comments can be used inline or around settings. `;` is only for full-line comments.
->
-> 👆 **Caveat 1:** In RC 6, `#` always starts a comment outside string literals.
-> No whitespace is required after `#`, and `#336699` is a comment, not a hex number.
+`//`, `#`, and block comments can be used on their own line or inline after a setting.
 
-> 👆 **Caveat 2:** `;` is only a full-line comment marker. It must be the first non-whitespace character on the line.
+```yini
+timeout = 30  // Good
+interval = 30 # Good
+```
+
+The `;` comment style is only for full-line comments. It must be the first non-whitespace character on the line.
+
+```yini
+; Good ✅
+timeout = 30 ; Invalid ❌
+```
+
+> In YINI RC 6, `#` always starts a comment outside string values. No whitespace is required after `#`, so `#336699` is treated as a comment, not a hex number.
 
 💡**Tip:** You can use any comment style in your file.
 For best readability, try to stick to one style per file.
+
+### Disabled Lines
+
+Disabled lines let you temporarily turn off a configuration line without deleting it.
+
+Prefix any valid line with `--` to skip it entirely:
+
+```yini
+--maxRetries = 5
+```
+
+💡 This can be useful while testing or changing configuration values. Disabled lines are for temporarily turning off configuration; comments are for notes meant for humans.
 
 ---
 
 ## 5. Nested Sections
 
-Nested sections allow hierarchical configuration structures.
+Nested sections let you group configuration inside other sections.
 
-Use extra carets `^` for sub‑sections:
-
-```yini
-^ Parent
-^^ Child
-
-// Add another caret `^` and you get a sub-section
-// of the previous section, and so...
-^^^ SubChild
-```
-
-Repeated markers are supported up to level 9; for deeper levels, use numeric shorthand such as `^10 VeryDeep`.
-
-If you prefer, you can indent the nested section for visibility:
+Use more `^` markers to create deeper section levels:
 
 ```yini
-^ Main
-    ^^ Sub
-    host = "db.example.com"
+^ Server
+host = "localhost"
+
+^^ Database
+name = "app_db"
+port = 5432
 ```
 
-You can nest sections to multiple levels:
+Here, `Database` belongs inside `Server`.
+
+You can go deeper by adding more `^` markers:
 
 ```yini
-^ Root
-^^ Sub
-^^^ SubSub
-^ BackToRoot
+^ App
+^^ Logging
+^^^ File
+path = "logs/app.log"
 ```
 
-Example with indented sections:
-
-```yini
-^ Root
-value = 'At level 1'
-    ^^ Sub
-    value = 'At level 2'
-        ^^^ SubSub
-        value = 'At level 3'
-
-^ BackToRoot
-value = 'Back at level 1'
-```
-
-The above YINI code produces the following JavaScript object:
+This creates the following structure:
 
 ```js
-// JS object
 {
-  Root: {
-    value: 'At level 1',
-    Sub: { value: 'At level 2', SubSub: { value: 'At level 3' } }
-  },
-  BackToRoot: { value: 'Back at level 1' }
+    App: {
+        Logging: {
+            File: {
+                path: 'logs/app.log'
+            }
+        }
+    }
 }
+```
+
+Indentation is optional. YINI uses the section markers, not indentation, to understand the structure.
+
+```yini
+^ App
+    ^^ Logging
+        ^^^ File
+        path = "logs/app.log"
+```
+
+This means the same thing as the previous example. The indentation is only for readability.
+
+To return to a top-level section, use a single `^` again:
+
+```yini
+# Level 1
+^ App
+name = "Demo"
+
+# Level 2
+^^ Logging
+level = "info"
+
+# Back at level 1 again
+^ Server
+port = 8080
 ```
 
 > See section 9 for more advanced marker and naming options.
 
 ---
 
-## 6. Lists
+## 6. Data Type: Lists
 
 Lists let you store multiple values under a single key.
 
-In YINI, lists are written using `=` and square brackets `[ ... ]`.
+In YINI, a list value is assigned to a key with `=`, and the list itself is written inside square brackets `[ ... ]`.
 
 ```yini
-// JSON‑style lists
+// Single-line list
 colors = ["red", "green", "blue"]
 
-numberList = [
+// Multi-line list
+numbers = [
     10,
     20,
     30
 ]
 ```
 
-Lists can contain different supported value types, such as strings, numbers, booleans, null, inline objects, and even other lists.
+Lists can contain different supported value types, such as strings, numbers, booleans, null, inline objects/maps, and even other lists.
 
 ```yini
 mixed = [
@@ -222,12 +350,112 @@ mixed = [
 ```
 
 > You can use either single or double quotes for string values in YINI.
+>
+> In lenient mode, a trailing comma after the last list item is allowed. In strict mode, it is not.
 
 ---
 
-## 7. Document Terminator (strict mode)
+## 7. Data Type: Inline Objects
 
-The document terminator explicitly marks the end of a configuration file.
+Inline objects let you group related values together inside a single value.
+
+They are written inside curly braces `{ ... }`, with each item written as `key: value`.
+
+```yini
+user = { name: "Alice", role: "admin" }
+```
+
+This creates an object-like structure:
+
+```js
+{
+    user: {
+        name: "Alice",
+        role: "admin"
+    }
+}
+```
+
+Inline objects are useful for small grouped values that belong together.
+
+```yini
+server = { host: "localhost", port: 8080 }
+theme = { name: "dark", contrast: "high" }
+```
+
+Inline objects can contain supported value types such as strings, numbers, booleans, null, lists, and other inline objects.
+
+```yini
+profile = {
+    name: "Alice",
+    active: true,
+    tags: ["admin", "editor"],
+    address: { city: "Gothenburg", country: "Sweden" }
+}
+```
+
+For larger or more important structures, nested sections are usually easier to read.
+
+```yini
+^ User
+name = "Alice"
+role = "admin"
+```
+
+> In strict mode, inline object entries must use `key: value`; `key = value` is invalid inside inline objects. In lenient mode, `key = value` may also be accepted, but `key: value` is the recommended form.
+
+---
+
+## 8. Lenient vs. Strict
+
+YINI can be parsed in two modes: **lenient** and **strict**.
+
+Lenient mode is the default. It is more forgiving and is useful while writing, editing, or experimenting with configuration files.
+
+Strict mode is more careful. It is useful when you want stronger validation, clearer errors, and more predictable files in tools, CI, or production-like environments.
+
+- Lenient mode = easier while editing
+- Strict mode = stricter validation
+
+### Optional Mode Declaration
+
+A YINI file may declare the mode it expects:
+
+```yini
+@yini lenient
+```
+
+```yini
+@yini strict
+```
+
+This tells readers which mode the file is meant for.
+
+It does not switch the parser mode by itself. The parser, CLI option, API call, or application still chooses whether to use lenient or strict mode.
+
+If the file declares one mode but the parser uses another, the parser reports a mode mismatch. In (YINI Spec) RC 6, `@yini strict` parsed in lenient mode is an error; `@yini lenient` parsed in strict mode is allowed with a warning.
+
+### Example Difference
+
+Some things that may be accepted in lenient mode are rejected in strict mode.
+
+For example, a trailing comma in a list is allowed in lenient mode, but not in strict mode:
+
+```yini
+colors = [
+    "red",
+    "green",
+    "blue",
+]
+```
+
+In lenient mode, this can be accepted.
+
+In strict mode, the last comma after `"blue"` is an error.
+
+### Document Terminator (strict mode)
+
+The document terminator marks the explicit end of a YINI file.
 
 The `/END` marker is optional in lenient mode (the default) and required in strict mode.
 
@@ -240,58 +468,102 @@ title = "MyTitle"
 /END    // Required in strict mode; optional in lenient mode.
 ```
 
----
+In strict mode, `/END` makes it clear where the configuration document ends.
 
-## 8. Disabled Lines
-
-Disabled lines allow temporarily turning off configuration entries.
-
-Prefix any valid line with `--` to skip it entirely:
+Strict mode also requires exactly one explicit top-level section. Any other sections must be nested inside that top-level section, and loose top-level key-value pairs are not allowed.
 
 ```yini
---maxRetries = 5
+@yini strict
+
+^ App
+name = "MyApp"
+
+^^ Database
+host = "db.local"
+
+/END
 ```
+
+### When to Use Each Mode
+
+Use **lenient mode** when you want a more forgiving experience while editing or trying YINI.
+
+Use **strict mode** when you want stronger checks, especially for shared configuration files, automated tests, CI, or parser conformance.
+
+- Use lenient mode while writing.
+- Use strict mode when validating.
 
 ---
 
-## 9. Advanced: Alternative Section Markers & Naming
+## 9. Advanced: Section Markers and Naming
 
-Advanced syntax options provide additional flexibility for section markers and naming.
+Most YINI files only need the standard section marker `^` and simple names.
 
-In addition to the standard syntax, YINI supports several advanced options:
+This section shows a few advanced options that are useful in special cases.
 
-- (a.) **Alternative section marker:**  
-  The recommended section marker is `^`. If `^` causes problems in a specific environment, `§` may be used as a Unicode alternative.
+### Alternative Section Marker
 
-    ```yini
-    ^ App
-    § Settings
-    ```
+The recommended section marker is `^`.
 
-    For most files, prefer `^`.  
+```yini
+^ App
+title = "My App"
+```
 
-    Other marker forms exist for compatibility or special cases, but they are not recommended for normal YINI files.
+If `^` causes problems in a specific environment, `§` may be used as a Unicode-based alternative.
 
-- (b.) **Backticked section names and key names:**  
-  Use backticks (<code>`</code>) to allow spaces or special characters in section or key names:
+```yini
+§ App
+title = "My App"
+```
 
-    ```yini
-    ^ `Section name with spaces`
-    `user id` = 42
-    ```
+For most files, prefer `^`.
 
-- (c.) **Numeric shorthand section markers:**  
-  Repeated section markers are supported up to level 9. For deeper nesting, use numeric shorthand:
+> Note: YINI also supports `>` and `<` as ASCII fallback markers, but they are not recommended for normal files.
 
-    ```yini
-    ^^^^^^^^^ DeepSection  # Level 9, maximum repeated-marker form.
-    ^10 VeryDeep           # Level 10, use numeric shorthand.
-    ```
+### Backticked Names
 
-    Numeric shorthand requires a space after the number: `^10 VeryDeep`, not `^10VeryDeep`.
+Use backticks for section names or key names that contain spaces, punctuation, or other characters that are not allowed in plain names.
 
-- (d.) **More features:**  
-  The YINI format supports even more features than listed here, such as additional number notations, string types, and advanced escaping. For full details, see the [YINI Specification](../refs/specification).
+```yini
+^ `User Settings`
+`user id` = 42
+`api.version` = "v1"
+```
+
+Without backticks, names like `user id` and `api.version` are not valid plain names.
+
+### Deep Section Levels
+
+For normal nesting, use repeated `^` markers:
+
+```yini
+^ App
+^^ Logging
+^^^ File
+```
+
+Repeated section markers are supported up to level 9.
+
+For deeper nesting, use numeric shorthand:
+
+```yini
+^^^^^^^^^ DeepSection  # Level 9
+^10 VeryDeep           # Level 10
+```
+
+Numeric shorthand requires a space after the number:
+
+```yini
+^10 VeryDeep     # ✅ Valid
+^10VeryDeep      # ❌ Invalid
+```
+
+### More Advanced Features
+
+YINI also supports additional number notations, string types, escaping rules, parser modes, and validation rules.
+
+For full details, see the [YINI Specification](../refs/specification).
 
 ---
 
@@ -300,19 +572,24 @@ In addition to the standard syntax, YINI supports several advanced options:
 This example combines the most common YINI features in a single configuration file.
 
 ```yini
-@yini       # Optional marker to identify YINI format.
+@yini       # Optional marker to identify the file as YINI.
 
 ^ App
 name    = "MyApp"
 version = "1.0.0"
-debug   = off  // Turn on for debugging.
+debug   = false  // Turn on for debugging.
 
 ^^ Database
 host     = "db.local"
 port     = 5432
---user   = "secret"  # This line is disabled due to --.
-userList = ["alice", "bob", "carol"]
+
+// Below line is temporarily disabled.
+--maxConnections = 100
+
+users = ["alice", "bob", "carol"]
 ```
+
+This creates an `App` section with a nested Database section.
 
 > This example uses lenient mode (the default), so `/END` is not required.
 
