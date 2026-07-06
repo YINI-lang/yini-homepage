@@ -101,21 +101,21 @@ export default function Header({ isProd }: HeaderProps) {
                     className={cssClasses}>
                     Get Started
                 </a>
-                {/* Playground is currently temp-disabled in your layout */}
-                {/* <a href={CONFIG.siteLinks.hero.playground.url}
-                    title={CONFIG.siteLinks.hero.playground.title}
-                className={cssClasses}>Playground</a> */}
-                <a
-                    href={CONFIG.siteLinks.hero.tutorial.url}
-                    title={CONFIG.siteLinks.hero.tutorial.title}
-                    className={cssClasses}>
-                    Quick Tutorial
-                </a>
                 <a
                     href={CONFIG.siteLinks.hero.examples.url}
                     title={CONFIG.siteLinks.hero.examples.title}
                     className={cssClasses}>
                     Examples
+                </a>
+                {/* Playground is currently temp-disabled in your layout */}
+                {/* <a href={CONFIG.siteLinks.hero.playground.url}
+                    title={CONFIG.siteLinks.hero.playground.title}
+                className={cssClasses}>Playground</a> */}
+                <a
+                    href={CONFIG.siteLinks.navMenu.useYini.getYINITools.url}
+                    title={CONFIG.siteLinks.navMenu.useYini.getYINITools.title}
+                    className={cssClasses}>
+                    ⬇️ Get YINI Tools
                 </a>
                 <a
                     href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
@@ -159,9 +159,51 @@ export default function Header({ isProd }: HeaderProps) {
                         <a
                             href={CONFIG.siteLinks.hero.home.url}
                             className={cssClasses}>
-                            Home
+                            ◦ Home
                         </a>
                     </div>
+                    <div className="mb-2">
+                        <a
+                            href={
+                                CONFIG.siteLinks.navMenu.useYini.getStarted.url
+                            }
+                            className={cssClasses}>
+                            ◦ Get Started
+                        </a>
+                    </div>
+                    <div className="mb-2">
+                        <a href="/learn-yini/examples/" className={cssClasses}>
+                            ◦ Examples
+                        </a>
+                    </div>
+                    <div className="mb-2">
+                        <a
+                            href={
+                                CONFIG.siteLinks.navMenu.useYini.getYINITools
+                                    .url
+                            }
+                            className={cssClasses}>
+                            ◦ Get YINI Tools
+                        </a>
+                    </div>
+                    <div className="mb-2">
+                        <a
+                            href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                            className={cssClasses}>
+                            ◦ Cheat Sheet
+                        </a>
+                    </div>
+                    <div className="mb-2">
+                        <a
+                            href={CONFIG.siteLinks.navMenu.refs.spec.url}
+                            className={cssClasses}>
+                            ◦ Specification
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <hr />
                 </div>
 
                 <div>
@@ -312,7 +354,7 @@ export default function Header({ isProd }: HeaderProps) {
                                         .getYINITools.url
                                 }
                                 className={cssClasses}>
-                                Get YINI Tools
+                                Get YINI Tools ⬇️
                             </a>
                         </li>
                     </ul>
@@ -351,7 +393,7 @@ export default function Header({ isProd }: HeaderProps) {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={cssClasses}>
-                                YINI project on GitHub ↗
+                                YINI-lang on GitHub ↗
                             </a>
                         </li>
                     </ul>
@@ -448,7 +490,7 @@ export default function Header({ isProd }: HeaderProps) {
                         {/* Mobile menu toggle. Native label/input behavior works before hydration. */}
                         <label
                             htmlFor="mobile-nav-toggle"
-                            className="cursor-pointer rounded-lg border border-slate-300 px-2 py-1 text-xl select-none hover:bg-slate-100"
+                            className="mr-2 cursor-pointer rounded-lg border border-slate-300 px-2 py-1 text-xl select-none hover:bg-slate-100"
                             aria-controls="mobile-nav"
                             aria-label="Toggle menu"
                             title="Toggle menu">
