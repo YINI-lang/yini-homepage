@@ -11,9 +11,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 **Validate YINI files in CI and catch configuration mistakes early.**
 
-If you use YINI for configuration, one of the simplest and most useful things you can do is validate your files automatically during development and in CI.
+If you use YINI for configuration, validating your files automatically is one of the simplest ways to catch mistakes before they reach a build, deploy, or release step.
 
-The **YINI CLI** makes that easy. You can run a single command to check that your configuration is valid before a build, deploy, or release step continues.
+The [**YINI CLI**](/tools/yini-cli) makes this straightforward. You can run a single command to check that your YINI files are valid, both during local development and in CI.
 
 ---
 
@@ -21,10 +21,10 @@ The **YINI CLI** makes that easy. You can run a single command to check that you
 
 Using YINI CLI in CI helps you:
 
-- catch broken configuration before it reaches production
-- keep configuration changes safe in pull requests
-- make config validation part of a normal build workflow
-- work with human-friendly config without giving up automation
+- Catch broken configuration before it reaches production.
+- Keep configuration changes safe in pull requests.
+- Make config validation part of a normal build workflow.
+- Work with human-friendly config without giving up automation.
 
 This is especially useful when configuration is edited by multiple people or used across different environments.
 
@@ -45,22 +45,25 @@ If the file has errors, the command returns a non-zero exit code, which makes it
 ---
 
 ## Example: npm script
+
 A simple way to add validation to a project is to define a script in `package.json` (Node.js):
 
 ```json
 {
-  "scripts": {
-    "config:check": "npx yini-cli validate ./config.yini"
-  }
+    "scripts": {
+        "config:check": "npx yini-cli validate ./config.yini"
+    }
 }
 ```
 
 Then run:
+
 ```bash
 npm run config:check
 ```
 
 ## Example: use strict mode
+
 If you want stricter validation, use:
 
 ```bash
@@ -70,28 +73,29 @@ npx yini-cli validate --strict ./config.yini
 This is useful when you want CI to enforce a stricter interpretation of the format.
 
 ## Example: GitHub Actions
+
 Here is a small GitHub Actions workflow that validates a YINI file on push and pull request:
 
 ```yaml
 name: Validate YINI config
 
 on:
-  push:
-  pull_request:
+    push:
+    pull_request:
 
 jobs:
-  validate-config:
-    runs-on: ubuntu-latest
+    validate-config:
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+        steps:
+            - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 24
 
-      - name: Validate config
-        run: npx yini-cli validate ./config.yini
+            - name: Validate config
+              run: npx yini-cli validate ./config.yini
 ```
 
 This is often enough to catch accidental mistakes early.
@@ -156,16 +160,18 @@ This makes `site-config.yini` the human-friendly source file, while the applicat
 
 This pattern works well when you want:
 
-* Readable source configuration for humans.
-* JSON output for existing tools or application code.
-* Validation during build or CI before bad configuration reaches production.
+- Readable source configuration for humans.
+- JSON output for existing tools or application code.
+- Validation during build or CI before bad configuration reaches production.
 
 If you prefer runtime parsing instead, you can also use a [YINI parser for your programming language](/tools/yini-parsers) and load YINI files directly in your application.
 
 ---
 
 ## When this approach works well
+
 Using YINI CLI in CI is a good fit when you want:
+
 - Config files reviewed and validated in pull requests.
 - Safer builds and deployments.
 - A human-friendly source config format.
@@ -183,10 +189,10 @@ Using YINI CLI in CI is a good fit when you want:
 - ➡️ [Get Started](/use-yini/get-started)  
   _Installation and CLI usage overview._
 - ➡️ [Learn the YINI syntax](/learn-yini/learn-yini-config-format)  
-  *A simple introduction to sections, values, nesting, and comments.*
+  _A simple introduction to sections, values, nesting, and comments._
 - ➡️ [Examples](/learn-yini/examples)  
-  *See YINI examples from simple to more advanced.*
+  _See YINI examples from simple to more advanced._
 - ➡️ [YINI Specification](/refs/specification)  
-  *The formal specification for the YINI format.*
+  _The formal specification for the YINI format._
 
 </BaseLayout>
