@@ -3,6 +3,7 @@
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
 import exampleHelloWorld from '../../../content/examples/basic/hello-world.yini?raw'
+import exampleSettings from '../../../content/examples/basic/settings.yini?raw'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 ---
 
@@ -27,116 +28,126 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <h2>A quick/minimal example</h2>
         <YINIExample title="Hello world" code={exampleHelloWorld} />
 
+        <YINIExample title="A bit fuller example" code={exampleSettings} />
+
+        <hr />
+
         <section class="pb-4">
-            <h2>Explore example collections</h2>
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                Browse grouped examples that show how YINI can be used in
-                practice, from small basics to larger and more advanced
-                configurations.
+            <h2>Explore example pages/collections</h2>
+
+            <p
+                class="text-base leading-relaxed text-slate-600 dark:text-slate-400"
+            >
+                Not sure where to start? Pick the collection that matches where
+                you are — from first steps to full-scale configs.
             </p>
 
-            <div class="mt-5 grid gap-4 md:grid-cols-2">
-                <article
-                    class="rounded-xl border border-slate-200 p-4 dark:border-slate-700"
-                >
-                    <h3 class="text-lg font-medium">Core and basic examples</h3>
-                    <p
-                        class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
+            <ul class="mt-5 space-y-1.5">
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples.basic
+                            .url}
+                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
                     >
-                        Start with small, focused examples that introduce the
-                        core YINI syntax and structure.
-                        <a
-                            href={CONFIG.siteLinks.navMenu.learnYini.examples
-                                .basic.url}
-                            class="underline"
-                        >
-                            Open examples
-                        </a>
-                    </p>
-                </article>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="leading-tight font-medium underline">
+                                Core and basic examples
+                            </h3>
+                            <p
+                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                            >
+                                Start here if you are new to YINI. These small
+                                examples introduce sections, keys, values,
+                                comments, and basic structure.
+                            </p>
+                        </div>
+                    </a>
+                </li>
 
-                <article
-                    class="rounded-xl border border-slate-200 p-4 dark:border-slate-700"
-                >
-                    <h3 class="text-lg font-medium">
-                        Indentation and nesting styles
-                    </h3>
-                    <p
-                        class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples
+                            .indentation.url}
+                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
                     >
-                        Compare formatting styles and see how section markers,
-                        not indentation, define YINI structure.
-                        <a
-                            href={CONFIG.siteLinks.navMenu.learnYini.examples
-                                .indentation.url}
-                            class="underline"
-                        >
-                            Open examples
-                        </a>
-                    </p>
-                </article>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="leading-tight font-medium underline">
+                                Indentation and nesting styles
+                            </h3>
+                            <p
+                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                            >
+                                See how YINI nesting works. Compare indented and
+                                non-indented styles, and learn why section
+                                markers define the structure.
+                            </p>
+                        </div>
+                    </a>
+                </li>
 
-                <article
-                    class="rounded-xl border border-slate-200 p-4 dark:border-slate-700"
-                >
-                    <h3 class="text-lg font-medium">
-                        Common real-world examples
-                    </h3>
-                    <p
-                        class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples.common
+                            .url}
+                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
                     >
-                        See how YINI can be used for everyday configuration
-                        patterns and practical project setups.
-                        <a
-                            href={CONFIG.siteLinks.navMenu.learnYini.examples
-                                .common.url}
-                            class="underline"
-                        >
-                            Open examples
-                        </a>
-                    </p>
-                </article>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="leading-tight font-medium underline">
+                                Common real-world examples
+                            </h3>
+                            <p
+                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                            >
+                                Look at practical configuration patterns for
+                                apps, tools, services, and everyday project
+                                settings.
+                            </p>
+                        </div>
+                    </a>
+                </li>
 
-                <article
-                    class="rounded-xl border border-slate-200 p-4 dark:border-slate-700"
-                >
-                    <h3 class="text-lg font-medium">
-                        Advanced feature examples
-                    </h3>
-                    <p
-                        class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples
+                            .advanced.url}
+                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
                     >
-                        Explore more advanced syntax and features for cases
-                        where you need additional structure or flexibility.
-                        <a
-                            href={CONFIG.siteLinks.navMenu.learnYini.examples
-                                .advanced.url}
-                            class="underline"
-                        >
-                            Open examples
-                        </a>
-                    </p>
-                </article>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="leading-tight font-medium underline">
+                                Advanced feature examples
+                            </h3>
+                            <p
+                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                            >
+                                Explore more flexible syntax, richer values,
+                                parser behavior, and features you may need in
+                                larger or more demanding files.
+                            </p>
+                        </div>
+                    </a>
+                </li>
 
-                <article
-                    class="rounded-xl border border-slate-200 p-4 dark:border-slate-700"
-                >
-                    <h3 class="text-lg font-medium">Large examples</h3>
-                    <p
-                        class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400"
+                <li>
+                    <a
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples.large
+                            .url}
+                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
                     >
-                        Browse larger example files to see how YINI reads when
-                        configurations grow in size.
-                        <a
-                            href={CONFIG.siteLinks.navMenu.learnYini.examples
-                                .large.url}
-                            class="underline"
-                        >
-                            Open examples
-                        </a>
-                    </p>
-                </article>
-            </div>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="leading-tight font-medium underline">
+                                Large examples
+                            </h3>
+                            <p
+                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                            >
+                                Browse bigger configuration files and see how
+                                YINI reads when a file grows beyond small
+                                examples.
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </section>
 
         <hr />

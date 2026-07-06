@@ -1,6 +1,8 @@
 // lists-and-objects.yini
 // Arrays (lists) + objects + nesting.
 
+@yini
+
 // Indentation is optional — section markers (^, ^^, ^^^) define the section nesting.
 ^ App
 name = "Demo App"

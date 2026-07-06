@@ -12,9 +12,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 
 **Validate, inspect, and convert YINI files from the command line.**
 
-The **YINI CLI** is the official command-line tool for working with YINI files. It is designed to make everyday configuration work simple and predictable — whether you want to quickly inspect a file, validate it, or convert it to JSON or JavaScript.
+The **YINI CLI** is the official command-line tool for working with YINI files. It is designed to make everyday configuration work simple and predictable — whether you want to quickly inspect a file, validate it, or convert it to JSON, JavaScript, YAML, or XML.
 
-As of `yini-cli` 1.5.0, the CLI is aligned with the YINI 1.0.0 RC 6 specification.
+As of `yini-cli` 1.5.1, the CLI is aligned with the YINI 1.0.0 RC 6 specification.
 
 If you prefer configuration that stays readable without depending on indentation, YINI CLI gives you a straightforward way to work with it from your terminal.
 
@@ -26,7 +26,7 @@ YINI CLI is useful when you want to:
 
 - Validate configuration files before running an app or deploying.
 - Inspect YINI files quickly from the terminal.
-- Convert YINI into JSON or JavaScript for tooling and automation.
+- Convert YINI into JSON, JavaScript, YAML, or XML for tooling and automation.
 - Work with configuration that stays explicit, structured, and easy to read.
 
 It is especially helpful for developer workflows, scripts, [CI checks](/use-yini/ci-with-yini-cli), and local debugging.
@@ -48,15 +48,19 @@ This is the quickest way to try the CLI without installing it globally.
 ### Install globally with npm
 
 Install the CLI globally with npm:
+
 ```bash
 npm install -g yini-cli
 ```
 
 After installation, you can verify that it works with:
+
 ```bash
 yini --version
 yini --help
 ```
+
+---
 
 ## Quick example
 
@@ -89,39 +93,217 @@ Output:
 }
 ```
 
+---
+
 ## Common commands
 
+These are the most common `yini-cli` commands.
+
 ### Parse a YINI file
+
 ```bash
 yini parse config.yini
 ```
 
 ### Output compact JSON
+
 ```bash
 yini parse config.yini --compact
 ```
 
+### Output formatted JSON explicitly
+
+```bash
+yini parse config.yini --json
+```
+
 ### Output JavaScript-style object syntax
+
 ```bash
 yini parse config.yini --js
 ```
 
+### Output YAML
+
+```bash
+yini parse config.yini --yaml
+```
+
+### Output XML
+
+```bash
+yini parse config.yini --xml
+```
+
 ### Write output to a file
+
 ```bash
 yini parse config.yini -o out.json
 ```
 
 ### Validate a file
+
 ```bash
 yini validate config.yini
 ```
 
-### Validate in strict mode
+### Validate a file in strict mode
+
 ```bash
 yini validate --strict config.yini
 ```
 
-## A quick look at YINI
+### Validate the current directory
+
+Validates all YINI files in the current directory and its subdirectories.
+
+```bash
+yini validate .
+```
+
+### Validate multiple files or directories
+
+```bash
+yini validate config.yini site-config.yini src/content
+```
+
+### Show CLI environment information
+
+```bash
+yini info
+```
+
+---
+
+## Example: Validating one YINI file
+
+To validate one specific YINI file, pass the file path to the `validate` command:
+
+```bash
+yini validate config.yini
+```
+
+or, without installing the CLI globally:
+
+```bash
+npx yini-cli@latest validate config.yini
+```
+
+Example terminal output:
+
+```cmd
+D:\...\my-project>yini validate config.yini
+✔  Validation successful
+
+File:     "config.yini"
+Mode:     lenient
+Errors:   0
+Warnings: 0
+```
+
+You can also validate a file inside a subdirectory:
+
+```bash
+yini validate config/site-config.yini
+```
+
+> Note: This output is only an example. The exact output may differ depending on your `yini-cli` version, your operating system, and your file path.
+
+---
+
+## Example: Validating one YINI file with a warning
+
+A YINI file can still be valid even if the validator reports a warning.
+
+For example, this command validates one specific file:
+
+```bash
+yini validate basic1.yini
+```
+
+Example terminal output:
+
+```bash
+basic1.yini
+✔  Validation successful (with warnings)
+
+File:     "basic1.yini"
+Mode:     lenient
+Errors:   0
+Warnings: 1
+
+"basic1.yini"
+  warning No newline at end of file.
+          It's recommended to end a YINI file with a newline.
+```
+
+In this example, the file has no errors, so validation succeeds. The warning only says that the file should end with a newline.
+
+Warnings are useful because they point out things that are allowed, but may be worth fixing for consistency or readability.
+
+> Note: This output is only an example. The exact output may differ depending on your `yini-cli` version, operating system, and file path.
+
+---
+
+## Example: Validating all YINI files
+
+To validate all YINI files in the current directory and its subdirectories, run one of these commands:
+
+```bash
+yini validate .
+```
+
+or, without installing the CLI globally:
+
+```bash
+npx yini-cli@latest validate .
+```
+
+Example terminal output:
+
+```cmd
+D:\...\src\content>yini validate .
+OK    "examples\advanced\3-cli-application-options.yini"
+OK    "examples\advanced\5-database-connection.yini"
+OK    "examples\advanced\6-feature-flags-example.yini"
+OK    "examples\advanced\7-email-smtp-configuration.yini"
+OK    "examples\basic\basic1.yini"
+OK    "examples\basic\basic2.yini"
+OK    "examples\basic\basic3.yini"
+OK    "examples\basic\basic4.yini"
+OK    "examples\basic\comments.yini"
+OK    "examples\basic\hello-world.yini"
+OK    "examples\basic\settings.yini"
+OK    "examples\data-types\inline-objects\big-inline-object.yini"
+OK    "examples\general\general.yini"
+OK    "examples\general\lists-and-objects.yini"
+OK    "examples\general\lists-and-sections.yini"
+OK    "examples\general\number-formats.yini"
+OK    "examples\general\strings-and-escapes.yini"
+OK    "examples\indentation\indent-ex-conf1.yini"
+OK    "examples\indentation\indent-ex-conf2.yini"
+OK    "examples\indentation\indent-ex-conf3.yini"
+OK    "examples\large-smoke-fixtures\a-corporate-saas-platform.smoke.yini"
+OK    "examples\large-smoke-fixtures\b-high-security-distributed-control-system.smoke.yini"
+OK    "examples\real-world\1-web-server-configuration.yini"
+OK    "examples\real-world\2-user-profile-settings.yini"
+OK    "examples\real-world\4-build-project-configuration.yini"
+OK    "examples\real-world\sim-config.yini"
+OK    "examples\structure\nested-and-structured.yini"
+OK    "examples\structure\nested-sections.yini"
+OK    "examples\structure\sections.yini"
+
+Base:    "D:\...\src\content"
+Mode:    lenient
+Summary: 29 checked, 0 failed, 0 errors
+```
+
+> Note: This output is only an example. The exact output may differ depending on your `yini-cli` version and your directory structure.
+
+---
+
+## A quick look at the YINI format
+
 YINI is a human-friendly configuration format with explicit structure, nested sections, comment support, and predictable parsing.
 
 ```yini
@@ -138,6 +320,7 @@ darkMode = true
 ```
 
 That becomes:
+
 ```js
 {
     App: {
@@ -152,25 +335,30 @@ That becomes:
 }
 ```
 
+---
+
 ## When YINI CLI is a good fit
+
 YINI CLI is a good fit if you want:
+
 - A simple command-line tool for structured configuration.
 - Human-readable config files without indentation-based structure.
-- Easy conversion to JSON or JavaScript.
+- Easy conversion to JSON, JavaScript, YAML, or XML.
 - A clear way to validate configuration during development or deployment.
 
 ## Learn more
 
 - ➡️ [YINI format overview](/start/what-is-yini-and-why)  
-  *What YINI is and why it exists.*
+  _What YINI is and why it exists._
 - ➡️ [Learn the YINI syntax](/learn-yini/learn-yini-config-format)  
-  *A simple introduction to sections, values, nesting, and comments.*
+  _A simple introduction to sections, values, nesting, and comments._
 - ➡️ [Examples](/learn-yini/examples)  
-  *See YINI examples from simple to more advanced.*
+  _See YINI examples from simple to more advanced._
 - ➡️ [YINI Specification](/refs/specification)  
-  *The formal specification for the YINI format.*
+  _The formal specification for the YINI format._
 
 ## Links
+
 If you want to try the CLI or explore the project further, these links are a good place to continue.
 
 - [YINI CLI on npm ↗](https://www.npmjs.com/package/yini-cli)

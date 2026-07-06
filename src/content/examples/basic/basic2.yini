@@ -1,12 +1,11 @@
-// A small, practical YINI config.
+@yini
 
-// The App section starts here
 ^ App
 name = "Nebula"
-environment = "production"
+features = ["search", "dark-mode"]
+isDebug = false
 
-    // Another section (sub-section of App)
-    ^^ Network
-    bindAddress = "127.0.0.1"
-    bindPort = 8080
-    allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
+^ Server
+host = "0.0.0.0"
+port = 8080
+limits = { rpm: 1200, burst: 60 }

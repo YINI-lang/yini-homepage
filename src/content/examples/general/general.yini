@@ -1,5 +1,7 @@
 # Basic YINI example: an app config with a nested server section
 
+@yini
+
 // Indentation is optional — section markers (^, ^^, ^^^) define the section nesting.
 ^ App
 name = "Demo App"

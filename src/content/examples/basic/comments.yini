@@ -1,22 +1,22 @@
-# Line comments + inline comments + block comments.
+// comments.yini — demonstrates every comment style YINI supports.
 
-/* App configuration. */
-
+@yini
 ^ App
-name = "Demo App"           // Inline comment (//)
-debug = off                 # Inline comment (#)
-pageSize = 25
+    // Single-line comment (most common style)
+    name = "Demo App"
+    version = "1.2"
+    features = ["search", "logs"]
+    debug = false    // inline comment, after a value
 
-; Semicolon comments are line comments (start of line only).
+    # Full-line comment using the alternate "#" style
+    pageSize = 25
 
-# You can also use full-line comments between entries.
+^^ Logging
+    level = "info"    // e.g. "debug" during development
+    file = "logs/app.log"
 
-      ^^ Logging
-      level = "info"            // "debug" during development
-      file = "logs/app.log"
-
-      /* Another block comment:
-         - Works across multiple lines
-         - Good for documenting sections
-      */
+/*
+    Block comments can span multiple lines.
+    Useful for longer notes or documenting a whole section.
+*/
 

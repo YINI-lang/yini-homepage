@@ -16,9 +16,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <h1>Indentation Examples</h1>
 
         <p>
-            YINI is not indentation-sensitive. Indentation can make a file easier
-            to scan, but the structure is defined by explicit section markers
-            such as <code>^</code>, <code>^^</code>, and <code>^^^</code>.
+            YINI is not indentation-sensitive. Indentation can make a file
+            easier to scan, but the structure is defined by explicit section
+            markers such as <code>^</code>, <code>^^</code>, and <code>^^^</code
+            >.
         </p>
 
         <p>
@@ -43,16 +44,16 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 
         <h2>Indentation styles</h2>
         <YINIExample
-            title="Style 1: Indent whole nested sections"
-            code={exampleNestingStyle1}
+            title="Style 1: Keep section headers flat"
+            code={exampleNestingStyle3}
         />
         <YINIExample
             title="Style 2: Indent only section bodies"
             code={exampleNestingStyle2}
         />
         <YINIExample
-            title="Style 3: Keep section headers flat"
-            code={exampleNestingStyle3}
+            title="Style 3: Indent whole nested sections"
+            code={exampleNestingStyle1}
         />
 
         <hr />

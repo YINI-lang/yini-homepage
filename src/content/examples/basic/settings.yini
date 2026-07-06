@@ -1,0 +1,11 @@
+@yini
+
+^ App
+name     = "Nebula"
+isDebug  = false
+features = ["search", "dark-mode"] // A list
+
+^ Server
+host   = "0.0.0.0"
+port   = 8080
+limits = { rpm: 1200, burst: 60 }  // An inline object

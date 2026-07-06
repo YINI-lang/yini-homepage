@@ -1,6 +1,6 @@
 ^ App
-name = "Nebula"
-debug = off
+name  = "Nebula"
+debug = false
 
 ^ Server
 host = "127.0.0.1"
