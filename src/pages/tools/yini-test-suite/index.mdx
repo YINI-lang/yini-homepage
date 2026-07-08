@@ -1,0 +1,187 @@
+---
+title: 'YINI Test Suite CLI'
+description: '`yini-test-suite` helps parser authors and tool builders check whether a YINI parser handles shared YINI test cases consistently.'
+---
+
+import CONFIG from '../../../config/conf'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+
+<BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
+
+# YINI Test Suite CLI
+
+**Check YINI parser behavior against shared YINI test cases.**
+
+`yini-test-suite` is a command-line tool (a tool you run from a terminal) for
+checking YINI parser implementations. It provides a shared set of test cases so
+different parsers can be checked against the same examples and expected results.
+
+In plain language: if someone builds a YINI parser, this tool helps them check
+that the parser understands YINI files in the same way as other YINI tools.
+
+If you only want to check/validate your own `.yini` configuration files, start with
+the [YINI CLI](/tools/yini-cli). The test suite CLI itself is mainly for people building,
+maintaining, or reviewing YINI parser tools/packages/libraries.
+
+---
+
+## What is it for?
+
+The YINI Test Suite CLI is for parser compatibility. Compatibility means that
+different tools agree on how YINI files should be read, accepted, rejected, and
+turned into data.
+
+It is useful when you want to:
+
+- Check that a YINI parser follows the current YINI rules.
+- Catch parser behavior changes before they become bugs.
+- Compare a parser against shared test files.
+- Test edge cases (small tricky examples that can reveal parser mistakes).
+- Keep parser behavior stable over time.
+
+The official TypeScript and Python parsers are tested against this suite.
+
+---
+
+## Who is it for?
+
+This tool is mainly for:
+
+- **Parser authors** building a YINI parser some programming
+  language.
+- **Tool maintainers** adding YINI support to editors, CLIs, build tools, or
+  services.
+- **YINI contributors** checking behavior while working on the format or its
+  tools.
+- **Advanced users** who want to understand whether a parser behaves as expected.
+
+If you are new to YINI and just want to write a clear settings/config file, you
+probably do not need this tool yet. Use the [quick tutorial](/learn-yini/quick-tutorial),
+the [YINI CLI](/tools/yini-cli), or the [examples](/learn-yini/examples)
+first.
+
+---
+
+## Why use it?
+
+YINI is designed to be clear and predictable. A shared test suite helps protect
+that goal across different implementations.
+
+YINI's own official parser tools, including the TypeScript parser and Python
+parser, are also tested against this suite. That helps keep the official tools
+aligned with the same shared expectations.
+
+Use `yini-test-suite` when you want confidence that a parser:
+
+- Accepts valid YINI examples.
+- Rejects invalid YINI examples.
+- Handles strict and lenient behavior consistently where those modes apply.
+- Produces stable results for the same input.
+- Does not accidentally change behavior after a parser update.
+
+This is especially helpful before releasing a parser version, reviewing parser
+changes, or adding YINI support to another language.
+
+---
+
+## What can you use it for?
+
+Common uses include:
+
+- **Conformance checks**: checking that a parser follows the expected format
+  rules. Conformance means "does this implementation behave the way the format
+  expects?"
+- **Regression checks**: rerunning tests after changes to make sure old behavior
+  was not broken.
+- **CI checks**: automated checks in a build system or pull request. CI
+  (continuous integration) means tests run automatically when code changes.
+- **Parser comparison**: checking whether two parser implementations handle the
+  same YINI input in the same way.
+- **Debugging parser issues**: using small focused test cases to understand
+  where behavior differs from expectations.
+
+---
+
+## How it fits with other YINI tools
+
+YINI has a few different tools with different jobs:
+
+- Use [YINI CLI](/tools/yini-cli) to validate, inspect, and convert YINI files.
+- Use [YINI parsers](/tools/yini-parsers) to load YINI files in application
+  code.
+- Use `yini-test-suite` to check whether a YINI parser behaves consistently
+  against shared parser tests.
+
+So the test suite is not the everyday tool for editing a config file. It is the
+tool that helps parser builders keep the YINI ecosystem predictable.
+
+---
+
+## Quick start
+
+The quickest way to inspect the current command help is:
+
+```bash
+npx yini-test-suite --help
+```
+
+This runs the package with `npx` (a Node.js command that can run npm packages
+without installing them globally first).
+
+If you use the tool often, you can install it globally:
+
+```bash
+npm install -g yini-test-suite
+yini-test-suite --help
+```
+
+The help output shows the commands and options supported by the version you are
+using.
+
+---
+
+## Typical workflow
+
+A normal workflow looks like this:
+
+1. Build or update a YINI parser.
+2. Run the YINI test suite against that parser.
+3. Review any failing test cases.
+4. Fix the parser or update the test expectation if the specification changed.
+5. Run the suite again before releasing or merging changes.
+
+The exact setup depends on the parser language and project. For example, a
+TypeScript parser and a Python parser may connect to the suite in different
+ways, but the goal is the same: run shared YINI examples and check the result.
+
+---
+
+## When not to use it
+
+You probably do not need `yini-test-suite` if you only want to:
+
+- Check whether one `.yini` file is valid.
+- Convert YINI to JSON, YAML, XML, or JavaScript.
+- Learn the YINI syntax for writing configuration files.
+
+For those tasks, use the [YINI CLI](/tools/yini-cli) and the
+[YINI learning pages](/learn-yini/learn-yini-config-format).
+
+---
+
+## Learn more
+
+- [YINI CLI](/tools/yini-cli)  
+  _Validate, inspect, and convert YINI files from the terminal._
+- [YINI parsers](/tools/yini-parsers)  
+  _Load YINI files in application code._
+- [YINI format overview](/start/what-is-yini-and-why)  
+  _What YINI is and why it exists._
+- [YINI specification](/refs/specification)  
+  _The detailed rules for the YINI format._
+- <a href={CONFIG.urls.external.gitHub.yiniTestSuite}>
+      yini-test-suite on GitHub
+  </a>
+  _Project source, current usage details, and updates._
+
+</BaseLayout>

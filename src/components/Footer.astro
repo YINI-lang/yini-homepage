@@ -148,7 +148,7 @@ const year = new Date().getFullYear()
                 <br />
 
                 <!-- Community -->
-                <h2 class="text-sm font-semibold text-slate-200">Community</h2>
+                <!-- <h2 class="text-sm font-semibold text-slate-200">Community</h2>
                 <ul class="mt-3 space-y-2 text-sm">
                     <li>
                         <a
@@ -184,6 +184,42 @@ const year = new Date().getFullYear()
                             rel="noopener noreferrer"
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >Homepage Discussions ↗</a
+                        >
+                    </li>
+                </ul>
+            </div> -->
+
+                <!-- Tools -->
+                <h2 class="text-sm font-semibold text-slate-200">Tools</h2>
+                <ul class="mt-3 space-y-2 text-sm">
+                    <li>
+                        <a
+                            href={CONFIG.siteLinks.navMenu.tools.yiniCli.url}
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >YINI CLI command</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={CONFIG.siteLinks.navMenu.tools.yiniTestSuite
+                                .url}
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >YINI Test Suite CLI</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={CONFIG.siteLinks.navMenu.tools.parserTS.url}
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >Node.js YINI Parser</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={CONFIG.siteLinks.navMenu.tools.parserPython
+                                .url}
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >Python YINI Parser</a
                         >
                     </li>
                 </ul>
@@ -349,8 +385,8 @@ const year = new Date().getFullYear()
         <div class="mt-4 pt-2 pb-2 text-center text-xs text-gray-500">
             Note: This website is about the <i>YINI text-based data format</i>
             and its open-source software ecosystem. It is not related to any personal
-            names, products, brands, or organizations that also use the names “Yini”
-            or “Yeni”.
+            names, products, brands, or organizations that also use the names “Yini”,
+            “Yeni”, or “yni”.
         </div>
 
         <!-- Bottom line -->
@@ -364,7 +400,8 @@ const year = new Date().getFullYear()
                         aria-label="YINI home"
                         class="text-slate-400 no-underline hover:text-sky-300 hover:underline"
                     >
-                        <span class="">© {year} YINI Config Format</span></a
+                        <span class="">© 2025-{year} YINI Config Format</span
+                        ></a
                     >
                 </div>
                 <div class="flex items-center gap-4">

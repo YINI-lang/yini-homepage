@@ -26,7 +26,7 @@
         "elevatorPitch": "YINI is a human-friendly, INI-inspired text-based configuration format for software projects: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage.",
         "mainPage": {
             "headTitle": "YINI — Human-Friendly Configuration Format with Real Structure",
-            "headDescription": "YINI is a human-friendly, text-based configuration format with clear structure, nested sections, and predictable parsing."
+            "headDescription": "YINI is a human-friendly, text-based settings/configuration format with clear structure, nested sections, and predictable parsing."
         }
     },
     "siteLinks": {
@@ -129,6 +129,24 @@
                 "cheatSheet": {
                     "url": "/refs/yini-cheat-sheet",
                     "title": "A quick reference for writing clean, readable YINI configuration files."
+                }
+            },
+            "tools": {
+                "yiniCli": {
+                    "url": "/tools/yini-cli",
+                    "title": "YINI CLI"
+                },
+                "yiniTestSuite": {
+                    "url": "/tools/yini-test-suite",
+                    "title": "YINI Test Suite CLI"
+                },
+                "parserTS": {
+                    "url": "/tools/yini-parser-ts",
+                    "title": "YINI Parser for TypeScript / JavaScript"
+                },
+                "parserPython": {
+                    "url": "/tools/yini-parser-python",
+                    "title": "YINI Parser for Python"
                 }
             },
             "metaInfo": {

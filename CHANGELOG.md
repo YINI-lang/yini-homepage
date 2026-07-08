@@ -7,3 +7,8 @@ This file tracks meaningful public-facing changes, such as major content updates
 Minor typo fixes, styling tweaks, and small rewordings are not listed here. See the git commit history for those details.
 
 ## [Upcoming/Unreleased] - FUTURE
+
+## 2026 July
+
+- **Added:** A new page about the YINI Test Suite CLI, [link](http://yini-lang.org/tools/yini-test-suite).
+- **Changed:** Replaced the footer community links with links to the main YINI tool pages.
