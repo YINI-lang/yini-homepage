@@ -1,0 +1,50 @@
+---
+// src/pages/tools/yini-cli/manual.astro
+import CONFIG from '../../../config/conf'
+import yiniCliHelp from '../../../content/generated/cli/yini-cli-help.txt?raw'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'YINI CLI Command Reference'}
+    headDescription={'Main yini-cli usage reference, including help output, common commands, and quick examples.'}
+>
+    <section aria-labelledby="yini-cli-manual" class="mt-8">
+        <h1 id="yini-cli-manual">YINI CLI Command Reference</h1>
+        <p>
+            The YINI CLI is the official command-line tool for validating,
+            parsing, and converting YINI files from a terminal. For a friendlier
+            overview with install notes and examples, see the <a
+                href={CONFIG.siteLinks.navMenu.tools.yiniCli.url}
+                >YINI CLI page</a
+            >.
+        </p>
+
+        <pre><code>{yiniCliHelp}</code></pre>
+
+        <hr />
+
+        <section>
+            <h2>Related CLI Guides</h2>
+            <ul>
+                <li>
+                    <a href={CONFIG.siteLinks.navMenu.tools.yiniCli.url}
+                        >YINI CLI overview</a
+                    ><br />
+                    <em
+                        >Install the CLI and see common validation and
+                        conversion examples.</em
+                    >
+                </li>
+                <li>
+                    <a href="/use-yini/ci-with-yini-cli">Use YINI CLI in CI</a
+                    ><br />
+                    <em
+                        >Run validation automatically in scripts and project
+                        checks.</em
+                    >
+                </li>
+            </ul>
+        </section>
+    </section>
+</BaseLayout>

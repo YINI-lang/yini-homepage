@@ -11,4 +11,5 @@ Minor typo fixes, styling tweaks, and small rewordings are not listed here. See 
 ## 2026 July
 
 - **Added:** A new page about the YINI Test Suite CLI, [link](http://yini-lang.org/tools/yini-test-suite).
+- **Added:** Added a new page with the YINI CLI Command Reference at [link](http://yini-lang.org/tools/yini-cli/manual).
 - **Changed:** Replaced the footer community links with links to the main YINI tool pages.

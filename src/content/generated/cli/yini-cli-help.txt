@@ -1,0 +1,126 @@
+yini-cli 1.5.1
+YINI CLI (by the YINI-lang project)
+
+The official terminal / command-line (CLI) for parsing and validating YINI
+configuration files. A config format, inspired by INI, with type-safe values,
+nested sections, comments, minimal syntax noise, and optional strict mode.
+
+Designed for clarity and consistency. :)
+
+Usage: yini [options] [command]
+
+The official terminal / command-line (CLI) for parsing and validating YINI configuration files.
+
+Options:
+  -v, --version                            Display the version number.
+  --strict                                 Enable strict parsing mode.
+  --lenient                                Use lenient mode (this is the default).
+  -q, --quiet                              Suppress successful per-file output; still show failures and final summary.
+  -s, --silent                             Suppress validation output and use exit code only.
+  --verbose                                Show extra processing details.
+  -h, --help                               Display full help for all commands.
+
+Commands:
+  parse [options] <file>                   Parse a YINI file (*.yini) and output the result as JSON or JavaScript.
+  validate [options] <fileOrDirectory...>  Validate one or more YINI files.
+
+                                           <file>       Validate a single file.
+                                           <directory>  Validate all .yini files in the directory.
+
+                                           You can provide multiple files and directories, separated by spaces.
+  info                                     Display extended information about the YINI CLI environment.
+  help <command>                           Display help for a specific command.
+
+
+--------------------------------------------------------
+* Command: parse
+--------------------------------------------------------
+Usage: yini parse [options] <file>
+
+Parse a YINI file (*.yini) and output the result as JSON or JavaScript.
+
+Options:
+  --json               Output as formatted JSON (default).
+  --compact            Output compact JSON (no whitespace).
+  --js                 Output as JavaScript.
+  --yaml               Output as YAML.
+  --xml                Output as XML.
+  -o, --output <file>  Write output to <file>. By default, an existing output file is only overwritten if it is older than the input YINI file.
+  --overwrite          Always overwrite the output file, even if it is newer than the input YINI file.
+  --no-overwrite       Fail if the output file already exists.
+  --best-effort        Ignore parse errors.
+  --pretty             (deprecated) Use --json instead.
+  -h, --help           Display full help for all commands.
+
+
+--------------------------------------------------------
+* Command: validate
+--------------------------------------------------------
+Usage: yini validate [options] <fileOrDirectory...>
+
+Validate one or more YINI files.
+
+<file>       Validate a single file.
+<directory>  Validate all .yini files in the directory.
+
+You can provide multiple files and directories, separated by spaces.
+
+Options:
+  --warnings-as-errors  Treat warnings as errors for exit code purposes.
+  --stats               In text mode, stats only shown when file mode validates exactly one file.
+  --format <type>       Output format for validation results: text | json (choices: "text", "json", default: "text")
+  --fail-fast           Stop after first file that fails validation.
+  --max-errors <n>      Stop after N total errors (across files).
+  --no-recursive        Do not scan subdirectories.
+  -h, --help            Display full help for all commands.
+
+
+--------------------------------------------------------
+* Command: info
+--------------------------------------------------------
+Usage: yini info
+
+Display extended information about the YINI CLI environment.
+
+Options:
+  -h, --help  Display full help for all commands.
+
+========================================================
+
+Quick Examples:
+  $ yini parse file.yini
+  $ yini parse file.yini --json
+  $ yini parse file.yini --js
+  $ yini parse file.yini -o output.json
+  $ yini validate config.yini --stats
+  $ yini validate . --strict
+
+For help with a specific command, use -h or --help. For example:
+  $ yini validate --help
+
+========================================================
+Example YINI configuration file (config.yini)
+========================================================
+    ^ App
+    title = 'My App'
+    items = 10
+    debug = ON
+    tags  = ['web', 'demo', 'prod']
+
+    ^ Server
+    host   = 'localhost'
+    port   = 8080
+    useTLS = OFF
+    limits = { timeout: 30, keepAlive: true }
+
+        // Sub-section of Server.
+        ^^ Login
+        username = 'user'
+        password = 'secret'
+========================================================
+
+More information:
+  https://github.com/YINI-lang/yini-cli
+
+Homepage:
+  https://yini-lang.org
