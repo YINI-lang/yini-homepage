@@ -1,23 +1,75 @@
+@yini
+
 /*
 
-Features:
-  - Shorthand section markers
-  - Numbers, booleans
-  - Multi-line triple-quoted strings
-  - Null (upper case)
+Example: SMTP email configuration at a deep section level
+
+Features shown:
+  - Numeric shorthand section markers:
+    `^10` means a level 10 section, and `^11` means a nested level 11 section.
+
+    Numeric shorthand is mainly useful when repeated section markers are no longer
+    practical, or when the nesting level is deeper than the repeated-marker form
+    should be used for.
+
+    In this example, the earlier sections build the path down to level 9.
+    Then `^10 SMTP` creates a level 10 section inside `Mail`.
+
+  - Numbers:
+    Useful for ports, timeouts, retry counts, and size limits.
+
+  - Booleans:
+    Useful for on/off settings such as TLS, authentication, and debug logging.
+
+  - Multi-line triple-quoted strings:
+    Useful for longer text values, such as email signatures or message templates.
+
+  - Null (upper case):
+    `NULL` means no value is set. This can be useful when a setting is optional.
 
 */
 
-^1 SMTP
+// This is an example.
+
+^ Application
+^^ Services
+^^^ Messaging
+^^^^ Providers
+^^^^^ Email
+^^^^^^ Outbound
+^^^^^^^ Production
+^^^^^^^^ RegionEU
+^^^^^^^^^ Mail
+^10 SMTP
 server = 'smtp.mailserver.com'
 port = 587
 use_tls = true
+auth_required = true
+debug_logging = false
+
 username = 'mailer'
 password = 'change_me'
 
-	^2 Defaults
-	from_address = 'noreply@example.com'
-	reply_to = NULL
-	signature = """Kind regards,
-	The Example Team
-	"""
+timeout_seconds = 30
+max_retries = 3
+max_message_size_mb = 25
+
+^11 Defaults
+from_address = 'noreply@example.com'
+reply_to = NULL
+
+signature = """Kind regards,
+The Example Team
+"""
+
+welcome_subject = 'Welcome to Example App'
+
+welcome_message = """Hello,
+
+Welcome to Example App.
+
+Your account is now ready to use.
+
+Kind regards,
+The Example Team
+"""

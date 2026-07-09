@@ -1,10 +1,17 @@
 /*
 
 Features:
-  - Backticked section headers
+  - Backticked keys and section headers:
+    Backticked keys and section headers let you use more flexible section
+    names, such as names with spaces or punctuation, while keeping normal
+    section names simple and easy to read.
+
   - Section nesting
+
   - Booleans (YES/NO/ON/OFF/TRUE/FALSE/NULL)
+  
   - Lists
+  
   - Nulls
 
 */
@@ -13,12 +20,12 @@ Features:
 beta = TRUE
 dark_mode = ON
 experimental_ui = NO
-welcome_tour = YES
+`welcome tour` = YES
 
     ^^ `User Groups`
     admin = ["alice", "bob"]
     beta_testers = ["charlie", "dana"]
-    regular_users = []
+    `regular users` = []
 
     ^^ `Feature Toggles`
     feature_x = TRUE

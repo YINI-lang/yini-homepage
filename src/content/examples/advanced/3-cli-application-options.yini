@@ -3,11 +3,11 @@
 /*
 
 Features:
-  - No newline at end of file
+  - The disable line "--", it's used to disable a line.
   - Sections
   - Strings (double quotes), numbers, booleans
-  - List
-  - Line comment with ;
+  - A list
+  - A full line-comment with ;
 
 */
 
@@ -24,5 +24,3 @@ timeout = 60
     format = "json"
     color = yes
     log_level = "debug"
-
-# NOTE: No newline at end of file!
