@@ -28,7 +28,7 @@ Below, you will find questions and answers grouped into the following topics:
 ### Q – What is a YINI config file?
 
 YINI is a human-readable text format for representing structured information. It is designed to be clear, predictable, and easy for humans to read and write. It is suitable for configuration files, application settings, and general data-storage use cases.  
-The YINI format adds real structure: nested sections, arrays, objects, and clear, predictable rules with comments allowed. It can be used to store app or service settings in files like `config.yini`.
+The YINI format adds real structure: nested sections, lists (similar to JSON arrays), objects, and clear, predictable rules with comments allowed. It can be used to store app or service settings in files like `config.yini`.
 
 Example (YINI):
 
@@ -44,7 +44,7 @@ port = 8080
 
 ### Q – What is the format of a YINI file?
 
-YINI is the name of the markup format itself. A YINI file is a plain-text file with human-readable syntax. It's based on **key-value pairs**, **section markers**, and optional **comments**.
+YINI is the name of the configuration/data format itself. A YINI file is a plain-text file with human-readable syntax. It's based on **key-value pairs**, **section markers**, and optional **comments**.
 
 It supports:
 
@@ -72,6 +72,14 @@ YINI is inspired by several well-known formats and languages, including **INI, J
 From INI it keeps the simple key/value structure, from JSON and Python it adopts clear and predictable data types, from Markdown it borrows a focus on readability, and from C-style languages it takes influence for features like line comments (`//`) and block comments (`/* … */`).
 Together, these ideas form a configuration format that is human-friendly, structured, and unambiguous — familiar to read, but much more capable than classic INI.
 
+### Q – Does YINI stand for YAML + INI?
+
+No. The name **YINI** comes from **Yet another INI**, not **YAML + INI**.
+
+The interpretation **YAML + INI** is understandable, but that is not where the name came from. YINI is inspired mainly by the simplicity of INI-style configuration files, while adding structured features such as nested sections, lists, inline objects, and strict/lenient parsing.
+
+YINI can be compared with YAML as a configuration format, but it is not a YAML variant and does not try to be YAML-compatible.
+
 ### Q – Why not just use INI/JSON/YAML/TOML?
 
 YINI does not aim to replace INI, JSON, YAML, or TOML.
@@ -79,7 +87,7 @@ YINI does not aim to replace INI, JSON, YAML, or TOML.
 Use whatever suits your project best. YINI aims to:
 
 - Keep **INI-like simplicity**.
-- Add **clear structure** (sections, arrays, objects).
+- Add **clear structure** (sections, lists, objects).
 - Keep **predictable rules** (strict mode available).
 - Be **comfortable to read and diff**.
 
@@ -105,19 +113,15 @@ Parsers and tooling are supported by **automated tests**, with a long-term goal 
 
 ### Q – Why does YINI have both strict and lenient modes?
 
-YINI itself is just a specification and a text format — it does not “decide” how a file is parsed at runtime.
+YINI defines one format, but parsers can apply the rules in either lenient or strict mode.
 
-The idea of strict and lenient modes belongs to parsers and tooling, not to the YINI file itself.
+Lenient mode is the default. It is more forgiving for everyday editing and may tolerate recoverable issues, such as trailing commas in lists or inline objects, while still reporting diagnostics.
 
-Strict mode means the parser enforces the YINI specification rigorously and fails on any rule violation.
-This is ideal for production systems where correctness and predictability matter most.
+Strict mode is for stronger validation. A strict YINI document must follow additional rules, such as using exactly one explicit top-level section, ending with the `/END` document terminator, and using canonical syntax inside inline objects.
 
-Lenient mode allows certain recoverable issues (such as trailing commas or partially written files) to be tolerated, often with warnings.
-This is useful during development, experimentation, migrations, or when working with evolving or hand-edited configs.
+So the selected parser mode can affect whether a file is accepted. A file that works in lenient mode may need small changes before it is valid in strict mode.
 
-The same .yini file can be parsed in either mode — the difference is how strictly the rules are enforced, not how the file is written.
-
-This design keeps the format itself simple and stable, while giving tools the flexibility to adapt to different use cases.
+This design keeps YINI approachable while still giving production systems and tooling a stricter validation path when correctness and predictability matter most.
 
 ### Q – Who maintains YINI?
 
@@ -150,20 +154,27 @@ However, treat configuration files as data — not executable input.
 
 ### Q – How do I define sections?
 
-Each section starts with `^`. (Settings are grouped in sections.)
+Each section starts with `^`. Settings are grouped inside sections.
 
-Start a section with `^` and then a name **without spaces**, e.g.:
+For ordinary section names, use a simple identifier such as `App`:
 
-```ts
+```yini
 ^ App
 title = "AppName"
 ```
 
-Here the text "App" is the section name.
+Here the text `App` is the section name.
+
+If a section name needs spaces or special characters, write it as a backticked identifier:
+
+```yini
+^ `DB Config`
+host = "localhost"
+```
 
 You can add more sections, for example:
 
-```ts
+```yini
 ^ App
 title = "My App Title"
 items = 25
@@ -212,13 +223,20 @@ Tooling **may** later support includes or imports as an optional extension.
 The YINI specification (1.0.0 RC 6) states that:
 
 - In **strict mode**, duplicates are disallowed and will raise an error.
-- In **lenient mode**, duplicates are also not allowed — they may trigger a warning, but must not overwrite existing entries.
+- In **lenient mode**, later duplicate keys or sections are ignored, the
+  first entry wins, and the parser must report a warning diagnostic.
 
-However, in the official YINI-lib `yini-parser-typescript` (Node.js), the behavior for handling duplicates in lenient mode is **customizable**.
+This means duplicates must not silently overwrite or merge existing entries.
 
 ### Q – Does the order of keys or sections matter?
 
-No, order may be preserved for readability but has no semantic meaning.
+Usually, no: after parsing, the order of ordinary unique keys is not meant to
+change their value.
+
+However, section headers are read in order because they define the current
+document structure and nesting. Order can also be observable when duplicate keys
+or sections appear in lenient mode, because the first entry wins and later
+duplicates are ignored with a warning.
 
 ---
 
