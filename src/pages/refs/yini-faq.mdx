@@ -82,14 +82,23 @@ YINI can be compared with YAML as a configuration format, but it is not a YAML v
 
 ### Q – Why not just use INI/JSON/YAML/TOML?
 
-YINI does not aim to replace INI, JSON, YAML, or TOML.
+Each of those formats works well, but each also has friction that shows up as configs grow:
 
-Use whatever suits your project best. YINI aims to:
+- **INI** has no single universal standard for nested structure, lists, or typed values. In basic INI-style files, values tend to become loosely typed strings, and any structure beyond flat key-value pairs is up to convention.
+- **JSON** has no comments, and its strict comma and quote rules can make hand-editing error-prone.
+- **YAML** is powerful, but its significant whitespace and version/parser-dependent implicit typing can be surprising, such as `no` being parsed as `false` by YAML 1.1-style parsers.
+- **TOML** is clear for flat and lightly nested configs, but its table syntax can get harder to follow once nesting goes a few levels deep.
 
-- Keep **INI-like simplicity**.
-- Add **clear structure** (sections, lists, objects).
-- Keep **predictable rules** (strict mode available).
-- Be **comfortable to read and diff**.
+YINI's goal is to keep the parts of these formats that work, while removing some of the friction:
+
+- **INI-like simplicity** — flat, readable syntax at a glance.
+- **Clear structure** — real sections, lists, and objects, without relying on indentation to define nesting.
+- **Predictable rules** — no implicit type coercion; strict mode is available when you want stricter validation.
+- **Comfortable to read and diff** — changes stay easy to spot in version control.
+
+YINI is not trying to replace INI, JSON, YAML, or TOML. If one of those already fits your project, use it.
+
+YINI is here for when you want INI's simplicity with fewer of its limits.
 
 ### Q – What file extension should I use?
 

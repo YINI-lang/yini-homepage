@@ -15,4 +15,4 @@ Minor typo fixes, styling tweaks, and small rewordings are not listed here. See 
 - **Changed:** Replaced the footer community links with links to the main YINI tool pages.
 - **Added:** FAQ entry "Does YINI stand for YAML + INI?"
 - **Improved:** Tightened about six existing FAQ entries for correctness and clarity.
-
+- **Updated:** Updated FAQ entry "Why not just use INI/JSON/YAML/TOML?" to a more detailed answer.
