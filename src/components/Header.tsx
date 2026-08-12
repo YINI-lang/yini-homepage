@@ -101,16 +101,18 @@ export default function Header({ isProd }: HeaderProps) {
                     className={cssClasses}>
                     Get Started
                 </a>
-                <a
+                {/* <a
                     href={CONFIG.siteLinks.hero.examples.url}
                     title={CONFIG.siteLinks.hero.examples.title}
                     className={cssClasses}>
                     Examples
-                </a>
-                {/* Playground is currently temp-disabled in your layout */}
-                {/* <a href={CONFIG.siteLinks.hero.playground.url}
+                </a> */}
+                <a
+                    href={CONFIG.siteLinks.hero.playground.url}
                     title={CONFIG.siteLinks.hero.playground.title}
-                className={cssClasses}>Playground</a> */}
+                    className={cssClasses}>
+                    Playground
+                </a>
                 <a
                     href={CONFIG.siteLinks.navMenu.useYini.getYINITools.url}
                     title={CONFIG.siteLinks.navMenu.useYini.getYINITools.title}
@@ -172,8 +174,8 @@ export default function Header({ isProd }: HeaderProps) {
                         </a>
                     </div>
                     <div className="mb-2">
-                        <a href="/learn-yini/examples/" className={cssClasses}>
-                            ◦ Examples
+                        <a href="/playground" className={cssClasses}>
+                            ◦ Playground
                         </a>
                     </div>
                     <div className="mb-2">
