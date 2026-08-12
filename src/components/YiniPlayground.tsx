@@ -66,7 +66,7 @@ port = error
 
 const DEFAULT_SNIPPET = EXAMPLE_PRESETS[0].code
 
-const LS_CODE_KEY = 'yini:playground:code'
+const LEGACY_LS_CODE_KEY = 'yini:playground:code'
 const LS_INDENT_KEY = 'yini:playground:indent-size'
 
 function isIndentSize(value: unknown): value is IndentSize {
@@ -209,9 +209,6 @@ export default function YiniPlayground() {
                 setStatus('valid')
             }
 
-            try {
-                localStorage.setItem(LS_CODE_KEY, src)
-            } catch {}
         } catch (e: any) {
             setOutput('')
             setError(e?.message ?? String(e))
@@ -221,17 +218,16 @@ export default function YiniPlayground() {
 
     useEffect(() => {
         try {
+            localStorage.removeItem(LEGACY_LS_CODE_KEY)
+
             const params = new URLSearchParams(location.search)
             const fromUrl = params.get('code')
-            const savedCode = localStorage.getItem(LS_CODE_KEY)
             const savedIndentRaw = localStorage.getItem(LS_INDENT_KEY)
             let nextCode = DEFAULT_SNIPPET
             let nextIndent = indentSize
 
             if (fromUrl) {
                 nextCode = fromUrl
-            } else if (savedCode) {
-                nextCode = savedCode
             }
 
             if (savedIndentRaw) {
