@@ -8,6 +8,9 @@ Minor typo fixes, styling tweaks, and small rewordings are not listed here. See 
 
 ## [Upcoming/Unreleased] - FUTURE
 
+## 2026 Aug
+- **Added:** Added new page Playground.
+
 ## 2026 July
 
 - **Added:** A new page about the YINI Test Suite CLI, [link](http://yini-lang.org/tools/yini-test-suite).
