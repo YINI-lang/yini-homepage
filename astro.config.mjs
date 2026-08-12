@@ -13,7 +13,11 @@ export default defineConfig({
     integrations: [mdx(), react(), sitemap()],
     vite: {
         plugins: [tailwindcss()],
+        optimizeDeps: {
+            include: ['react', 'react-dom', 'react-dom/client'],
+        },
         resolve: {
+            dedupe: ['react', 'react-dom'],
             alias: {
                 // Route Node perf APIs to our browser shim
                 'node:perf_hooks': fileURLToPath(

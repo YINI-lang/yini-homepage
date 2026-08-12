@@ -1,21 +1,70 @@
 // src/components/YiniPlayground.tsx
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import YINI from '../YiniWrapper.ts'
 
 type OutputMode = 'json' | 'pojo'
 type FailLevel = 'auto' | 'ignore-errors'
 type IndentSize = 2 | 3 | 4 | 6 | 8
+type ValidationStatus = 'pending' | 'valid' | 'invalid'
 
-const DEFAULT_SNIPPET = `^ App
+type ExamplePreset = {
+    id: string
+    label: string
+    code: string
+}
+
+const EXAMPLE_PRESETS: ExamplePreset[] = [
+    {
+        id: 'app',
+        label: 'App config',
+        code: `^ App
 name = "Demo"
 version = "1.0.0"
-features = ["search", "dark-mode"] // comments allowed
+port = 8080
+features = ["search", "dark-mode"]
+`,
+    },
+    {
+        id: 'service',
+        label: 'Service config',
+        code: `^ Service
+name = "api"
+environment = "production"
 
-^ Database
+^^ Server
+host = "0.0.0.0"
+port = 8080
+
+^^ Database
 host = "localhost"
 port = 5432
 auth = { user: "admin", pass: "secret" }
-`
+`,
+    },
+    {
+        id: 'lists',
+        label: 'Lists and sections',
+        code: `^ App
+name = "Demo App"
+tags = ["web", "api", "v1"]
+ports = [80, 443, 8080]
+
+^^ Logging
+level = "info"
+outputs = ["console", "file"]
+`,
+    },
+    {
+        id: 'invalid',
+        label: 'Invalid example',
+        code: `^ App
+name = "Demo"
+port = error
+`,
+    },
+]
+
+const DEFAULT_SNIPPET = EXAMPLE_PRESETS[0].code
 
 const LS_CODE_KEY = 'yini:playground:code'
 const LS_INDENT_KEY = 'yini:playground:indent-size'
@@ -23,6 +72,12 @@ const LS_INDENT_KEY = 'yini:playground:indent-size'
 function isIndentSize(value: unknown): value is IndentSize {
     return (
         value === 2 || value === 3 || value === 4 || value === 6 || value === 8
+    )
+}
+
+function getExampleIdForCode(code: string): string {
+    return (
+        EXAMPLE_PRESETS.find((example) => example.code === code)?.id ?? 'custom'
     )
 }
 
@@ -112,14 +167,15 @@ export default function YiniPlayground() {
     const [includeMeta, setIncludeMeta] = useState(false)
     const [failLevel, setFailLevel] = useState<FailLevel>('auto')
     const [indentSize, setIndentSize] = useState<IndentSize>(2)
-    const [auto, setAuto] = useState(true)
+    const [selectedExampleId, setSelectedExampleId] = useState<string>(
+        EXAMPLE_PRESETS[0].id,
+    )
 
     const [output, setOutput] = useState<string>('')
     const [error, setError] = useState<string>('')
+    const [status, setStatus] = useState<ValidationStatus>('pending')
 
-    const debounce = useRef<number | null>(null)
-
-    function parseNow(src = code) {
+    function parseNow(src = code, outputIndent = indentSize) {
         setError('')
 
         try {
@@ -138,14 +194,19 @@ export default function YiniPlayground() {
             const errorCount = meta?.diagnostics?.errors?.errorCount ?? 0
 
             setOutput(
-                buildOutput(mode, parsedData, meta, includeMeta, indentSize),
+                buildOutput(mode, parsedData, meta, includeMeta, outputIndent),
             )
 
-            if (errorCount > 0 && failLevel !== 'ignore-errors') {
+            if (errorCount > 0) {
+                setStatus('invalid')
                 const firstErr = meta?.diagnostics?.errors?.payload?.[0]
-                if (firstErr?.message) {
-                    setError(firstErr.message)
+                if (failLevel !== 'ignore-errors') {
+                    setError(
+                        firstErr?.message ?? 'YINI contains validation errors.',
+                    )
                 }
+            } else {
+                setStatus('valid')
             }
 
             try {
@@ -154,19 +215,9 @@ export default function YiniPlayground() {
         } catch (e: any) {
             setOutput('')
             setError(e?.message ?? String(e))
+            setStatus('invalid')
         }
     }
-
-    useEffect(() => {
-        if (!auto) return
-        if (debounce.current) window.clearTimeout(debounce.current)
-        debounce.current = window.setTimeout(() => parseNow(), 250)
-
-        return () => {
-            if (debounce.current) window.clearTimeout(debounce.current)
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [code, mode, strict, includeMeta, failLevel, indentSize, auto])
 
     useEffect(() => {
         try {
@@ -174,19 +225,26 @@ export default function YiniPlayground() {
             const fromUrl = params.get('code')
             const savedCode = localStorage.getItem(LS_CODE_KEY)
             const savedIndentRaw = localStorage.getItem(LS_INDENT_KEY)
+            let nextCode = DEFAULT_SNIPPET
+            let nextIndent = indentSize
 
             if (fromUrl) {
-                setCode(decodeURIComponent(fromUrl))
+                nextCode = fromUrl
             } else if (savedCode) {
-                setCode(savedCode)
+                nextCode = savedCode
             }
 
             if (savedIndentRaw) {
                 const parsedIndent = Number(savedIndentRaw)
                 if (isIndentSize(parsedIndent)) {
-                    setIndentSize(parsedIndent)
+                    nextIndent = parsedIndent
                 }
             }
+
+            setCode(nextCode)
+            setIndentSize(nextIndent)
+            setSelectedExampleId(getExampleIdForCode(nextCode))
+            parseNow(nextCode, nextIndent)
         } catch {
             //
         }
@@ -203,7 +261,7 @@ export default function YiniPlayground() {
 
     useEffect(() => {
         function onKey(e: KeyboardEvent) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && !auto) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
                 e.preventDefault()
                 parseNow()
             }
@@ -211,7 +269,26 @@ export default function YiniPlayground() {
 
         window.addEventListener('keydown', onKey)
         return () => window.removeEventListener('keydown', onKey)
-    }, [auto, code, strict, includeMeta, failLevel, indentSize, mode])
+    }, [code, strict, includeMeta, failLevel, indentSize, mode])
+
+    function markPending() {
+        setStatus('pending')
+    }
+
+    function handleCodeChange(nextCode: string) {
+        setCode(nextCode)
+        setSelectedExampleId(getExampleIdForCode(nextCode))
+        markPending()
+    }
+
+    function handleExampleChange(exampleId: string) {
+        const example = EXAMPLE_PRESETS.find((item) => item.id === exampleId)
+        if (!example) return
+
+        setCode(example.code)
+        setSelectedExampleId(example.id)
+        parseNow(example.code)
+    }
 
     const copy = async (text: string) => {
         try {
@@ -223,17 +300,48 @@ export default function YiniPlayground() {
         <div className="container-wide section-pad">
             <div className="mx-auto max-w-6xl">
                 <h1 className="text-3xl font-semibold md:text-4xl">
-                    Playground
+                    YINI Playground
                 </h1>
 
-                <p className="mt-2 text-slate-600">
+                <p className="mt-2 text-slate-600 dark:text-slate-300">
                     Paste YINI on the left, see parsed output on the right.
-                    Choose <strong>JSON</strong> or <strong>POJO</strong>, and
-                    toggle strict mode.
+                    Toggle strict mode, and choose <strong>JSON</strong> or{' '}
+                    <strong>POJO</strong> (plain JavaScript object).
                 </p>
 
                 <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
-                    <div className="flex items-center gap-3">
+                    <label className="inline-flex items-center gap-2">
+                        <span className="font-medium">Example:</span>
+                        <select
+                            className="rounded border border-slate-300 px-2 py-1 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+                            value={selectedExampleId}
+                            onChange={(e) =>
+                                handleExampleChange(e.target.value)
+                            }>
+                            {selectedExampleId === 'custom' && (
+                                <option value="custom">Custom</option>
+                            )}
+                            {EXAMPLE_PRESETS.map((example) => (
+                                <option key={example.id} value={example.id}>
+                                    {example.label}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+
+                    <div className="flex items-center gap-3 text-sm">
+                        <label className="inline-flex items-center gap-2">
+                            <input
+                                type="checkbox"
+                                checked={strict}
+                                onChange={(e) => {
+                                    setStrict(e.target.checked)
+                                    markPending()
+                                }}
+                            />
+                            <span>Strict mode</span>
+                        </label>
+
                         <span className="font-medium">Output:</span>
 
                         <label className="inline-flex items-center gap-1">
@@ -242,7 +350,10 @@ export default function YiniPlayground() {
                                 name="out"
                                 value="json"
                                 checked={mode === 'json'}
-                                onChange={() => setMode('json')}
+                                onChange={() => {
+                                    setMode('json')
+                                    markPending()
+                                }}
                             />
                             <span>JSON</span>
                         </label>
@@ -253,22 +364,28 @@ export default function YiniPlayground() {
                                 name="out"
                                 value="pojo"
                                 checked={mode === 'pojo'}
-                                onChange={() => setMode('pojo')}
+                                onChange={() => {
+                                    setMode('pojo')
+                                    markPending()
+                                }}
                             />
                             <span>POJO</span>
                         </label>
                     </div>
+                </div>
 
+                <div className="mt-3 flex justify-end text-sm">
                     <label className="inline-flex items-center gap-2">
                         <span className="font-medium">Indent:</span>
                         <select
-                            className="rounded border border-slate-300 px-2 py-1"
+                            className="rounded border border-slate-300 px-2 py-1 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
                             value={indentSize}
-                            onChange={(e) =>
+                            onChange={(e) => {
                                 setIndentSize(
                                     Number(e.target.value) as IndentSize,
                                 )
-                            }>
+                                markPending()
+                            }}>
                             <option value={2}>2 spaces</option>
                             <option value={3}>3 spaces</option>
                             <option value={4}>4 spaces</option>
@@ -276,71 +393,86 @@ export default function YiniPlayground() {
                             <option value={8}>8 spaces</option>
                         </select>
                     </label>
-
-                    <label className="inline-flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            checked={strict}
-                            onChange={(e) => setStrict(e.target.checked)}
-                        />
-                        <span>Strict mode</span>
-                    </label>
-
-                    <label className="inline-flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            checked={includeMeta}
-                            onChange={(e) => setIncludeMeta(e.target.checked)}
-                        />
-                        <span>Include metadata</span>
-                    </label>
-
-                    <label className="inline-flex items-center gap-2">
-                        <span className="font-medium">Fail level:</span>
-                        <select
-                            className="rounded border border-slate-300 px-2 py-1"
-                            value={failLevel}
-                            onChange={(e) =>
-                                setFailLevel(e.target.value as FailLevel)
-                            }>
-                            <option value="auto">auto</option>
-                            <option value="ignore-errors">ignore-errors</option>
-                        </select>
-                    </label>
-
-                    <label className="inline-flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            checked={auto}
-                            onChange={(e) => setAuto(e.target.checked)}
-                        />
-                        <span>Auto-validate</span>
-                    </label>
-
-                    <button
-                        type="button"
-                        className="btn btn-primary ms-auto"
-                        onClick={() => parseNow()}
-                        title={
-                            auto
-                                ? 'Disable Auto-validate to use manually'
-                                : 'Parse (Ctrl/Cmd+Enter)'
-                        }>
-                        Parse
-                    </button>
                 </div>
 
-                <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="my-4 flex flex-wrap items-center gap-4 py-4">
+                    <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={() => parseNow()}
+                        title="Parse (Ctrl/Cmd+Enter)">
+                        Parse
+                    </button>
+
+                    <div
+                        className={
+                            status === 'valid'
+                                ? 'font-medium text-green-700'
+                                : status === 'invalid'
+                                  ? 'font-medium text-red-700'
+                                  : 'font-medium text-slate-600 dark:text-slate-300'
+                        }>
+                        {status === 'valid'
+                            ? '✓ Valid YINI'
+                            : status === 'invalid'
+                              ? '✕ Invalid YINI'
+                              : 'Ready to parse'}
+                    </div>
+
+                    <a
+                        href="/use-yini/get-started"
+                        className="btn btn-primary px-2 py-1 text-xs">
+                        Use YINI in your project -&gt;
+                    </a>
+                </div>
+
+                <details className="ms-auto mt-3 w-fit text-sm text-slate-600 dark:text-slate-300">
+                    <summary className="cursor-pointer font-medium">
+                        Advanced
+                    </summary>
+
+                    <div className="mt-3 flex flex-wrap justify-end gap-4">
+                        <label className="inline-flex items-center gap-2">
+                            <input
+                                type="checkbox"
+                                checked={includeMeta}
+                                onChange={(e) => {
+                                    setIncludeMeta(e.target.checked)
+                                    markPending()
+                                }}
+                            />
+                            <span>Include metadata</span>
+                        </label>
+
+                        <label className="inline-flex items-center gap-2">
+                            <span className="font-medium">Fail level:</span>
+                            <select
+                                className="rounded border border-slate-300 px-2 py-1 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+                                value={failLevel}
+                                onChange={(e) => {
+                                    setFailLevel(e.target.value as FailLevel)
+                                    markPending()
+                                }}>
+                                <option value="auto">auto</option>
+                                <option value="ignore-errors">
+                                    ignore-errors
+                                </option>
+                            </select>
+                        </label>
+                    </div>
+                </details>
+
+                <div className="mt-4 grid grid-cols-1 gap-4 border-t border-slate-200 pt-4 md:grid-cols-2">
                     <div className="flex flex-col">
                         <div className="mb-2 flex items-center justify-between">
-                            <label className="text-sm font-medium text-slate-600">
-                                Input (.yini)
+                            <label className="text-sm font-medium text-slate-600 dark:text-slate-300">
+                                Input (.yini):
                             </label>
 
                             <div className="flex gap-2">
                                 <button
                                     type="button"
-                                    className="btn btn-outline"
+                                    className="btn btn-outline px-2 py-1 text-xs"
                                     onClick={() => copy(code)}>
                                     Copy
                                 </button>
@@ -349,23 +481,23 @@ export default function YiniPlayground() {
 
                         <textarea
                             value={code}
-                            onChange={(e) => setCode(e.target.value)}
+                            onChange={(e) => handleCodeChange(e.target.value)}
                             spellCheck={false}
-                            className="min-h-[320px] rounded-lg border border-slate-300 bg-white p-3 font-mono text-[13px] leading-6"
+                            className="min-h-[320px] rounded-lg border border-slate-300 bg-white p-3 font-mono text-[13px] leading-6 text-slate-950 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                             aria-label="YINI input"
                         />
                     </div>
 
                     <div className="flex flex-col">
                         <div className="mb-2 flex items-center justify-between">
-                            <label className="text-sm font-medium text-slate-600">
-                                Output ({mode.toUpperCase()})
+                            <label className="text-sm font-medium text-slate-600 dark:text-slate-300">
+                                Output ({mode.toUpperCase()}):
                             </label>
 
                             <div className="flex gap-2">
                                 <button
                                     type="button"
-                                    className="btn btn-outline"
+                                    className="btn btn-outline px-2 py-1 text-xs"
                                     onClick={() => copy(output)}
                                     disabled={!output}>
                                     Copy
