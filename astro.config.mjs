@@ -46,6 +46,9 @@ export default defineConfig({
             'process.env': JSON.stringify({}),
             'process.argv': JSON.stringify([]),
         },
+        build: {
+            minify: false,
+        },
     },
     markdown: {
         remarkPlugins: [remarkGfm, linkNormalizeYini],
