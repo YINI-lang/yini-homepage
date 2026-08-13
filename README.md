@@ -89,4 +89,4 @@ Then open http://localhost:4321 in your browser.
 > 
 > See the specification for syntax and format details.  
 
-[yini-lang.org](https://yini-lang.org/?utm_source=github&utm_medium=referral&utm_campaign=yini_home&utm_content=readme_footer) · [YINI-lang on GitHub](https://github.com/YINI-lang)  
+[yini-lang.org](https://yini-lang.org/?utm_source=github&utm_medium=referral&utm_campaign=yini_home&utm_content=readme_footer) · [YINI Project on GitHub](https://github.com/YINI-lang)  

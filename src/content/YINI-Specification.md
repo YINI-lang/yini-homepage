@@ -3367,4 +3367,4 @@ Below is a categorized list of Unicode whitespace characters recognized as withi
 **^ YINI Specification ≡**  
 > A clear, structured, and human-friendly configuration format.  
 
-[yini-lang.org](https://yini-lang.org) · [YINI-lang on GitHub](https://github.com/YINI-lang/?utm_content=spec_footer)  
+[yini-lang.org](https://yini-lang.org) · [YINI Project on GitHub](https://github.com/YINI-lang/?utm_content=spec_footer)  

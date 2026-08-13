@@ -87,7 +87,6 @@ export default function Header({ isProd }: HeaderProps) {
         // *** HERO (nav links / top-menu) for desktop mode ***
         return (
             <>
-                🏠
                 <a
                     href={CONFIG.siteLinks.hero.home.url}
                     title={CONFIG.siteLinks.hero.home.title}
@@ -395,7 +394,7 @@ export default function Header({ isProd }: HeaderProps) {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={cssClasses}>
-                                YINI-lang on GitHub ↗
+                                YINI Project on GitHub ↗
                             </a>
                         </li>
                     </ul>
