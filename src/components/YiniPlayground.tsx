@@ -7,6 +7,15 @@ type FailLevel = 'auto' | 'ignore-errors'
 type IndentSize = 2 | 3 | 4 | 6 | 8
 type ValidationStatus = 'pending' | 'valid' | 'invalid'
 
+type DiagnosticIssue = {
+    line?: number
+    column?: number
+    typeKey?: string
+    message?: string
+    advice?: string
+    hint?: string
+}
+
 type ExamplePreset = {
     id: string
     label: string
@@ -161,6 +170,79 @@ function buildOutput(
     return `${main}\n\n/* Metadata */\n${metaBlock}`
 }
 
+function formatDiagnosticLocation(issue: DiagnosticIssue): string {
+    if (!issue.line) {
+        return ''
+    }
+
+    if (!issue.column) {
+        return `line ${issue.line}`
+    }
+
+    return `line ${issue.line}, column ${issue.column}`
+}
+
+function formatSourceExcerpt(
+    source: string,
+    lineNumber?: number,
+    columnNumber?: number,
+): string {
+    if (!lineNumber || lineNumber < 1) {
+        return ''
+    }
+
+    const sourceLine = source.split(/\r?\n/)[lineNumber - 1]
+    if (sourceLine === undefined) {
+        return ''
+    }
+
+    const linePrefix = `${lineNumber} | `
+    const caretColumn = Math.max((columnNumber ?? 1) - 1, 0)
+    const caretPrefix = `${' '.repeat(String(lineNumber).length)} | `
+
+    return `${linePrefix}${sourceLine}\n${caretPrefix}${' '.repeat(caretColumn)}^`
+}
+
+function formatDiagnostics(
+    source: string,
+    issues: DiagnosticIssue[],
+    fallbackMessage: string,
+): string {
+    if (issues.length === 0) {
+        return fallbackMessage
+    }
+
+    const header =
+        issues.length === 1
+            ? 'YINI parse failed with 1 error.'
+            : `YINI parse failed with ${issues.length} errors.`
+
+    const details = issues.map((issue, index) => {
+        const location = formatDiagnosticLocation(issue)
+        const title = issue.message ?? fallbackMessage
+        const excerpt = formatSourceExcerpt(source, issue.line, issue.column)
+        const lines = [
+            `${index + 1}. ${title}${location ? ` (${location})` : ''}`,
+        ]
+
+        if (issue.advice) {
+            lines.push(issue.advice)
+        }
+
+        if (issue.hint) {
+            lines.push(`Hint: ${issue.hint}`)
+        }
+
+        if (excerpt) {
+            lines.push('', excerpt)
+        }
+
+        return lines.join('\n')
+    })
+
+    return `${header}\n\n${details.join('\n\n')}`
+}
+
 export default function YiniPlayground() {
     const [code, setCode] = useState<string>(DEFAULT_SNIPPET)
     const [mode, setMode] = useState<OutputMode>('json')
@@ -200,10 +282,14 @@ export default function YiniPlayground() {
 
             if (errorCount > 0) {
                 setStatus('invalid')
-                const firstErr = meta?.diagnostics?.errors?.payload?.[0]
+                const errors = meta?.diagnostics?.errors?.payload ?? []
                 if (failLevel !== 'ignore-errors') {
                     setError(
-                        firstErr?.message ?? 'YINI contains validation errors.',
+                        formatDiagnostics(
+                            src,
+                            errors,
+                            'YINI contains validation errors.',
+                        ),
                     )
                 }
             } else {
@@ -211,7 +297,13 @@ export default function YiniPlayground() {
             }
         } catch (e: any) {
             setOutput('')
-            setError(e?.message ?? String(e))
+            setError(
+                formatDiagnostics(
+                    src,
+                    [e],
+                    e?.message ?? String(e),
+                ),
+            )
             setStatus('invalid')
         }
     }
