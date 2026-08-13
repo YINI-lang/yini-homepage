@@ -1,5 +1,5 @@
-// src/components/YiniPlayground.tsx
 import React, { useEffect, useState } from 'react'
+import packageJson from '../../package.json'
 import YINI from '../YiniWrapper.ts'
 
 type OutputMode = 'json' | 'pojo'
@@ -68,6 +68,7 @@ const DEFAULT_SNIPPET = EXAMPLE_PRESETS[0].code
 
 const LEGACY_LS_CODE_KEY = 'yini:playground:code'
 const LS_INDENT_KEY = 'yini:playground:indent-size'
+const YINI_PARSER_VERSION = packageJson.dependencies['yini-parser']
 
 function isIndentSize(value: unknown): value is IndentSize {
     return (
@@ -208,7 +209,6 @@ export default function YiniPlayground() {
             } else {
                 setStatus('valid')
             }
-
         } catch (e: any) {
             setOutput('')
             setError(e?.message ?? String(e))
@@ -291,6 +291,8 @@ export default function YiniPlayground() {
             await navigator.clipboard.writeText(text)
         } catch {}
     }
+
+    const yiniParserVersion = YINI_PARSER_VERSION.replace(/^\^/, '') // Remove "^" if it appears at the beginning.
 
     return (
         <div className="container-wide section-pad">
@@ -510,6 +512,12 @@ export default function YiniPlayground() {
                                 {output || '// Parsed output will appear here'}
                             </pre>
                         )}
+
+                        <div className="mt-0 text-right text-xs text-slate-500 dark:text-slate-400">
+                            <span title="yini-parser-typescript: {YINI_PARSER_VERSION}">
+                                yini-parser (TS): v{yiniParserVersion}
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
