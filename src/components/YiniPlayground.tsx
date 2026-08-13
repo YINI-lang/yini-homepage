@@ -630,7 +630,8 @@ export default function YiniPlayground() {
                         )}
 
                         <div className="mt-0 text-right text-xs text-slate-500 dark:text-slate-400">
-                            <span title="yini-parser-typescript: {YINI_PARSER_VERSION}">
+                            <span
+                                title={`yini-parser-typescript: ${YINI_PARSER_VERSION}`}>
                                 yini-parser (TS): v{yiniParserVersion}
                             </span>
                         </div>

@@ -1,21 +1,38 @@
 ---
 // src/components/YINIExample.astro
 const { code, title } = Astro.props
+const canPrefillPlayground = code.length <= 2500
+const playgroundHref = canPrefillPlayground
+    ? `/playground?code=${encodeURIComponent(code)}`
+    : '/playground'
+const playgroundTitle = canPrefillPlayground
+    ? 'Open this example in the Playground'
+    : 'Open the Playground'
 ---
 
 <section class="yini-example">
     <div class="yini-example__header">
         {title ? <h3 class="yini-example__title">{title}</h3> : <span />}
 
-        <button
-            type="button"
-            class="yini-example__copy"
-            title="Copy example"
-            data-code={code}
-            onclick="copyYiniExample(this)"
-        >
-            📋&nbsp;Copy
-        </button>
+        <div class="yini-example__actions">
+            <a
+                class="yini-example__playground"
+                href={playgroundHref}
+                title={playgroundTitle}
+            >
+                Playground
+            </a>
+
+            <button
+                type="button"
+                class="yini-example__copy"
+                title="Copy example"
+                data-code={code}
+                onclick="copyYiniExample(this)"
+            >
+                📋&nbsp;Copy
+            </button>
+        </div>
     </div>
 
     <pre><code class="language-yini">{code}</code></pre>
@@ -81,32 +98,47 @@ const { code, title } = Astro.props
         line-height: 1.2;
     }
 
-    .yini-example__copy {
+    .yini-example__actions {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        gap: 0.5rem;
+        margin-right: 2rem;
+    }
+
+    .yini-example__copy,
+    .yini-example__playground {
         appearance: none;
         border: 1px solid rgba(148, 163, 184, 0.6);
         border-radius: 0.5rem;
         padding: 0.35rem 0.6rem;
-        margin-right: 2rem;
         font-size: 0.9rem;
         line-height: 1;
         cursor: pointer;
         background: rgba(15, 23, 42, 0.04);
+        color: inherit;
+        text-decoration: none;
     }
 
-    .yini-example__copy:hover {
+    .yini-example__copy:hover,
+    .yini-example__playground:hover {
         background: rgba(15, 23, 42, 0.08);
+        text-decoration: none;
     }
 
-    .yini-example__copy:active {
+    .yini-example__copy:active,
+    .yini-example__playground:active {
         transform: translateY(1px);
     }
 
     /* Dark mode (works with your existing .dark class) */
-    .dark .yini-example__copy {
+    .dark .yini-example__copy,
+    .dark .yini-example__playground {
         border-color: rgba(148, 163, 184, 0.35);
         background: rgba(248, 250, 252, 0.06);
     }
-    .dark .yini-example__copy:hover {
+    .dark .yini-example__copy:hover,
+    .dark .yini-example__playground:hover {
         background: rgba(248, 250, 252, 0.1);
     }
 </style>
