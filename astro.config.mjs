@@ -10,7 +10,13 @@ import tailwindcss from '@tailwindcss/vite'
 import linkNormalizeYini from './plugins/remark-link-normalize-yini.js'
 
 export default defineConfig({
-    integrations: [mdx(), react(), sitemap()],
+    integrations: [
+        mdx(),
+        react(),
+        sitemap({
+            filter: (page) => !page.endsWith('/playground-use-yini/'),
+        }),
+    ],
     vite: {
         plugins: [tailwindcss()],
         optimizeDeps: {

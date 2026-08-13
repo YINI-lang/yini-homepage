@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import packageJson from '../../package.json'
 import YINI from '../YiniWrapper.ts'
 
+const URL_ON_VALID_PARSE = '/playground-use-yini' // The destination page.
+
 type OutputMode = 'json' | 'pojo'
 type FailLevel = 'auto' | 'ignore-errors'
 type IndentSize = 2 | 3 | 4 | 6 | 8
@@ -322,13 +324,7 @@ export default function YiniPlayground() {
             }
         } catch (e: any) {
             setOutput('')
-            setError(
-                formatDiagnostics(
-                    src,
-                    [e],
-                    e?.message ?? String(e),
-                ),
-            )
+            setError(formatDiagnostics(src, [e], e?.message ?? String(e)))
             setStatus('invalid')
         }
     }
@@ -538,7 +534,7 @@ export default function YiniPlayground() {
                     </div>
 
                     <a
-                        href="/use-yini/get-started"
+                        href={URL_ON_VALID_PARSE}
                         className="btn btn-primary px-2 py-1 text-xs">
                         Use YINI in your project -&gt;
                     </a>

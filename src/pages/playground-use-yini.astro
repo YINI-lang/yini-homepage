@@ -1,0 +1,125 @@
+---
+import CONFIG from '../config/conf'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const usageOptions = [
+    {
+        goal: 'Learn YINI step by step',
+        description:
+            'Walk through the core syntax and common usage before choosing tools or workflow integration.',
+        href: '/learn-yini/quick-tutorial',
+        linkText: 'Quick Tutorial',
+    },
+    {
+        goal: 'Use YINI inside a software project',
+        description:
+            'Load .yini files as native objects in your application with a parser for your programming language.',
+        href: '/tools/yini-parsers',
+        linkText: 'YINI parsers',
+    },
+    {
+        goal: 'Parse YINI files from the terminal',
+        description:
+            'Validate, inspect, or convert YINI files from your command line or local scripts.',
+        href: '/tools/yini-cli',
+        linkText: 'YINI CLI',
+    },
+    {
+        goal: 'Use YINI in CI workflows',
+        description:
+            'Check configuration files before merge or deploy, and optionally generate JSON during builds.',
+        href: '/use-yini/ci-with-yini-cli',
+        linkText: 'CI workflows',
+    },
+    {
+        goal: 'Quickly evaluate YINI',
+        description:
+            'Try syntax examples and parsed output in the browser without installing anything.',
+        href: '/playground',
+        linkText: 'Playground',
+    },
+    {
+        goal: 'Look up YINI syntax quickly',
+        description:
+            'Review common syntax, values, sections, comments, and examples at a glance.',
+        href: '/refs/yini-cheat-sheet',
+        linkText: 'Cheat Sheet',
+    },
+]
+---
+
+<BaseLayout
+    headTitle="Use YINI"
+    headDescription="Choose how to use YINI in projects, terminals, CI workflows, or quick evaluation."
+    headRobots="noindex, follow"
+>
+    <section class="mx-auto max-w-4xl px-4 py-2">
+        <h1 class="mt-2 text-3xl font-semibold tracking-tight md:text-5xl">
+            Use YINI
+        </h1>
+        <p
+            class="mt-4 max-w-3xl text-base text-slate-700 md:text-lg dark:text-slate-300"
+        >
+            Choose the path that best matches what you want to do next. YINI can
+            be tried in the browser, parsed at runtime in software projects,
+            used from the terminal, or validated in CI workflows.
+        </p>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-4xl px-4">
+        <div
+            class="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700"
+        >
+            <div
+                class="hidden grid-cols-[1fr_1.35fr_auto] gap-4 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-800 md:grid dark:bg-slate-900 dark:text-slate-100"
+            >
+                <div>I want to...</div>
+                <div>Use this when...</div>
+                <div>Go to</div>
+            </div>
+
+            <div class="divide-y divide-slate-200 dark:divide-slate-700">
+                {
+                    usageOptions.map((option) => (
+                        <div class="grid gap-3 px-5 py-5 md:grid-cols-[1fr_1.35fr_auto] md:items-center">
+                            <h2 class="m-0 text-lg font-semibold text-slate-950 dark:text-slate-50">
+                                {option.goal}
+                            </h2>
+                            <p class="m-0 text-slate-700 dark:text-slate-300">
+                                {option.description}
+                            </p>
+                            <a
+                                href={option.href}
+                                class="inline-flex w-fit items-center rounded-md border border-sky-200 px-3 py-2 text-sm font-medium no-underline hover:bg-sky-50 dark:border-sky-800 dark:hover:bg-sky-950"
+                            >
+                                {option.linkText}
+                            </a>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Not sure where to start?</h2>
+        <ul>
+            <li>
+                <a href={CONFIG.siteLinks.hero.getStarted.url}
+                    >Get Started guide</a
+                ><br />
+                <p class="mt-2">
+                    Start with a short guided setup and how to parse your first
+                    config.
+                </p>
+            </li>
+            <li>
+                <a href={CONFIG.siteLinks.hero.tutorial.url}>Quick Tutorial</a
+                ><br />
+                <p class="mt-2">
+                    A short introduction to YINI syntax and validation.
+                </p>
+            </li>
+        </ul>
+    </section>
+</BaseLayout>

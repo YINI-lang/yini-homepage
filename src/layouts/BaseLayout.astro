@@ -51,6 +51,7 @@ function makeHtmlTitle(mainTitle: string, postTitle: string, maxLen = 60){
 const {
     headTitle, // optional per-page
     headDescription,
+    headRobots,
 } = Astro.props
 
 const postTitle = 'Clear and Structured Config Files'
@@ -70,6 +71,7 @@ const isDev = import.meta.env.DEV
         <meta name="subject" content="YINI configuration format">
 
         <meta name="description" content={headDescription} />
+        {headRobots && <meta name="robots" content={headRobots} />}
         <meta name="keywords" content="YINI config format, YINI language, configuration file format, INI alternative, YAML alternative, TOML alternative">
         <meta name="author" content={CONFIG.meta.author} />
 
