@@ -20,6 +20,7 @@ type ExamplePreset = {
     id: string
     label: string
     code: string
+    strict?: boolean
 }
 
 const EXAMPLE_PRESETS: ExamplePreset[] = [
@@ -61,6 +62,26 @@ ports = [80, 443, 8080]
 ^^ Logging
 level = "info"
 outputs = ["console", "file"]
+`,
+    },
+    {
+        id: 'strict',
+        label: 'Strict config',
+        strict: true,
+        code: `@yini strict
+
+^ Title
+name = "Production API"
+version = "1.0.0"
+features = ["auth", "metrics", "backups"]
+limits = { requests_per_minute: 1200, burst: 200 }
+
+^^ Server
+host = "0.0.0.0"
+port = 8080
+tls = true
+
+/END
 `,
     },
     {
@@ -258,12 +279,16 @@ export default function YiniPlayground() {
     const [error, setError] = useState<string>('')
     const [status, setStatus] = useState<ValidationStatus>('pending')
 
-    function parseNow(src = code, outputIndent = indentSize) {
+    function parseNow(
+        src = code,
+        outputIndent = indentSize,
+        strictMode = strict,
+    ) {
         setError('')
 
         try {
             const opts = {
-                strictMode: strict,
+                strictMode,
                 failLevel,
                 includeMetadata: true,
                 includeDiagnostics: true,
@@ -373,9 +398,12 @@ export default function YiniPlayground() {
         const example = EXAMPLE_PRESETS.find((item) => item.id === exampleId)
         if (!example) return
 
+        const nextStrict = example.strict ?? false
+
         setCode(example.code)
+        setStrict(nextStrict)
         setSelectedExampleId(example.id)
-        parseNow(example.code)
+        parseNow(example.code, indentSize, nextStrict)
     }
 
     const copy = async (text: string) => {
