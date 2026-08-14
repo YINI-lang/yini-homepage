@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import packageJson from '../../package.json'
+import CONFIG from '../config/conf.ts'
 import YINI from '../YiniWrapper.ts'
 
 const URL_ON_VALID_PARSE = '/playground-use-yini' // The destination page.
@@ -632,7 +633,16 @@ export default function YiniPlayground() {
                         <div className="mt-0 text-right text-xs text-slate-500 dark:text-slate-400">
                             <span
                                 title={`yini-parser-typescript: ${YINI_PARSER_VERSION}`}>
-                                yini-parser (TS): v{yiniParserVersion}
+                                yini-parser (TS): v{yiniParserVersion} (
+                                <a
+                                    href={
+                                        CONFIG.urls.external.gitHub.yiniParserTs
+                                    }
+                                    target="_blank"
+                                    rel="noreferrer noopener nofollow">
+                                    link ↗
+                                </a>
+                                )
                             </span>
                         </div>
                     </div>
