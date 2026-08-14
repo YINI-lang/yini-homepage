@@ -10,6 +10,16 @@ type FailLevel = 'auto' | 'ignore-errors'
 type IndentSize = 2 | 3 | 4 | 6 | 8
 type ValidationStatus = 'pending' | 'valid' | 'invalid'
 
+type ParseOptions = {
+    src?: string
+    outputMode?: OutputMode
+    outputIndent?: IndentSize
+    strictMode?: boolean
+    includeOutputMeta?: boolean
+    parserFailLevel?: FailLevel
+    revealUseYiniCta?: boolean
+}
+
 type DiagnosticIssue = {
     line?: number
     column?: number
@@ -271,6 +281,7 @@ export default function YiniPlayground() {
     const [code, setCode] = useState<string>(DEFAULT_SNIPPET)
     const [mode, setMode] = useState<OutputMode>('json')
     const [strict, setStrict] = useState(false)
+    const [autoParse, setAutoParse] = useState(true)
     const [includeMeta, setIncludeMeta] = useState(false)
     const [failLevel, setFailLevel] = useState<FailLevel>('auto')
     const [indentSize, setIndentSize] = useState<IndentSize>(2)
@@ -281,18 +292,23 @@ export default function YiniPlayground() {
     const [output, setOutput] = useState<string>('')
     const [error, setError] = useState<string>('')
     const [status, setStatus] = useState<ValidationStatus>('pending')
+    const [canShowUseYiniCta, setCanShowUseYiniCta] = useState(false)
 
-    function parseNow(
+    function parseNow({
         src = code,
+        outputMode = mode,
         outputIndent = indentSize,
         strictMode = strict,
-    ) {
+        includeOutputMeta = includeMeta,
+        parserFailLevel = failLevel,
+        revealUseYiniCta = true,
+    }: ParseOptions = {}) {
         setError('')
 
         try {
             const opts = {
                 strictMode,
-                failLevel,
+                failLevel: parserFailLevel,
                 includeMetadata: true,
                 includeDiagnostics: true,
                 requireDocTerminator: 'optional' as const,
@@ -305,13 +321,20 @@ export default function YiniPlayground() {
             const errorCount = meta?.diagnostics?.errors?.errorCount ?? 0
 
             setOutput(
-                buildOutput(mode, parsedData, meta, includeMeta, outputIndent),
+                buildOutput(
+                    outputMode,
+                    parsedData,
+                    meta,
+                    includeOutputMeta,
+                    outputIndent,
+                ),
             )
 
             if (errorCount > 0) {
                 setStatus('invalid')
+                setCanShowUseYiniCta(false)
                 const errors = meta?.diagnostics?.errors?.payload ?? []
-                if (failLevel !== 'ignore-errors') {
+                if (parserFailLevel !== 'ignore-errors') {
                     setError(
                         formatDiagnostics(
                             src,
@@ -322,11 +345,13 @@ export default function YiniPlayground() {
                 }
             } else {
                 setStatus('valid')
+                setCanShowUseYiniCta(revealUseYiniCta)
             }
         } catch (e: any) {
             setOutput('')
             setError(formatDiagnostics(src, [e], e?.message ?? String(e)))
             setStatus('invalid')
+            setCanShowUseYiniCta(false)
         }
     }
 
@@ -354,7 +379,11 @@ export default function YiniPlayground() {
             setCode(nextCode)
             setIndentSize(nextIndent)
             setSelectedExampleId(getExampleIdForCode(nextCode))
-            parseNow(nextCode, nextIndent)
+            parseNow({
+                src: nextCode,
+                outputIndent: nextIndent,
+                revealUseYiniCta: false,
+            })
         } catch {
             //
         }
@@ -383,12 +412,22 @@ export default function YiniPlayground() {
 
     function markPending() {
         setStatus('pending')
+        setCanShowUseYiniCta(false)
+    }
+
+    function parseAfterUserChange(options: ParseOptions = {}) {
+        if (autoParse) {
+            parseNow(options)
+            return
+        }
+
+        markPending()
     }
 
     function handleCodeChange(nextCode: string) {
         setCode(nextCode)
         setSelectedExampleId(getExampleIdForCode(nextCode))
-        markPending()
+        parseAfterUserChange({ src: nextCode })
     }
 
     function handleExampleChange(exampleId: string) {
@@ -400,7 +439,10 @@ export default function YiniPlayground() {
         setCode(example.code)
         setStrict(nextStrict)
         setSelectedExampleId(example.id)
-        parseNow(example.code, indentSize, nextStrict)
+        parseAfterUserChange({
+            src: example.code,
+            strictMode: nextStrict,
+        })
     }
 
     const copy = async (text: string) => {
@@ -432,7 +474,8 @@ export default function YiniPlayground() {
                             value={selectedExampleId}
                             onChange={(e) =>
                                 handleExampleChange(e.target.value)
-                            }>
+                            }
+                        >
                             {selectedExampleId === 'custom' && (
                                 <option value="custom">Custom</option>
                             )}
@@ -450,8 +493,11 @@ export default function YiniPlayground() {
                                 type="checkbox"
                                 checked={strict}
                                 onChange={(e) => {
-                                    setStrict(e.target.checked)
-                                    markPending()
+                                    const nextStrict = e.target.checked
+                                    setStrict(nextStrict)
+                                    parseAfterUserChange({
+                                        strictMode: nextStrict,
+                                    })
                                 }}
                             />
                             <span>Strict mode</span>
@@ -467,7 +513,9 @@ export default function YiniPlayground() {
                                 checked={mode === 'json'}
                                 onChange={() => {
                                     setMode('json')
-                                    markPending()
+                                    parseAfterUserChange({
+                                        outputMode: 'json',
+                                    })
                                 }}
                             />
                             <span>JSON</span>
@@ -481,7 +529,9 @@ export default function YiniPlayground() {
                                 checked={mode === 'pojo'}
                                 onChange={() => {
                                     setMode('pojo')
-                                    markPending()
+                                    parseAfterUserChange({
+                                        outputMode: 'pojo',
+                                    })
                                 }}
                             />
                             <span>POJO</span>
@@ -496,11 +546,15 @@ export default function YiniPlayground() {
                             className="rounded border border-slate-300 px-2 py-1 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
                             value={indentSize}
                             onChange={(e) => {
-                                setIndentSize(
-                                    Number(e.target.value) as IndentSize,
-                                )
-                                markPending()
-                            }}>
+                                const nextIndent = Number(
+                                    e.target.value,
+                                ) as IndentSize
+                                setIndentSize(nextIndent)
+                                parseAfterUserChange({
+                                    outputIndent: nextIndent,
+                                })
+                            }}
+                        >
                             <option value={2}>2 spaces</option>
                             <option value={3}>3 spaces</option>
                             <option value={4}>4 spaces</option>
@@ -515,7 +569,8 @@ export default function YiniPlayground() {
                         type="button"
                         className="btn btn-primary"
                         onClick={() => parseNow()}
-                        title="Parse (Ctrl/Cmd+Enter)">
+                        title="Parse (Ctrl/Cmd+Enter)"
+                    >
                         Parse
                     </button>
 
@@ -526,19 +581,23 @@ export default function YiniPlayground() {
                                 : status === 'invalid'
                                   ? 'font-medium text-red-700'
                                   : 'font-medium text-slate-600 dark:text-slate-300'
-                        }>
+                        }
+                    >
                         {status === 'valid'
-                            ? '✓ Valid YINI'
+                            ? 'Valid YINI'
                             : status === 'invalid'
-                              ? '✕ Invalid YINI'
+                              ? 'Invalid YINI'
                               : 'Ready to parse'}
                     </div>
 
-                    <a
-                        href={URL_ON_VALID_PARSE}
-                        className="btn btn-primary px-2 py-1 text-xs">
-                        Use YINI in your project -&gt;
-                    </a>
+                    {status === 'valid' && canShowUseYiniCta && (
+                        <a
+                            href={URL_ON_VALID_PARSE}
+                            className="btn btn-primary px-2 py-1 text-xs"
+                        >
+                            Use YINI in your project -&gt;
+                        </a>
+                    )}
                 </div>
 
                 <details className="ms-auto mt-3 w-fit text-sm text-slate-600 dark:text-slate-300">
@@ -550,10 +609,28 @@ export default function YiniPlayground() {
                         <label className="inline-flex items-center gap-2">
                             <input
                                 type="checkbox"
+                                checked={autoParse}
+                                onChange={(e) => {
+                                    const nextAutoParse = e.target.checked
+                                    setAutoParse(nextAutoParse)
+                                    if (nextAutoParse) {
+                                        parseNow()
+                                    }
+                                }}
+                            />
+                            <span>Auto parse</span>
+                        </label>
+
+                        <label className="inline-flex items-center gap-2">
+                            <input
+                                type="checkbox"
                                 checked={includeMeta}
                                 onChange={(e) => {
-                                    setIncludeMeta(e.target.checked)
-                                    markPending()
+                                    const nextIncludeMeta = e.target.checked
+                                    setIncludeMeta(nextIncludeMeta)
+                                    parseAfterUserChange({
+                                        includeOutputMeta: nextIncludeMeta,
+                                    })
                                 }}
                             />
                             <span>Include metadata</span>
@@ -565,9 +642,14 @@ export default function YiniPlayground() {
                                 className="rounded border border-slate-300 px-2 py-1 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
                                 value={failLevel}
                                 onChange={(e) => {
-                                    setFailLevel(e.target.value as FailLevel)
-                                    markPending()
-                                }}>
+                                    const nextFailLevel = e.target
+                                        .value as FailLevel
+                                    setFailLevel(nextFailLevel)
+                                    parseAfterUserChange({
+                                        parserFailLevel: nextFailLevel,
+                                    })
+                                }}
+                            >
                                 <option value="auto">auto</option>
                                 <option value="ignore-errors">
                                     ignore-errors
@@ -588,7 +670,8 @@ export default function YiniPlayground() {
                                 <button
                                     type="button"
                                     className="btn btn-outline px-2 py-1 text-xs"
-                                    onClick={() => copy(code)}>
+                                    onClick={() => copy(code)}
+                                >
                                     Copy
                                 </button>
                             </div>
@@ -614,7 +697,8 @@ export default function YiniPlayground() {
                                     type="button"
                                     className="btn btn-outline px-2 py-1 text-xs"
                                     onClick={() => copy(output)}
-                                    disabled={!output}>
+                                    disabled={!output}
+                                >
                                     Copy
                                 </button>
                             </div>
@@ -632,15 +716,17 @@ export default function YiniPlayground() {
 
                         <div className="mt-0 text-right text-xs text-slate-500 dark:text-slate-400">
                             <span
-                                title={`yini-parser-typescript: ${YINI_PARSER_VERSION}`}>
+                                title={`yini-parser-typescript: ${YINI_PARSER_VERSION}`}
+                            >
                                 yini-parser (TS): v{yiniParserVersion} (
                                 <a
                                     href={
                                         CONFIG.urls.external.gitHub.yiniParserTs
                                     }
                                     target="_blank"
-                                    rel="noreferrer noopener nofollow">
-                                    link ↗
+                                    rel="noreferrer noopener nofollow"
+                                >
+                                    link -&gt;
                                 </a>
                                 )
                             </span>

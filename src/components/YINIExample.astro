@@ -19,6 +19,7 @@ const playgroundTitle = canPrefillPlayground
                 class="yini-example__playground"
                 href={playgroundHref}
                 title={playgroundTitle}
+                onclick="trackYiniExampleToPlayground()"
             >
                 Playground
             </a>
@@ -39,6 +40,12 @@ const playgroundTitle = canPrefillPlayground
 </section>
 
 <script is:inline>
+    function trackYiniExampleToPlayground() {
+        window.plausible?.('Code Example to Playground', {
+            props: { kind: 'yini-example' },
+        })
+    }
+
     async function copyYiniExample(btn) {
         const text = btn?.dataset?.code ?? ''
         if (!text) return
