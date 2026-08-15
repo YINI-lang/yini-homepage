@@ -153,6 +153,10 @@
                 "about": {
                     "url": "/info/about-yini",
                     "title": "Who's behind YINI"
+                },
+                "assets": {
+                    "url": "/info/assets",
+                    "title": "Brand & Assets"
                 }
             }
         },
