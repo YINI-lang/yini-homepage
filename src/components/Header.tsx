@@ -32,7 +32,7 @@ type HeaderProps = {
 */
 function HeaderTagline({ mobile = false }: { mobile?: boolean }) {
     return (
-        <div className={mobile ? 'leading-tight' : 'mt-0.5 leading-tight'}>
+        <div className={mobile ? 'leading-tight' : '-mt-11 leading-tight'}>
             <div
                 className={
                     mobile
@@ -420,9 +420,11 @@ export default function Header({ isProd }: HeaderProps) {
                 {/* Logo. */}
                 <a href="/" aria-label="YINI home" className="logo m-1">
                     <img
-                        className="mx-auto block h-1/4 w-1/4"
-                        src="/gfx/YINI-logo-cyan-on-tr.png"
+                        className="mx-auto block h-auto w-[18rem] max-w-[70vw]"
+                        src="/gfx/YINI-logo-2026.png"
                         alt="YINI logo"
+                        width="288"
+                        height="101"
                         loading="eager"
                         decoding="async"
                     />
@@ -459,9 +461,11 @@ export default function Header({ isProd }: HeaderProps) {
                         aria-label="YINI home"
                         className="inline-flex items-center gap-3 no-underline">
                         <img
-                            className="h-8 w-auto"
-                            src="/gfx/YINI-logo-cyan-on-tr.png"
+                            className="h-14 w-auto"
+                            src="/gfx/YINI-logo-2026.png"
                             alt="YINI logo"
+                            width="160"
+                            height="56"
                             loading="eager"
                             decoding="async"
                         />

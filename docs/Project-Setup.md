@@ -35,7 +35,7 @@ Brief overview of the directory structure in this project:
 ```txt
 yini-lang.org/
 ├─ public/
-│  ├─ favicon.ico
+│  ├─ yini-favicon.ico
 │  ├─ site.webmanifest
 │  ├─ ...
 │  └─ robots.txt

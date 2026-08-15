@@ -1,0 +1,14 @@
+<svg width="800" height="280" viewBox="0 0 70 35" xmlns="http://www.w3.org/2000/svg">
+  <title>YINI Logo</title>
+  <desc>YINI configuration format logo - Y-shaped arrow with cyan wordmark, minimal padding</desc>
+  
+  <!-- Y-shaped arrow in sky blue -->
+  <g transform="translate(4, 8)">
+    <line x1="0" y1="0" x2="-5.5" y2="5.5" stroke="#0284C7" stroke-width="2" stroke-linecap="round" />
+    <line x1="0" y1="0" x2="5.5" y2="5.5" stroke="#0284C7" stroke-width="2" stroke-linecap="round" />
+    <line x1="0" y1="5.5" x2="0" y2="14" stroke="#0284C7" stroke-width="2" stroke-linecap="round" />
+  </g>
+  
+  <!-- YINI text in cyan -->
+  <text x="13" y="23.5" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="500" fill="#06B6D4">YINI</text>
+</svg>
