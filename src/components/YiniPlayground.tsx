@@ -461,9 +461,13 @@ export default function YiniPlayground() {
                 </h1>
 
                 <p className="mt-2 text-slate-600 dark:text-slate-300">
-                    Paste YINI on the left, see parsed output on the right.
-                    Toggle strict mode, and choose <strong>JSON</strong> or{' '}
-                    <strong>POJO</strong> (plain JavaScript object).
+                    Paste or write YINI on the left, see parsed output live on
+                    the right. Toggle strict mode, and choose{' '}
+                    <strong>JSON</strong> or <strong>POJO</strong> (plain
+                    JavaScript object).
+                    <br />
+                    This playground uses the official TypeScript/Node.js
+                    <code>yini-parser</code>.
                 </p>
 
                 <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
@@ -474,8 +478,7 @@ export default function YiniPlayground() {
                             value={selectedExampleId}
                             onChange={(e) =>
                                 handleExampleChange(e.target.value)
-                            }
-                        >
+                            }>
                             {selectedExampleId === 'custom' && (
                                 <option value="custom">Custom</option>
                             )}
@@ -553,8 +556,7 @@ export default function YiniPlayground() {
                                 parseAfterUserChange({
                                     outputIndent: nextIndent,
                                 })
-                            }}
-                        >
+                            }}>
                             <option value={2}>2 spaces</option>
                             <option value={3}>3 spaces</option>
                             <option value={4}>4 spaces</option>
@@ -569,8 +571,7 @@ export default function YiniPlayground() {
                         type="button"
                         className="btn btn-primary"
                         onClick={() => parseNow()}
-                        title="Parse (Ctrl/Cmd+Enter)"
-                    >
+                        title="Parse (Ctrl/Cmd+Enter)">
                         Parse
                     </button>
 
@@ -581,8 +582,7 @@ export default function YiniPlayground() {
                                 : status === 'invalid'
                                   ? 'font-medium text-red-700'
                                   : 'font-medium text-slate-600 dark:text-slate-300'
-                        }
-                    >
+                        }>
                         {status === 'valid'
                             ? 'Valid YINI'
                             : status === 'invalid'
@@ -593,8 +593,7 @@ export default function YiniPlayground() {
                     {status === 'valid' && canShowUseYiniCta && (
                         <a
                             href={URL_ON_VALID_PARSE}
-                            className="btn btn-primary px-2 py-1 text-xs"
-                        >
+                            className="btn btn-primary px-2 py-1 text-xs">
                             Use YINI in your project -&gt;
                         </a>
                     )}
@@ -648,8 +647,7 @@ export default function YiniPlayground() {
                                     parseAfterUserChange({
                                         parserFailLevel: nextFailLevel,
                                     })
-                                }}
-                            >
+                                }}>
                                 <option value="auto">auto</option>
                                 <option value="ignore-errors">
                                     ignore-errors
@@ -670,8 +668,7 @@ export default function YiniPlayground() {
                                 <button
                                     type="button"
                                     className="btn btn-outline px-2 py-1 text-xs"
-                                    onClick={() => copy(code)}
-                                >
+                                    onClick={() => copy(code)}>
                                     Copy
                                 </button>
                             </div>
@@ -697,8 +694,7 @@ export default function YiniPlayground() {
                                     type="button"
                                     className="btn btn-outline px-2 py-1 text-xs"
                                     onClick={() => copy(output)}
-                                    disabled={!output}
-                                >
+                                    disabled={!output}>
                                     Copy
                                 </button>
                             </div>
@@ -716,17 +712,15 @@ export default function YiniPlayground() {
 
                         <div className="mt-0 text-right text-xs text-slate-500 dark:text-slate-400">
                             <span
-                                title={`yini-parser-typescript: ${YINI_PARSER_VERSION}`}
-                            >
-                                yini-parser (TS): v{yiniParserVersion} (
+                                title={`yini-parser-typescript: ${YINI_PARSER_VERSION}`}>
+                                yini-parser (TypeScript): v{yiniParserVersion} (
                                 <a
                                     href={
                                         CONFIG.urls.external.gitHub.yiniParserTs
                                     }
                                     target="_blank"
-                                    rel="noreferrer noopener nofollow"
-                                >
-                                    link -&gt;
+                                    rel="noreferrer noopener nofollow">
+                                    repo ↗
                                 </a>
                                 )
                             </span>
