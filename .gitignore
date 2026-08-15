@@ -7,7 +7,8 @@ node_modules
 .astro
 *.log
 
-*.log
+.chrome-codex-profile
+.chrome-codex-profile-2
 
 *.local
 
