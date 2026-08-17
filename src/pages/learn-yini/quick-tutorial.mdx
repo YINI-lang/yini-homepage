@@ -1,6 +1,6 @@
 ---
 title: 'Quick Tutorial: YINI'
-description: A 5-minute hands-on tutorial — write and validate your first YINI data file (text-based). It is suitable for configuration files, application settings, and general data-storage use cases.
+description: A 5-minute hands-on tutorial — write a small YINI file, understand its basic structure, and validate it.
 ---
 
 import CONFIG from '../../config/conf'
@@ -10,19 +10,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 # Quick Tutorial: YINI Basics
 
-YINI makes data-files (such as configuration files and application settings) readable for humans _and_ consistent for machines — like INI, but with **real structure**, lists (arrays), objects, and comments.
+YINI makes data files readable for people and easy for programs to read.
+It is like INI, but with **real structure**, lists, objects, and comments.
 
-This short tutorial covers the basics of the YINI format and how to validate your configuration.
+This short tutorial helps you understand the basic shape of a YINI file
+and how to validate (check that the file is valid YINI).
 
 ## 1) What is YINI (in one line)?
 
-A human-friendly config format (like INI) **with real structure**: sections, clear nested sections, arrays, objects, and unambiguous, predictable rules.
+A human-friendly config format with sections, settings, nested sections,
+lists, objects, comments, and clear rules.
 
 ---
 
 ## 2) Create your first file
 
-Make a file named **`config3.yini`** and paste:
+Make a file named **`tutorial.yini`** and paste:
 
 ```yini
 ^ App
@@ -45,20 +48,50 @@ and parse it in the browser.
 
 ### 💡 What's happening
 
-- `^` starts a section. More carets = nested section (`^^ Logging` is inside `Server`).
+- `^` starts a section.
+- More carets create nested sections. Here, `^^ Logging` is inside
+  `Server`.
 - `key = value` defines a setting.
-- Lists (arrays): `[1, 2, 3]`, objects: `{ key: "value" }`.
-- Comments: `//` or `#`; no whitespace is required after `#`.
-- Want more of YINI's syntax and structure? Read [Learn the YINI Format](/learn-yini/learn-yini-config-format).
+- Lists look like this: `[1, 2, 3]`.
+- Objects look like this: `{ key: "value" }`.
+- Comments start with `//` or `#`. You do not need a space after `#`.
+
+## 3) What structure does this create?
+
+The example creates two top-level sections: `App` and `Server`.
+The `Logging` section is nested inside `Server`.
+
+That structure looks like this as data:
+
+```json
+{
+    "App": {
+        "name": "Demo",
+        "version": "1.0.0",
+        "features": ["search", "dark-mode"]
+    },
+    "Server": {
+        "host": "0.0.0.0",
+        "port": 8080,
+        "Logging": {
+            "enabled": false
+        }
+    }
+}
+```
+
+For a fuller syntax guide, read
+[Learn the YINI Format](/learn-yini/learn-yini-config-format).
 
 ---
 
-## 3) Validate your config (in CLI)
+## 4) Validate your config with the CLI
 
-In your terminal or command line (from the same folder as your file), run:
+To validate (check that the file is valid YINI), run this command from the
+same folder as your file:
 
 ```bash
-npx yini-cli validate ./config3.yini
+npx yini-cli validate ./tutorial.yini
 ```
 
 You should see something like:
@@ -68,7 +101,7 @@ You should see something like:
 ```
 
 If YINI reports 0 errors, 0 warnings, everything's fine.
-A non-zero exit code means something went wrong.
+A failed validation means something needs to be fixed in the file.
 
 ### More commands and options
 
@@ -78,11 +111,13 @@ To explore more commands and options, run:
 npx yini-cli --help
 ```
 
-If you want a fuller introduction, examples, and common commands, see the [YINI CLI page](/tools/yini-cli/).
+For more command examples and options, see the
+[YINI CLI page](/tools/yini-cli/).
 
-## 4) Load YINI in your app
+## Optional: Load YINI in your app
 
-If you want to use YINI at runtime in your app you may use the [Node.js YINI parser](/tools/yini-parser-ts) or [Python YINI parser](/tools/yini-parser-python), you can load the same file as native objects.
+If you want to use YINI in an app, use a parser. For Node.js, install the
+[YINI Parser](/tools/yini-parser-ts):
 
 ```bash
 npm install yini-parser
@@ -91,20 +126,24 @@ npm install yini-parser
 ```ts
 import YINI from 'yini-parser'
 
-const config = YINI.parseFile('./config3.yini')
+const config = YINI.parseFile('./tutorial.yini')
 
 console.log(config.App.name)
 console.log(config.Server.host)
 ```
 
-## 5) npm script
+There is also a [Python parser](/tools/yini-parser-python) for Python
+projects.
 
-Use this in **[CI](/use-yini/ci-with-yini-cli)** to catch config mistakes early:
+## Optional: Add an npm script
+
+You can add a script to your Node.js project to check the file again later.
+This is also useful in **[CI](/use-yini/ci-with-yini-cli)**.
 
 ```js
 {
   "scripts": {
-    "config:check": "npx yini-cli validate ./config3.yini"
+    "config:check": "npx yini-cli validate ./tutorial.yini"
   }
 }
 ```
@@ -137,13 +176,12 @@ That's the basics.
 
 ## Next Steps
 
-- ➡️ [Get Started](/use-yini/get-started)  
-  _Installation and CLI usage overview._
-- ➡️ [YINI Examples](/learn-yini/examples)  
-  _Shows YINI configuration examples._
-- 📖 [Learn the YINI format](/learn-yini/learn-yini-config-format)  
-  _10–15 minute introduction to YINI format's syntax and structure._
+- ➡️ [YINI Playground](/playground)  
+  _Try YINI right in the browser, no install._
+- ➡️ [Learn the YINI format](/learn-yini/learn-yini-config-format)  
+  _A deeper guide to syntax and structure._
 
-YINI is designed to stay simple and structured — explore it and see whether it fits your use case.
+YINI is designed to stay simple and structured. Try a few examples and see
+whether it fits your use case.
 
 </BaseLayout>
