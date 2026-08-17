@@ -341,6 +341,15 @@ export default function Header({ isProd }: HeaderProps) {
                         <li>
                             <a
                                 href={
+                                    CONFIG.siteLinks.navMenu.tools.yiniCli.url
+                                }
+                                className={cssClasses}>
+                                YINI CLI
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
                                     CONFIG.siteLinks.navMenu.useYini.yiniParsers
                                         .url
                                 }
