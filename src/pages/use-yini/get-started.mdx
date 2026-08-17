@@ -13,8 +13,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 Welcome! This guide helps you create your **first working `.yini` file** in
 under 2 minutes using the terminal.
 
-YINI is a human-friendly configuration file format inspired by INI,
-extended with nested sections, arrays, objects, and comments.
+YINI is a human-friendly configuration file format. It is inspired by
+INI, but adds nested sections, arrays, objects, and comments.
 
 If you want to try YINI without installing anything, use the
 [YINI Playground](/playground). This page focuses on the
@@ -23,7 +23,7 @@ local files and automation.
 
 ## Prerequisite: Node.js
 
-Node.js is required to run the YINI command-line (CLI) tool.
+You need Node.js to run the YINI command-line (CLI) tool.
 
 You can check if Node.js is already installed by running:
 
@@ -46,7 +46,7 @@ It's recommended to use **Node.js 20 or later**.
 npx yini-cli --help
 ```
 
-**Option B - enable yini CLI globally**
+**Option B - install `yini` as a command**
 
 ```bash
 npm i -g yini-cli
@@ -58,7 +58,7 @@ npm i -g yini-cli
 npm i -D yini-cli
 ```
 
-By default, `yini parse` prints formatted JSON to the terminal.
+By default, `yini parse` prints formatted (easy-to-read) JSON to the terminal.
 
 If you want a fuller introduction, examples, and common commands, see the
 [YINI CLI page](/tools/yini-cli/).
@@ -83,19 +83,19 @@ Save this as `config.yini`:
 
 **Notes:**
 
-- **Sections:** start with `^`. Add more carets for nesting
+- **Sections:** start with `^`. Add more carets for nested sections
   (sub-sections): (`^`, `^^`, `^^^`, ...).
-- **Members:** written as `key = value` pairs.
-- **Comments:** Use `//` or `#` for inline comments; no whitespace is
-  required after `#`.
+- **Settings:** written as `key = value` pairs.
+- **Comments:** Use `//` or `#` for comments on the same line. You do
+  not need a space after `#`.
 - **Arrays:** `[1, 2, 'three']`
 - **Objects:** `{ key: 'value', n: 1 }`
 - **Strings:** must be quoted `'like this'` or `"like this"`.
 - For more details, see:
   [Learn the YINI format](../learn-yini/learn-yini-config-format).
 
-Coming from INI? YINI keeps the same familiar key-value style but adds
-nesting, lists, and objects without changing how basic configs look.
+Coming from INI? YINI keeps the same familiar key-value style, but adds
+nested sections, lists, and objects.
 
 ## 3) Parse your `.yini` file
 
@@ -113,7 +113,7 @@ Or, if you used **option B or C** (using npm) in step 1:
 yini parse config.yini
 ```
 
-By default, `parse` outputs formatted JSON:
+By default, `parse` outputs formatted (easy-to-read) JSON:
 
 ```json
 {
@@ -134,27 +134,28 @@ By default, `parse` outputs formatted JSON:
 
 You have now created a `.yini` file and parsed it to JSON.
 
-The core flow is:
+The basic steps are:
 
-- Create a structured `.yini` file.
+- Create a `.yini` file with sections and settings.
 - Run `yini parse` or `npx yini-cli parse`.
 - Use the JSON output in tools, scripts, or applications.
 
 💡 Common tips:
 
-- Keys and section names are case-sensitive.
+- Keys and section names are case-sensitive: `App` and `app` are
+  different names.
 - Strings must always be quoted, either `'` or `"`.
 
 ---
 
 ## More CLI options
 
-Once the basic parse works, you can adjust the output style or write the
+Once the basic parse works, you can change the output style or write the
 result to a file.
 
 ### Compact JSON
 
-To output minified JSON with no extra whitespace:
+To output minified JSON with no extra spaces or line breaks:
 
 ```bash
 yini parse config.yini --compact
@@ -170,7 +171,7 @@ yini parse config.yini --js
 
 ### Explicit JSON output
 
-Formatted JSON is the default, but you can request it explicitly:
+Formatted (easy-to-read) JSON is the default, but you can also request it with a flag:
 
 ```bash
 yini parse config.yini --json
@@ -184,13 +185,13 @@ To save the result:
 yini parse config.yini -o output.json
 ```
 
-YINI CLI avoids accidentally replacing newer output files by default. For
-the full output and overwrite option reference, see the
+By default, YINI CLI does not replace a newer output file by mistake. For
+the full list of output and file-writing options, see the
 [YINI CLI page](/tools/yini-cli/).
 
 ## Use YINI in other ways
 
-You can use YINI beyond this first CLI flow:
+You can use YINI after this first CLI flow:
 
 - Try examples in the [YINI Playground](/playground) without installing
   anything.
@@ -200,7 +201,7 @@ You can use YINI beyond this first CLI flow:
 - Use YINI for configuration, data files, tooling, and
   [CI workflows](/use-yini/ci-with-yini-cli).
 
-You can explore more tools and integrations on the
+You can explore more tools on the
 [Get YINI Tools](../use-yini/get-yini-tools) page.
 
 ---
