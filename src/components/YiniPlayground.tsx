@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import packageJson from '../../package.json'
 import CONFIG from '../config/conf.ts'
 import YINI from '../YiniWrapper.ts'
@@ -112,6 +112,7 @@ const DEFAULT_SNIPPET = EXAMPLE_PRESETS[0].code
 const LEGACY_LS_CODE_KEY = 'yini:playground:code'
 const LS_INDENT_KEY = 'yini:playground:indent-size'
 const YINI_PARSER_VERSION = packageJson.dependencies['yini-parser']
+const AUTO_PARSE_DELAY_MS = 250
 
 function isIndentSize(value: unknown): value is IndentSize {
     return (
@@ -278,6 +279,9 @@ function formatDiagnostics(
 }
 
 export default function YiniPlayground() {
+    const autoParseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+        null,
+    )
     const [code, setCode] = useState<string>(DEFAULT_SNIPPET)
     const [mode, setMode] = useState<OutputMode>('json')
     const [strict, setStrict] = useState(false)
@@ -355,6 +359,15 @@ export default function YiniPlayground() {
         }
     }
 
+    function clearScheduledAutoParse() {
+        if (!autoParseTimerRef.current) {
+            return
+        }
+
+        clearTimeout(autoParseTimerRef.current)
+        autoParseTimerRef.current = null
+    }
+
     useEffect(() => {
         try {
             localStorage.removeItem(LEGACY_LS_CODE_KEY)
@@ -399,9 +412,14 @@ export default function YiniPlayground() {
     }, [indentSize])
 
     useEffect(() => {
+        return () => clearScheduledAutoParse()
+    }, [])
+
+    useEffect(() => {
         function onKey(e: KeyboardEvent) {
             if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
                 e.preventDefault()
+                clearScheduledAutoParse()
                 parseNow()
             }
         }
@@ -416,6 +434,8 @@ export default function YiniPlayground() {
     }
 
     function parseAfterUserChange(options: ParseOptions = {}) {
+        clearScheduledAutoParse()
+
         if (autoParse) {
             parseNow(options)
             return
@@ -424,10 +444,25 @@ export default function YiniPlayground() {
         markPending()
     }
 
+    function scheduleParseAfterInput(options: ParseOptions = {}) {
+        clearScheduledAutoParse()
+
+        if (!autoParse) {
+            markPending()
+            return
+        }
+
+        markPending()
+        autoParseTimerRef.current = setTimeout(() => {
+            autoParseTimerRef.current = null
+            parseNow(options)
+        }, AUTO_PARSE_DELAY_MS)
+    }
+
     function handleCodeChange(nextCode: string) {
         setCode(nextCode)
         setSelectedExampleId(getExampleIdForCode(nextCode))
-        parseAfterUserChange({ src: nextCode })
+        scheduleParseAfterInput({ src: nextCode })
     }
 
     function handleExampleChange(exampleId: string) {
@@ -460,15 +495,24 @@ export default function YiniPlayground() {
                     YINI Playground
                 </h1>
 
-                <p className="mt-2 text-slate-600 dark:text-slate-300">
-                    Paste or write YINI on the left, see parsed output live on
-                    the right. Toggle strict mode, and choose{' '}
-                    <strong>JSON</strong> or <strong>POJO</strong> (plain
-                    JavaScript object).
-                    <br />
-                    This playground uses the official TypeScript/Node.js&nbsp;
-                    <code>yini-parser</code>.
-                </p>
+                <div className="mt-2 text-slate-600 dark:text-slate-300">
+                    <p>
+                        Paste or write YINI on the left, see parsed output live
+                        on the right. Toggle strict mode, and choose{' '}
+                        <strong>JSON</strong> or <strong>POJO</strong> (plain
+                        JavaScript object).
+                        <br />
+                        This playground uses the official TypeScript/Node.js
+                        &nbsp;<code>yini-parser</code>.
+                    </p>
+                    <p className="mt-1 text-right text-sm">
+                        <span aria-hidden="true">&#128161;</span> Quick syntax
+                        reference:{' '}
+                        <a href="/refs/yini-cheat-sheet">YINI Cheat Sheet</a>.
+                    </p>
+                </div>
+
+                <hr className="mt-3 mb-0" />
 
                 <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
                     <label className="inline-flex items-center gap-2">
@@ -570,7 +614,10 @@ export default function YiniPlayground() {
                     <button
                         type="button"
                         className="btn btn-primary"
-                        onClick={() => parseNow()}
+                        onClick={() => {
+                            clearScheduledAutoParse()
+                            parseNow()
+                        }}
                         title="Parse (Ctrl/Cmd+Enter)">
                         Parse
                     </button>
@@ -611,6 +658,7 @@ export default function YiniPlayground() {
                                 checked={autoParse}
                                 onChange={(e) => {
                                     const nextAutoParse = e.target.checked
+                                    clearScheduledAutoParse()
                                     setAutoParse(nextAutoParse)
                                     if (nextAutoParse) {
                                         parseNow()
