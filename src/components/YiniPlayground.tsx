@@ -466,7 +466,7 @@ export default function YiniPlayground() {
                     <strong>JSON</strong> or <strong>POJO</strong> (plain
                     JavaScript object).
                     <br />
-                    This playground uses the official TypeScript/Node.js
+                    This playground uses the official TypeScript/Node.js&nbsp;
                     <code>yini-parser</code>.
                 </p>
 
