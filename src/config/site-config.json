@@ -22,6 +22,7 @@
             "YINI — Clean, Calm Configuration for Complex Systems",
             "YINI — A human-friendly, text-based configuration format that stays clear and predictable."
         ],
+        "heroCredibilityLine": "Open source · Formal specification · TypeScript & Python parsers · CLI",
         "tagLine": "Human-readable configuration files with clear structure and predictable parsing.",
         "elevatorPitch": "YINI is a human-friendly, INI-inspired text-based configuration format for software projects: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage.",
         "mainPage": {

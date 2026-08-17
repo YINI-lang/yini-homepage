@@ -1,6 +1,6 @@
 ---
 // src/pages/what-is-yini-and-why.astro
-import GitHubSocialProof from '../../components/GitHubSocialProof.astro'
+// import GitHubSocialProof from '../../components/GitHubSocialProof.astro'
 import CONFIG from '../../config/conf'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 
@@ -26,6 +26,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
         </h1>
 
         <!-- <GitHubSocialProof /> -->
+
+        <div class="mb-8 text-sm font-medium tracking-[0.06em] text-slate-500">
+            {CONFIG.text.heroCredibilityLine}
+        </div>
 
         <p class="my-6 text-base md:text-lg">
             {/* HERO: Elevator pitch */}
