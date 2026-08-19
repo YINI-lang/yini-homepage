@@ -1,0 +1,8 @@
+^ App
+name = "Demo App"
+tags = ["web", "api", "v1"]
+ports = [80, 443, 8080]
+
+^^ Logging
+level = "info"
+outputs = ["console", "file"]

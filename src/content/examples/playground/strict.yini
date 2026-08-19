@@ -1,0 +1,14 @@
+@yini strict
+
+^ Title
+name = "Production API"
+version = "1.0.0"
+features = ["auth", "metrics", "backups"]
+limits = { requests_per_minute: 1200, burst: 200 }
+
+^^ Server
+host = "0.0.0.0"
+port = 8080
+tls = true
+
+/END

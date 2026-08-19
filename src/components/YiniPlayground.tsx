@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import packageJson from '../../package.json'
 import CONFIG from '../config/conf.ts'
+import appExample from '../content/examples/playground/app.yini?raw'
+import invalidExample from '../content/examples/playground/invalid.invalid.yini?raw'
+import listsAndSectionsExample from '../content/examples/playground/lists-and-sections.yini?raw'
+import serviceExample from '../content/examples/playground/service.yini?raw'
+import strictExample from '../content/examples/playground/strict.yini?raw'
 import YINI from '../YiniWrapper.ts'
 
 const URL_ON_VALID_PARSE = '/playground-use-yini' // The destination page.
@@ -40,70 +45,28 @@ const EXAMPLE_PRESETS: ExamplePreset[] = [
     {
         id: 'app',
         label: 'App config',
-        code: `^ App
-name = "Demo"
-version = "1.0.0"
-port = 8080
-features = ["search", "dark-mode"]
-`,
+        code: appExample,
     },
     {
         id: 'service',
         label: 'Service config',
-        code: `^ Service
-name = "api"
-environment = "production"
-
-^^ Server
-host = "0.0.0.0"
-port = 8080
-
-^^ Database
-host = "localhost"
-port = 5432
-auth = { user: "admin", pass: "secret" }
-`,
+        code: serviceExample,
     },
     {
         id: 'lists',
         label: 'Lists and sections',
-        code: `^ App
-name = "Demo App"
-tags = ["web", "api", "v1"]
-ports = [80, 443, 8080]
-
-^^ Logging
-level = "info"
-outputs = ["console", "file"]
-`,
+        code: listsAndSectionsExample,
     },
     {
         id: 'strict',
         label: 'Strict config',
         strict: true,
-        code: `@yini strict
-
-^ Title
-name = "Production API"
-version = "1.0.0"
-features = ["auth", "metrics", "backups"]
-limits = { requests_per_minute: 1200, burst: 200 }
-
-^^ Server
-host = "0.0.0.0"
-port = 8080
-tls = true
-
-/END
-`,
+        code: strictExample,
     },
     {
         id: 'invalid',
         label: 'Invalid example',
-        code: `^ App
-name = "Demo"
-port = error
-`,
+        code: invalidExample,
     },
 ]
 
