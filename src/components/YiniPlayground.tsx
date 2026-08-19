@@ -41,6 +41,13 @@ type ExamplePreset = {
     strict?: boolean
 }
 
+/*
+ For conversion, the Playground should rather focus on only one thing: To help
+ users try YINI quickly and understand it. Due to it is believed that too many
+ presets add unnecessary choices can make the starting point less clear.
+
+ Try keeping the Playground to 5–7 presets max.
+ */
 const EXAMPLE_PRESETS: ExamplePreset[] = [
     {
         id: 'app',
@@ -242,9 +249,7 @@ function formatDiagnostics(
 }
 
 export default function YiniPlayground() {
-    const autoParseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
-        null,
-    )
+    const autoParseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
     const [code, setCode] = useState<string>(DEFAULT_SNIPPET)
     const [mode, setMode] = useState<OutputMode>('json')
     const [strict, setStrict] = useState(false)

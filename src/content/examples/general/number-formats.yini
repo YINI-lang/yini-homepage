@@ -2,33 +2,51 @@
 # Numeric literals and where they're useful.
 
 ^ Numbers
-    # Integers
-    retries = 3
-    max_connections = 200
-    timeout_seconds = 60
 
-    # Floats
-    ratio = 0.75
-    threshold = 1.25
-    pi = 3.14159
+^^ Decimal
+integer = 42
+positive_integer = +42
+negative_integer = -12
+zero = 0
 
-    # Negatives
-    offset = -12
-    temperature_c = -7.5
+^^ Floats
+ratio = 0.75
+threshold = 1.25
+temperature_c = -7.5
+signed_decimal = +12.5
 
-    # Underscore separators (readability)
-    big_int = 1000000
-    bytes = 16384
-    price = 12345.67
+^^ Exponents
+large = 3e4
+precise = 1.23e4
+small = 1e-6
+explicit_plus = 6.022e+23
+grouped_exponent = 1.5e1_0
 
-    # Hex (often used for colors, bitmasks, ids)
-    primary_color = 0x336699
-    feature_mask = 0x1F
+^^ DigitSeparators
+big_int = 1_000_000
+bytes = 16_384
+price = 12_345.67
+precise_decimal = 1_000.5_25
 
-    # Scientific notation (when specs/data use it)
-    avogadro = 6.022e23
-    small = 1e-6
+^^ Binary
+permissions = 0b1101
+grouped_bits = 0b1111_0001
+alt_binary = %1010
+alt_binary_grouped = %_1010
 
-    # Edge-ish values (still normal numbers)
-    zero = 0
-    one = 1
+^^ Octal
+file_mode = 0o755
+grouped_octal = 0o755_644
+
+^^ Duodecimal
+base_twelve = 0z2EX9
+base_twelve_alt_digits = 0z2BA9
+grouped_duodecimal = 0z_2EX9
+
+^^ Hexadecimal
+primary_color = 0x336699
+feature_mask = 0x1F
+grouped_hex = 0xCAFE_BABE
+hex_color = hex:FFAA00
+hex_color_grouped = hex:_FF_AA_00
+uppercase_hex_prefix = HEX:FA90

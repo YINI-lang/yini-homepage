@@ -1,0 +1,12 @@
+# boolean-literals.yini
+# Boolean literals are case-insensitive.
+
+^ FeatureFlags
+search = true
+dark_mode = ON
+new_checkout = YES
+
+^^ DisabledFeatures
+legacy_api = false
+debug_toolbar = OFF
+beta_banner = NO

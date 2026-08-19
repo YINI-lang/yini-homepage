@@ -1,0 +1,21 @@
+# section-marker-separators.yini
+# Underscores can separate repeated section markers for readability.
+# They do not change the section depth.
+
+^ Platform
+name = "Example Cloud"
+
+^^ Services
+count = 2
+
+^^^ Public
+enabled = true
+
+^^_^^ API
+name = "public-api"
+
+^^_^^_^ Routes
+health_check = "/health"
+
+^^_^^_^^ Auth
+provider = "internal"
