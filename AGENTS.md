@@ -296,6 +296,11 @@ Preserve the existing structure, navigation, links, analytics, metadata, sitemap
 
 When changing navigation, check both top navigation and side navigation for consistency.
 
+### Analytics
+
+Analytics must never be tracked during local development or preview. Always ensure that site statistics and analytics services, such as Plausible, Umami, Google Analytics, and similar tracking scripts, are loaded only on the production site (`yini-lang.org` / `www.yini-lang.org`) and never when browsing locally, including via `localhost`, loopback/LAN addresses, or when serving a production
+build locally with `npm run preview`.
+
 ### Visual Style
 
 Preserve the YINI visual identity.

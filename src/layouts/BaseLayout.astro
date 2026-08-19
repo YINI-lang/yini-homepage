@@ -75,35 +75,62 @@ const isDev = import.meta.env.DEV
         <meta name="keywords" content="YINI config format, YINI language, configuration file format, INI alternative, YAML alternative, TOML alternative">
         <meta name="author" content={CONFIG.meta.author} />
 
-        {isProd && (
-            <>
-                <!-- Analytics by Plausible -->
-                <script async src="https://plausible.io/js/pa-oOVpT9K5-vDjwbxRX_5n4.js"></script>
-                <script>
-                window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-                plausible.init()
-                </script>
+        <script is:inline>
+            function loadYiniAnalytics() {
+                const analyticsHosts = new Set([
+                    'yini-lang.org',
+                    'www.yini-lang.org',
+                ])
 
-                <!-- Google tag (gtag.js) -->
-                <script
-                    async
-                    src="https://www.googletagmanager.com/gtag/js?id=G-BMK7JS36XR"
-                ></script>
-                <script is:inline>
-                    window.dataLayer = window.dataLayer || []
-                    function gtag() {
-                        dataLayer.push(arguments)
+                window.yiniAnalyticsEnabled = analyticsHosts.has(
+                    window.location.hostname,
+                )
+
+                if (!window.yiniAnalyticsEnabled) return
+
+                const plausibleScript = document.createElement('script')
+                plausibleScript.async = true
+                plausibleScript.src =
+                    'https://plausible.io/js/pa-oOVpT9K5-vDjwbxRX_5n4.js'
+                document.head.appendChild(plausibleScript)
+
+                window.plausible =
+                    window.plausible ||
+                    function () {
+                        const queue = window.plausible.q || []
+                        queue.push(arguments)
+                        window.plausible.q = queue
                     }
-                    gtag('js', new Date())
+                window.plausible.init =
+                    window.plausible.init ||
+                    function (options) {
+                        window.plausible.o = options || {}
+                    }
+                window.plausible.init()
 
-                    gtag('config', 'G-BMK7JS36XR')
-                </script>
-            </>
-        )}
+                const gtagScript = document.createElement('script')
+                gtagScript.async = true
+                gtagScript.src =
+                    'https://www.googletagmanager.com/gtag/js?id=G-BMK7JS36XR'
+                document.head.appendChild(gtagScript)
 
-        {isProd && (
-            <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="fc9fad19-a82f-429a-a0b5-d2376198c87d"></script>
-        )}
+                window.dataLayer = window.dataLayer || []
+                window.gtag = function () {
+                    window.dataLayer.push(arguments)
+                }
+                window.gtag('js', new Date())
+                window.gtag('config', 'G-BMK7JS36XR')
+
+                const umamiScript = document.createElement('script')
+                umamiScript.defer = true
+                umamiScript.src = 'https://cloud.umami.is/script.js'
+                umamiScript.dataset.websiteId =
+                    'fc9fad19-a82f-429a-a0b5-d2376198c87d'
+                document.head.appendChild(umamiScript)
+            }
+
+            loadYiniAnalytics()
+        </script>
 
         <!-- Optional theme colors -->
         <meta name="theme-color" content="#111827" />
@@ -428,6 +455,8 @@ const isDev = import.meta.env.DEV
 
         <script is:inline>
             function trackClick(eventName, props = {}) {
+                if (!window.yiniAnalyticsEnabled) return
+
                 // Plausible
                 if (window.plausible) {
                     plausible(eventName, { props })
@@ -447,7 +476,10 @@ const isDev = import.meta.env.DEV
                 if (selection && selection.length > 4) {
                     trackClick('TextCopied', { length: selection.length })
 
-                    if (typeof gtag === "function") {
+                    if (
+                        window.yiniAnalyticsEnabled &&
+                        typeof gtag === "function"
+                    ) {
                         gtag('event', 'copy_code', {
                             content_length: selection.length
                         })

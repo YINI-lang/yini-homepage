@@ -41,6 +41,8 @@ const playgroundTitle = canPrefillPlayground
 
 <script is:inline>
     function trackYiniExampleToPlayground() {
+        if (!window.yiniAnalyticsEnabled) return
+
         window.plausible?.('Code Example to Playground', {
             props: { kind: 'yini-example' },
         })
@@ -68,9 +70,11 @@ const playgroundTitle = canPrefillPlayground
             }
 
             // Track event (safe if Plausible not loaded)
-            window.plausible?.('Copy Code Example', {
-                props: { kind: 'yini-example' },
-            })
+            if (window.yiniAnalyticsEnabled) {
+                window.plausible?.('Copy Code Example', {
+                    props: { kind: 'yini-example' },
+                })
+            }
 
             // Tiny UI feedback
             const original = btn.textContent
@@ -82,7 +86,9 @@ const playgroundTitle = canPrefillPlayground
             }, 1000)
         } catch (err) {
             console.error('Copy failed:', err)
-            window.plausible?.('Copy Code Example Failed')
+            if (window.yiniAnalyticsEnabled) {
+                window.plausible?.('Copy Code Example Failed')
+            }
             // Optional: quick fallback feedback
             btn.textContent = '❌ Failed'
             setTimeout(() => (btn.textContent = '📋 Copy'), 1000)
