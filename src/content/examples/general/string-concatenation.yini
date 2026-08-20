@@ -1,0 +1,13 @@
+# string-concatenation.yini
+# Concatenation joins string values with +.
+
+^ Concatenation
+
+^^ ShortValues
+title = "YINI: " + "Readable config"
+label = "port-" + "8080"
+
+^^ LongValues
+# A line break may appear after +.
+description = "Section markers " +
+              "define structure."

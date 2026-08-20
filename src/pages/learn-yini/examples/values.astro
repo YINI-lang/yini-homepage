@@ -4,7 +4,10 @@ import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
 import exampleBooleans from '../../../content/examples/general/boolean-literals.yini?raw'
 import exampleNumbers from '../../../content/examples/general/number-formats.yini?raw'
-import exampleStrings from '../../../content/examples/general/strings-and-escapes.yini?raw'
+import exampleStringConcatenation from '../../../content/examples/general/string-concatenation.yini?raw'
+import exampleStringEscapes from '../../../content/examples/general/string-escapes.yini?raw'
+import exampleStringMultiline from '../../../content/examples/general/string-multiline.yini?raw'
+import exampleStringBasics from '../../../content/examples/general/strings-and-escapes.yini?raw'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 ---
 
@@ -30,7 +33,16 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <hr />
 
         <h2>Strings</h2>
-        <YINIExample title="Strings and escapes" code={exampleStrings} />
+        <YINIExample title="Basic strings" code={exampleStringBasics} />
+        <YINIExample title="Escaped strings" code={exampleStringEscapes} />
+        <YINIExample
+            title="Multi-line strings"
+            code={exampleStringMultiline}
+        />
+        <YINIExample
+            title="String concatenation"
+            code={exampleStringConcatenation}
+        />
 
         <hr />
 

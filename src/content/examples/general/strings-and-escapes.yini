@@ -1,38 +1,20 @@
 # strings-and-escapes.yini
-# String literal forms and escape behavior.
+# Basic string examples.
 
 ^ Strings
 
-^^ RawStrings
-# Strings are raw by default. Backslashes are ordinary text.
+^^ BasicStrings
+# YINI strings must be quoted.
 name = "Robin"
-quoted_text = 'He said "hello"'
+city = 'Stockholm'
+message = "Hello, YINI"
+
+^^ ChoosingQuotes
+# Use the other quote type when the text contains a quote.
 owner = "Amanda's file"
+quoted_text = 'He said "hello"'
+
+^^ RawByDefault
+# Backslashes are ordinary text unless you use a C-string.
 windows_path = "C:\Users\Kim\Documents"
-literal_escape_text = "Line 1\nLine 2"
-
-^^ ExplicitRawStrings
-# R/r is optional. It can be used when you want to make raw behavior visible.
-tool_path = R"D:\Tools\YINI\"
-pattern = r"^\w+\.yini$"
-
-^^ ClassicStrings
-# C/c enables escape sequences such as \n, \t, and \".
-line_break = C"Line 1\nLine 2"
-tabbed = c"key\tvalue"
-quoted = C"He said \"hello\""
-
-^^ TripleQuotedStrings
-# Triple-quoted strings can span multiple lines.
-description = """YINI strings are raw by default.
-Backslashes stay as written.
-Line breaks are preserved.
-"""
-
-classic_block = C"""Line one\nLine two\twith a tab"""
-
-^^ Concatenation
-# Concatenation joins string operands into one string value.
-title = "YINI: " + "Readable config"
-long_label = "section markers " +
-             "define structure"
+literal_text = "Line 1\nLine 2"

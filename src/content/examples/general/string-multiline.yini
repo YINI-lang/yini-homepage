@@ -1,0 +1,19 @@
+# string-multiline.yini
+# Triple-quoted strings are useful for longer text.
+
+^ MultiLineStrings
+
+^^ RawBlock
+description = """This text spans
+more than one line.
+Line breaks are preserved.
+"""
+
+^^ MessageTemplate
+welcome_message = """Hello,
+
+Welcome to the service.
+
+Kind regards,
+The Example Team
+"""
