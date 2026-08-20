@@ -5,8 +5,15 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 const headTitle = 'YINI Playground'
 const headDescription =
     'Try YINI in your browser: Edit a .yini config file and see the parsed output as JSON or a POJO (plain JavaScript object).'
+const headCanonicalUrl = 'https://yini-lang.org/playground/'
+const headNoindexForNonEmptyCodeParam = true
 ---
 
-<BaseLayout {headTitle} {headDescription}>
+<BaseLayout
+    {headTitle}
+    {headDescription}
+    {headCanonicalUrl}
+    {headNoindexForNonEmptyCodeParam}
+>
     <YiniPlayground client:load />
 </BaseLayout>

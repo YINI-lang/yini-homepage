@@ -52,6 +52,8 @@ const {
     headTitle, // optional per-page
     headDescription,
     headRobots,
+    headCanonicalUrl,
+    headNoindexForNonEmptyCodeParam = false,
 } = Astro.props
 
 const postTitle = 'Clear and Structured Config Files'
@@ -72,8 +74,36 @@ const isDev = import.meta.env.DEV
 
         <meta name="description" content={headDescription} />
         {headRobots && <meta name="robots" content={headRobots} />}
+        {headCanonicalUrl && <link rel="canonical" href={headCanonicalUrl} />}
         <meta name="keywords" content="YINI config format, YINI language, configuration file format, INI alternative, YAML alternative, TOML alternative">
         <meta name="author" content={CONFIG.meta.author} />
+
+        {
+            headNoindexForNonEmptyCodeParam && (
+                <script is:inline>
+                    {`
+                        (() => {
+                            try {
+                                const params = new URLSearchParams(window.location.search)
+                                const code = params.get('code')
+
+                                if (!code || code.trim() === '') return
+
+                                const existingRobots = document.querySelector('meta[name="robots"]')
+                                const robots = existingRobots || document.createElement('meta')
+
+                                robots.setAttribute('name', 'robots')
+                                robots.setAttribute('content', 'noindex, follow')
+
+                                if (!existingRobots) {
+                                    document.head.appendChild(robots)
+                                }
+                            } catch {}
+                        })()
+                    `}
+                </script>
+            )
+        }
 
         <script is:inline>
             function loadYiniAnalytics() {
