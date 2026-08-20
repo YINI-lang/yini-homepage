@@ -289,6 +289,16 @@ export default function Header({ isProd }: HeaderProps) {
                             <a
                                 href={
                                     CONFIG.siteLinks.navMenu.learnYini.examples
+                                        .values.url
+                                }
+                                className={cssClasses}>
+                                Value Literals
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini.examples
                                         .large.url
                                 }
                                 className={cssClasses}>

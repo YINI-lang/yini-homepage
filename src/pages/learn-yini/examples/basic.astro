@@ -7,9 +7,7 @@ import exampleBasic2 from '../../../content/examples/basic/basic2.yini?raw'
 import exampleBasic3 from '../../../content/examples/basic/basic3.yini?raw'
 import exampleBasic4 from '../../../content/examples/basic/basic4.yini?raw'
 import exampleComments from '../../../content/examples/basic/comments.yini?raw'
-import exampleBooleans from '../../../content/examples/general/boolean-literals.yini?raw'
 import exampleListAndObjects from '../../../content/examples/general/lists-and-objects.yini?raw'
-import exampleNumbers from '../../../content/examples/general/number-formats.yini?raw'
 import exampleSectionMarkerSeparators from '../../../content/examples/general/section-marker-separators.yini?raw'
 import exampleNestedStructured from '../../../content/examples/structure/nested-and-structured.yini?raw'
 import exampleNestedSections from '../../../content/examples/structure/nested-sections.yini?raw'
@@ -89,8 +87,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 
         <hr />
         <h2>Value literals</h2>
-        <YINIExample title="Boolean literals" code={exampleBooleans} />
-        <YINIExample title="Number formats" code={exampleNumbers} />
+        <p>
+            Strings, booleans, numbers, and digit separators are covered on the
+            dedicated <a
+                href={CONFIG.siteLinks.navMenu.learnYini.examples.values.url}
+                >value literal examples</a
+            > page.
+        </p>
 
         <hr />
         <h2>Structured nesting</h2>
@@ -103,6 +106,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
             <strong>Continue exploring:</strong><br />
             • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}>
                 {CONFIG.siteLinks.navMenu.learnYini.examples.common.title}
+            </a><br />
+            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.values.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.values.title}
             </a><br />
             • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}>
                 {CONFIG.siteLinks.navMenu.learnYini.examples.large.title}

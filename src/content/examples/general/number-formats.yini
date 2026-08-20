@@ -23,6 +23,8 @@ explicit_plus = 6.022e+23
 grouped_exponent = 1.5e1_0
 
 ^^ DigitSeparators
+two_groups = 12_345
+grouped_millions = 1_234_567
 big_int = 1_000_000
 bytes = 16_384
 price = 12_345.67

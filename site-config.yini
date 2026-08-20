@@ -139,6 +139,10 @@
                     url = '/learn-yini/examples/indentation'
                     title = 'Indentation and section nesting examples.'
 
+                ^^^^^ values
+                    url = '/learn-yini/examples/values'
+                    title = 'Value literal examples.'
+
                 ^^^^^ common
                     url = '/learn-yini/examples/common'
                     title = 'Common real-world examples.'

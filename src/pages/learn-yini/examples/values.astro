@@ -1,0 +1,60 @@
+---
+// learn-yini/examples/values.astro
+import YINIExample from '../../../components/YINIExample.astro'
+import CONFIG from '../../../config/conf'
+import exampleBooleans from '../../../content/examples/general/boolean-literals.yini?raw'
+import exampleNumbers from '../../../content/examples/general/number-formats.yini?raw'
+import exampleStrings from '../../../content/examples/general/strings-and-escapes.yini?raw'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Value Literal Examples: YINI'}
+    headDescription={'YINI examples for strings, booleans, numbers, digit separators, and other value literals.'}
+>
+    <section class="mt-8">
+        <h1>Value Literal Examples</h1>
+        <p>
+            These examples focus on the basic value types used inside YINI
+            members: strings, booleans, numbers, and common literal forms.
+        </p>
+
+        <p>
+            Use this page when you want to compare value syntax directly. For
+            sections and nesting, start with the <a
+                href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}
+                >Core and basic examples</a
+            >.
+        </p>
+
+        <hr />
+
+        <h2>Strings</h2>
+        <YINIExample title="Strings and escapes" code={exampleStrings} />
+
+        <hr />
+
+        <h2>Booleans</h2>
+        <YINIExample title="Boolean literals" code={exampleBooleans} />
+
+        <hr />
+
+        <h2>Numbers</h2>
+        <p>
+            The number examples include decimal values, signs, exponents, base
+            prefixes, and underscore digit separators such as
+            <code>12_345</code> and <code>1_234_567</code>.
+        </p>
+        <YINIExample title="Number formats" code={exampleNumbers} />
+
+        <p class="mt-10">
+            <strong>Explore more examples:</strong><br />
+            - <a href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}
+            </a><br />
+            - <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}>
+                {CONFIG.siteLinks.navMenu.learnYini.examples.common.title}
+            </a>
+        </p>
+    </section>
+</BaseLayout>
