@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 const usageOptions = [
     {
+        persona: 'New user',
         goal: 'Learn YINI step by step',
         description:
             'Walk through the core syntax and common usage before choosing tools or workflow integration.',
@@ -11,6 +12,7 @@ const usageOptions = [
         linkText: 'Quick Tutorial',
     },
     {
+        persona: 'App developer',
         goal: 'Use YINI inside a software project',
         description:
             'Load .yini files as native objects in your application with a parser for your programming language.',
@@ -18,6 +20,15 @@ const usageOptions = [
         linkText: 'YINI parsers',
     },
     {
+        persona: 'Parser developer',
+        goal: 'Check parser compatibility',
+        description:
+            'Use the YINI test suite to compare parser behavior against shared format test cases.',
+        href: '/tools/yini-test-suite',
+        linkText: 'Test Suite',
+    },
+    {
+        persona: 'CLI user',
         goal: 'Parse YINI files from the terminal',
         description:
             'Validate, inspect, or convert YINI files from your command line or local scripts.',
@@ -25,6 +36,7 @@ const usageOptions = [
         linkText: 'YINI CLI',
     },
     {
+        persona: 'CI maintainer',
         goal: 'Use YINI in CI workflows',
         description:
             'Check configuration files before merge or deploy, and optionally generate JSON during builds.',
@@ -32,6 +44,7 @@ const usageOptions = [
         linkText: 'CI workflows',
     },
     {
+        persona: 'Evaluator',
         goal: 'Quickly evaluate YINI',
         description:
             'Try syntax examples and parsed output in the browser without installing anything.',
@@ -39,6 +52,7 @@ const usageOptions = [
         linkText: 'Playground',
     },
     {
+        persona: 'Reference user',
         goal: 'Look up YINI syntax quickly',
         description:
             'Review common syntax, values, sections, comments, and examples at a glance.',
@@ -53,7 +67,7 @@ const usageOptions = [
     headDescription="Choose how to use YINI in projects, terminals, CI workflows, or quick evaluation."
     headRobots="noindex, follow"
 >
-    <section class="mx-auto max-w-4xl px-4 py-2">
+    <section class="mx-auto max-w-5xl px-4 py-2">
         <h1 class="mt-2 text-3xl font-semibold tracking-tight md:text-5xl">
             Use YINI
         </h1>
@@ -66,13 +80,14 @@ const usageOptions = [
         </p>
     </section>
 
-    <section class="mx-auto mt-8 max-w-4xl px-4">
+    <section class="mx-auto mt-8 max-w-5xl px-4">
         <div
             class="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700"
         >
             <div
-                class="hidden grid-cols-[1fr_1.35fr_auto] gap-4 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-800 md:grid dark:bg-slate-900 dark:text-slate-100"
+                class="hidden grid-cols-[0.8fr_1fr_1.35fr_auto] gap-4 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-800 md:grid dark:bg-slate-900 dark:text-slate-100"
             >
+                <div>I'm a...</div>
                 <div>I want to...</div>
                 <div>Use this when...</div>
                 <div>Go to</div>
@@ -81,16 +96,25 @@ const usageOptions = [
             <div class="divide-y divide-slate-200 dark:divide-slate-700">
                 {
                     usageOptions.map((option) => (
-                        <div class="grid gap-3 px-5 py-5 md:grid-cols-[1fr_1.35fr_auto] md:items-center">
-                            <h2 class="m-0 text-lg font-semibold text-slate-950 dark:text-slate-50">
-                                {option.goal}
-                            </h2>
+                        <div class="grid gap-3 px-5 py-5 md:grid-cols-[0.8fr_1fr_1.35fr_auto] md:items-center">
+                            <p class="m-0 text-sm font-medium text-slate-500 dark:text-slate-400">
+                                {option.persona}
+                            </p>
+                            <div>
+                                <p class="mb-1 text-xs font-semibold text-slate-500 uppercase md:hidden dark:text-slate-400">
+                                    I want to
+                                </p>
+                                <h2 class="m-0 text-lg font-semibold text-slate-950 dark:text-slate-50">
+                                    {option.goal}
+                                </h2>
+                            </div>
                             <p class="m-0 text-slate-700 dark:text-slate-300">
                                 {option.description}
                             </p>
                             <a
                                 href={option.href}
-                                class="inline-flex w-fit items-center rounded-md border border-sky-200 px-3 py-2 text-sm font-medium no-underline hover:bg-sky-50 dark:border-sky-800 dark:hover:bg-sky-950">
+                                class="inline-flex w-fit items-center rounded-md border border-sky-200 px-3 py-2 text-sm font-medium no-underline hover:bg-sky-50 dark:border-sky-800 dark:hover:bg-sky-950"
+                            >
                                 {option.linkText}
                             </a>
                         </div>
