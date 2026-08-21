@@ -1,5 +1,6 @@
 ---
 // src/pages/tools/yini-cli/manual.astro
+import PageEndingLinks from '../../../components/PageEndingLinks.astro'
 import CONFIG from '../../../config/conf'
 import yiniCliHelp from '../../../content/generated/cli/yini-cli-help.txt?raw'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
@@ -24,27 +25,6 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 
         <hr />
 
-        <section>
-            <h2>Related CLI Guides</h2>
-            <ul>
-                <li>
-                    <a href={CONFIG.siteLinks.navMenu.tools.yiniCli.url}
-                        >YINI CLI overview</a
-                    ><br />
-                    <em
-                        >Install the CLI and see common validation and
-                        conversion examples.</em
-                    >
-                </li>
-                <li>
-                    <a href="/use-yini/ci-with-yini-cli">Use YINI CLI in CI</a
-                    ><br />
-                    <em
-                        >Run validation automatically in scripts and project
-                        checks.</em
-                    >
-                </li>
-            </ul>
-        </section>
+        <PageEndingLinks />
     </section>
 </BaseLayout>

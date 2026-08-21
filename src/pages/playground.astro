@@ -1,4 +1,5 @@
 ---
+import PageEndingLinks from '../components/PageEndingLinks.astro'
 import YiniPlayground from '../components/YiniPlayground.tsx'
 import BaseLayout from '../layouts/BaseLayout.astro'
 
@@ -16,4 +17,5 @@ const headNoindexForNonEmptyCodeParam = true
     {headNoindexForNonEmptyCodeParam}
 >
     <YiniPlayground client:load />
+    <PageEndingLinks />
 </BaseLayout>

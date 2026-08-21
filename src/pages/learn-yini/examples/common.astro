@@ -1,5 +1,6 @@
 ---
 // learn-yini/examples/common.astro
+import PageEndingLinks from '../../../components/PageEndingLinks.astro'
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
 import exampleFile1 from '../../../content/examples/real-world/1-web-server-configuration.yini?raw'
@@ -74,24 +75,6 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
             </a> — full-scale configurations
         </p>
 
-        <hr />
-
-        <section>
-            <h2>Next steps</h2>
-            <ul>
-                <li>
-                    ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
-                        >Get Started</a
-                    ><br />
-                    <em>Learn how to install and use YINI.</em>
-                </li>
-                <li>
-                    ➡️ <a href={CONFIG.siteLinks.hero.tutorial.url}
-                        >Quick Tutorial</a
-                    ><br />
-                    <em>A 5-minute guided walkthrough of YINI basics.</em>
-                </li>
-            </ul>
-        </section>
+        <PageEndingLinks />
     </section>
 </BaseLayout>

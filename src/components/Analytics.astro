@@ -13,6 +13,21 @@
 
         if (!window.yiniAnalyticsEnabled) return
 
+        // --- Google Analytics -----------------------------------------------
+        const gtagScript = document.createElement('script')
+        gtagScript.async = true
+        gtagScript.src =
+            'https://www.googletagmanager.com/gtag/js?id=G-BMK7JS36XR'
+        document.head.appendChild(gtagScript)
+
+        window.dataLayer = window.dataLayer || []
+        window.gtag = function () {
+            window.dataLayer.push(arguments)
+        }
+
+        window.gtag('js', new Date())
+        window.gtag('config', 'G-BMK7JS36XR')
+
         // --- Plausible ------------------------------------------------------
         const plausibleScript = document.createElement('script')
         plausibleScript.async = true
@@ -33,21 +48,6 @@
                 window.plausible.o = options || {}
             }
         window.plausible.init()
-
-        // --- Google Analytics -----------------------------------------------
-        const gtagScript = document.createElement('script')
-        gtagScript.async = true
-        gtagScript.src =
-            'https://www.googletagmanager.com/gtag/js?id=G-BMK7JS36XR'
-        document.head.appendChild(gtagScript)
-
-        window.dataLayer = window.dataLayer || []
-        window.gtag = function () {
-            window.dataLayer.push(arguments)
-        }
-
-        window.gtag('js', new Date())
-        window.gtag('config', 'G-BMK7JS36XR')
 
         // --- Umami ----------------------------------------------------------
         const umamiScript = document.createElement('script')

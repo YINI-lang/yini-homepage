@@ -1,5 +1,6 @@
 ---
 // learn-yini/examples/indentation.astro
+import PageEndingLinks from '../../../components/PageEndingLinks.astro'
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
 import exampleNestingStyle1 from '../../../content/examples/indentation/indent-ex-conf1.yini?raw'
@@ -56,26 +57,6 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
             code={exampleNestingStyle1}
         />
 
-        <hr />
-
-        <section>
-            <h2>Next steps</h2>
-            <ul>
-                <li>
-                    <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.basic
-                            .url}>Basic examples</a
-                    ><br />
-                    <em>Review the core syntax and smaller examples.</em>
-                </li>
-                <li>
-                    <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.common
-                            .url}>Common real-world examples</a
-                    ><br />
-                    <em>See everyday configuration patterns.</em>
-                </li>
-            </ul>
-        </section>
+        <PageEndingLinks />
     </section>
 </BaseLayout>

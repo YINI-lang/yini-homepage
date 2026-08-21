@@ -1,5 +1,5 @@
 ---
-import CONFIG from '../config/conf'
+import PageEndingLinks from '../components/PageEndingLinks.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 
 const usageOptions = [
@@ -90,8 +90,7 @@ const usageOptions = [
                             </p>
                             <a
                                 href={option.href}
-                                class="inline-flex w-fit items-center rounded-md border border-sky-200 px-3 py-2 text-sm font-medium no-underline hover:bg-sky-50 dark:border-sky-800 dark:hover:bg-sky-950"
-                            >
+                                class="inline-flex w-fit items-center rounded-md border border-sky-200 px-3 py-2 text-sm font-medium no-underline hover:bg-sky-50 dark:border-sky-800 dark:hover:bg-sky-950">
                                 {option.linkText}
                             </a>
                         </div>
@@ -101,25 +100,5 @@ const usageOptions = [
         </div>
     </section>
 
-    <section>
-        <h2>Not sure where to start?</h2>
-        <ul>
-            <li>
-                <a href={CONFIG.siteLinks.hero.getStarted.url}
-                    >Get Started guide</a
-                ><br />
-                <p class="mt-2">
-                    Start with a short guided setup and how to parse your first
-                    config.
-                </p>
-            </li>
-            <li>
-                <a href={CONFIG.siteLinks.hero.tutorial.url}>Quick Tutorial</a
-                ><br />
-                <p class="mt-2">
-                    A short introduction to YINI syntax and validation.
-                </p>
-            </li>
-        </ul>
-    </section>
+    <PageEndingLinks heading="Not sure where to start?" />
 </BaseLayout>

@@ -1,5 +1,6 @@
 ---
 // learn-yini/examples/basic.astro
+import PageEndingLinks from '../../../components/PageEndingLinks.astro'
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
 import exampleHelloWorld from '../../../content/examples/basic/hello-world.yini?raw'
@@ -98,9 +99,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                             <p
                                 class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
                             >
-                                Compare strings, booleans, number formats,
-                                digit separators, and other everyday value
-                                syntax.
+                                Compare strings, booleans, number formats, digit
+                                separators, and other everyday value syntax.
                             </p>
                         </div>
                     </a>
@@ -171,30 +171,6 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
             </ul>
         </section>
 
-        <hr />
-
-        <section>
-            <h2>Next steps</h2>
-            <ul>
-                <li class="py-1">
-                    ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
-                        >Get Started</a
-                    ><br />
-                    Install the CLI and create your first YINI file.
-                </li>
-                <li class="py-1">
-                    ➡️ <a href={CONFIG.siteLinks.hero.tutorial.url}
-                        >Quick Tutorial</a
-                    ><br />
-                    A 5-minute walkthrough of the core YINI concepts.
-                </li>
-            </ul>
-        </section>
-
-        <p class="mt-10">
-            New to YINI? Start with the <a
-                href={CONFIG.siteLinks.hero.tutorial.url}>5-minute tutorial</a
-            >.
-        </p>
+        <PageEndingLinks />
     </section>
 </BaseLayout>

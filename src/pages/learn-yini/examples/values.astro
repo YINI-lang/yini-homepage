@@ -1,5 +1,6 @@
 ---
 // learn-yini/examples/values.astro
+import PageEndingLinks from '../../../components/PageEndingLinks.astro'
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
 import exampleBooleans from '../../../content/examples/general/boolean-literals.yini?raw'
@@ -35,10 +36,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <h2>Strings</h2>
         <YINIExample title="Basic strings" code={exampleStringBasics} />
         <YINIExample title="Escaped strings" code={exampleStringEscapes} />
-        <YINIExample
-            title="Multi-line strings"
-            code={exampleStringMultiline}
-        />
+        <YINIExample title="Multi-line strings" code={exampleStringMultiline} />
         <YINIExample
             title="String concatenation"
             code={exampleStringConcatenation}
@@ -59,14 +57,6 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         </p>
         <YINIExample title="Number formats" code={exampleNumbers} />
 
-        <p class="mt-10">
-            <strong>Explore more examples:</strong><br />
-            - <a href={CONFIG.siteLinks.navMenu.learnYini.examples.basic.url}>
-                {CONFIG.siteLinks.navMenu.learnYini.examples.basic.title}
-            </a><br />
-            - <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}>
-                {CONFIG.siteLinks.navMenu.learnYini.examples.common.title}
-            </a>
-        </p>
+        <PageEndingLinks />
     </section>
 </BaseLayout>

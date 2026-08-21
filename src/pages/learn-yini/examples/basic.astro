@@ -1,5 +1,6 @@
 ---
 // learn-yini/examples/basic.astro
+import PageEndingLinks from '../../../components/PageEndingLinks.astro'
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
 import exampleBasic1 from '../../../content/examples/basic/basic1.yini?raw'
@@ -102,37 +103,6 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
             code={exampleNestedStructured}
         />
 
-        <p class="mt-10">
-            <strong>Continue exploring:</strong><br />
-            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}>
-                {CONFIG.siteLinks.navMenu.learnYini.examples.common.title}
-            </a><br />
-            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.values.url}>
-                {CONFIG.siteLinks.navMenu.learnYini.examples.values.title}
-            </a><br />
-            • <a href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}>
-                {CONFIG.siteLinks.navMenu.learnYini.examples.large.title}
-            </a>
-        </p>
-
-        <hr />
-
-        <section>
-            <h2>Next steps</h2>
-            <ul>
-                <li>
-                    ➡️ <a href={CONFIG.siteLinks.hero.getStarted.url}
-                        >Get Started</a
-                    ><br />
-                    <em>Learn how to install and use YINI.</em>
-                </li>
-                <li>
-                    ➡️ <a href={CONFIG.siteLinks.hero.tutorial.url}
-                        >Quick Tutorial</a
-                    ><br />
-                    <em>A 5-minute guided walkthrough of YINI basics.</em>
-                </li>
-            </ul>
-        </section>
+        <PageEndingLinks />
     </section>
 </BaseLayout>

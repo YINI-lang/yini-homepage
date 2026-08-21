@@ -1,0 +1,36 @@
+---
+import { getPageEndingLinks } from '../config/page-ending-links'
+
+interface Props {
+    currentPath?: string
+    maxLinks?: 2 | 3
+    heading?: string
+}
+
+const {
+    currentPath = Astro.url.pathname,
+    maxLinks = 3,
+    heading = 'Next steps',
+} = Astro.props
+
+const links = getPageEndingLinks(currentPath, maxLinks)
+---
+
+{
+    links.length > 0 && (
+        <section>
+            <h2>{heading}</h2>
+            <ul>
+                {links.map((link) => (
+                    <li>
+                        ➡️ <a href={link.href}>{link.label}</a>
+                        <br />
+                        {link.description && (
+                            <p class="mt-2">{link.description}</p>
+                        )}
+                    </li>
+                ))}
+            </ul>
+        </section>
+    )
+}
