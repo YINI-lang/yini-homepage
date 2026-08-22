@@ -156,13 +156,9 @@ export default function Header({ isProd }: HeaderProps) {
         return (
             <>
                 <div>
-                    <div className="mb-2">
-                        <a
-                            href={CONFIG.siteLinks.hero.home.url}
-                            className={cssClasses}>
-                            ◦ Home
-                        </a>
-                    </div>
+                    <h3 className="my-2 font-semibold text-slate-500">
+                        Quick links
+                    </h3>
                     <div className="mb-2">
                         <a
                             href={
@@ -201,6 +197,15 @@ export default function Header({ isProd }: HeaderProps) {
                             ◦ Specification
                         </a>
                     </div>
+                    <div className="mb-2 text-xs">
+                        <a
+                            href={CONFIG.urls.external.gitHub.yiniSpec}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cssClasses}>
+                            ◦ Formal Spec on GitHub ↗
+                        </a>
+                    </div>
                 </div>
 
                 <div>
@@ -210,6 +215,13 @@ export default function Header({ isProd }: HeaderProps) {
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">Start</h3>
                     <ul className="space-y-2 pl-4">
+                        <li>
+                            <a
+                                href={CONFIG.siteLinks.hero.home.url}
+                                className={cssClasses}>
+                                Home
+                            </a>
+                        </li>
                         <li>
                             <a
                                 href={
