@@ -119,14 +119,19 @@ export const pageEndingLinks: PageEndingLinkMap = {
     ],
     [pathKey(routes.getYiniTools)]: [
         {
-            label: 'YINI CLI',
-            href: routes.yiniCli,
-            description: 'Validate, parse, and convert YINI from the terminal.',
+            label: 'Get Started',
+            href: routes.getStarted,
+            description: 'Create your first YINI file and parse it locally.',
         },
         {
-            label: 'YINI Parsers',
-            href: routes.yiniParsers,
-            description: 'Load YINI files directly in application code.',
+            label: 'Try the Playground',
+            href: routes.playground,
+            description: 'Experiment with YINI before installing a tool.',
+        },
+        {
+            label: 'YINI Specification',
+            href: routes.specification,
+            description: 'Read the formal syntax and behavior rules.',
         },
     ],
     [pathKey(routes.ciWithYiniCli)]: [

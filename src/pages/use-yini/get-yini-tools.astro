@@ -1,51 +1,268 @@
 ---
-// src/pages/use-yini/get-yini-tools.astro
 import PageEndingLinks from '../../components/PageEndingLinks.astro'
 import CONFIG from '../../config/conf'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const toolCards = [
+    {
+        name: 'YINI CLI',
+        audience: 'Terminal and CI',
+        status: 'Official',
+        description:
+            'Validate, inspect, and convert YINI files from your command line, local scripts, or CI workflow.',
+        command: 'npx yini-cli --help',
+        links: [
+            { label: 'CLI docs', href: '/tools/yini-cli' },
+            {
+                label: 'npm',
+                href: CONFIG.urls.external.useIt.npmYiniCli,
+                external: true,
+            },
+            {
+                label: 'GitHub',
+                href: CONFIG.urls.external.gitHub.yiniCli,
+                external: true,
+            },
+        ],
+    },
+    {
+        name: 'TypeScript / JavaScript parser',
+        audience: 'Node.js apps',
+        status: 'Primary parser',
+        description:
+            'Load YINI files as application data in TypeScript, JavaScript, and Node.js projects.',
+        command: 'npm install yini-parser',
+        links: [
+            { label: 'Parser docs', href: '/tools/yini-parser-ts' },
+            {
+                label: 'npm',
+                href: CONFIG.urls.external.useIt.npmYiniParser,
+                external: true,
+            },
+            {
+                label: 'GitHub',
+                href: CONFIG.urls.external.gitHub.yiniParserTs,
+                external: true,
+            },
+        ],
+    },
+    {
+        name: 'Python parser',
+        audience: 'Python apps',
+        status: 'Beta',
+        description:
+            'Parse YINI configuration files from Python and work with the result as native Python data.',
+        command: 'pip install yini-parser',
+        links: [
+            { label: 'Parser docs', href: '/tools/yini-parser-python' },
+            {
+                label: 'PyPI',
+                href: CONFIG.urls.external.useIt.pypiYiniParser,
+                external: true,
+            },
+            {
+                label: 'GitHub',
+                href: CONFIG.urls.external.gitHub.yiniParserPython,
+                external: true,
+            },
+        ],
+    },
+    {
+        name: 'Syntax highlighting',
+        audience: 'Editors',
+        status: 'TextMate grammar',
+        description:
+            'Add YINI highlighting in editors that support TextMate grammars, including VS Code-compatible tooling.',
+        command: null,
+        links: [
+            {
+                label: 'Syntax repository',
+                href: CONFIG.urls.external.gitHub.yiniSyntax,
+                external: true,
+            },
+        ],
+    },
+    {
+        name: 'YINI Test Suite',
+        audience: 'Parser authors',
+        status: 'Compatibility',
+        description:
+            'Check parser behavior against shared YINI test cases when building or maintaining an implementation.',
+        command: 'python -m pip install yini-test-suite',
+        links: [
+            { label: 'Test suite docs', href: '/tools/yini-test-suite' },
+            {
+                label: 'PyPI',
+                href: CONFIG.urls.external.useIt.pypiYiniTestSuite,
+                external: true,
+            },
+            {
+                label: 'GitHub',
+                href: CONFIG.urls.external.gitHub.yiniTestSuite,
+                external: true,
+            },
+        ],
+    },
+]
 ---
 
 <BaseLayout
-    headTitle="Get YINI Tools — Download Parsers, Tools & Implementations"
-    headDescription="Get official YINI (YINI-lang) parsers, CLI tools, and related implementations across different languages and platforms."
+    headTitle="Get YINI Tools - CLI, Parsers, and Test Suite"
+    headDescription="Find official YINI CLI tools, parsers, syntax highlighting, and parser test tooling, with install commands and package links."
 >
-    <section class="mx-auto max-w-5xl px-4 py-2 text-center">
-        <h1 class="text-3xl font-semibold tracking-tight md:text-5xl">
+    <section class="mx-auto max-w-5xl px-4 py-2">
+        <h1 class="mt-2 text-3xl font-semibold tracking-tight md:text-5xl">
             Get YINI Tools
         </h1>
-        <p class="mt-3 text-base md:text-lg">
-            Get YINI tools — Official parsers, tools, and related
-            implementations for working with the YINI format.
+        <p
+            class="mt-4 max-w-3xl text-base text-slate-700 md:text-lg dark:text-slate-300"
+        >
+            Choose a YINI tool based on what you want to do: work from the
+            terminal, load YINI in an application, add editor highlighting, or
+            test a parser implementation.
         </p>
-    </section>
-
-    <section class="mx-auto max-w-3xl px-4 pb-8 text-center">
-        <div class="rounded-xl border px-6 py-1 shadow-sm">
-            <h2 class="text-xl font-semibold">
-                Start here, get tools for YINI:
-            </h2>
-
-            <a
-                href={CONFIG.urls.external.yiniWiki.getYINITools}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="my-5 inline-flex items-center gap-2 rounded-lg border px-5 py-2 text-base font-medium hover:bg-slate-50"
-            >
-                ⬇️ Open 'Get YINI Tools' on Wiki ↗
+        <div class="mt-6 flex flex-wrap gap-3">
+            <a class="btn btn-primary" href="/use-yini/get-started">
+                Get started
             </a>
-
-            <p class="mt-2 text-sm text-slate-600">
-                Browse available YINI tools and implementations across languages
-                and platforms.
-            </p>
-
-            <p class="mt-4 text-sm text-slate-600">
-                Want to try YINI before installing a tool? Open the <a
-                    href={CONFIG.siteLinks.hero.playground.url}
-                    >YINI Playground</a
-                >.
-            </p>
+            <a
+                class="btn btn-outline"
+                href={CONFIG.siteLinks.hero.playground.url}
+            >
+                Try the Playground
+            </a>
         </div>
     </section>
-    <PageEndingLinks />
+
+    <section
+        aria-labelledby="choose-yini-tool"
+        class="mx-auto mt-10 max-w-5xl px-4"
+    >
+        <div class="max-w-3xl">
+            <h2
+                id="choose-yini-tool"
+                class="text-2xl font-semibold tracking-tight"
+            >
+                Choose a tool
+            </h2>
+            <p class="mt-3 text-slate-700 dark:text-slate-300">
+                The main YINI tools are listed here with the shortest useful
+                install or run command. Each card also links to its package page
+                and source repository where available.
+            </p>
+        </div>
+
+        <div class="mt-6 grid gap-5 md:grid-cols-2">
+            {
+                toolCards.map((tool) => (
+                    <article class="rounded-lg border border-slate-200 p-5 shadow-sm dark:border-slate-700">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                                {tool.audience}
+                            </span>
+                            <span class="rounded-md bg-sky-50 px-2 py-1 text-xs font-medium text-sky-800 dark:bg-sky-950 dark:text-sky-200">
+                                {tool.status}
+                            </span>
+                        </div>
+
+                        <h3 class="mt-4 text-xl font-semibold text-slate-950 dark:text-slate-50">
+                            {tool.name}
+                        </h3>
+                        <p class="mt-2 text-slate-700 dark:text-slate-300">
+                            {tool.description}
+                        </p>
+
+                        {tool.command && (
+                            <div class="mt-4">
+                                <p class="mb-2 text-xs font-semibold tracking-wide text-slate-500 uppercase dark:text-slate-400">
+                                    Install or run
+                                </p>
+                                {/* prettier-ignore */}
+                                <pre class="overflow-x-auto rounded-md bg-slate-950 px-4 py-3 text-sm text-slate-50"><code>{tool.command}</code></pre>
+                            </div>
+                        )}
+
+                        {!tool.command && (
+                            <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
+                                No package install command is listed here yet;
+                                use the repository instructions for the current
+                                editor setup.
+                            </p>
+                        )}
+
+                        <div class="mt-5 flex flex-wrap gap-3">
+                            {tool.links.map((link) => (
+                                <a
+                                    href={link.href}
+                                    target={
+                                        link.external ? '_blank' : undefined
+                                    }
+                                    rel={
+                                        link.external
+                                            ? 'noopener noreferrer'
+                                            : undefined
+                                    }
+                                    class="inline-flex rounded-md border border-slate-200 px-3 py-2 text-sm font-medium no-underline hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-900"
+                                >
+                                    {link.label}
+                                </a>
+                            ))}
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="mx-auto mt-12 max-w-5xl px-4">
+        <div
+            class="grid gap-6 border-t border-slate-200 pt-8 md:grid-cols-3 dark:border-slate-700"
+        >
+            <div>
+                <h2 class="text-xl font-semibold">Need a parser?</h2>
+                <p class="mt-2 text-slate-700 dark:text-slate-300">
+                    Compare the available language implementations before
+                    choosing one for your project.
+                </p>
+                <a
+                    class="mt-3 inline-flex font-medium"
+                    href="/tools/yini-parsers"
+                >
+                    View parser overview
+                </a>
+            </div>
+
+            <div>
+                <h2 class="text-xl font-semibold">No install needed?</h2>
+                <p class="mt-2 text-slate-700 dark:text-slate-300">
+                    Use the browser playground to try YINI syntax and parsed
+                    output before adding a tool locally.
+                </p>
+                <a
+                    class="mt-3 inline-flex font-medium"
+                    href={CONFIG.siteLinks.hero.playground.url}
+                >
+                    Open the Playground
+                </a>
+            </div>
+
+            <div>
+                <h2 class="text-xl font-semibold">Looking for everything?</h2>
+                <p class="mt-2 text-slate-700 dark:text-slate-300">
+                    The Wiki remains the broader catalog for additional tools,
+                    implementations, and ecosystem notes.
+                </p>
+                <a
+                    class="mt-3 inline-flex font-medium"
+                    href={CONFIG.urls.external.yiniWiki.getYINITools}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View all tools and implementations
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <PageEndingLinks heading="Keep going" />
 </BaseLayout>

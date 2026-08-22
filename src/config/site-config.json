@@ -176,7 +176,8 @@
             "useIt": {
                 "npmYiniCli": "https://www.npmjs.com/package/yini-cli",
                 "npmYiniParser": "https://www.npmjs.com/package/yini-parser",
-                "pypiYiniParser": "https://pypi.org/project/yini-parser/"
+                "pypiYiniParser": "https://pypi.org/project/yini-parser/",
+                "pypiYiniTestSuite": "https://pypi.org/project/yini-test-suite/"
             },
             "gitHub": {
                 "yiniOrg": "https://github.com/YINI-lang/YINI-spec",
