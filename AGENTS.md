@@ -189,6 +189,7 @@ Formatting conventions from the repo:
 - For content pages, prefer concise explanations, concrete examples, and stable links.
 - For visual changes, check responsive behavior and avoid overlapping or clipped text.
 - Do not replace real YINI examples with placeholder syntax.
+- For links to external sites outside `yini-lang.org`, append `&nbsp;↗` or ` ↗` after the link name to clearly indicate that the destination is external.
 
 ---
 

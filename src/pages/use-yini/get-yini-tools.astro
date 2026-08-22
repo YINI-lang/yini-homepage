@@ -67,21 +67,21 @@ const toolCards = [
             },
         ],
     },
-    {
-        name: 'Syntax highlighting',
-        audience: 'Editors',
-        status: 'TextMate grammar',
-        description:
-            'Add YINI highlighting in editors that support TextMate grammars, including VS Code-compatible tooling.',
-        command: null,
-        links: [
-            {
-                label: 'Syntax repository',
-                href: CONFIG.urls.external.gitHub.yiniSyntax,
-                external: true,
-            },
-        ],
-    },
+    // {
+    //     name: 'Syntax highlighting',
+    //     audience: 'Editors',
+    //     status: 'TextMate grammar',
+    //     description:
+    //         'Add YINI highlighting in editors that support TextMate grammars, including VS Code-compatible tooling.',
+    //     command: null,
+    //     links: [
+    //         {
+    //             label: 'Syntax repository',
+    //             href: CONFIG.urls.external.gitHub.yiniSyntax,
+    //             external: true,
+    //         },
+    //     ],
+    // },
     {
         name: 'YINI Test Suite',
         audience: 'Parser authors',
@@ -202,9 +202,11 @@ const toolCards = [
                                             ? 'noopener noreferrer'
                                             : undefined
                                     }
-                                    class="inline-flex rounded-md border border-slate-200 px-3 py-2 text-sm font-medium no-underline hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-900"
-                                >
+                                    class="inline-flex rounded-md border border-slate-200 px-3 py-2 text-sm font-medium no-underline hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-900">
                                     {link.label}
+                                    {link.external && (
+                                        <span aria-hidden="true">&nbsp;↗</span>
+                                    )}
                                 </a>
                             ))}
                         </div>
@@ -258,7 +260,7 @@ const toolCards = [
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    View all tools and implementations
+                    View all tools and implementations&nbsp;↗
                 </a>
             </div>
         </div>
