@@ -480,7 +480,7 @@ export default function YiniPlayground() {
                     </p>
                 </div>
 
-                <hr className="mt-3 mb-0" />
+                <hr className="mt-6 mb-3" />
 
                 <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
                     <label className="inline-flex items-center gap-2">
@@ -558,7 +558,7 @@ export default function YiniPlayground() {
                     </div>
                 </div>
 
-                <div className="mt-3 flex justify-end text-sm">
+                <div className="mt-6 flex justify-end text-sm">
                     <label className="inline-flex items-center gap-2">
                         <span className="font-medium">Indent:</span>
                         <select
@@ -591,7 +591,7 @@ export default function YiniPlayground() {
                             parseNow()
                         }}
                         title="Parse (Ctrl/Cmd+Enter)">
-                        Parse
+                        &nbsp;&nbsp;&nbsp;Parse&nbsp;&nbsp;&nbsp;
                     </button>
 
                     <div
@@ -698,7 +698,8 @@ export default function YiniPlayground() {
                             value={code}
                             onChange={(e) => handleCodeChange(e.target.value)}
                             spellCheck={false}
-                            className="min-h-[320px] rounded-lg border border-slate-300 bg-white p-3 font-mono text-[13px] leading-6 text-slate-950 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                            wrap="off"
+                            className="min-h-[320px] resize-y overflow-x-auto rounded-lg border border-slate-300 bg-white p-3 font-mono text-[13px] leading-6 whitespace-pre text-slate-950 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                             aria-label="YINI input"
                         />
                     </div>

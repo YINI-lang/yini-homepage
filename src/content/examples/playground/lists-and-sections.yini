@@ -1,8 +1,8 @@
-^ App
-name = "Demo App"
+^ Program
+name = "Demo Program"
 tags = ["web", "api", "v1"]
 ports = [80, 443, 8080]
 
-^^ Logging
+^^ Logging  // Sub-section of "Program"
 level = "info"
 outputs = ["console", "file"]

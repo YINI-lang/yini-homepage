@@ -2,11 +2,12 @@
 name = "api"
 environment = "production"
 
-^^ Server
+^^ WebServer
 host = "0.0.0.0"
 port = 8080
 
 ^^ Database
 host = "localhost"
 port = 5432
+# Keep real credentials outside source control.
 auth = { user: "admin", pass: "secret" }

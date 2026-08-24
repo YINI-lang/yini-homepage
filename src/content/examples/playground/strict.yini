@@ -1,3 +1,7 @@
+/*
+ * Production API configuration
+ */
+
 @yini strict
 
 ^ Title
@@ -11,4 +15,4 @@ host = "0.0.0.0"
 port = 8080
 tls = true
 
-/END
+/END  // Required in strict mode

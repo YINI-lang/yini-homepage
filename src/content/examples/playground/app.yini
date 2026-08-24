@@ -1,5 +1,5 @@
 ^ App
 name = "Demo"
 version = "1.0.0"
-port = 8080
+port = 8080  // Change this if the port is already in use
 features = ["search", "dark-mode"]
