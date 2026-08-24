@@ -502,6 +502,10 @@ export default function YiniPlayground() {
                         </select>
                     </label>
 
+                    <a href="/learn-yini/examples/" className="text-sm">
+                        Browse more examples
+                    </a>
+
                     <div className="flex items-center gap-3 text-sm">
                         <label className="inline-flex items-center gap-2">
                             <input

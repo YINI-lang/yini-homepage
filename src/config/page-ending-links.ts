@@ -73,12 +73,12 @@ export const pageEndingLinks: PageEndingLinkMap = {
         {
             label: 'Get Started',
             href: routes.getStarted,
-            description: 'Install the CLI and parse your first YINI file.',
+            description: 'How to install/use YINI in a project.',
         },
         {
-            label: 'YINI Cheat Sheet',
-            href: routes.cheatSheet,
-            description: 'Keep the core syntax nearby while experimenting.',
+            label: 'Quick Tutorial',
+            href: routes.quickTutorial,
+            description: 'Learn the YINI syntax in a few minutes.',
         },
         {
             label: 'YINI Examples',
