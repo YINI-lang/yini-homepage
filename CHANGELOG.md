@@ -11,7 +11,7 @@ Minor typo fixes, styling tweaks, and small rewordings are not listed here. See 
 ## 2026 Aug
 - **Added:** Added new page Playground.
 - **Added:** Added new page Assets, collecting YINI brand assets, logos, favicons, and media kit materials.
-- **Update:** Updated manual of `yini-cli` to 1.6.1.
+- **Update:** Updated manual of `yini-cli` to 1.6.2.
 
 ## 2026 July
 
