@@ -11,13 +11,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 # Quick Tutorial: YINI Basics
 
-YINI makes data files readable for people and easy for programs to read.
-It is like INI, but with **real structure**, lists, objects, and comments.
-
 This short tutorial helps you understand the basic shape of a YINI file
 and how to validate (check that the file is valid YINI).
 
-## 1) First, what is YINI (in one line)?
+## 1) What is YINI (in one line)?
 
 It is a human-friendly config format with sections, settings, nested sections,
 lists, objects, comments, and clear rules.
@@ -26,7 +23,7 @@ lists, objects, comments, and clear rules.
 
 ## 2) Create your first file
 
-Make a file named **`tutorial.yini`** and paste:
+Make a file named **`tutorial.yini`** and paste the following content into it:
 
 ```yini
 ^ App
@@ -42,7 +39,7 @@ port = 8080
 enabled = false
 ```
 
-No local setup yet? Paste the example into the [YINI Playground](/playground)
+Don't want to create a local file? Paste the example into the [YINI Playground](/playground)
 and parse it in the browser.
 
 💡 Quick syntax reference: [YINI Cheat Sheet](/refs/yini-cheat-sheet).
@@ -50,7 +47,7 @@ and parse it in the browser.
 ### 💡 What's happening
 
 - `^` starts a section.
-- More carets create nested sections. Here, `^^ Logging` is inside
+- More `^` symbols create nested sections. Here, `^^ Logging` is inside
   `Server`.
 - `key = value` defines a setting.
 - Lists look like this: `[1, 2, 3]`.
@@ -88,8 +85,12 @@ For a fuller syntax guide, read
 
 ## 4) Validate your config with the CLI
 
-To validate (check that the file is valid YINI), run this command from the
-same folder as your file:
+> To validate without installing anything, paste your file into the
+[YINI Playground](/playground) and select **Parse**. The playground displays
+**Valid YINI** when the file parses successfully.
+
+If Node.js and npm are installed, run this command from the same folder as
+your file to validate it:
 
 ```bash
 npx yini-cli validate ./tutorial.yini
@@ -101,8 +102,8 @@ You should see something like:
 ✅ Validation passed — 0 errors, 0 warnings.
 ```
 
-If YINI reports 0 errors, 0 warnings, everything's fine.
-A failed validation means something needs to be fixed in the file.
+Zero errors and warnings means the file is valid.  
+Otherwise, the output explains what needs to be fixed.
 
 ### More commands and options
 
