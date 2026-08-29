@@ -13,6 +13,7 @@ Minor typo fixes, styling tweaks, and small rewordings are not listed here. See 
 - **Added:** Added new page Assets, collecting YINI brand assets, logos, favicons, and media kit materials.
 - **Update:** Updated manual of `yini-cli` to 1.6.2.
 - **Changed:** Renamed `examples/basic` to `examples/core` to better reflect that the page covers fundamental YINI concepts.
+- **Improved:** Corrected and simplified the YINI FAQ, improved its examples, and added practical entries about strict mode, strings, tooling, and other common questions.
 
 ## 2026 July
 
