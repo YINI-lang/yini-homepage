@@ -39,27 +39,30 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
             <p
                 class="text-base leading-relaxed text-slate-600 dark:text-slate-400"
             >
-                Not sure where to start? Pick the collection that matches where
-                you are — from first steps to full-scale configs.
+                Not sure where to start? Begin with the <a
+                    href={CONFIG.siteLinks.navMenu.learnYini.examples.core.url}
+                    >Core YINI examples</a
+                >, then explore the collection that matches what you need — from
+                focused syntax examples to full-scale configs.
             </p>
 
             <ul class="mt-5 space-y-1.5">
                 <li>
                     <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.basic
+                        href={CONFIG.siteLinks.navMenu.learnYini.examples.core
                             .url}
                         class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
                     >
                         <div class="min-w-0 flex-1">
                             <h3 class="leading-tight font-medium underline">
-                                Core and basic examples
+                                Core YINI examples
                             </h3>
                             <p
                                 class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
                             >
-                                Start here if you are new to YINI. These small
-                                examples introduce sections, keys, values,
-                                comments, and basic structure.
+                                Start here if you are new to YINI. These small,
+                                fundamental examples introduce sections, keys,
+                                values, comments, and basic structure.
                             </p>
                         </div>
                     </a>

@@ -82,9 +82,9 @@
                         "url": "/learn-yini/examples/",
                         "title": "Practical YINI configuration examples."
                     },
-                    "basic": {
-                        "url": "/learn-yini/examples/basic",
-                        "title": "Core and practical YINI config examples."
+                    "core": {
+                        "url": "/learn-yini/examples/core",
+                        "title": "Core YINI examples."
                     },
                     "indentation": {
                         "url": "/learn-yini/examples/indentation",
@@ -161,7 +161,7 @@
                 },
                 "assets": {
                     "url": "/info/assets",
-                    "title": "Brand & Assets"
+                    "title": "Logos & Assets"
                 }
             }
         },
