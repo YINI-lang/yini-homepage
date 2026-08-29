@@ -289,10 +289,10 @@ export default function Header({ isProd }: HeaderProps) {
                             <a
                                 href={
                                     CONFIG.siteLinks.navMenu.learnYini.examples
-                                        .basic.url
+                                        .core.url
                                 }
                                 className={cssClasses}>
-                                Core & Basic
+                                Core Examples
                             </a>
                         </li>
                         <li>

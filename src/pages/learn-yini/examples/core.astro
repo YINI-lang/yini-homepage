@@ -1,0 +1,108 @@
+---
+// learn-yini/examples/core.astro
+import PageEndingLinks from '../../../components/PageEndingLinks.astro'
+import YINIExample from '../../../components/YINIExample.astro'
+import CONFIG from '../../../config/conf'
+import exampleBasic1 from '../../../content/examples/basic/basic1.yini?raw'
+import exampleBasic2 from '../../../content/examples/basic/basic2.yini?raw'
+import exampleBasic3 from '../../../content/examples/basic/basic3.yini?raw'
+import exampleBasic4 from '../../../content/examples/basic/basic4.yini?raw'
+import exampleComments from '../../../content/examples/basic/comments.yini?raw'
+import exampleListAndObjects from '../../../content/examples/general/lists-and-objects.yini?raw'
+import exampleSectionMarkerSeparators from '../../../content/examples/general/section-marker-separators.yini?raw'
+import exampleNestedStructured from '../../../content/examples/structure/nested-and-structured.yini?raw'
+import exampleNestedSections from '../../../content/examples/structure/nested-sections.yini?raw'
+import exampleSections from '../../../content/examples/structure/sections.yini?raw'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Core YINI Examples'}
+    headDescription={'Real-world examples written in the YINI data format, a human-readable text format for representing structured information.'}
+>
+    <section class="mt-8">
+        <h1>Core YINI Examples</h1>
+        <p>
+            Below are practical examples written in the <strong
+                >YINI configuration format</strong
+            >, showing how YINI handles structure, data types, and readability —
+            without relying on indentation-based syntax.
+        </p>
+
+        <p>
+            <strong>New to YINI?</strong>
+            Start with <a
+                href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
+                >Learn the format</a
+            >
+            or keep the <a href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
+                >Cheat Sheet</a
+            > open while reading.
+        </p>
+
+        <hr />
+
+        <p class="text-slate-600">
+            Start with these minimal examples to understand the core syntax.
+        </p>
+
+        <h2>Basic and quick examples</h2>
+        <YINIExample title="Basic example 1" code={exampleBasic1} />
+        <YINIExample title="Basic example 2" code={exampleBasic2} />
+        <p class="mt-10 mb-10">
+            💡 <strong>Note:</strong> YINI uses indentation only for human readability.
+            Section markers (^, ^^, ^^^) define the section nesting.
+        </p>
+        <YINIExample title="Basic example 3" code={exampleBasic3} />
+        <YINIExample title="Basic example 4" code={exampleBasic4} />
+
+        <hr />
+        <h2>Section examples</h2>
+        <YINIExample title="Sections" code={exampleSections} />
+        <YINIExample title="Nested sections" code={exampleNestedSections} />
+        <YINIExample
+            title="Section marker separators"
+            code={exampleSectionMarkerSeparators}
+        />
+
+        <hr />
+        <h2>Indentation examples</h2>
+        <p>
+            Indentation in YINI is only used for human readability. Section
+            markers define the structure, so you can choose a formatting style
+            that works for your file.
+        </p>
+
+        <p>
+            See the dedicated <a
+                href={CONFIG.siteLinks.navMenu.learnYini.examples.indentation
+                    .url}>indentation examples</a
+            >
+            for side-by-side formatting styles.
+        </p>
+
+        <hr />
+        <h2>Comments & compound types</h2>
+        <YINIExample title="Comments" code={exampleComments} />
+        <YINIExample title="Lists and objects" code={exampleListAndObjects} />
+
+        <hr />
+        <h2>Value literals</h2>
+        <p>
+            Strings, booleans, numbers, and digit separators are covered on the
+            dedicated <a
+                href={CONFIG.siteLinks.navMenu.learnYini.examples.values.url}
+                >value literal examples</a
+            > page.
+        </p>
+
+        <hr />
+        <h2>Structured nesting</h2>
+        <YINIExample
+            title="Nested and structured"
+            code={exampleNestedStructured}
+        />
+
+        <PageEndingLinks />
+    </section>
+</BaseLayout>

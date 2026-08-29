@@ -14,7 +14,9 @@ export default defineConfig({
         mdx(),
         react(),
         sitemap({
-            filter: (page) => !page.endsWith('/playground-use-yini/'),
+            filter: (page) =>
+                !page.endsWith('/playground-use-yini/') &&
+                !page.endsWith('/learn-yini/examples/basic/'),
         }),
     ],
     vite: {

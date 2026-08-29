@@ -35,7 +35,7 @@ const routes = {
     quickTutorial: learnYiniLinks.quickTutorial.url,
     learnYiniFormat: learnYiniLinks.learnYiniFormat.url,
     examples: exampleLinks.index.url,
-    examplesBasic: exampleLinks.basic.url,
+    examplesCore: exampleLinks.core.url,
     examplesCommon: exampleLinks.common.url,
     examplesIndentation: exampleLinks.indentation.url,
     examplesValues: exampleLinks.values.url,
@@ -178,8 +178,8 @@ export const pageEndingLinks: PageEndingLinkMap = {
     ],
     [pathKey(routes.examples)]: [
         {
-            label: 'Core and Basic Examples',
-            href: routes.examplesBasic,
+            label: 'Core YINI Examples',
+            href: routes.examplesCore,
             description:
                 'Start with small examples of sections, keys, and values.',
         },
@@ -190,7 +190,7 @@ export const pageEndingLinks: PageEndingLinkMap = {
                 'Move from basic syntax to everyday configuration patterns.',
         },
     ],
-    [pathKey(routes.examplesBasic)]: [
+    [pathKey(routes.examplesCore)]: [
         {
             label: 'Common Real-world Examples',
             href: routes.examplesCommon,
@@ -223,8 +223,8 @@ export const pageEndingLinks: PageEndingLinkMap = {
     ],
     [pathKey(routes.examplesIndentation)]: [
         {
-            label: 'Core and Basic Examples',
-            href: routes.examplesBasic,
+            label: 'Core YINI Examples',
+            href: routes.examplesCore,
             description: 'Review the core syntax and smaller examples.',
         },
         {
@@ -235,8 +235,8 @@ export const pageEndingLinks: PageEndingLinkMap = {
     ],
     [pathKey(routes.examplesValues)]: [
         {
-            label: 'Core and Basic Examples',
-            href: routes.examplesBasic,
+            label: 'Core YINI Examples',
+            href: routes.examplesCore,
             description: 'Return to the basic syntax in complete examples.',
         },
         {
@@ -265,8 +265,8 @@ export const pageEndingLinks: PageEndingLinkMap = {
             description: 'Return to everyday configuration examples.',
         },
         {
-            label: 'Core and Basic Examples',
-            href: routes.examplesBasic,
+            label: 'Core YINI Examples',
+            href: routes.examplesCore,
             description: 'Review the smaller examples and core syntax.',
         },
     ],
