@@ -250,6 +250,7 @@ function formatDiagnostics(
 
 export default function YiniPlayground() {
     const autoParseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+    const inputRef = useRef<HTMLTextAreaElement>(null)
     const [code, setCode] = useState<string>(DEFAULT_SNIPPET)
     const [mode, setMode] = useState<OutputMode>('json')
     const [strict, setStrict] = useState(false)
@@ -372,6 +373,14 @@ export default function YiniPlayground() {
     }, [])
 
     useEffect(() => {
+        const animationFrame = requestAnimationFrame(() => {
+            inputRef.current?.focus()
+        })
+
+        return () => cancelAnimationFrame(animationFrame)
+    }, [])
+
+    useEffect(() => {
         try {
             localStorage.setItem(LS_INDENT_KEY, String(indentSize))
         } catch {
@@ -389,6 +398,7 @@ export default function YiniPlayground() {
                 e.preventDefault()
                 clearScheduledAutoParse()
                 parseNow()
+                inputRef.current?.focus()
             }
         }
 
@@ -465,8 +475,10 @@ export default function YiniPlayground() {
 
                 <div className="mt-2 text-slate-600 dark:text-slate-300">
                     <p>
-                        Paste or write YINI on the left, see parsed output live
-                        on the right. Toggle strict mode, and choose{' '}
+                        Paste or write YINI configuration code in the{' '}
+                        <strong>Input</strong> field on the left, and see the
+                        parsed output live on the right. Toggle{' '}
+                        <code>strict mode</code>, and choose{' '}
                         <strong>JSON</strong> or <strong>POJO</strong> (plain
                         JavaScript object).
                         <br />
@@ -589,8 +601,9 @@ export default function YiniPlayground() {
                         onClick={() => {
                             clearScheduledAutoParse()
                             parseNow()
+                            inputRef.current?.focus()
                         }}
-                        title="Parse (Ctrl/Cmd+Enter)">
+                        title="Parse YINI configuration code (Ctrl/Cmd+Enter)">
                         &nbsp;&nbsp;&nbsp;Parse&nbsp;&nbsp;&nbsp;
                     </button>
 
@@ -695,6 +708,7 @@ export default function YiniPlayground() {
                         </div>
 
                         <textarea
+                            ref={inputRef}
                             value={code}
                             onChange={(e) => handleCodeChange(e.target.value)}
                             spellCheck={false}
