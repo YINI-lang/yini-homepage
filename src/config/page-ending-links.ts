@@ -391,7 +391,7 @@ export const pageEndingLinks: PageEndingLinkMap = {
             description: 'Read common questions, rules, and project context.',
         },
         {
-            label: 'YINI Assets',
+            label: 'YINI Logos & Assets',
             href: routes.assets,
             description: 'Find logos, favicons, and media kit materials.',
         },
