@@ -55,6 +55,7 @@ const {
     headRobots,
     headCanonicalUrl,
     headNoindexForNonEmptyCodeParam = false,
+    fullBleedClass = '',
 } = Astro.props
 
 const postTitle = 'Clear and Structured Config Files'
@@ -62,6 +63,7 @@ const htmlTitle = makeHtmlTitle(headTitle, postTitle, 60)
 
 const isProd = import.meta.env.PROD
 const isDev = import.meta.env.DEV
+const hasFullBleedSlot = Astro.slots.has('full-bleed')
 
 ---
 
@@ -165,9 +167,8 @@ const isDev = import.meta.env.DEV
                     Segoe UI,
                     Roboto,
                     sans-serif;
-                margin: 2rem auto;
-                max-width: 800px;
-                padding: 0 1rem;
+                margin: 2rem 0;
+                padding: 0;
             }
             
             nav a {
@@ -226,11 +227,11 @@ const isDev = import.meta.env.DEV
         </main> -->
 
         <!-- Main layout: sidebar + content on desktop -->
-        <main class="mx-auto max-w-7xl px-4 py-10">
-        <div class="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8">
+        <main class:list={['page-grid py-10', hasFullBleedSlot && 'page-grid-has-breakout']}>
+        <div class="page-grid-content">
             
             <!-- LEFT NAV menu (left menu, desktop only) -->
-            <aside class="hidden md:block sticky top-24 self-start
+            <aside class="page-grid-sidebar hidden md:block sticky top-24 self-start
               max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
             <nav class="text-sm text-slate-700 dark:text-slate-300 space-y-6 mb-6">
                 <style is:inline>
@@ -423,9 +424,23 @@ const isDev = import.meta.env.DEV
             </aside>
 
             <!-- MAIN CONTENT -->
-            <article class="prose prose-slate max-w-none">
-            <slot />
+            <article class="page-grid-body prose prose-slate max-w-none">
+            {hasFullBleedSlot ? <slot name="before-full-bleed" /> : <slot />}
             </article>
+
+            {hasFullBleedSlot && (
+                <div class:list={['page-grid-breakout full-bleed', fullBleedClass]}>
+                    <div class="page-grid-breakout-content prose prose-slate max-w-none">
+                        <slot name="full-bleed" />
+                    </div>
+                </div>
+            )}
+
+            {hasFullBleedSlot && (
+                <article class="page-grid-body prose prose-slate max-w-none">
+                    <slot name="after-full-bleed" />
+                </article>
+            )}
 
         </div>
         </main>

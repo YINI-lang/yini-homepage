@@ -9,6 +9,7 @@ node_modules
 
 .chrome-codex-profile
 .chrome-codex-profile-2
+.codex-edge-profile
 
 *.local
 

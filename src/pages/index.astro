@@ -87,7 +87,9 @@ const statusIcon = (status: EcosystemStatus) => {
 <BaseLayout
     headTitle={CONFIG.text.mainPage.headTitle}
     headDescription={CONFIG.text.mainPage.headDescription}
+    fullBleedClass="yini-features"
 >
+    <Fragment slot="before-full-bleed">
     <section class="mx-auto max-w-5xl px-4 py-2 text-center">
         <!-- <h1 class="text-3xl font-semibold tracking-tight md:text-5xl">
             {CONFIG.text.headline}
@@ -555,8 +557,9 @@ name = "Hello"`}</code></pre>
             >.
         </p>
     </section>
+    </Fragment>
 
-    <div class="yini-features full-bleed px-8">
+    <Fragment slot="full-bleed">
         <section class="mx-auto max-w-3xl pt-1 pb-6">
             <h2>🧩 Key Features</h2>
             <ol>
@@ -651,8 +654,9 @@ title = "MyApp"</code></pre>
                 </a>
             </p>
         </section>
-    </div>
+    </Fragment>
 
+    <Fragment slot="after-full-bleed">
     <section class="my-6 pt-4">
         <h2 class="mt-5">⚖️ How YINI compares to other config formats</h2>
         <div style="overflow-x:auto">
@@ -975,4 +979,5 @@ title = "MyApp"</code></pre>
         <h3>Project status</h3>
         <DivStatusBadges />
     </section> -->
+    </Fragment>
 </BaseLayout>

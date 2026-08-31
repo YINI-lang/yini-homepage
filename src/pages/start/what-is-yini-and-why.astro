@@ -19,7 +19,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 <BaseLayout
     headTitle="What is YINI and Why?"
     headDescription="YINI is a clear, human-friendly, text-based configuration format — less verbose than XML and JSON, simpler than YAML, and more expressive than INI."
+    fullBleedClass="try-under-a-minute"
 >
+    <Fragment slot="before-full-bleed">
     <section class="mx-auto max-w-5xl px-4 py-2 text-center">
         <h1 class="text-3xl font-semibold tracking-tight md:text-5xl">
             What is YINI and Why?
@@ -193,9 +195,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
             </a>
         </div>
     </section>
+    </Fragment>
 
     <!-- Quick Start -->
-    <div class="try-under-a-minute full-bleed px-8">
+    <Fragment slot="full-bleed">
         <section class="mx-auto max-w-3xl pt-1 pb-6">
             <h2>⚡ Try YINI in under a minute</h2>
             <blockquote>
@@ -234,8 +237,9 @@ name = "Hello"`}</code></pre>
                 You just parsed your first YINI file.
             </p>
         </section>
-    </div>
+    </Fragment>
 
+    <Fragment slot="after-full-bleed">
     <section class="my-6 pb-4">
         <h2>✨ What makes YINI different?</h2>
         <ul>
@@ -580,4 +584,5 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
             YINI is open-source and actively maintained.
         </p>
     </section>
+    </Fragment>
 </BaseLayout>
