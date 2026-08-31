@@ -6,9 +6,58 @@
 }
 
 .full-bleed {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    width: 100%;
+    margin-inline: 0;
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns:
+        [full-start] 1rem [content-start] minmax(0, 1fr) [content-end]
+        1rem [full-end];
+}
+
+.page-grid-content {
+    display: contents;
+}
+
+.page-grid-sidebar {
+    grid-column: sidebar-start / sidebar-end;
+}
+
+.page-grid-body {
+    grid-column: content-start / content-end;
+    min-width: 0;
+}
+
+.page-grid-breakout {
+    display: grid;
+    grid-column: full-start / full-end;
+    grid-template-columns: subgrid;
+}
+
+.page-grid-breakout-content {
+    grid-column: content-start / content-end;
+    min-width: 0;
+    padding-inline: 1rem;
+}
+
+.page-grid-has-breakout .page-grid-breakout {
+    grid-row: 2;
+}
+
+@media (min-width: 48rem) {
+    .page-grid {
+        grid-template-columns:
+            [full-start] minmax(1rem, 1fr) [sidebar-start] 260px
+            [sidebar-end] 2rem [content-start] minmax(0, 956px) [content-end]
+            minmax(1rem, 1fr) [full-end];
+    }
+
+    .page-grid-has-breakout .page-grid-sidebar {
+        z-index: 10;
+        grid-row: 1 / span 3;
+    }
 }
 
 /* — Base tweaks — */
