@@ -17,7 +17,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v5
             - name: Install, build, and upload
-              uses: withastro/action@v5
+              uses: withastro/action@v6
               with:
                   # Optional: lock this to your package manager if you want
                   # package-manager: pnpm@latest # or npm@latest / yarn@berry
