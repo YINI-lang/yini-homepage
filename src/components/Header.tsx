@@ -87,13 +87,13 @@ export default function Header({ isProd }: HeaderProps) {
         // *** HERO (nav links / top-menu) for desktop mode ***
         return (
             <>
-                {/* <a
+                <a
                     href={CONFIG.siteLinks.hero.home.url}
                     title={CONFIG.siteLinks.hero.home.title}
                     className={cssClasses}
                     style={{ paddingLeft: '.10em' }}>
                     Home
-                </a> */}
+                </a>
                 <a
                     href={CONFIG.siteLinks.hero.getStarted.url}
                     title={CONFIG.siteLinks.hero.getStarted.title}
@@ -132,12 +132,12 @@ export default function Header({ isProd }: HeaderProps) {
                     className={cssClasses}>
                     ⭐ Cheat Sheet
                 </a> */}
-                <a
+                {/* <a
                     href={CONFIG.siteLinks.hero.faq.url}
                     title={CONFIG.siteLinks.hero.faq.title}
                     className={cssClasses}>
                     FAQ
-                </a>
+                </a> */}
                 <a
                     href={CONFIG.siteLinks.hero.spec.url}
                     title={CONFIG.siteLinks.hero.spec.title}
@@ -214,13 +214,13 @@ export default function Header({ isProd }: HeaderProps) {
                             ◦ Cheat Sheet
                         </a>
                     </div> */}
-                    <div className="mb-2">
+                    {/* <div className="mb-2">
                         <a
                             href={CONFIG.siteLinks.navMenu.refs.faq.url}
                             className={cssClasses}>
                             ◦ FAQ
                         </a>
-                    </div>
+                    </div> */}
                     <div className="mb-2">
                         <a
                             href={CONFIG.siteLinks.navMenu.refs.spec.url}
