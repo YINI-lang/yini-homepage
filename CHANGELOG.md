@@ -6,7 +6,8 @@ This file tracks meaningful public-facing changes, such as major content updates
 
 Minor typo fixes, styling tweaks, and small rewordings are not listed here. See the git commit history for those details.
 
-## [Upcoming/Unreleased] - FUTURE
+## 2026 Sep
+- **Added:** Added Dependabot configuration for monthly npm and GitHub Actions dependency updates.
 
 ## 2026 Aug
 - **Added:** Added new page Playground.
