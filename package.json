@@ -44,7 +44,7 @@
         "@typescript-eslint/eslint-plugin": "^8.39.1",
         "@typescript-eslint/parser": "^8.39.1",
         "add": "^2.0.6",
-        "astro": "^6.4.2",
+        "astro": "^7.2.10",
         "astro-eslint-parser": "^1.2.2",
         "autoprefixer": "^10.4.21",
         "eslint": "^9.33.0",
