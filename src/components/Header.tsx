@@ -100,20 +100,20 @@ export default function Header({ isProd }: HeaderProps) {
                     className={cssClasses}>
                     Get Started
                 </a>
-                <a
+                {/* <a
                     href={CONFIG.siteLinks.navMenu.learnYini.quickTutorial.url}
                     title={
                         CONFIG.siteLinks.navMenu.learnYini.quickTutorial.title
                     }
                     className={cssClasses}>
                     Quick Tutorial
-                </a>
-                {/* <a
+                </a> */}
+                <a
                     href={CONFIG.siteLinks.hero.examples.url}
                     title={CONFIG.siteLinks.hero.examples.title}
                     className={cssClasses}>
                     Examples
-                </a> */}
+                </a>
                 <a
                     href={CONFIG.siteLinks.hero.playground.url}
                     title={CONFIG.siteLinks.hero.playground.title}
@@ -182,7 +182,7 @@ export default function Header({ isProd }: HeaderProps) {
                             ◦ Get Started
                         </a>
                     </div>
-                    <div className="mb-2">
+                    {/* <div className="mb-2">
                         <a
                             href={
                                 CONFIG.siteLinks.navMenu.learnYini.quickTutorial
@@ -190,6 +190,16 @@ export default function Header({ isProd }: HeaderProps) {
                             }
                             className={cssClasses}>
                             ◦ Quick Tutorial
+                        </a>
+                    </div> */}
+                    <div className="mb-2">
+                        <a
+                            href={
+                                CONFIG.siteLinks.navMenu.learnYini.examples
+                                    .index.url
+                            }
+                            className={cssClasses}>
+                            ◦ YINI Examples
                         </a>
                     </div>
                     <div className="mb-2">

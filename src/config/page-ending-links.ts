@@ -148,6 +148,12 @@ export const pageEndingLinks: PageEndingLinkMap = {
     ],
     [pathKey(routes.quickTutorial)]: [
         {
+            label: 'YINI Examples',
+            href: routes.examples,
+            description:
+                'See the syntax used in practical configuration files.',
+        },
+        {
             label: 'YINI Playground',
             href: routes.playground,
             description: 'Try the tutorial examples directly in the browser.',
