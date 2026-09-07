@@ -7,9 +7,7 @@ import Header from '../components/Header'
 import CONFIG from '../config/conf'
 
 function removeTrailingYINI(title: string): string {
-    return title.endsWith(": YINI")
-        ? title.slice(0, -": YINI".length)
-        : title;
+    return title.endsWith(': YINI') ? title.slice(0, -': YINI'.length) : title
 }
 
 /** Function that helps to keep HTML titles under max length characters.
@@ -18,32 +16,34 @@ function removeTrailingYINI(title: string): string {
  * Longer titles than ~70 then, Search Engines:
  *   - May rewrite the title automatically.
  *   - May truncate too long titles.
- * 
+ *
  * NOTE: SEO best practice is usually ~50–60 chars.
  */
-function makeHtmlTitle(mainTitle: string, postTitle: string, maxLen = 60){
-    let res = ""    // Temp candidate title.
+function makeHtmlTitle(mainTitle: string, postTitle: string, maxLen = 60) {
+    let res = '' // Temp candidate title.
 
     res = `${mainTitle} · ${postTitle}`
-    if(res.length <= maxLen) return res
+    if (res.length <= maxLen) return res
 
     mainTitle = removeTrailingYINI(mainTitle)
 
     res = `${mainTitle} · ${postTitle}`
-    if(res.length <= maxLen) return res
+    if (res.length <= maxLen) return res
 
     res = `${mainTitle} · YINI Config Format`
-    if(res.length <= maxLen) return res
+    if (res.length <= maxLen) return res
 
     res = `${mainTitle} | YINI`
-    if(res.length <= maxLen) return res
+    if (res.length <= maxLen) return res
 
     res = `${mainTitle}: YINI`
-    if(res.length <= maxLen) return res
+    if (res.length <= maxLen) return res
 
     res = mainTitle
-    if(res.length > maxLen){
-        console.warn(`WARN: Resulted title too long in makeHtmlTitle(..), res: "${res}", >${maxLen} chars`)
+    if (res.length > maxLen) {
+        console.warn(
+            `WARN: Resulted title too long in makeHtmlTitle(..), res: "${res}", >${maxLen} chars`,
+        )
     }
 
     return mainTitle
@@ -64,7 +64,6 @@ const htmlTitle = makeHtmlTitle(headTitle, postTitle, 60)
 const isProd = import.meta.env.PROD
 const isDev = import.meta.env.DEV
 const hasFullBleedSlot = Astro.slots.has('full-bleed')
-
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -73,12 +72,15 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <title>{htmlTitle}</title>
-        <meta name="subject" content="YINI configuration format">
+        <meta name="subject" content="YINI configuration format" />
 
         <meta name="description" content={headDescription} />
         {headRobots && <meta name="robots" content={headRobots} />}
         {headCanonicalUrl && <link rel="canonical" href={headCanonicalUrl} />}
-        <meta name="keywords" content="YINI config format, YINI language, configuration file format, INI alternative, YAML alternative, TOML alternative">
+        <meta
+            name="keywords"
+            content="YINI config format, YINI language, configuration file format, INI alternative, YAML alternative, TOML alternative"
+        />
         <meta name="author" content={CONFIG.meta.author} />
 
         {
@@ -114,19 +116,36 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
         <meta name="theme-color" content="#111827" />
         <meta name="msapplication-TileColor" content="#111827" />
 
-        <meta property="og:title" content="YINI — A Modern, Human-Friendly Configuration Format">
-        <meta property="og:description" content="Simple like INI. Structured like JSON. Predictable like Python.">
-        <meta property="og:url" content="https://yini-lang.org">
-        <meta property="og:image" content="https://yini-lang.org/og-card.png">
+        <meta
+            property="og:title"
+            content="YINI — A Modern, Human-Friendly Configuration Format"
+        />
+        <meta
+            property="og:description"
+            content="Simple like INI. Structured like JSON. Predictable like Python."
+        />
+        <meta property="og:url" content="https://yini-lang.org" />
+        <meta property="og:image" content="https://yini-lang.org/og-card.png" />
 
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="YINI — A Modern Config Format">
-        <meta name="twitter:description" content="Fast, readable, predictable. Try YINI today.">
-        <meta name="twitter:image" content="https://yini-lang.org/og-card.png">
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="YINI — A Modern Config Format" />
+        <meta
+            name="twitter:description"
+            content="Fast, readable, predictable. Try YINI today."
+        />
+        <meta
+            name="twitter:image"
+            content="https://yini-lang.org/og-card.png"
+        />
 
         <!-- Favicons -->
-        <!-- <link rel="icon" href="/favicon.ico" sizes="any" /> -->
-        <link rel="icon" href="https://yini-lang.org/yini-favicon.ico" type="image/x-icon" sizes="any"/>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <!-- <link
+            rel="icon"
+            href="https://yini-lang.org/yini-favicon.ico"
+            type="image/x-icon"
+            sizes="any"
+        /> -->
 
         <!-- PNG fallbacks -->
         <link
@@ -170,21 +189,21 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
                 margin: 2rem 0;
                 padding: 0;
             }
-            
+
             nav a {
                 margin-right: 1rem;
-                padding-left: .5rem;
+                padding-left: 0.5rem;
             }
 
             .sidebar-active {
                 /* font-weight: 400; */
                 font-weight: 600;
-                color:var(--color-sky-600);
+                color: var(--color-sky-600);
                 background: rgb(224, 224, 224);
-                padding-bottom: .2rem;
-                padding-right: .2rem;
+                padding-bottom: 0.2rem;
+                padding-right: 0.2rem;
                 /* box-shadow: inset 5px 0 0 rgb(204, 10, 10); */
-                box-shadow: inset 5px 0 0 #299CA7;
+                box-shadow: inset 5px 0 0 #299ca7;
             }
         </style>
 
@@ -199,16 +218,20 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
                 "url": "https://yini-lang.org"
             }
         </script>
-        { /* Hack to prevent flash on first load, set the initial theme before CSS paints. */ }
+        {
+            /* Hack to prevent flash on first load, set the initial theme before CSS paints. */
+        }
         <script is:inline>
-            (() => {
-            try {
-                const saved = localStorage.getItem('theme');            // 'dark' | 'light' | null
-                const system = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const dark = saved ? saved === 'dark' : system;
-                document.documentElement.classList.toggle('dark', dark);
-            } catch {}
-            })();
+            ;(() => {
+                try {
+                    const saved = localStorage.getItem('theme') // 'dark' | 'light' | null
+                    const system = window.matchMedia(
+                        '(prefers-color-scheme: dark)',
+                    ).matches
+                    const dark = saved ? saved === 'dark' : system
+                    document.documentElement.classList.toggle('dark', dark)
+                } catch {}
+            })()
         </script>
     </head>
 
@@ -227,228 +250,316 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
         </main> -->
 
         <!-- Main layout: sidebar + content on desktop -->
-        <main class:list={['page-grid py-10', hasFullBleedSlot && 'page-grid-has-breakout']}>
-        <div class="page-grid-content">
-            
-            <!-- LEFT NAV menu (left menu, desktop only) -->
-            <aside class="page-grid-sidebar hidden md:block sticky top-24 self-start
-              max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
-            <nav class="text-sm text-slate-700 dark:text-slate-300 space-y-6 mb-6">
-                <style is:inline>
-                    .sidebar-link {
-                        @apply text-slate-700 dark:text-slate-300 hover:text-sky-500;
-                    }
-                </style>
-
-                <!-- 1) Understanding YINI (NAV menu) -->
-                <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
-                    Start here
-                </h3>
-                <ul class="space-y-2">
-                    <li>
-                    <a 
-                        href={CONFIG.siteLinks.navMenu.start.whatIsYINIAndWhy.url}
-                        class="sidebar-link"
+        <main
+            class:list={[
+                'page-grid py-10',
+                hasFullBleedSlot && 'page-grid-has-breakout',
+            ]}
+        >
+            <div class="page-grid-content">
+                <!-- LEFT NAV menu (left menu, desktop only) -->
+                <aside
+                    class="page-grid-sidebar sticky top-24 hidden max-h-[calc(100vh-6rem)] self-start overflow-y-auto pr-2 md:block"
+                >
+                    <nav
+                        class="mb-6 space-y-6 text-sm text-slate-700 dark:text-slate-300"
                     >
-                        What is YINI & Why?
-                    </a>
-                    </li>
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.useYini.getStarted.url}
-                        class="sidebar-link">
-                        Get Started 🚀
-                    </a>
-                    </li>
-                </ul>
-                </div>
+                        <style is:inline>
+                            .sidebar-link {
+                                @apply text-slate-700 hover:text-sky-500 dark:text-slate-300;
+                            }
+                        </style>
 
-                <!-- 2) Learn YINI (NAV menu) -->
-                <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
-                    Learn YINI
-                </h3>
-                <ul class="space-y-2">
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.quickTutorial.url}
-                            class="sidebar-link">
-                            Quick Tutorial
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.hero.playground.url}
-                            class="sidebar-link">
-                            Playground
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.learnYiniFormat.url}
-                            class="sidebar-link">
-                            Beginner's Guide to YINI 🎓
-                        </a>
-                    </li>
-                </ul>
-                </div>
+                        <!-- 1) Understanding YINI (NAV menu) -->
+                        <div>
+                            <h3
+                                class="font-semibold text-slate-900 dark:text-slate-100"
+                            >
+                                Start here
+                            </h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.start
+                                            .whatIsYINIAndWhy.url}
+                                        class="sidebar-link"
+                                    >
+                                        What is YINI & Why?
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.useYini
+                                            .getStarted.url}
+                                        class="sidebar-link"
+                                    >
+                                        Get Started 🚀
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-                <!-- 3) Learn YINI: Examples (NAV menu) -->
-                <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
-                    Examples
-                </h3>
-                <ul class="space-y-2">
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.index.url}
-                            class="sidebar-link">
-                            Overview
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.core.url}
-                            class="sidebar-link">
-                            Core Examples
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.common.url}
-                            class="sidebar-link">
-                            Common & Real-world
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.indentation.url}
-                            class="sidebar-link">
-                            Indentation & Structure
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.values.url}
-                            class="sidebar-link">
-                            Value Literals
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}
-                            class="sidebar-link">
-                            Large Examples
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.learnYini.examples.advanced.url}
-                            class="sidebar-link">
-                            Advanced Features (optional)
-                        </a>
-                    </li>
-                </ul>
-                </div>
+                        <!-- 2) Learn YINI (NAV menu) -->
+                        <div>
+                            <h3
+                                class="font-semibold text-slate-900 dark:text-slate-100"
+                            >
+                                Learn YINI
+                            </h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.learnYini
+                                            .quickTutorial.url}
+                                        class="sidebar-link"
+                                    >
+                                        Quick Tutorial
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.hero.playground
+                                            .url}
+                                        class="sidebar-link"
+                                    >
+                                        Playground
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.learnYini
+                                            .learnYiniFormat.url}
+                                        class="sidebar-link"
+                                    >
+                                        Beginner's Guide to YINI 🎓
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-                <!-- 4) Use YINI (NAV menu) -->
-                <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
-                    Use YINI
-                </h3>
-                <ul class="space-y-2">
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.tools.yiniCli.url}
-                        class="sidebar-link">
-                        YINI CLI
-                    </a>
-                    </li>
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.useYini.yiniParsers.url}
-                        class="sidebar-link">
-                        YINI Parsers
-                    </a>
-                    </li>
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.useYini.getYINITools.url}
-                        class="sidebar-link">
-                        Get YINI Tools ⬇️
-                    </a>
-                    </li>
-                </ul>
-                </div>
+                        <!-- 3) Learn YINI: Examples (NAV menu) -->
+                        <div>
+                            <h3
+                                class="font-semibold text-slate-900 dark:text-slate-100"
+                            >
+                                Examples
+                            </h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.learnYini
+                                            .examples.index.url}
+                                        class="sidebar-link"
+                                    >
+                                        Overview
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.learnYini
+                                            .examples.core.url}
+                                        class="sidebar-link"
+                                    >
+                                        Core Examples
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.learnYini
+                                            .examples.common.url}
+                                        class="sidebar-link"
+                                    >
+                                        Common & Real-world
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.learnYini
+                                            .examples.indentation.url}
+                                        class="sidebar-link"
+                                    >
+                                        Indentation & Structure
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.learnYini
+                                            .examples.values.url}
+                                        class="sidebar-link"
+                                    >
+                                        Value Literals
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.learnYini
+                                            .examples.large.url}
+                                        class="sidebar-link"
+                                    >
+                                        Large Examples
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.learnYini
+                                            .examples.advanced.url}
+                                        class="sidebar-link"
+                                    >
+                                        Advanced Features (optional)
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-                <!-- 5) References (NAV menu) -->
-                <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
-                    Docs / References
-                </h3>
-                <ul class="space-y-2">
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.refs.cheatSheet.url}
-                            class="sidebar-link">
-                            Cheat Sheet ⭐
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.refs.faq.url}
-                            class="sidebar-link">
-                            FAQ
-                        </a>
-                    </li>
-                    <li>
-                        <a href={CONFIG.siteLinks.navMenu.refs.spec.url}
-                            class="sidebar-link">
-                            Specification
-                        </a>
-                    </li>
-                </ul>
-                </div>
+                        <!-- 4) Use YINI (NAV menu) -->
+                        <div>
+                            <h3
+                                class="font-semibold text-slate-900 dark:text-slate-100"
+                            >
+                                Use YINI
+                            </h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.tools
+                                            .yiniCli.url}
+                                        class="sidebar-link"
+                                    >
+                                        YINI CLI
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.useYini
+                                            .yiniParsers.url}
+                                        class="sidebar-link"
+                                    >
+                                        YINI Parsers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.useYini
+                                            .getYINITools.url}
+                                        class="sidebar-link"
+                                    >
+                                        Get YINI Tools ⬇️
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-                <!-- 6) GitHub (NAV menu) -->
-                <div>
-                <h3 class="font-semibold text-slate-900 dark:text-slate-100">
-                    Project
-                </h3>
-                <ul class="space-y-2">
-                    <li>
-                    <a href={CONFIG.urls.external.gitHub.yiniOrg}
-                        class="sidebar-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onclick="trackClick('Ext. Link Clicked: Mobile Menu')"
-                        >
-                        YINI Project on GitHub ↗
-                    </a>
-                    </li>
-                    <li>
-                    <a href={CONFIG.siteLinks.navMenu.metaInfo.about.url}
-                        class="sidebar-link">
-                        About YINI
-                    </a>
-                    </li>
-                </ul>
-                </div>
+                        <!-- 5) References (NAV menu) -->
+                        <div>
+                            <h3
+                                class="font-semibold text-slate-900 dark:text-slate-100"
+                            >
+                                Docs / References
+                            </h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.refs
+                                            .cheatSheet.url}
+                                        class="sidebar-link"
+                                    >
+                                        Cheat Sheet ⭐
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.refs.faq
+                                            .url}
+                                        class="sidebar-link"
+                                    >
+                                        FAQ
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.refs.spec
+                                            .url}
+                                        class="sidebar-link"
+                                    >
+                                        Specification
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-            </nav>
-            </aside>
+                        <!-- 6) GitHub (NAV menu) -->
+                        <div>
+                            <h3
+                                class="font-semibold text-slate-900 dark:text-slate-100"
+                            >
+                                Project
+                            </h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a
+                                        href={CONFIG.urls.external.gitHub
+                                            .yiniOrg}
+                                        class="sidebar-link"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onclick="trackClick('Ext. Link Clicked: Mobile Menu')"
+                                    >
+                                        YINI Project on GitHub ↗
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href={CONFIG.siteLinks.navMenu.metaInfo
+                                            .about.url}
+                                        class="sidebar-link"
+                                    >
+                                        About YINI
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </aside>
 
-            <!-- MAIN CONTENT -->
-            <article class="page-grid-body prose prose-slate max-w-none">
-            {hasFullBleedSlot ? <slot name="before-full-bleed" /> : <slot />}
-            </article>
-
-            {hasFullBleedSlot && (
-                <div class:list={['page-grid-breakout full-bleed', fullBleedClass]}>
-                    <div class="page-grid-breakout-content prose prose-slate max-w-none">
-                        <slot name="full-bleed" />
-                    </div>
-                </div>
-            )}
-
-            {hasFullBleedSlot && (
+                <!-- MAIN CONTENT -->
                 <article class="page-grid-body prose prose-slate max-w-none">
-                    <slot name="after-full-bleed" />
+                    {
+                        hasFullBleedSlot ? (
+                            <slot name="before-full-bleed" />
+                        ) : (
+                            <slot />
+                        )
+                    }
                 </article>
-            )}
 
-        </div>
+                {
+                    hasFullBleedSlot && (
+                        <div
+                            class:list={[
+                                'page-grid-breakout full-bleed',
+                                fullBleedClass,
+                            ]}>
+                            <div class="page-grid-breakout-content prose prose-slate max-w-none">
+                                <slot name="full-bleed" />
+                            </div>
+                        </div>
+                    )
+                }
+
+                {
+                    hasFullBleedSlot && (
+                        <article class="page-grid-body prose prose-slate max-w-none">
+                            <slot name="after-full-bleed" />
+                        </article>
+                    )
+                }
+            </div>
         </main>
 
         <footer class="mx-auto max-w-6xl px-4 py-8 text-center">
             <a href="#top">Back to top </a>
         </footer>
-        <Footer/>
+        <Footer />
 
         <script is:inline>
             function trackClick(eventName, props = {}) {
@@ -462,7 +573,7 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
                 // Google Analytics
                 if (typeof gtag === 'function') {
                     gtag('event', eventName, {
-                        link_location: window.location.pathname
+                        link_location: window.location.pathname,
                     })
                 }
             }
@@ -475,10 +586,10 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
 
                     if (
                         window.yiniAnalyticsEnabled &&
-                        typeof gtag === "function"
+                        typeof gtag === 'function'
                     ) {
                         gtag('event', 'copy_code', {
-                            content_length: selection.length
+                            content_length: selection.length,
                         })
                     }
                 }
@@ -486,45 +597,51 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
         </script>
 
         <script is:inline>
-        function markActiveSidebarLink() {
-            const current = window.location.pathname.replace(/\/$/, "");
-            const links = document.querySelectorAll("aside a.sidebar-link");
+            function markActiveSidebarLink() {
+                const current = window.location.pathname.replace(/\/$/, '')
+                const links = document.querySelectorAll('aside a.sidebar-link')
 
-            if (!links.length) {
-                setTimeout(markActiveSidebarLink, 50);
-                return;
-            }
-
-            let matched = null;
-
-            // First pass: exact match
-            links.forEach(a => {
-                const href = (a.getAttribute("href") || "").replace(/\/$/, "");
-                if (href === current) {
-                    matched = a;
+                if (!links.length) {
+                    setTimeout(markActiveSidebarLink, 50)
+                    return
                 }
-            });
 
-            // Second pass: prefix match (only if nothing exact matched)
-            if (!matched) {
-                links.forEach(a => {
-                    const href = (a.getAttribute("href") || "").replace(/\/$/, "");
-                    if (href !== "/" && current.startsWith(href + "/")) {
-                        matched = a;
+                let matched = null
+
+                // First pass: exact match
+                links.forEach((a) => {
+                    const href = (a.getAttribute('href') || '').replace(
+                        /\/$/,
+                        '',
+                    )
+                    if (href === current) {
+                        matched = a
                     }
-                });
+                })
+
+                // Second pass: prefix match (only if nothing exact matched)
+                if (!matched) {
+                    links.forEach((a) => {
+                        const href = (a.getAttribute('href') || '').replace(
+                            /\/$/,
+                            '',
+                        )
+                        if (href !== '/' && current.startsWith(href + '/')) {
+                            matched = a
+                        }
+                    })
+                }
+
+                // Apply active class
+                links.forEach((a) => a.classList.remove('sidebar-active'))
+                if (matched) matched.classList.add('sidebar-active')
             }
 
-            // Apply active class
-            links.forEach(a => a.classList.remove("sidebar-active"));
-            if (matched) matched.classList.add("sidebar-active");
-        }
+            // Run on first load.
+            document.addEventListener('DOMContentLoaded', markActiveSidebarLink)
 
-        // Run on first load.
-        document.addEventListener("DOMContentLoaded", markActiveSidebarLink);
-
-        // Run on every Astro navigation (CRITICAL).
-        document.addEventListener("astro:page-load", markActiveSidebarLink);
+            // Run on every Astro navigation (CRITICAL).
+            document.addEventListener('astro:page-load', markActiveSidebarLink)
         </script>
     </body>
 </html>
