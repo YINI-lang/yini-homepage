@@ -1,0 +1,28 @@
+# String formats in YINI
+
+^ Strings
+
+# Strings are raw by default. Choose quotes that keep text easy to read.
+greeting = "Hello, YINI!"
+apostrophe = "YINI's strings are always quoted."
+quotation = 'She said "hello".'
+
+# R is optional; it explicitly says that backslashes stay as written.
+explicit_raw = R"First line\nSecond line"
+
+# C enables escapes such as \n (new line) and \t (tab).
+escaped = C"First line\nSecond line"
+tabbed = C"Name:\tRobin"
+
+# Triple quotes preserve a multiline block, including its line breaks.
+message = """Hello!
+
+Welcome to the YINI playground.
+"""
+
+# C also works with triple quotes when the block needs escapes.
+formatted_message = C"""Name:\tRobin
+Status:\tReady"""
+
+# The + operator joins strings into one value.
+title = "YINI " + "string formats"

@@ -6,6 +6,7 @@ import invalidExample from '../content/examples/playground/invalid.invalid.yini?
 import listsAndSectionsExample from '../content/examples/playground/lists-and-sections.yini?raw'
 import serviceExample from '../content/examples/playground/service.yini?raw'
 import strictExample from '../content/examples/playground/strict.yini?raw'
+import stringsExample from '../content/examples/playground/strings.yini?raw'
 import YINI from '../YiniWrapper.ts'
 
 const URL_ON_VALID_PARSE = '/playground-use-yini' // The destination page.
@@ -63,6 +64,11 @@ const EXAMPLE_PRESETS: ExamplePreset[] = [
         id: 'lists',
         label: 'Lists (arrays) and sections',
         code: listsAndSectionsExample,
+    },
+    {
+        id: 'strings',
+        label: 'String formats',
+        code: stringsExample,
     },
     {
         id: 'strict',
