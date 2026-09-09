@@ -6,7 +6,7 @@ Features:
   - The disable line "--", it's used to disable a line.
   - Sections
   - Strings (double quotes), numbers, booleans
-  - A list
+  - A list (array)
   - A full line-comment with ;
 
 */

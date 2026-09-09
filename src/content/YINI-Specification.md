@@ -186,7 +186,7 @@ YINI aims to offer a consistent and intuitive structure that is easy to parse an
 
 YINI is targeted at users who require a straightforward format for storing and organizing data—such as configuration files, application settings, and other general data storage—where human readability and ease of use are of primary importance.
 
-YINI supports scalar values, lists, inline objects, members, and nested sections. These constructs allow documents to represent both flat and hierarchical configuration data.
+YINI supports scalar values, lists (arrays), inline objects, members, and nested sections. These constructs allow documents to represent both flat and hierarchical configuration data.
 
 ### 1.2. Purpose and Design Goals
 

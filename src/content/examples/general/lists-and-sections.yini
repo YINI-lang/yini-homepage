@@ -1,5 +1,5 @@
 # lists-and-sections.yini
-# lists-and-sections.yini, section nesting + lists (no objects).
+# lists-and-sections.yini, section nesting + lists (arrays; no objects).
 
 // Indentation is optional — section markers (^, ^^, ^^^) define the section nesting.
 ^ App

@@ -30,7 +30,7 @@ The questions and answers are grouped by topic.
 
 YINI is a human-readable text format for storing organized data. It is designed to be clear, predictable, and easy for people to read and write. It is suitable for configuration files, application settings, and general data storage.
 
-YINI supports nested sections, lists (similar to JSON arrays), inline objects, and comments. It can store app or service settings in files such as `config.yini`.
+YINI supports nested sections, lists (arrays), inline objects, and comments. It can store app or service settings in files such as `config.yini`.
 
 Example (YINI):
 
@@ -52,7 +52,10 @@ It supports the following features.
 
 - Sections with `^`, `^^`, etc. for nesting.
 - Key-value pairs (settings) using `=` as `key=value`.
-- Lists `[1, 2, 3]` and inline objects `{ key: "value" }`.
+- Flexible strings using single (`'`) or double (`"`) quotes: raw strings keep text such as
+  file paths readable, `C`-prefixed strings support escape sequences, and
+  triple-quoted (`"""`) strings handle multi-line text.
+- Lists (arrays) `[1, 2, 3]` and inline objects `{ key: "value" }`.
 - Comments with `//`, `#`, `/* ... */`, and full-line `;` comments.
 
 ### Q – Why create another configuration format?
@@ -62,7 +65,7 @@ YINI offers a **modern, structured, and predictable** configuration format that 
 It focuses on **readability, structure, and reliability**.
 
 - **Familiar and readable** – Uses key-value pairs like INI and keeps a familiar, readable layout, so it's immediately understandable.
-- **Clear nested structure** – Supports nested sections, lists, and inline objects without using indentation to define structure.
+- **Clear nested structure** – Supports nested sections, lists (arrays), and inline objects without using indentation to define structure.
 - **Strict when you need it** – Optional strict mode checks additional rules when stronger validation is needed.
 - **Relaxed when you don't** – Lenient mode accepts some minor issues, such as trailing commas, and reports warnings when appropriate.
 - **Comment-friendly and human-first** – Keeps support for `;`, `#`, `//`, and even block comments (`/* */`) for maximum readability.
@@ -78,7 +81,7 @@ Together, these ideas form a configuration format that is human-friendly, struct
 
 No. The name **YINI** comes from **Yet another INI**, not **YAML + INI**.
 
-The interpretation **YAML + INI** is understandable, but that is not where the name came from. YINI is inspired mainly by the simplicity of INI-style configuration files, while adding structured features such as nested sections, lists, inline objects, and strict/lenient parsing.
+The interpretation **YAML + INI** is understandable, but that is not where the name came from. YINI is inspired mainly by the simplicity of INI-style configuration files, while adding structured features such as nested sections, lists (arrays), inline objects, and strict/lenient parsing.
 
 YINI can be compared with YAML as a configuration format, but it is not a YAML variant and does not try to be YAML-compatible.
 
@@ -86,7 +89,7 @@ YINI can be compared with YAML as a configuration format, but it is not a YAML v
 
 Each of those formats works well, but each can become more difficult to use as configuration files grow.
 
-- **INI** has no single universal standard for nested structure, lists, or typed values. In basic INI-style files, values are often treated as strings, and each tool may handle more complex structures differently.
+- **INI** has no single universal standard for nested structure, lists (arrays), or typed values. In basic INI-style files, values are often treated as strings, and each tool may handle more complex structures differently.
 - **JSON** has no comments, and its strict comma and quote rules can make hand-editing error-prone.
 - **YAML** is powerful, but indentation affects meaning, and automatic type conversion can vary by YAML version and parser. For example, YAML 1.1-style parsers may read `no` as `false`.
 - **TOML** is clear for flat and lightly nested configs, but its table syntax can get harder to follow once nesting goes a few levels deep.
@@ -95,7 +98,7 @@ YINI's goal is to keep the useful parts of these formats while avoiding some of
 their difficulties.
 
 - **INI-like simplicity** — flat, readable syntax at a glance.
-- **Clear structure** — real sections, lists, and objects, without relying on indentation to define nesting.
+- **Clear structure** — real sections, lists (arrays), and objects, without relying on indentation to define nesting.
 - **Predictable rules** — values have clear syntax, and strict mode is available when you want stronger validation.
 - **Comfortable to read and diff** — changes stay easy to spot in version control.
 
@@ -140,7 +143,7 @@ release notes.
 
 YINI defines one format, but parsers can apply the rules in either lenient or strict mode.
 
-Lenient mode is the default. It accepts some minor issues, such as trailing commas in lists or inline objects, while still reporting warnings and errors.
+Lenient mode is the default. It accepts some minor issues, such as trailing commas in lists (arrays) or inline objects, while still reporting warnings and errors.
 
 Strict mode is for stronger validation. A strict YINI document must follow additional rules. For example, it must have exactly one top-level section, end with the `/END` document terminator, and use `:` between keys and values inside inline objects.
 
@@ -336,10 +339,10 @@ YINI supports these common single values and grouped values.
 - **Numbers:** integers, decimal numbers, and scientific notation
 - **Booleans:** `true`/`false`, plus `on`/`off` and `yes`/`no` (**all case-insensitive**)
 - **Null:** `null` (**case-insensitive**)
-- **Lists:** `[1, 2, "str"]` (called arrays in JSON and many languages)
+- **Lists (arrays):** `[1, 2, "str"]`
 - **Inline objects:** `{ host: "db", port: 5432 }`
 
-### Q – Does YINI support lists and inline objects?
+### Q – Does YINI support lists (arrays) and inline objects?
 
 Yes.
 

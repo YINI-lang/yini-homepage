@@ -3,7 +3,7 @@
 ^ App
 name     = "Nebula"
 isDebug  = false
-features = ["search", "dark-mode"] // A list
+features = ["search", "dark-mode"] // A list (array)
 
 ^ Server
 host   = "0.0.0.0"

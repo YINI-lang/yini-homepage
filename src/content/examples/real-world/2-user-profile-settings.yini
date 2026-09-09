@@ -6,7 +6,7 @@ Features:
   - Section nesting (up to 3 levels)
   - Strings (single/double quotes)
   - Strings, nulls, booleans
-  - List
+  - List (array)
 
 */
 

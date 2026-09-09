@@ -61,7 +61,7 @@ const EXAMPLE_PRESETS: ExamplePreset[] = [
     },
     {
         id: 'lists',
-        label: 'Lists and sections',
+        label: 'Lists (arrays) and sections',
         code: listsAndSectionsExample,
     },
     {

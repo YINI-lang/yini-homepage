@@ -10,13 +10,13 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 # Quick Tutorial: YINI Basics
 
-YINI makes configs readable for humans _and_ consistent for machines — like INI, but with **real structure**, arrays, objects, and comments.
+YINI makes configs readable for humans _and_ consistent for machines — like INI, but with **real structure**, lists (arrays), objects, and comments.
 
 A quick tutorial with the basics of the YINI format and how to validate it.
 
 ## 1) What is YINI (in one line)?
 
-A human-friendly config format (like INI) **with real structure**: sections, clear nested sections, arrays, objects, and unambiguous, predictable rules.
+A human-friendly config format (like INI) **with real structure**: sections, clear nested sections, lists (arrays), objects, and unambiguous, predictable rules.
 
 ---
 
@@ -42,7 +42,7 @@ enabled = false
 
 - `^` starts a section. More carets = nested section (`^^ Logging` is inside `Server`).
 - `key = value` defines a setting.
-- Arrays (lists): `[1, 2, 3]`, objects: `{ key: "value" }`.
+- Lists (arrays): `[1, 2, 3]`, objects: `{ key: "value" }`.
 - Comments: `//` or `#`; no whitespace is required after `#`.
 - Want more of YINI's syntax and structure? Read [Learn the YINI format](/learn-yini/learn-yini-config-format).
 
