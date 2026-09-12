@@ -21,8 +21,8 @@
         document.head.appendChild(gtagScript)
 
         window.dataLayer = window.dataLayer || []
-        window.gtag = function () {
-            window.dataLayer.push(arguments)
+        window.gtag = function (...args) {
+            window.dataLayer.push(args)
         }
 
         window.gtag('js', new Date())
@@ -37,9 +37,9 @@
 
         window.plausible =
             window.plausible ||
-            function () {
+            function (...args) {
                 const queue = window.plausible.q || []
-                queue.push(arguments)
+                queue.push(args)
                 window.plausible.q = queue
             }
         window.plausible.init =
@@ -59,9 +59,9 @@
         // --- MS Clarity -----------------------------------------------------
         window.clarity =
             window.clarity ||
-            function () {
+            function (...args) {
                 const queue = window.clarity.q || []
-                queue.push(arguments)
+                queue.push(args)
                 window.clarity.q = queue
             }
 

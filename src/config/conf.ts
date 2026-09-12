@@ -19,8 +19,8 @@ interface IConfig {
         }
     }
 
-    siteLinks: Record<string, any>
-    urls: Record<string, any>
+    siteLinks: Record<string, unknown>
+    urls: Record<string, unknown>
 }
 
 const CONFIG = {
