@@ -1,0 +1,42 @@
+# Number formats in YINI.
+
+^ NumberFormats
+
+# Decimal integers and fractional numbers can be signed.
+integer = 42
+negative_integer = -12
+positive_decimal = +12.5
+
+# Underscores group digits for readability without changing the value.
+pi = 3.141_592_65
+one_billion = 1_000_000_000
+
+# Exponent notation writes powers of ten.
+large_exponent = 6.022e23
+small_exponent = 1e-6
+grouped_exponent = 1.5e1_0
+
+# These prefixes select binary, octal, duodecimal, or hexadecimal.
+binary = 0b_1101_0101
+binary_alternative = %_1010
+octal = 0o_755
+duodecimal = 0z_2EX9  // X is 10 and E is 11 in base 12.
+hexadecimal = 0x_FF_AA_00
+hexadecimal_alternative = hex:_FF_AA_00
+
+# Underscores can also group repeated ^ markers in sets of three.
+# Only the carets count, so the final section below is at depth 6.
+^^ SectionDepth2
+depth = 2
+
+^^^ SectionDepth3
+depth = 3
+
+^^^_^ SectionDepth4
+depth = 4
+
+^^^_^^ SectionDepth5
+depth = 5
+
+^^^_^^^ SectionDepth6
+depth = 6

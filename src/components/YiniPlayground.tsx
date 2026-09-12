@@ -4,6 +4,7 @@ import CONFIG from '../config/conf.ts'
 import appExample from '../content/examples/playground/app.yini?raw'
 import invalidExample from '../content/examples/playground/invalid.invalid.yini?raw'
 import listsAndSectionsExample from '../content/examples/playground/lists-and-sections.yini?raw'
+import numberFormatsExample from '../content/examples/playground/numbers-and-visual-separators.yini?raw'
 import serviceExample from '../content/examples/playground/service.yini?raw'
 import strictExample from '../content/examples/playground/strict.yini?raw'
 import stringsExample from '../content/examples/playground/strings.yini?raw'
@@ -69,6 +70,11 @@ const EXAMPLE_PRESETS: ExamplePreset[] = [
         id: 'strings',
         label: 'String formats',
         code: stringsExample,
+    },
+    {
+        id: 'numbers',
+        label: 'Number formats & visual grouping',
+        code: numberFormatsExample,
     },
     {
         id: 'strict',
