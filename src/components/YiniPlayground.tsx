@@ -58,12 +58,12 @@ const EXAMPLE_PRESETS: ExamplePreset[] = [
     },
     {
         id: 'service',
-        label: 'Service config',
+        label: 'Nested service config',
         code: serviceExample,
     },
     {
         id: 'lists',
-        label: 'Lists (arrays) and sections',
+        label: 'Lists (arrays)',
         code: listsAndSectionsExample,
     },
     {
@@ -84,7 +84,7 @@ const EXAMPLE_PRESETS: ExamplePreset[] = [
     },
     {
         id: 'invalid',
-        label: 'Invalid example',
+        label: 'Invalid value (fix it)',
         code: invalidExample,
     },
 ]

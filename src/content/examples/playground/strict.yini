@@ -2,9 +2,11 @@
  * Production API configuration.
  */
 
+# This declares the document's expected parser mode.
 @yini strict
 
-^ Title
+# Strict mode requires exactly one top-level section.
+^ API
 name = "Production API"
 version = "1.0.0"
 features = ["auth", "metrics", "backups"]
