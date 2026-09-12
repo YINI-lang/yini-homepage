@@ -236,6 +236,7 @@
             npmYiniParser = 'https://www.npmjs.com/package/yini-parser'
             pypiYiniParser = 'https://pypi.org/project/yini-parser/'
             pypiYiniTestSuite = 'https://pypi.org/project/yini-test-suite/'
+            vsMarketplaceYiniSyntax = 'https://marketplace.visualstudio.com/items?itemName=yini-lang.yini-syntax-highlighting'
 
         ^^^ gitHub
             --yiniOrg = 'https://github.com/YINI-lang'
