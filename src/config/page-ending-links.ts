@@ -78,7 +78,7 @@ export const pageEndingLinks: PageEndingLinkMap = {
         {
             label: 'Quick Tutorial',
             href: routes.quickTutorial,
-            description: 'Learn the YINI syntax in a few minutes.',
+            description: 'YINI 101: Learn the core syntax in a few minutes.',
         },
         {
             label: 'YINI Examples',
@@ -102,7 +102,7 @@ export const pageEndingLinks: PageEndingLinkMap = {
         {
             label: 'Quick Tutorial',
             href: routes.quickTutorial,
-            description: 'Walk through the core YINI ideas in a few minutes.',
+            description: 'YINI 101: Learn the core syntax in a few minutes.',
         },
         {
             label: 'YINI Examples',
@@ -159,9 +159,9 @@ export const pageEndingLinks: PageEndingLinkMap = {
             description: 'Try the tutorial examples directly in the browser.',
         },
         {
-            label: 'Learn the YINI Format',
+            label: 'YINI Format Guide',
             href: routes.learnYiniFormat,
-            description: 'Read the deeper guide to syntax and structure.',
+            description: 'Learn YINI syntax and structure step by step.',
         },
     ],
     [pathKey(routes.learnYiniFormat)]: [

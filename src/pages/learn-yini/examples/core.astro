@@ -61,6 +61,11 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <h2>Section examples</h2>
         <YINIExample title="Sections" code={exampleSections} />
         <YINIExample title="Nested sections" code={exampleNestedSections} />
+        <p>
+            For deeper nesting, underscores can visually separate groups of
+            repeated section markers. They do not count toward the section
+            depth: <code>^^_^^_^</code> and <code>^^^^^</code> both mean level 5.
+        </p>
         <YINIExample
             title="Section marker separators"
             code={exampleSectionMarkerSeparators}

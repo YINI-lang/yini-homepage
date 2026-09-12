@@ -1,6 +1,6 @@
 ---
 title: 'Learn the YINI Configuration Format'
-description: Learn the YINI configuration format&colon; syntax, sections, lists (arrays), objects, comments, and nesting - with practical examples.
+description: "Learn the YINI configuration format in a practical 10–15-minute guide covering syntax, sections, values, nesting, parser modes, and examples."
 ---
 
 import PageEndingLinks from '../../components/PageEndingLinks.astro'
@@ -10,12 +10,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 # Learn the YINI Configuration Format
 
-**A Beginner's Guide to the YINI Configuration Format**
+**A Practical Guide to YINI Syntax and Structure**
 
-A clear, 10–15 minute step-by-step guide to the YINI configuration format — covering syntax, structure, and practical features.
+Go beyond the basics in 10–15 minutes with a step-by-step look at YINI
+syntax, nested structure, values, parser modes, and practical features.
 
-**Prefer examples?** See [real YINI configs](../learn-yini/examples), or try
-syntax directly in the [YINI Playground](/playground).
+**New to YINI?** Start with the
+[YINI 101: Quick Tutorial](/learn-yini/quick-tutorial).
+
+**Prefer examples?** See [real YINI configs](/learn-yini/examples), or try
+the syntax directly in the [YINI Playground](/playground).
 
 ### On the page we go through:
 
@@ -546,6 +550,15 @@ For normal nesting, use repeated `^` markers:
 ```
 
 Repeated section markers are supported up to level 9.
+
+For deeper repeated section markers, underscores can visually group the
+markers and make the section depth easier to count. The underscores do not
+change the depth:
+
+```yini
+^^^^^^ Settings   # Level 6
+^^^_^^^ Settings  # Also level 6
+```
 
 For deeper nesting, use numeric shorthand:
 

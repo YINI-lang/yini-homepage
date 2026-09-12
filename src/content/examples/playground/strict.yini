@@ -1,5 +1,5 @@
 /*
- * Production API configuration
+ * Production API configuration.
  */
 
 @yini strict

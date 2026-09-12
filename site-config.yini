@@ -88,7 +88,7 @@
 
         ^^^ tutorial
             url = '/learn-yini/quick-tutorial'
-            title = 'A 5-minute guided walkthrough of YINI.'
+            title = 'YINI 101: Learn the core syntax in five minutes.'
 
         ^^^ examples
             url = '/learn-yini/examples/'
@@ -123,7 +123,7 @@
 
             ^^^^ quickTutorial
                 url = '/learn-yini/quick-tutorial'
-                title = 'A 5-minute guided walkthrough of YINI.'
+                title = 'YINI 101: Learn the core syntax in five minutes.'
 
             ^^^^ examples
 
