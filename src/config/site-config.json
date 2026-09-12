@@ -46,7 +46,7 @@
             },
             "tutorial": {
                 "url": "/learn-yini/quick-tutorial",
-                "title": "A 5-minute guided walkthrough of YINI."
+                "title": "YINI 101: Learn the core syntax in five minutes."
             },
             "examples": {
                 "url": "/learn-yini/examples/",
@@ -75,7 +75,7 @@
                 },
                 "quickTutorial": {
                     "url": "/learn-yini/quick-tutorial",
-                    "title": "YINI 101: A 5-minute guided walkthrough of YINI."
+                    "title": "YINI 101: Learn the core syntax in five minutes."
                 },
                 "examples": {
                     "index": {
@@ -177,7 +177,8 @@
                 "npmYiniCli": "https://www.npmjs.com/package/yini-cli",
                 "npmYiniParser": "https://www.npmjs.com/package/yini-parser",
                 "pypiYiniParser": "https://pypi.org/project/yini-parser/",
-                "pypiYiniTestSuite": "https://pypi.org/project/yini-test-suite/"
+                "pypiYiniTestSuite": "https://pypi.org/project/yini-test-suite/",
+                "vsMarketplaceYiniSyntax": "https://marketplace.visualstudio.com/items?itemName=yini-lang.yini-syntax-highlighting"
             },
             "gitHub": {
                 "yiniOrg": "https://github.com/YINI-lang/YINI-spec",
