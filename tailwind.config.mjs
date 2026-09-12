@@ -5,7 +5,7 @@ import typography from '@tailwindcss/typography'
 export default {
     // darkMode: 'class',
     darkMode: 'media',
-    plugins: [require('@tailwindcss/typography')],
+    plugins: [typography],
     content: [
         './src/**/*.{astro,html,md,mdx,js,jsx,ts,tsx}',
         './*.{astro,html,md,mdx}',

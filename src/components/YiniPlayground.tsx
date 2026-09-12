@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import packageJson from '../../package.json'
 import CONFIG from '../config/conf.ts'
 import appExample from '../content/examples/playground/app.yini?raw'
@@ -34,6 +34,18 @@ type DiagnosticIssue = {
     message?: string
     advice?: string
     hint?: string
+}
+
+type ParsedYiniResult = {
+    result?: unknown
+    meta?: {
+        diagnostics?: {
+            errors?: {
+                errorCount?: number
+                payload?: DiagnosticIssue[]
+            }
+        }
+    }
 }
 
 type ExamplePreset = {
@@ -300,7 +312,7 @@ export default function YiniPlayground() {
                 throwOnError: false,
             }
 
-            const parsed = YINI.parse(src, opts) as any
+            const parsed = YINI.parse(src, opts) as ParsedYiniResult
             const parsedData = parsed?.result ?? parsed
             const meta = parsed?.meta ?? {}
             const errorCount = meta?.diagnostics?.errors?.errorCount ?? 0
@@ -332,9 +344,14 @@ export default function YiniPlayground() {
                 setStatus('valid')
                 setCanShowUseYiniCta(revealUseYiniCta)
             }
-        } catch (e: any) {
+        } catch (e: unknown) {
+            const issue =
+                e instanceof Error
+                    ? { message: e.message }
+                    : { message: String(e) }
+
             setOutput('')
-            setError(formatDiagnostics(src, [e], e?.message ?? String(e)))
+            setError(formatDiagnostics(src, [issue], issue.message))
             setStatus('invalid')
             setCanShowUseYiniCta(false)
         }
@@ -381,7 +398,6 @@ export default function YiniPlayground() {
         } catch {
             //
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {

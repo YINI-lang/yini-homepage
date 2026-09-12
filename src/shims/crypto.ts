@@ -21,17 +21,13 @@ function fnv1a32(bytes: Uint8Array): number {
     return h >>> 0
 }
 
-function toHex(bytes: Uint8Array): string {
-    return Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('')
-}
-
 function hexStringFrom32(h: number, length = 64): string {
     // Repeat 32-bit chunk to reach desired hex length (64 nibbles ~ SHA-256 length).
     const chunk = h.toString(16).padStart(8, '0')
     return chunk.repeat(Math.ceil(length / 8)).slice(0, length)
 }
 
-export function createHash(_algo: string) {
+export function createHash() {
     const chunks: Uint8Array[] = []
     return {
         update(data: string | ArrayBuffer | Uint8Array) {
