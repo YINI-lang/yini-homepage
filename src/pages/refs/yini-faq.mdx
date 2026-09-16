@@ -114,20 +114,22 @@ Files intended for strict validation may use `.strict.yini`, such as
 `config.strict.yini`. This suffix is only a naming convention. The parser, CLI,
 or application must still select strict mode.
 
-### Q – Is YINI production-ready?
+### Q - Is YINI production-ready?
 
-Not yet. The [current specification](/refs/specification) is **YINI 1.0.0 RC 6**,
+Not officially yet. The [current specification](/refs/specification) is **YINI 1.0.0 RC 6**,
 a release-candidate draft. Minor corrections and clarifications may still be
 made before the final 1.0.0 release.
 
 The [TypeScript/JavaScript parser](/tools/yini-parser-ts) is the primary parser
 implementation. The [YINI CLI](/tools/yini-cli) uses that parser for validation,
 inspection, and conversion. A [Python parser](/tools/yini-parser-python) is
-also available.
+also available in beta.
 
-YINI can be useful for experiments and internal tools. Before using it in an
-important production system, review the current specification and parser status,
-and test it against your application's requirements.
+YINI is suitable for experimentation, internal tools, and controlled production
+use where the specification and parser versions are pinned and tested against
+the application's requirements. For critical production systems, review the
+current specification and parser status carefully, since YINI has not yet
+reached its final 1.0.0 release.
 
 ### Q – Will YINI remain stable over time?
 
@@ -418,11 +420,15 @@ instructions.
 Yes. Use the [YINI Playground](/playground) in your browser to write and parse
 YINI examples.
 
-### Q – Is syntax highlighting available?
+### Q - Is syntax highlighting available?
 
-Yes. The [YINI syntax-highlighting repository ↗](https://github.com/YINI-lang/syntax-highlighting)
-includes TextMate grammar definitions for Visual Studio Code and other editors
-that support TextMate grammars.
+Yes. YINI syntax highlighting is available as an official
+[Visual Studio Code extension ↗](https://marketplace.visualstudio.com/items?itemName=yini-lang.yini-syntax-highlighting),
+with highlighting aligned with **YINI 1.0.0 RC 6**.
+
+The [YINI syntax-highlighting repository ↗](https://github.com/YINI-lang/syntax-highlighting)
+contains the TextMate grammar and related source files, which can also be used
+with other editors that support TextMate grammars.
 
 ---
 
