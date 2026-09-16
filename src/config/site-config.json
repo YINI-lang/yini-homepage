@@ -173,6 +173,10 @@
     "urls": {
         "external": {
             "specOnGitHubAtProd": "https://github.com/YINI-lang/YINI-spec/blob/production/YINI-Specification.md",
+            "socialBlog": {
+                "medium": "https://medium.com/@marko.seppanen",
+                "devTo": "https://dev.to/marko_kseppnen_6250a7f"
+            },
             "useIt": {
                 "npmYiniCli": "https://www.npmjs.com/package/yini-cli",
                 "npmYiniParser": "https://www.npmjs.com/package/yini-parser",

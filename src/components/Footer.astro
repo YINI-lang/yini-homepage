@@ -382,6 +382,42 @@ const year = new Date().getFullYear()
 
         <!-- Bottom line -->
         <div class="mt-2 border-t border-slate-800 pt-6 text-xs text-slate-400">
+            <div class="flex flex-wrap items-center justify-center gap-3 pb-6">
+                <a
+                    href={CONFIG.urls.external.socialBlog.medium}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onclick="trackClick('Ext. Link Clicked: Footer')"
+                    class="inline-flex items-center gap-2 rounded-md border border-slate-700 px-2 py-1 text-slate-300 no-underline hover:border-sky-400 hover:text-sky-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                >
+                    <img
+                        src="/gfx/icons/icon-medium.com.jpeg"
+                        alt=""
+                        width="20"
+                        height="20"
+                        loading="lazy"
+                        class="h-5 w-5 rounded-sm"
+                    />
+                    Medium ↗
+                </a>
+                <a
+                    href={CONFIG.urls.external.socialBlog.devTo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onclick="trackClick('Ext. Link Clicked: Footer')"
+                    class="inline-flex items-center gap-2 rounded-md border border-slate-700 px-2 py-1 text-slate-300 no-underline hover:border-sky-400 hover:text-sky-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                >
+                    <img
+                        src="/gfx/icons/icon-dev.to-black.png"
+                        alt=""
+                        width="20"
+                        height="20"
+                        loading="lazy"
+                        class="h-5 w-5 rounded-sm"
+                    />
+                    DEV.to ↗
+                </a>
+            </div>
             <div
                 class="flex flex-col items-center justify-between gap-3 md:flex-row"
             >
