@@ -3,6 +3,7 @@
 ^ App
 name     = "Nebula"
 isDebug  = false
+logPath  = "./logs/nebula.log"
 features = ["search", "dark-mode"] // A list (array)
 
 ^ Server

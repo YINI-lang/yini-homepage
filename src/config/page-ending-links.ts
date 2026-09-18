@@ -172,9 +172,9 @@ export const pageEndingLinks: PageEndingLinkMap = {
                 'See the syntax used in practical configuration files.',
         },
         {
-            label: 'YINI Cheat Sheet',
-            href: routes.cheatSheet,
-            description: 'Use a compact reference for day-to-day syntax.',
+            label: 'YINI Playground',
+            href: routes.playground,
+            description: 'Try the examples directly in the browser.',
         },
         {
             label: 'YINI Specification',
