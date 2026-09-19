@@ -1,0 +1,16 @@
+---
+import RationaleAsMarkdown from '@/content/RATIONALE.md'
+import PageEndingLinks from '../../components/PageEndingLinks.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+    headTitle={'Rationale: YINI'}
+    headDescription={'The background, design goals, and trade-offs behind the YINI configuration format.'}
+>
+    <section class="spec prose prose-slate">
+        <RationaleAsMarkdown />
+    </section>
+
+    <PageEndingLinks />
+</BaseLayout>

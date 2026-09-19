@@ -341,12 +341,10 @@ const year = new Date().getFullYear()
                         </li> -->
                         <li>
                             <a
-                                href="https://github.com/YINI-lang/YINI-spec/blob/production/RATIONALE.md"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
+                                href={CONFIG.siteLinks.navMenu.refs.rationale
+                                    .url}
                                 class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >Project Rationale ↗</a
+                                >Rationale</a
                             >
                         </li>
                     </ul>

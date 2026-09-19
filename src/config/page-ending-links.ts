@@ -50,6 +50,7 @@ const routes = {
     cheatSheet: refLinks.cheatSheet.url,
     faq: refLinks.faq.url,
     specification: refLinks.spec.url,
+    rationale: refLinks.rationale.url,
     about: infoLinks.about.url,
     assets: infoLinks.assets.url,
 }
@@ -380,6 +381,11 @@ export const pageEndingLinks: PageEndingLinkMap = {
     ],
     [pathKey(routes.specification)]: [
         {
+            label: 'YINI Rationale',
+            href: routes.rationale,
+            description: 'Explore the design goals and trade-offs behind YINI.',
+        },
+        {
             label: 'Try the Playground',
             href: routes.playground,
             description: 'Experiment with YINI syntax in the browser.',
@@ -388,6 +394,18 @@ export const pageEndingLinks: PageEndingLinkMap = {
             label: 'YINI Cheat Sheet',
             href: routes.cheatSheet,
             description: 'Use a compact reference for day-to-day syntax.',
+        },
+    ],
+    [pathKey(routes.rationale)]: [
+        {
+            label: 'YINI Specification',
+            href: routes.specification,
+            description: 'Read the formal syntax and behavior rules.',
+        },
+        {
+            label: 'YINI FAQ',
+            href: routes.faq,
+            description: 'Read common questions about the format and project.',
         },
     ],
     [pathKey(routes.about)]: [

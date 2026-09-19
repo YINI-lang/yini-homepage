@@ -7,9 +7,13 @@ This file tracks meaningful public-facing changes, such as major content updates
 Minor typo fixes, styling tweaks, and small rewordings are not listed here. See the git commit history for those details.
 
 ## 2026 Sep
+
 - **Added:** Added Dependabot configuration for monthly npm and GitHub Actions dependency updates.
+- **Added:** Added the Rationale page for YINI Specification RC 6, covering the format's background, design goals, and design trade-offs.
+- **Changed:** Updated Rationale links to use the new page instead of the former external GitHub document.
 
 ## 2026 Aug
+
 - **Added:** Added new page Playground.
 - **Added:** Added new page Assets, collecting YINI brand assets, logos, favicons, and media kit materials.
 - **Update:** Updated manual of `yini-cli` to 1.6.2.

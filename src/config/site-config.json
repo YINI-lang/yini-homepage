@@ -131,6 +131,10 @@
                     "url": "/refs/specification",
                     "title": "Formal YINI specification and syntax reference."
                 },
+                "rationale": {
+                    "url": "/refs/rationale",
+                    "title": "Background, design goals, and trade-offs behind YINI."
+                },
                 "cheatSheet": {
                     "url": "/refs/yini-cheat-sheet",
                     "title": "A quick reference for writing clean, readable YINI configuration files."

@@ -447,6 +447,15 @@ export default function Header({ isProd }: HeaderProps) {
                         </li>
                         <li>
                             <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.refs.rationale.url
+                                }
+                                className={cssClasses}>
+                                Rationale
+                            </a>
+                        </li>
+                        <li>
+                            <a
                                 href={CONFIG.siteLinks.navMenu.refs.faq.url}
                                 className={cssClasses}>
                                 FAQ
