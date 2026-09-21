@@ -374,6 +374,11 @@ export const pageEndingLinks: PageEndingLinkMap = {
             description: 'Create your first YINI file and parse it locally.',
         },
         {
+            label: 'YINI Rationale',
+            href: routes.rationale,
+            description: 'Explore the design goals and trade-offs behind YINI.',
+        },
+        {
             label: 'YINI Specification',
             href: routes.specification,
             description: 'Read the formal syntax and behavior rules.',
