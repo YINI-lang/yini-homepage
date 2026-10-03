@@ -451,7 +451,7 @@ export default function Header({ isProd }: HeaderProps) {
                                     CONFIG.siteLinks.navMenu.refs.rationale.url
                                 }
                                 className={cssClasses}>
-                                Rationale
+                                YINI Format Rationale
                             </a>
                         </li>
                         <li>

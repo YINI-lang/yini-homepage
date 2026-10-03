@@ -374,7 +374,7 @@ export const pageEndingLinks: PageEndingLinkMap = {
             description: 'Create your first YINI file and parse it locally.',
         },
         {
-            label: 'YINI Rationale',
+            label: 'YINI Format Rationale',
             href: routes.rationale,
             description: 'Explore the design goals and trade-offs behind YINI.',
         },
@@ -386,7 +386,7 @@ export const pageEndingLinks: PageEndingLinkMap = {
     ],
     [pathKey(routes.specification)]: [
         {
-            label: 'YINI Rationale',
+            label: 'YINI Format Rationale',
             href: routes.rationale,
             description: 'Explore the design goals and trade-offs behind YINI.',
         },

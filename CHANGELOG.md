@@ -6,6 +6,9 @@ This file tracks meaningful public-facing changes, such as major content updates
 
 Minor typo fixes, styling tweaks, and small rewordings are not listed here. See the git commit history for those details.
 
+## 2026 Oct
+- **Clarified:** Renamed navigation links and the page title to "YINI Format Rationale" (from just "Rationale") so visitors can immediately see that it explains the format's background, goals, and design trade-offs.
+
 ## 2026 Sep
 
 - **Added:** Added Dependabot configuration for monthly npm and GitHub Actions dependency updates.
