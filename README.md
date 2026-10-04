@@ -56,7 +56,7 @@ yini-cli (converts YINI to JSON)
  ↓
 site-config.json (generated file; do not edit directly)
  ↓
-config.ts (reads the generated JSON)
+src/config/conf.ts (reads the generated JSON)
  ↓
 Astro application
 ```
