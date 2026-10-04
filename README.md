@@ -68,6 +68,8 @@ Runtime parsing can also be done directly with [yini-parser](https://github.com/
 ---
 
 ## Local Development
+Before you begin, install Node.js 20 or later (which includes npm).
+
 ```bash
 # Clone
 git clone https://github.com/YINI-lang/yini-homepage.git
