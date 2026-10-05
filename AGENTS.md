@@ -152,6 +152,25 @@ If a required check cannot be run, explain why and describe what was validated i
 
 ---
 
+## Content Provenance and Generated Content
+
+- Markdown files in `src/content/` may be complete copies from another
+  repository or a released version of a source document.
+- Before updating a `src/content/**/*.md` file, identify its authoritative
+  source and intended update flow.
+- If the source or update flow is unclear, ask the human maintainer before
+  making changes.
+- When an authorized update synchronizes an imported Markdown document, replace
+  it with the complete file from its authoritative source. Do not make
+  selective local edits.
+- Treat files in `src/content/generated/` as generated artifacts. Do not edit
+  them directly.
+- Identify and run the authoritative generation or synchronization process for
+  `src/content/generated/` files, and include generated output only when that
+  process is part of the requested work.
+
+---
+
 ## Code Style
 
 Follow the existing style of the repository.
