@@ -27,7 +27,7 @@ jobs:
               run: npm run build
 
             - name: Check internal links with Lychee
-              uses: lycheeverse/lychee-action@v1
+              uses: lycheeverse/lychee-action@v2
               with:
                   args: >
                       --verbose
