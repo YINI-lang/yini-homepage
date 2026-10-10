@@ -8,6 +8,7 @@ Minor typo fixes, styling tweaks, and small rewordings are not listed here. See 
 
 ## 2026 Oct
 - **Clarified:** Renamed navigation links and the page title to "YINI Format Rationale" (from just "Rationale") so visitors can immediately see that it explains the format's background, goals, and design trade-offs.
+- **Changed:** Disabled Plausible analytics collection and GoatCounter tracking to improve privacy. Their script is no longer loaded.
 
 ## 2026 Sep
 
