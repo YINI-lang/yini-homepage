@@ -12,6 +12,7 @@ Minor typo fixes, styling tweaks, and small rewordings are not listed here. See 
 - **Added:** Two YINI examples more:
   * Added practical YINI string example to the main examples page; covering raw, classic escaped, and triple-quoted strings.
   * Added "Strings at a glance" to the values examples page, including classic triple-quoted strings.
+* **Improved:** Improved the readability of *Home* and *What is YINI and Why?* by collapsing a few longer sections.
 
 ## 2026 Sep
 

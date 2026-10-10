@@ -1,5 +1,6 @@
 ---
 // import GitHubSocialProof from '../../components/GitHubSocialProof.astro'
+import CollapsibleSection from '../../components/CollapsibleSection.astro'
 import CONFIG from '../../config/conf'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 
@@ -258,7 +259,7 @@ name = "Hello"`}</code></pre>
     </Fragment>
 
     <Fragment slot="after-full-bleed">
-        <section class="my-6 pb-4">
+        <section class="my-6 pb-2">
             <h2>✨ What makes YINI different?</h2>
             <ul>
                 <li class="leading-relaxed">
@@ -287,7 +288,7 @@ name = "Hello"`}</code></pre>
         </section>
 
         {/* Tooling + Practical usage section */}
-        <section class="pt-4">
+        <section class="pt-2">
             <h2>💡 Use YINI in practice</h2>
 
             <p class="mt-1">
@@ -385,9 +386,14 @@ name = "Hello"`}</code></pre>
 
             <h3>JSON vs YINI</h3>
             <p>JSON can become harder to read and maintain as files grow.</p>
+            <p>
+                YINI allows comments directly in the file and uses explicit
+                section markers for structure.
+            </p>
 
-            <h3>JSON:</h3>
-            <pre><code class="language-json">{`{
+            <CollapsibleSection summary="Show JSON and YINI examples">
+                <h3>JSON:</h3>
+                <pre><code class="language-json">{`{
   "Service": {
     "id": "aurora-gateway",
     "environment": "prod",
@@ -415,14 +421,10 @@ name = "Hello"`}</code></pre>
   }
 }`}</code></pre>
 
-            <h3 class="pt-4">Here is the same config in YINI</h3>
-            <p>
-                YINI allows comments directly in the file and uses explicit
-                section markers for structure.
-            </p>
+                <h3 class="pt-4">Here is the same config in YINI</h3>
 
-            <h3>YINI:</h3>
-            <pre><code class="language-yini">{`/* Aurora Gateway service configuration (human-edited) */
+                <h3>YINI:</h3>
+                <pre><code class="language-yini">{`/* Aurora Gateway service configuration (human-edited) */
 
 ^ Service
 id          = "aurora-gateway"
@@ -440,6 +442,7 @@ targets = [
   { name: "alerts",  url: "https://hooks.example.com/alerts",  secret: "****" },
   { name: "billing", url: "https://hooks.example.com/billing", secret: "****" }
 ]`}</code></pre>
+            </CollapsibleSection>
 
             <hr />
 
@@ -450,8 +453,9 @@ targets = [
                 define hierarchy.
             </p>
 
-            <h3>YAML:</h3>
-            <pre><code class="language-yaml">{`# One stray indent (whitespace) changes the structure
+            <CollapsibleSection summary="Show YAML and YINI examples">
+                <h3>YAML:</h3>
+                <pre><code class="language-yaml">{`# One stray indent (whitespace) changes the structure
 
 app:
   name: My App
@@ -462,9 +466,9 @@ app:
     - https://myapp.com
     - "http://localhost:3000"`}</code></pre>
 
-            <h3>Here is the same config in YINI</h3>
-            <h3>YINI:</h3>
-            <pre><code class="language-yini">{`# Structure is defined by markers; indentation is optional
+                <h3>Here is the same config in YINI</h3>
+                <h3>YINI:</h3>
+                <pre><code class="language-yini">{`# Structure is defined by markers; indentation is optional
 
 ^ App
 name = "My App"
@@ -474,10 +478,74 @@ host = "127.0.0.1"
 port = 8080
 allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
 `}</code></pre>
+                <p>
+                    <strong>Point:</strong> In YINI the hierarchy is signaled by
+                    markers, not whitespace.
+                </p>
+            </CollapsibleSection>
+
+            <hr />
+
+            <h3>XML vs YINI</h3>
             <p>
-                <strong>Point:</strong> In YINI the hierarchy is signaled by markers,
-                not whitespace.
+                XML can represent structured configuration with elements and
+                attributes. This example uses nested elements; YINI expresses
+                the same settings with key-value pairs and section markers.
             </p>
+
+            <CollapsibleSection summary="Show XML and YINI examples">
+                <h3>XML:</h3>
+                <pre><code class="language-xml">{`<Service>
+    <id>aurora-gateway</id>
+    <environment>prod</environment>
+    <Limits>
+        <requestsPerMinute>1200</requestsPerMinute>
+        <burst>60</burst>
+        <maxBodyKb>512</maxBodyKb>
+    </Limits>
+</Service>`}</code></pre>
+
+                <h3>YINI:</h3>
+                <pre><code class="language-yini">{`^ Service
+id = "aurora-gateway"
+environment = "prod"
+
+^^ Limits
+requestsPerMinute = 1200
+burst = 60
+maxBodyKb = 512`}</code></pre>
+            </CollapsibleSection>
+
+            <hr />
+
+            <h3>TOML vs YINI</h3>
+            <p>
+                Both formats support comments and structured configuration. TOML
+                names nested tables with dotted paths; YINI uses repeated
+                section markers to show nesting depth.
+            </p>
+
+            <CollapsibleSection summary="Show TOML and YINI examples">
+                <h3>TOML:</h3>
+                <pre><code class="language-toml">{`[Service]
+id = "aurora-gateway"
+environment = "prod"
+
+[Service.Limits]
+requestsPerMinute = 1200
+burst = 60
+maxBodyKb = 512`}</code></pre>
+
+                <h3>YINI:</h3>
+                <pre><code class="language-yini">{`^ Service
+id = "aurora-gateway"
+environment = "prod"
+
+^^ Limits
+requestsPerMinute = 1200
+burst = 60
+maxBodyKb = 512`}</code></pre>
+            </CollapsibleSection>
         </section>
 
         <section class="my-6">
@@ -503,8 +571,8 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
                 This example uses features from the official YINI specification.
             </p>
 
-            <h3>Parsed output (JSON):</h3>
-            <pre><code class="language-json">{`{
+            <CollapsibleSection summary="Show parsed JSON">
+                <pre><code class="language-json">{`{
     "Settings": {
         "serviceId": "NebulaService",
         "release": "3.2.1",
@@ -541,6 +609,7 @@ allowedOrigins = ["https://myapp.com", "http://localhost:3000"]
         }
     }
 }`}</code></pre>
+            </CollapsibleSection>
 
             <p class="my-2 text-sm">
                 New to YINI? Read a short <a

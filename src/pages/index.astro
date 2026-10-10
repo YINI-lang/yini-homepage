@@ -1,5 +1,6 @@
 ---
 // src/pages/index.astro
+import CollapsibleSection from '../components/CollapsibleSection.astro'
 import DivStatusBadges from '../components/DivStatusBadges.astro'
 // import GitHubSocialProof from '../components/GitHubSocialProof.astro'
 import { RandomHeadlineH1 } from '../components/RandomHeadline'
@@ -361,95 +362,111 @@ name = "Hello"`}</code></pre>
                 implementation, and adoption pieces.
             </p>
 
-            <div class="overflow-x-auto">
-                <table class="w-full border-collapse text-sm">
-                    <thead>
-                        <tr
-                            class="border-b border-slate-300 dark:border-slate-700"
-                        >
-                            <th class="py-3 text-left font-semibold">🧠 Core</th
+            <CollapsibleSection summary="View detailed project status">
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse text-sm">
+                        <thead>
+                            <tr
+                                class="border-b border-slate-300 dark:border-slate-700"
                             >
-                            <th class="py-3 text-left font-semibold"
-                                >🛠 Implementation</th
-                            >
-                            <th class="py-3 text-left font-semibold"
-                                >🌍 Adoption</th
-                            >
-                        </tr>
-                    </thead>
+                                <th class="py-3 text-left font-semibold"
+                                    >🧠 Core</th
+                                >
+                                <th class="py-3 text-left font-semibold"
+                                    >🛠 Implementation</th
+                                >
+                                <th class="py-3 text-left font-semibold"
+                                    >🌍 Adoption</th
+                                >
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        {
-                            rows.map((row) => (
-                                <tr class="border-b border-slate-200 transition hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900">
-                                    <td class="py-3 pr-4">
-                                        <div class="flex items-center gap-2">
-                                            <span class="text-green-600">
-                                                {statusIcon(row.core.status)}
-                                            </span>
-                                            {row.core.label}
-                                        </div>
-                                    </td>
+                        <tbody>
+                            {
+                                rows.map((row) => (
+                                    <tr class="border-b border-slate-200 transition hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900">
+                                        <td class="py-3 pr-4">
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-green-600">
+                                                    {statusIcon(
+                                                        row.core.status,
+                                                    )}
+                                                </span>
+                                                {row.core.label}
+                                            </div>
+                                        </td>
 
-                                    <td class="py-3 pr-4">
-                                        <div class="flex items-center gap-2">
-                                            <span
-                                                class={
-                                                    row.impl.status === 'done'
-                                                        ? 'text-green-600'
-                                                        : row.impl.status ===
-                                                            'inprogress'
-                                                          ? 'text-yellow-500'
-                                                          : 'text-slate-400'
-                                                }>
-                                                {statusIcon(row.impl.status)}
-                                            </span>
-                                            {row.impl.href ? (
-                                                <a
-                                                    href={row.impl.href}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer">
-                                                    {row.impl.label}&nbsp;↗
-                                                </a>
-                                            ) : (
-                                                row.impl.label
-                                            )}
-                                        </div>
-                                    </td>
+                                        <td class="py-3 pr-4">
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class={
+                                                        row.impl.status ===
+                                                        'done'
+                                                            ? 'text-green-600'
+                                                            : row.impl
+                                                                    .status ===
+                                                                'inprogress'
+                                                              ? 'text-yellow-500'
+                                                              : 'text-slate-400'
+                                                    }
+                                                >
+                                                    {statusIcon(
+                                                        row.impl.status,
+                                                    )}
+                                                </span>
+                                                {row.impl.href ? (
+                                                    <a
+                                                        href={row.impl.href}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        {row.impl.label}&nbsp;↗
+                                                    </a>
+                                                ) : (
+                                                    row.impl.label
+                                                )}
+                                            </div>
+                                        </td>
 
-                                    <td class="py-3">
-                                        <div class="flex items-center gap-2">
-                                            <span
-                                                class={
-                                                    row.adopt.status === 'done'
-                                                        ? 'text-green-600'
-                                                        : row.adopt.status ===
-                                                            'inprogress'
-                                                          ? 'text-yellow-500'
-                                                          : 'text-slate-400'
-                                                }>
-                                                {statusIcon(row.adopt.status)}
-                                            </span>
-                                            {row.adopt.label}
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
-            </div>
+                                        <td class="py-3">
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class={
+                                                        row.adopt.status ===
+                                                        'done'
+                                                            ? 'text-green-600'
+                                                            : row.adopt
+                                                                    .status ===
+                                                                'inprogress'
+                                                              ? 'text-yellow-500'
+                                                              : 'text-slate-400'
+                                                    }
+                                                >
+                                                    {statusIcon(
+                                                        row.adopt.status,
+                                                    )}
+                                                </span>
+                                                {row.adopt.label}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
-            <div
-                class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
-            >
-                ✔ Complete &nbsp; ◐ In progress &nbsp; ○ Planned
-            </div>
-            <div
-                class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
-            >
-                RC &nbsp;=&nbsp; Release Candidate
-            </div>
+                <div
+                    class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
+                >
+                    ✔ Complete &nbsp; ◐ In progress &nbsp; ○ Planned
+                </div>
+                <div
+                    class="mt-4 text-center text-xs text-slate-500 dark:text-slate-400"
+                >
+                    RC &nbsp;=&nbsp; Release Candidate
+                </div>
+            </CollapsibleSection>
         </section>
 
         <section class="mt-20 pb-4">
@@ -531,8 +548,8 @@ name = "Hello"`}</code></pre>
                 >
             </p>
 
-            <h3>Parsed output (JSON):</h3>
-            <pre><code class="language-json">{`{
+            <CollapsibleSection summary="Show parsed JSON">
+                <pre><code class="language-json">{`{
     "Settings": {
         "serviceId": "NebulaService",
         "release": "3.2.1",
@@ -569,6 +586,7 @@ name = "Hello"`}</code></pre>
         }
     }
 }`}</code></pre>
+            </CollapsibleSection>
 
             <p class="mt-2 text-sm">
                 New to YINI? Read a short <a
@@ -680,196 +698,198 @@ title = "MyApp"</code></pre>
     <Fragment slot="after-full-bleed">
         <section class="my-6 pt-4">
             <h2 class="mt-5">⚖️ How YINI compares to other config formats</h2>
-            <div style="overflow-x:auto">
-                <p class="mb-2 text-sm">
-                    This is a high-level comparison focused on
-                    configuration-file use cases.
-                </p>
-                <p class="mb-2 text-sm text-slate-500">
-                    YINI supports both lenient and strict parsing modes,
-                    depending on how much enforcement you need. Lenient mode is
-                    the default.
-                </p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>YINI (lenient)</th>
-                            <th>YINI (strict)</th>
-                            <th>INI</th>
-                            <th>JSON</th>
-                            <th>YAML</th>
-                            <th>TOML</th>
-                        </tr>
-                    </thead>
+            <p class="mb-2 text-sm">
+                This is a high-level comparison focused on configuration-file
+                use cases.
+            </p>
+            <p class="mb-2 text-sm text-slate-500">
+                YINI supports both lenient and strict parsing modes, depending
+                on how much enforcement you need. Lenient mode is the default.
+            </p>
+            <CollapsibleSection summary="Compare configuration formats">
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>YINI (lenient)</th>
+                                <th>YINI (strict)</th>
+                                <th>INI</th>
+                                <th>JSON</th>
+                                <th>YAML</th>
+                                <th>TOML</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        <tr>
-                            <td>Human readability by default</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                        </tr>
-                        <tr>
-                            <td>Readability at scale</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>➖</td>
-                        </tr>
-                        <tr>
-                            <td>Predictable parsing</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Formal specification / grammar</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Nested sections / structured data</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td
-                                >Nested structure without dotted keys or
-                                indentation rules (*)</td
-                            >
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                        </tr>
-                        <tr>
-                            <td>Comments</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Syntax overhead</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>➖</td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>Human readability by default</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>➖</td>
+                                <td>✅</td>
+                                <td>➖</td>
+                            </tr>
+                            <tr>
+                                <td>Readability at scale</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>➖</td>
+                                <td>➖</td>
+                            </tr>
+                            <tr>
+                                <td>Predictable parsing</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>➖</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Formal specification / grammar</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Nested sections / structured data</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>➖</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td
+                                    >Nested structure without dotted keys or
+                                    indentation rules (*)</td
+                                >
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>➖</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>➖</td>
+                            </tr>
+                            <tr>
+                                <td>Comments</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Syntax overhead</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>➖</td>
+                                <td>➖</td>
+                            </tr>
 
-                        <tr>
-                            <td>Configuration-oriented design</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Diagnostic clarity</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td
-                                >Tolerance for incomplete or hand-edited input</td
-                            >
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>❌</td>
-                        </tr>
-                        <tr>
-                            <td>Strength of structural validation</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>✅</td>
-                            <td>➖</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>Suitability for larger configurations</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>❌</td>
-                            <td>➖</td>
-                            <td>➖</td>
-                            <td>➖</td>
-                        </tr>
-                        <tr>
-                            <td>Industry familiarity</td>
-                            <td>Low</td>
-                            <td>Low</td>
-                            <td>Very strong</td>
-                            <td>Very strong</td>
-                            <td>Very strong</td>
-                            <td>Moderate</td>
-                        </tr>
-                        <tr>
-                            <td>Native tooling availability</td>
-                            <td>Limited / growing</td>
-                            <td>Limited / growing</td>
-                            <td>Moderate</td>
-                            <td>Very strong</td>
-                            <td>Very strong</td>
-                            <td>Strong</td>
-                        </tr>
-                        <tr>
-                            <td>Ecosystem maturity</td>
-                            <td>Limited / growing</td>
-                            <td>Limited / growing</td>
-                            <td>Mature but fragmented</td>
-                            <td>Very strong</td>
-                            <td>Very strong</td>
-                            <td>Strong</td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <tr>
+                                <td>Configuration-oriented design</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>➖</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Diagnostic clarity</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>➖</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td
+                                    >Tolerance for incomplete or hand-edited
+                                    input</td
+                                >
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>➖</td>
+                                <td>❌</td>
+                                <td>➖</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>Strength of structural validation</td>
+                                <td>➖</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>➖</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Suitability for larger configurations</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>➖</td>
+                                <td>➖</td>
+                                <td>➖</td>
+                            </tr>
+                            <tr>
+                                <td>Industry familiarity</td>
+                                <td>Low</td>
+                                <td>Low</td>
+                                <td>Very strong</td>
+                                <td>Very strong</td>
+                                <td>Very strong</td>
+                                <td>Moderate</td>
+                            </tr>
+                            <tr>
+                                <td>Native tooling availability</td>
+                                <td>Limited / growing</td>
+                                <td>Limited / growing</td>
+                                <td>Moderate</td>
+                                <td>Very strong</td>
+                                <td>Very strong</td>
+                                <td>Strong</td>
+                            </tr>
+                            <tr>
+                                <td>Ecosystem maturity</td>
+                                <td>Limited / growing</td>
+                                <td>Limited / growing</td>
+                                <td>Mature but fragmented</td>
+                                <td>Very strong</td>
+                                <td>Very strong</td>
+                                <td>Strong</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                <p class="mt-2 text-sm text-slate-500">
-                    <strong>Lenient</strong> = flexibility & convenience ·
-                    <strong>Strict</strong> = safety & predictability
-                </p>
-                <p class="mt-2 text-sm text-slate-500">
-                    ✅ Strong support · ➖ Partial / debated · ❌ Poor or not
-                    supported
-                </p>
-                <p class="mt-1 text-sm text-slate-500">
-                    *) YINI keeps hierarchy visible through nested sections
-                    while remaining indentation-insensitive and predictable.
-                </p>
-            </div>
+                    <p class="mt-2 text-sm text-slate-500">
+                        <strong>Lenient</strong> = flexibility & convenience ·
+                        <strong>Strict</strong> = safety & predictability
+                    </p>
+                    <p class="mt-2 text-sm text-slate-500">
+                        ✅ Strong support · ➖ Partial / debated · ❌ Poor or
+                        not supported
+                    </p>
+                    <p class="mt-1 text-sm text-slate-500">
+                        *) YINI keeps hierarchy visible through nested sections
+                        while remaining indentation-insensitive and predictable.
+                    </p>
+                </div>
+            </CollapsibleSection>
         </section>
 
         <hr />
