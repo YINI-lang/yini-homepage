@@ -1,0 +1,12 @@
+// Ordinary strings are raw by default; backslashes are preserved.
+name = "YINI"
+path = "C:\Users\Kim\Projects"
+
+// Classic strings interpret escape sequences.
+message = C"Hello!\nWelcome to YINI."
+
+// Triple-quoted strings are useful for multiline text.
+description = """
+A clear and readable
+multiline string.
+"""

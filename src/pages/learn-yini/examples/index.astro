@@ -2,6 +2,7 @@
 import PageEndingLinks from '../../../components/PageEndingLinks.astro'
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
+import exampleBasicStrings from '../../../content/examples/basic/basic-strings.yini?raw'
 import exampleHelloWorld from '../../../content/examples/basic/hello-world.yini?raw'
 import exampleSettings from '../../../content/examples/basic/settings.yini?raw'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
@@ -31,6 +32,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <hr />
 
         <YINIExample title="A bit fuller example" code={exampleSettings} />
+
+        <hr />
+
+        <YINIExample
+            title="Three useful YINI string forms"
+            code={exampleBasicStrings}
+        />
 
         <hr />
 

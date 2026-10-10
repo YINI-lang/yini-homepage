@@ -9,6 +9,7 @@ import exampleStringConcatenation from '../../../content/examples/general/string
 import exampleStringEscapes from '../../../content/examples/general/string-escapes.yini?raw'
 import exampleStringMultiline from '../../../content/examples/general/string-multiline.yini?raw'
 import exampleStringBasics from '../../../content/examples/general/strings-and-escapes.yini?raw'
+import exampleStringsAtAGlance from '../../../content/examples/general/strings-at-a-glance.yini?raw'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 ---
 
@@ -34,6 +35,14 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <hr />
 
         <h2>Strings</h2>
+        <p>
+            Strings are the most common value type in YINI. They can be written
+            in single quotes, double quotes, or unquoted (bare) form.
+        </p>
+        <YINIExample
+            title="Strings at a glance"
+            code={exampleStringsAtAGlance}
+        />
         <YINIExample title="Basic strings" code={exampleStringBasics} />
         <YINIExample title="Escaped strings" code={exampleStringEscapes} />
         <YINIExample title="Multi-line strings" code={exampleStringMultiline} />

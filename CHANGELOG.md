@@ -9,6 +9,9 @@ Minor typo fixes, styling tweaks, and small rewordings are not listed here. See 
 ## 2026 Oct
 - **Clarified:** Renamed navigation links and the page title to "YINI Format Rationale" (from just "Rationale") so visitors can immediately see that it explains the format's background, goals, and design trade-offs.
 - **Changed:** Disabled Plausible analytics collection and GoatCounter tracking to improve privacy. Their script is no longer loaded.
+- **Added:** Two YINI examples more:
+  * Added practical YINI string example to the main examples page; covering raw, classic escaped, and triple-quoted strings.
+  * Added "Strings at a glance" to the values examples page, including classic triple-quoted strings.
 
 ## 2026 Sep
 

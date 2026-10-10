@@ -1,0 +1,25 @@
+/* Common and useful string forms in YINI. */
+
+@yini
+
+^ StringsAtAGlance
+
+// Ordinary strings are raw by default; backslashes are preserved.
+name = "YINI"
+path = "C:\Users\Kim\Projects\YINI"
+
+// Classic strings interpret escape sequences.
+message = C"Build finished.\nReady to continue."
+
+// Triple-quoted strings are useful for multiline text.
+description = """
+YINI is a human-friendly
+configuration format with
+clear, predictable syntax.
+"""
+
+// Classic triple-quoted strings also interpret escapes.
+formatted = C"""
+First line
+Second line\tIndented
+"""
