@@ -1,0 +1,97 @@
+---
+title: 'YINI Parser for Go'
+description: 'Parse YINI configuration files in Go with the official alpha YINI parser.'
+---
+
+import PageEndingLinks from '../../../components/PageEndingLinks.astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+
+<BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
+
+# Official Go YINI Parser
+
+**Parse YINI configuration files in Go applications and tools.**
+
+The official Go parser is available as an alpha Go module for early use and feedback. It supports Go 1.22 or newer.
+
+> **Status:** Alpha  
+> The parser is released for early use, but its API and behavior may change before a stable release.
+
+---
+
+## Install
+
+From your Go module directory, run:
+
+```bash
+go get github.com/YINI-lang/yini-parser-go@latest
+```
+
+The import path is `github.com/YINI-lang/yini-parser-go`.
+
+---
+
+## Quick example
+
+Suppose `config.yini` contains:
+
+```yini
+^ App
+name = "Demo App"
+
+    ^^ Server
+    port = 8080
+/END
+```
+
+Parse the file in Go:
+
+```go
+package main
+
+import (
+    "fmt"
+    "log"
+
+    yini "github.com/YINI-lang/yini-parser-go"
+)
+
+func main() {
+    result, err := yini.ParseFile("config.yini", yini.Options{})
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    app := result.Document.Values()["App"].(map[string]any)
+    fmt.Println(app["name"])
+}
+```
+
+Output:
+
+```
+Demo App
+```
+
+`yini.Options{}` selects the default lenient mode. `Document.Values()` returns ordinary Go maps, slices, and scalar values. The parser also provides `ParseString` and `ParseReader` for other input sources.
+
+To select strict mode explicitly, pass `yini.Options{Mode: yini.ModeStrict}`. Strict mode requires one top-level section and a `/END` terminator; see the [Go parser usage guide ↗](https://github.com/YINI-lang/yini-parser-go/blob/main/docs/usage.md) for details.
+
+---
+
+## Demo apps
+
+The [basic Go demo ↗](https://github.com/YINI-lang/yini-demo-apps/tree/main/go/basic) reads a small configuration file. The [medium Go demo ↗](https://github.com/YINI-lang/yini-demo-apps/tree/main/go/medium) shows nested sections, collections, and both parsing modes.
+
+---
+
+## Related tools and links
+
+For command-line validation and conversion, see the [YINI CLI](/tools/yini-cli). To compare language implementations, see [YINI Parsers](/tools/yini-parsers).
+
+- [yini-parser-go on GitHub ↗](https://github.com/YINI-lang/yini-parser-go)
+- [Go parser usage guide ↗](https://github.com/YINI-lang/yini-parser-go/blob/main/docs/usage.md)
+
+<PageEndingLinks />
+
+</BaseLayout>

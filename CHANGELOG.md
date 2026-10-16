@@ -7,6 +7,7 @@ This file tracks meaningful public-facing changes, such as major content updates
 Minor typo fixes, styling tweaks, and small rewordings are not listed here. See the git commit history for those details.
 
 ## 2026 Oct
+- **Added:** Added new page for the YINI parser for the Go language.
 - **Clarified:** Renamed navigation links and the page title to "YINI Format Rationale" (from just "Rationale") so visitors can immediately see that it explains the format's background, goals, and design trade-offs.
 - **Changed:** Disabled Plausible analytics collection and GoatCounter tracking to improve privacy. Their script is no longer loaded.
 - **Added:** Two YINI examples more:

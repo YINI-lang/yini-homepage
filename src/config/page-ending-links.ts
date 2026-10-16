@@ -46,6 +46,7 @@ const routes = {
     yiniParsers: useYiniLinks.yiniParsers.url,
     parserTS: toolLinks.parserTS.url,
     parserPython: toolLinks.parserPython.url,
+    parserGo: toolLinks.parserGo.url,
     yiniTestSuite: toolLinks.yiniTestSuite.url,
     cheatSheet: refLinks.cheatSheet.url,
     faq: refLinks.faq.url,
@@ -318,6 +319,11 @@ export const pageEndingLinks: PageEndingLinkMap = {
             href: routes.parserPython,
             description: 'Load YINI configuration files in Python.',
         },
+        {
+            label: 'Go Parser',
+            href: routes.parserGo,
+            description: 'Load YINI configuration files in Go.',
+        },
     ],
     [pathKey(routes.parserTS)]: [
         {
@@ -332,6 +338,18 @@ export const pageEndingLinks: PageEndingLinkMap = {
         },
     ],
     [pathKey(routes.parserPython)]: [
+        {
+            label: 'YINI CLI',
+            href: routes.yiniCli,
+            description: 'Validate and convert YINI files from the terminal.',
+        },
+        {
+            label: 'YINI Parsers',
+            href: routes.yiniParsers,
+            description: 'Compare the official parser options.',
+        },
+    ],
+    [pathKey(routes.parserGo)]: [
         {
             label: 'YINI CLI',
             href: routes.yiniCli,

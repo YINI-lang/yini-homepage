@@ -43,9 +43,10 @@ The YINI project currently provides official parser implementations for:
 
 - [TypeScript / JavaScript / Node.js](/tools/yini-parser-ts)
 - [Python](/tools/yini-parser-python)
+- [Go](/tools/yini-parser-go)
 - [Other YINI tools](/use-yini/get-yini-tools)
 
-The TypeScript parser is the primary implementation. The Python parser is currently available as an beta package, examples, integrations, and feedback.
+The TypeScript parser is the primary implementation. The Python parser is in beta, and the Go parser is in alpha.
 
 ---
 
@@ -149,6 +150,38 @@ print(config["App"]["name"])
 ```
 
 For more details, see the page [YINI Parser for Python](/tools/yini-parser-python/).
+
+---
+
+## Go parser (official alpha)
+
+Use the Go parser when working with Go applications, tools, or services. It supports Go 1.22 or newer.
+
+```bash
+go get github.com/YINI-lang/yini-parser-go@latest
+```
+
+```go
+package main
+
+import (
+    "fmt"
+    "log"
+
+    yini "github.com/YINI-lang/yini-parser-go"
+)
+
+func main() {
+    result, err := yini.ParseFile("config.yini", yini.Options{})
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Println(result.Document.Values()["App"])
+}
+```
+
+`result.Document.Values()` provides ordinary Go values after a successful parse. For more details, see the page [YINI Parser for Go](/tools/yini-parser-go/).
 
 ---
 
