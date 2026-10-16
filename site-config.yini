@@ -53,7 +53,7 @@
         'YINI — A human-friendly, text-based configuration format that stays clear and predictable.'
     ]
 
-    heroCredibilityLine = 'Open source · Formal specification · TypeScript & Python parsers · CLI'
+    heroCredibilityLine = 'Open source · Formal specification · TypeScript, Python & Go parsers · CLI'
     tagLine = 'Human-readable configuration files with clear structure and predictable parsing.'
     elevatorPitch = "YINI is a human-friendly, INI-inspired text-based configuration format for software projects: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage."
 
@@ -205,6 +205,10 @@
                 url = '/tools/yini-parser-python'
                 title = 'YINI Parser for Python'
 
+            ^^^^ parserGo
+                url = '/tools/yini-parser-go'
+                title = 'YINI Parser for Go'
+
         ^^^ metaInfo
 
             ^^^^ about
@@ -253,6 +257,7 @@
             yiniCli = 'https://github.com/YINI-lang/yini-cli'
             yiniParserTs = 'https://github.com/YINI-lang/yini-parser-typescript'
             yiniParserPython = 'https://github.com/YINI-lang/yini-parser-python'
+            yiniParserGo = 'https://github.com/YINI-lang/yini-parser-go'
             yiniDemoApps = 'https://github.com/YINI-lang/yini-demo-apps'
             yiniTestSuite = 'https://github.com/YINI-lang/yini-test-suite'
             yiniSyntax = 'https://github.com/YINI-lang/syntax-highlighting'

@@ -97,6 +97,23 @@ const toolCards = [
         ],
     },
     {
+        name: 'Go parser',
+        audience: 'Go apps',
+        status: 'Alpha',
+        description:
+            'Parse YINI configuration files in Go applications and work with the result as ordinary Go values.',
+        command: 'go get github.com/YINI-lang/yini-parser-go@latest',
+        noCommandMessage: null,
+        links: [
+            { label: 'Parser docs', href: '/tools/yini-parser-go' },
+            {
+                label: 'GitHub',
+                href: CONFIG.urls.external.gitHub.yiniParserGo,
+                external: true,
+            },
+        ],
+    },
+    {
         name: 'YINI Test Suite',
         audience: 'Parser authors',
         status: 'Compatibility',
@@ -216,7 +233,8 @@ const toolCards = [
                                             ? 'noopener noreferrer'
                                             : undefined
                                     }
-                                    class="inline-flex rounded-md border border-slate-200 px-3 py-2 text-sm font-medium no-underline hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-900">
+                                    class="inline-flex rounded-md border border-slate-200 px-3 py-2 text-sm font-medium no-underline hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-900"
+                                >
                                     {link.label}
                                     {link.external && (
                                         <span aria-hidden="true">&nbsp;↗</span>

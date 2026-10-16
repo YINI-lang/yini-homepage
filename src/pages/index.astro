@@ -81,7 +81,7 @@ const rows: EcosystemMatrix = [
         impl: {
             label: 'Go Parser (Alpha)',
             status: 'inprogress',
-            href: 'https://github.com/YINI-lang/yini-parser-go',
+            href: CONFIG.siteLinks.navMenu.tools.parserGo.url,
         },
         adopt: { label: null, status: null },
     },
@@ -196,16 +196,12 @@ const statusIcon = (status: EcosystemStatus) => {
                     target="_blank"
                     rel="noopener noreferrer">JSON</a
                 >, <a
-                    href="https://yaml.org/"
-                    target="_blank"
-                    rel="noopener noreferrer">YAML</a
-                >, <a
                     href="https://www.w3.org/TR/xml/"
                     target="_blank"
                     rel="noopener noreferrer">XML</a
-                >, and TOML all solve configuration in different ways. YINI
-                focuses on a practical middle ground: readable files, explicit
-                structure, useful data types, and predictable parsing.
+                >, YAML, and TOML all solve configuration in different ways.
+                YINI focuses on a practical middle ground: readable files,
+                explicit structure, useful data types, and predictable parsing.
             </p>
 
             <ul>
@@ -266,6 +262,11 @@ const statusIcon = (status: EcosystemStatus) => {
                     applications with the <a href="/tools/yini-parser-python"
                         >YINI Parser for Python</a
                     >.
+                </li>
+                <li class="leading-relaxed">
+                    🔧 Load YINI directly in Go applications and tools with the <a
+                        href="/tools/yini-parser-go">YINI Parser for Go</a
+                    > (Alpha).
                 </li>
 
                 <li class="leading-relaxed">
@@ -425,9 +426,28 @@ name = "Hello"`}</code></pre>
                                                 {row.impl.href ? (
                                                     <a
                                                         href={row.impl.href}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer">
-                                                        {row.impl.label}&nbsp;↗
+                                                        target={
+                                                            row.impl.href.startsWith(
+                                                                'http',
+                                                            )
+                                                                ? '_blank'
+                                                                : undefined
+                                                        }
+                                                        rel={
+                                                            row.impl.href.startsWith(
+                                                                'http',
+                                                            )
+                                                                ? 'noopener noreferrer'
+                                                                : undefined
+                                                        }>
+                                                        {row.impl.label}
+                                                        {row.impl.href.startsWith(
+                                                            'http',
+                                                        ) && (
+                                                            <span>
+                                                                &nbsp;↗
+                                                            </span>
+                                                        )}
                                                     </a>
                                                 ) : (
                                                     row.impl.label
