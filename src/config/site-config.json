@@ -189,6 +189,7 @@
                 "npmYiniCli": "https://www.npmjs.com/package/yini-cli",
                 "npmYiniParser": "https://www.npmjs.com/package/yini-parser",
                 "pypiYiniParser": "https://pypi.org/project/yini-parser/",
+                "goPackagesYiniParser": "https://pkg.go.dev/github.com/YINI-lang/yini-parser-go",
                 "pypiYiniTestSuite": "https://pypi.org/project/yini-test-suite/",
                 "vsMarketplaceYiniSyntax": "https://marketplace.visualstudio.com/items?itemName=yini-lang.yini-syntax-highlighting"
             },
