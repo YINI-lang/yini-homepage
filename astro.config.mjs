@@ -1,4 +1,5 @@
 // astro.config.mjs
+import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'astro/config'
 import rehypeSlug from 'rehype-slug'
@@ -7,6 +8,7 @@ import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
+import llmsTxt from './plugins/llms-txt.js'
 import linkNormalizeYini from './plugins/remark-link-normalize-yini.js'
 
 export default defineConfig({
@@ -16,6 +18,30 @@ export default defineConfig({
         sitemap({
             filter: (page) => !page.endsWith('/playground-use-yini/'),
         }),
+        {
+            name: 'format-sitemap',
+            hooks: {
+                'astro:build:done': async ({ dir }) => {
+                    const sitemapFiles = (await readdir(dir)).filter((name) =>
+                        /^sitemap-\d+\.xml$/.test(name),
+                    )
+
+                    for (const name of sitemapFiles) {
+                        const file = new URL(name, dir)
+                        const xml = await readFile(file, 'utf8')
+                        const formattedXml = xml
+                            .replace(
+                                /(<\?xml[^>]*\?>|<urlset\b[^>]*>|<\/url>)\s*/g,
+                                '$1\n',
+                            )
+                            .replace(/\s*$/, '\n')
+
+                        await writeFile(file, formattedXml)
+                    }
+                },
+            },
+        },
+        llmsTxt(),
     ],
     vite: {
         plugins: [tailwindcss()],

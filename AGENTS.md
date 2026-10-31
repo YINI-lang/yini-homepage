@@ -150,6 +150,18 @@ If a required check cannot be run, explain why and describe what was validated i
 - Do not hand-edit generated output such as `dist/`, `.astro/`, or `src/config/site-config.json` unless the task explicitly requires generated artifacts.
 - Treat `src/config/conf.ts.bak` and `src/config/config.yini.old` as historical backup files; do not update them unless explicitly asked.
 
+### During an Astro build
+
+- **XML sitemap**:  
+The XML sitemap follows the [Sitemaps protocol](https://www.sitemaps.org/protocol.html) ↗: URL entries identify pages for crawlers, and an index lists sitemap files.
+
+`@astrojs/sitemap` generates `dist/sitemap-index.xml` and numbered sitemap files such as `dist/sitemap-0.xml`. The following `format-sitemap` hook in `astro.config.mjs` puts each `<url>` entry on its own line for readability. Change the hook and rebuild to adjust this formatting; do not edit files in `dist/` directly.
+
+- **`llms.txt`**:  
+The [llms.txt proposal](https://llmstxt.org/) ↗ describes a Markdown guide that introduces a site and points agents to selected resources.
+
+The `llms-txt` integration in `plugins/llms-txt.js` writes `dist/llms.txt` during the same build. Its curated links are checked against generated pages; update the integration when key documentation routes change.
+
 ---
 
 ## Content Provenance and Generated Content
