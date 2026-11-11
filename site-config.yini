@@ -252,8 +252,8 @@
             vsMarketplaceYiniSyntax = 'https://marketplace.visualstudio.com/items?itemName=yini-lang.yini-syntax-highlighting'
 
         ^^^ gitHub
-            --yiniOrg = 'https://github.com/YINI-lang'
-            yiniOrg = 'https://github.com/YINI-lang/YINI-spec'  // Temp: Use this as the front page for YINI project for now.
+            yiniOrg = 'https://github.com/YINI-lang'
+            --yiniOrg = 'https://github.com/YINI-lang/YINI-spec'  // Temp: Use this as the front page for YINI project for now.
 
             yiniCli = 'https://github.com/YINI-lang/yini-cli'
             yiniParserTs = 'https://github.com/YINI-lang/yini-parser-typescript'
