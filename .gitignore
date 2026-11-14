@@ -12,6 +12,7 @@ node_modules
 .codex-edge-profile
 
 *.local
+*.local.md
 
 .env
 .WORK
