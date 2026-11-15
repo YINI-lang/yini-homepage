@@ -33,8 +33,8 @@ precise_decimal = 1_000.5_25
 ^^ Binary
 permissions = 0b1101
 grouped_bits = 0b1111_0001
-alt_binary = %1010
-alt_binary_grouped = %_1010
+small_binary = 0b1010
+prefix_separator = 0b_1010
 
 ^^ Octal
 file_mode = 0o755

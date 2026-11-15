@@ -14,7 +14,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 
 The **YINI CLI** is the official command-line tool for working with YINI files. It is designed to make everyday configuration work simple and predictable — whether you want to quickly inspect a file, validate it, or convert it to JSON, JavaScript, YAML, or XML.
 
-As of `yini-cli` 1.5.0+, the CLI is aligned with the YINI 1.0.0 **RC 6** specification.
+The [current YINI specification](/refs/specification) is **RC7**. CLI support
+depends on the bundled TypeScript parser version. The earlier `yini-cli`
+1.5.0 release targeted RC6; check the installed release's supported specification
+before using RC7-specific syntax or validation rules.
 
 If you prefer configuration that stays readable without depending on indentation, YINI CLI gives you a straightforward way to work with it from your terminal.
 

@@ -12,7 +12,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 A practical FAQ for **YINI**, a human-friendly configuration format designed to be structured, predictable, and easy to read.
 
-If you're new, you might want to start with [Get Started](../use-yini/get-started).
+If you're new, you might want to start with [Get Started](/use-yini/get-started).
 
 The questions and answers are grouped by topic.
 
@@ -53,7 +53,7 @@ It supports the following features.
 - Sections with `^`, `^^`, etc. for nesting.
 - Key-value pairs (settings) using `=` as `key=value`.
 - Flexible strings using single (`'`) or double (`"`) quotes: raw strings keep text such as
-  file paths readable, `C`-prefixed strings support escape sequences, and
+  file paths readable, `E`-prefixed strings support escape sequences, and
   triple-quoted (`"""`) strings handle multi-line text.
 - Lists (arrays) `[1, 2, 3]` and inline objects `{ key: "value" }`.
 - Comments with `//`, `#`, `/* ... */`, and full-line `;` comments.
@@ -116,14 +116,14 @@ or application must still select strict mode.
 
 ### Q - Is YINI production-ready?
 
-Not officially yet. The [current specification](/refs/specification) is **YINI 1.0.0 RC 6**,
-a release-candidate draft. Minor corrections and clarifications may still be
+Not officially yet. The [current specification](/refs/specification) is **YINI 1.0.0 RC7**,
+a release candidate. Minor corrections and clarifications may still be
 made before the final 1.0.0 release.
 
 The [TypeScript/JavaScript parser](/tools/yini-parser-ts) is the primary parser
 implementation. The [YINI CLI](/tools/yini-cli) uses that parser for validation,
 inspection, and conversion. A [Python parser](/tools/yini-parser-python) is
-also available in beta.
+also available as a release candidate.
 
 YINI is suitable for experimentation, internal tools, and controlled production
 use where the specification and parser versions are pinned and tested against
@@ -258,7 +258,7 @@ name: `^10 DeepSection`.
 ### Q – Can YINI include or import other files?
 
 No. YINI files are parsed independently. The name `@include` is reserved for
-possible future use, but file inclusion is not defined in RC 6.
+possible future use, but file inclusion is not defined in RC7.
 
 ### Q – Can keys or section names contain spaces or punctuation?
 
@@ -273,11 +273,12 @@ characters that are not allowed in a simple name:
 
 ### Q – How does YINI handle duplicate keys or sections?
 
-The following duplicate-handling rules apply in YINI 1.0.0 RC 6.
-
-- In **strict mode**, duplicates are disallowed and will raise an error.
-- In **lenient mode**, later duplicate keys or sections are ignored, the
-  first entry wins, and the parser must report a warning.
+The following duplicate-handling rules apply in YINI 1.0.0 RC7:
+- Duplicate **sections under the same parent** are errors in both modes.
+- Duplicate **keys** are errors in strict mode. In lenient mode, the first
+  value wins and later duplicate keys are ignored with a warning.
+- A key and a child section with the same name under one parent are errors
+  in both modes.
 
 This means duplicates must not silently overwrite or merge existing entries.
 
@@ -287,9 +288,16 @@ Usually, no: after parsing, the order of ordinary unique keys is not meant to
 change their value.
 
 However, section headers are read in order because they define the current
-document structure and nesting. Order also matters when duplicate keys or
-sections appear in lenient mode, because the first entry wins and later
-duplicates are ignored with a warning.
+document structure and nesting. Order also matters when duplicate keys appear
+in lenient mode, because the first value wins and later duplicates are ignored
+with a warning. Duplicate sections are errors in both modes.
+
+### Q – Can I write settings before the first section?
+
+Yes, in lenient mode. These root-level members appear directly on the document
+root alongside top-level sections; they are not wrapped in an implicit `base`
+object. Strict mode requires exactly one explicit top-level section and rejects
+root-level members.
 
 ---
 
@@ -365,14 +373,35 @@ Triple-quoted strings are allowed for multi-line text.
 Ordinary YINI strings are raw by default. A sequence such as `\n` remains a
 backslash followed by the letter `n`.
 
-Use a string with a `C` or `c` prefix when escape sequences should be processed:
+Use an Escaped String with an `E` or `e` prefix when escape sequences should be processed:
 
 ```yini
 rawPath = "C:\Users\Robin"
-message = C"First line\nSecond line"
+message = E"First line\nSecond line"
 ```
 
 In `message`, `\n` becomes a newline.
+
+The older `C` and `c` prefixes still work in both modes, including with triple
+quotes, but are deprecated in RC7. Prefer `E` or `e` for new documents.
+
+### Q – What are Command Strings?
+
+RC7 adds lowercase `command"""` for multiline command or script text. The
+opening delimiter must be followed by a line break, and the closing delimiter
+must be alone on its line. Structural indentation is removed, backslashes stay
+literal, and the value has no automatic final newline. The result is an
+ordinary string; YINI does not execute commands.
+
+Source LF, CRLF, and CR line endings become LF in all multiline strings,
+including raw and escaped triple-quoted strings and Command Strings.
+
+### Q – What does a blank value mean?
+
+A root-level or section-level assignment such as `timeout =` becomes `null`
+with a required warning in lenient mode. Strict mode rejects it. Missing list
+items and missing inline object values are errors in both modes; write `null`
+explicitly when that is the intended value.
 
 ### Q – Are keys and section names case-sensitive?
 
@@ -423,7 +452,7 @@ YINI examples.
 ### Q - Is syntax highlighting available?
 
 Yes. YINI syntax highlighting is available as an official
-<a href="https://marketplace.visualstudio.com/items?itemName=yini-lang.yini-syntax-highlighting" target="_blank" rel="noopener noreferrer">Visual Studio Code extension ↗</a>,
+[Visual Studio Code extension ↗](https://marketplace.visualstudio.com/items?itemName=yini-lang.yini-syntax-highlighting),
 with highlighting aligned with **YINI 1.0.0 RC 6**.
 
 The <a href="https://github.com/YINI-lang/syntax-highlighting" target="_blank" rel="noopener noreferrer">YINI syntax-highlighting repository ↗</a>

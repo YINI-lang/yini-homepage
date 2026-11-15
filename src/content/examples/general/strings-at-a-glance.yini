@@ -8,8 +8,8 @@
 name = "YINI"
 path = "C:\Users\Kim\Projects\YINI"
 
-// Classic strings interpret escape sequences.
-message = C"Build finished.\nReady to continue."
+// Escaped Strings interpret escape sequences.
+message = E"Build finished.\nReady to continue."
 
 // Triple-quoted strings are useful for multiline text.
 description = """
@@ -18,8 +18,8 @@ configuration format with
 clear, predictable syntax.
 """
 
-// Classic triple-quoted strings also interpret escapes.
-formatted = C"""
+// Escaped triple-quoted strings also interpret escapes.
+formatted = E"""
 First line
 Second line\tIndented
 """

@@ -15,6 +15,6 @@ owner = "Amanda's file"
 quoted_text = 'He said "hello"'
 
 ^^ RawByDefault
-# Backslashes are ordinary text unless you use a C-string.
+# Backslashes are ordinary text unless you use an Escaped String.
 windows_path = "C:\Users\Kim\Documents"
 literal_text = "Line 1\nLine 2"

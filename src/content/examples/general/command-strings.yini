@@ -1,0 +1,10 @@
+# Command Strings produce ordinary strings; YINI does not execute them.
+
+^ Build
+
+# Structural indentation is removed. Backslashes remain literal.
+# The resulting value is "npm ci\nnpm run build", without a final newline.
+steps = command"""
+    npm ci
+    npm run build
+"""

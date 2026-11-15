@@ -1,16 +1,16 @@
 # string-escapes.yini
-# Use C-strings when escape sequences should be interpreted.
+# Use Escaped Strings when escape sequences should be interpreted.
 
 ^ EscapedStrings
 
 ^^ NewlinesAndTabs
-line_break = C"Line 1\nLine 2"
-tabbed = C"key\tvalue"
+line_break = E"Line 1\nLine 2"
+tabbed = E"key\tvalue"
 
 ^^ QuotesAndBackslashes
-quoted = C"He said \"hello\""
-folder = C"C:\\Users\\Kim\\Documents"
+quoted = E"He said \"hello\""
+folder = E"C:\\Users\\Kim\\Documents"
 
 ^^ LowercasePrefix
-# The C prefix is case-insensitive.
-message = c"Ready\nDone"
+# The E prefix is case-insensitive.
+message = e"Ready\nDone"

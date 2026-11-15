@@ -4,6 +4,7 @@ import PageEndingLinks from '../../../components/PageEndingLinks.astro'
 import YINIExample from '../../../components/YINIExample.astro'
 import CONFIG from '../../../config/conf'
 import exampleBooleans from '../../../content/examples/general/boolean-literals.yini?raw'
+import exampleCommandStrings from '../../../content/examples/general/command-strings.yini?raw'
 import exampleNumbers from '../../../content/examples/general/number-formats.yini?raw'
 import exampleStringConcatenation from '../../../content/examples/general/string-concatenation.yini?raw'
 import exampleStringEscapes from '../../../content/examples/general/string-escapes.yini?raw'
@@ -36,8 +37,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 
         <h2>Strings</h2>
         <p>
-            Strings are the most common value type in YINI. They can be written
-            in single quotes, double quotes, or unquoted (bare) form.
+            Strings must be quoted using single quotes, double quotes, or triple
+            double quotes. Strings are raw by default; use an E or e prefix when
+            escape sequences should be interpreted.
         </p>
         <YINIExample
             title="Strings at a glance"
@@ -46,6 +48,15 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
         <YINIExample title="Basic strings" code={exampleStringBasics} />
         <YINIExample title="Escaped strings" code={exampleStringEscapes} />
         <YINIExample title="Multi-line strings" code={exampleStringMultiline} />
+        <p>
+            Command Strings use lowercase <code>command"""</code> for multiline text
+            with structural indentation removed. They produce ordinary strings; YINI
+            does not execute their content.
+        </p>
+        <YINIExample
+            title="Command Strings (RC7)"
+            code={exampleCommandStrings}
+        />
         <YINIExample
             title="String concatenation"
             code={exampleStringConcatenation}

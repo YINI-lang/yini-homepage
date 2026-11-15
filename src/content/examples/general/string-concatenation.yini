@@ -11,3 +11,14 @@ label = "port-" + "8080"
 # A line break may appear after +.
 description = "Section markers " +
               "define structure."
+
+^^ LenientScalars
+# Later scalar operands are allowed only in lenient mode.
+port_label = "port-" + 8080
+enabled_label = "enabled-" + YES
+empty_label = "value-" + null
+
+# Decimal numbers retain their normalized source spelling.
+exponent_label = "scale-" + 1e3       // "scale-1e3".
+decimal_label = "ratio-" + 1.50      // "ratio-1.50".
+hex_label = "mask-" + 0xFF          // "mask-255".

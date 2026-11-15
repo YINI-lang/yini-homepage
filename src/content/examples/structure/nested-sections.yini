@@ -22,7 +22,7 @@ env = "production"
         autosave = true
 
 
-// Back to sub-section of App
+// Return to the top level with a new Server section.
 ^ Server
 host = "0.0.0.0"
 port = 8080
