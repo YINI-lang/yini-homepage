@@ -10,7 +10,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 # YINI Cheat Sheet
 
-> _Based on the official **YINI Specification (v1.0 Release Candidate 6)**_
+> _Based on the official **YINI Specification (v1.0 Release Candidate 7)**_
 
 A **quick reference** for writing clean, readable YINI configuration files.
 
@@ -31,14 +31,14 @@ More structured than INI, less noisy than JSON, and less fragile than YAML.
 | **Section heading: level&nbsp;2** | `^^ Database`                                                                                                                                                                                                                              |
 | **Section heading: level&nbsp;3** | `^^^ Pool`                                                                                                                                                                                                                                 |
 | **Section marker separator**      | `^^^_^^^_^^^ DeepSection`<br/>`_` may visually separate repeated section markers and does not count toward section depth.                                                                                                                  |
-| **String**                        | `"text"`, `'text'`, `"C:\Users\Robin"` <br/>👉 Strings are raw by default — `\` and `\n` are treated as normal text<br/>👉 Use `C"..."` or `c'...'` for escape sequences like `\n`, `\t`, `\\` (escapes are transformed during parse time) |
+| **String**                        | `"text"`, `'text'`, `"C:\Users\Robin"` <br/>👉 Strings are raw by default — `\` and `\n` are treated as normal text<br/>👉 Use `E"..."` or `e'...'` for escape sequences like `\n`, `\t`, `\\` (escapes are transformed during parse time) |
 | **Number**                        | `42`, `3.14`, `-10`, `1e4`                                                                                                                                                                                                                 |
 | **Boolean**                       | `true`, `false`, `on`, `off`, `yes`, `no` _(case-insensitive)_                                                                                                                                                                             |
 | **Null**                          | `null`, `Null`, _(or blank in lenient mode)_                                                                                                                                                                                               |
 | **List (array)**                  | `[1, 2, 3]`                                                                                                                                                                                                                                |
 | **Inline object (map/dict)**      | `{ a: 1, b: 2 }`                                                                                                                                                                                                                           |
 | **Comment**                       | `// Default comment`                                                                                                                                                                                                                       |
-| **Alt. comment**                  | `# Comment`<br/>`#Comment`<br/>`#` starts a comment outside string literals.                                                                                                                                                               |
+| **Alt. comment**                  | `# Comment`<br/>`#Comment`<br/>`#` starts a comment outside string literals and backticked identifiers.                                                                                                                                                               |
 | **Multi-line (block) comment**    | `/* comment */`<br/><br/>`/*`<br/>`  Multi-line`<br/>`  comment`<br/>`*/`                                                                                                                                                                  |
 | **Full-line comment**             | `; This is a full-line comment (only full lines)`                                                                                                                                                                                          |
 | **Disable line**                  | `--debug = true`                                                                                                                                                                                                                           |
@@ -71,15 +71,40 @@ _This is a readability convention — not a requirement._
 
 YINI strings are quoted and are **raw by default**.
 
-| String type                   | Example                 | Meaning                                                            |
-| ----------------------------- | ----------------------- | ------------------------------------------------------------------ |
-| **Raw string**                | `"C:\Users\Robin"`      | Default string type. Backslashes are treated as normal characters. |
-| **Single-quoted raw string**  | `'hello'`               | Same raw behavior, using single quotes.                            |
-| **Classic string / C-string** | `C"hello\nworld"`       | Escape sequences such as `\n`, `\t`, and `\\` are interpreted.     |
-| **Triple-quoted raw string**  | `"""multi-line text"""` | Multi-line raw string. Escapes are not interpreted.                |
-| **C-triple-quoted string**    | `C"""line 1\nline 2"""` | Multi-line string with escape sequences interpreted.               |
+| String type                      | Example                 | Meaning                                                            |
+| -------------------------------- | ----------------------- | ------------------------------------------------------------------ |
+| **Raw string**                   | `"C:\Users\Robin"`      | Default string type. Backslashes are treated as normal characters. |
+| **Single-quoted raw string**     | `'hello'`               | Same raw behavior, using single quotes.                            |
+| **Escaped String**               | `E"hello\nworld"`       | Escape sequences such as `\n`, `\t`, and `\\` are interpreted.     |
+| **Triple-quoted raw string**     | `"""multi-line text"""` | Multi-line raw string. Escapes are not interpreted.                |
+| **Escaped triple-quoted string** | `E"""line 1\nline 2"""` | Multi-line string with escape sequences interpreted.               |
 
-Use normal raw strings for most values. Use `C"..."` or `C"""..."""` only when you need escape sequences.
+Use normal raw strings for most values. Use `E"..."`, `e'...'`, or `E"""..."""` when you need escape sequences. The older `C`/`c` prefixes remain valid in both modes but are deprecated in RC7.
+
+Source LF, CRLF, and CR line endings become LF in all multiline string values. Escape results such as `\r` keep their own characters. `\xhh` is a two-digit Unicode escape for U+00hh, not a raw byte.
+
+### Command Strings
+
+Use lowercase `command"""` for multiline command or script text:
+
+```yini
+build = command"""
+    npm ci
+    npm run build
+"""
+```
+
+The value is `npm ci\nnpm run build`, with structural indentation removed and no final newline. Backslashes stay literal. The opening delimiter must end its line, and the closing delimiter must be alone on its line. YINI produces an ordinary string and does not execute it.
+
+### String Concatenation
+
+```yini
+title = "YINI: " + "Readable config"
+label = "port-" + 8080  // Lenient mode only.
+scale = "scale-" + 1e3  // "scale-1e3" in lenient mode.
+```
+
+Concatenation must start with a string literal. Strict mode permits only string operands; lenient mode also permits later number, boolean, and null operands. Lists and objects are invalid operands, and numeric addition is not defined. Line breaks may follow `+`, but must not precede it.
 
 ---
 
@@ -109,12 +134,18 @@ service = {
 - **Indentation is cosmetic** — structure is defined by section markers (`^`, `^^`, `^^^`, etc.).
 - Repeated section markers are supported **up to level 9**. For deeper nesting, use numeric shorthand such as `^10 DeepSection`.
 - **Strings must be quoted** using `'...'` or `"..."`.
-- **Strings are raw by default**. Use `C"..."` or `c'...'` only when you need escape sequences like `\n` or `\t`.
+- **Strings are raw by default**. Use `E"..."` or `e'...'` only when you need escape sequences like `\n` or `\t`.
 - `key = value` assigns a single value.
 - Lists are assigned with `=` and square brackets, for example `items = ["one", "two"]`.
 - Trailing commas are allowed in **lists and objects** _(lenient mode)_.
-- Duplicate keys are **disallowed by default**.
-- `#` **starts a comment** outside string literals.
+- Duplicate sections under the same parent are **errors in both modes**. A key and child section cannot share a name under the same parent.
+- Duplicate keys are **errors in strict mode**. In lenient mode, the first value wins and later duplicates are ignored with a warning.
+- Blank root-level or section-level values become **null with a warning in lenient mode**; strict mode rejects them. Missing list items or object values are errors in both modes.
+- Inline objects use canonical `:` separators. Lenient parsers must also accept `=`, including mixed separators; strict mode requires `:`.
+- Lenient root-level members appear directly beside top-level sections, without an implicit `base` object.
+- Strict mode requires exactly one top-level section, no root-level members, and `/END`. Only comments and whitespace may follow `/END` in either mode.
+- `@yini strict` and `@yini lenient` declare the expected mode; they do not select it. Strict declarations must be rejected by lenient parsers. Lenient declarations produce a warning under strict parsing and must still pass strict checks.
+- `#` **starts a comment** outside string literals and backticked identifiers.
 - `_` may be used as a visual separator in number literals and repeated section markers. It improves readability and does not change the value or section depth.
 
     ```yini
@@ -122,6 +153,8 @@ service = {
     ```
 
     Meaning: same as `10000000`, but easier to read.
+
+    Header fragment at depth 9, after ancestor levels 1–8 have been established:
 
     ```yini
     ^^^_^^^_^^^ DeepSettings
@@ -146,7 +179,7 @@ YINI supports multiple numeric formats:
 | **Duodecimal (base-12)**  | `0z2BA9`, `0z2EX9`<br/><br/>Digits: `0–9`, `A` or `X` = 10, `B` or `E` = 11 _(case-insensitive)_<br/>💡 `0z10` equals decimal 12.          |
 | **Digit separators**      | `1_000`, `0x_FF_AA_00`, `0b_1010_1100`, `hex:FF_AA_00`<br/><br/>Underscores are for readability and do not change the numeric value.       |
 
-All numeric forms are parsed as real numbers — no quotes required.
+Number literals need no quotes. Non-decimal integers must fit the signed 64-bit range in both modes. Prefer `0b` for binary; the older `%` prefix remains valid but is deprecated in RC7.
 
 ---
 
@@ -176,7 +209,7 @@ timeout = null
 
 ^ Service
 name = 'Aurora'                 # Single quotes
-message = C"Server started\nReady."   # C-string with newline escape
+message = E"Server started\nReady."   # Escaped String with newline escape.
 path = 'E:\Program Files\App'   # Backslashes are raw (no escaping needed)
 enabled = Off                   # Boolean (case-insensitive)
 retries = 3
@@ -191,12 +224,12 @@ retries = 3
 
         ^^^ Limits
         maxUsers = 1000
-        timeout =               # Blank value → null (lenient mode)
+        timeout =               # Null with a warning in lenient mode.
 ```
 
 > 💡 **Strings:**  
 > Regular strings are raw by default.  
-> Use `C"..."` or `c'...'` only when escape sequences are needed.
+> Use `E"..."` or `e'...'` only when escape sequences are needed.
 
 > 💡 **Note:**  
 > Lines prefixed with `--` are **disabled configuration lines**.  

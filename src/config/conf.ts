@@ -1,7 +1,7 @@
 // NOTE: './site-config.json' is generated. Do not edit it directly; edit 'site-config.yini' in the project root instead.
 import jsonConf from './site-config.json' // JSON generated from a YINI file (with yini-cli).
 
-const LATEST_YINI_SPEC_PDF_URL = '/specs/YINI-Specification-1.0.0-RC.6.pdf'
+const LATEST_YINI_SPEC_PDF_URL = '/specs/YINI-Specification-1.0.0-RC.7.pdf'
 
 interface IConfig {
     meta: {

@@ -220,7 +220,7 @@ function formatSourceExcerpt(
         return ''
     }
 
-    const sourceLine = source.split(/\r?\n/)[lineNumber - 1]
+    const sourceLine = source.split(/\r\n|\r|\n/)[lineNumber - 1]
     if (sourceLine === undefined) {
         return ''
     }
@@ -308,7 +308,6 @@ export default function YiniPlayground() {
                 failLevel: parserFailLevel,
                 includeMetadata: true,
                 includeDiagnostics: true,
-                requireDocTerminator: 'optional' as const,
                 throwOnError: false,
             }
 

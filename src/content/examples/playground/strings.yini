@@ -12,9 +12,9 @@ quotation = 'She said "hello".'
 # R is optional; it explicitly says that backslashes stay as written.
 explicit_raw = R"First line\nSecond line"
 
-# C enables escapes such as \n (new line) and \t (tab).
-escaped = C"First line\nSecond line"
-tabbed = C"Name:\tRobin"
+# E enables escapes such as \n (new line) and \t (tab).
+escaped = E"First line\nSecond line"
+tabbed = E"Name:\tRobin"
 
 # Triple quotes preserve a multiline block, including its line breaks.
 message = """Hello!
@@ -22,8 +22,8 @@ message = """Hello!
 Welcome to the YINI playground.
 """
 
-# C also works with triple quotes when the block needs escapes.
-formatted_message = C"""Name:\tRobin
+# E also works with triple quotes when the block needs escapes.
+formatted_message = E"""Name:\tRobin
 Status:\tReady"""
 
 # The + operator joins strings into one value.

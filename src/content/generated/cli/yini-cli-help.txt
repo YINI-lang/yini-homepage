@@ -1,4 +1,4 @@
-yini-cli 1.6.4
+yini-cli 2.0.0
 YINI CLI (by the YINI-lang project)
 
 The official terminal / command-line (CLI) for reading, parsing, and validating YINI

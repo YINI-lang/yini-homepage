@@ -18,7 +18,7 @@ grouped_exponent = 1.5e1_0
 
 # These prefixes select binary, octal, duodecimal, or hexadecimal.
 binary = 0b_1101_0101
-binary_alternative = %_1010
+small_binary = 0b_1010
 octal = 0o_755
 duodecimal = 0z_2EX9  // X is 10 and E is 11 in base 12.
 hexadecimal = 0x_FF_AA_00

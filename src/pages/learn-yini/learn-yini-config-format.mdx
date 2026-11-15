@@ -126,10 +126,10 @@ Strings in YINI are raw by default. This means backslashes are treated as normal
 path = "C:\Users\john\Documents"
 ```
 
-If you need escape sequences such as `\n` for a newline, use a C-string by prefixing the string with `C` or `c`:
+If you need escape sequences such as `\n` for a newline, use an Escaped String by prefixing the string with `E` or `e`:
 
 ```yini
-message = C"Server started\nReady."
+message = E"Server started\nReady."
 ```
 
 For longer multi-line text, use _triple-quoted strings_:
@@ -140,6 +140,33 @@ This is a longer text.
 It can span multiple lines.
 """
 ```
+
+The older `C` and `c` prefixes remain valid in both modes, but are deprecated in RC7. Use `E` or `e` for new documents, including escaped triple-quoted strings such as `E"""..."""`.
+
+Triple-quoted strings keep their whitespace and line breaks, with source LF, CRLF, and CR line endings normalized to LF.
+
+For multiline commands or scripts, RC7 also defines Command Strings:
+
+```yini
+build = command"""
+    npm ci
+    npm run build
+"""
+```
+
+This produces the ordinary string `npm ci\nnpm run build`. YINI does not execute it. The lowercase `command` prefix requires a line break after the opening delimiter, and the closing delimiter must be alone on its line. Structural indentation is removed; backslashes stay literal.
+
+### String Concatenation
+
+Use `+` to join strings. A concatenation must start with a string literal. In strict mode, every operand must be a string literal. Lenient mode also allows later number, boolean, and null operands:
+
+```yini
+title = "YINI: " + "Readable config"
+portLabel = "port-" + 8080  // Lenient mode only.
+exponent = "scale-" + 1e3  // "scale-1e3", not "scale-1000".
+```
+
+YINI does not perform numeric addition. A line break may appear after `+`, but not before it. In lenient concatenation, decimal numbers retain their normalized source spelling; non-decimal integers become base-10 text. See the [scalar conversion rules](/refs/specification#67-scalar-conversion-in-lenient-concatenation).
 
 ### Numbers
 
@@ -153,6 +180,8 @@ population = 10_000_000
 ```
 
 Underscores can make large numbers easier to read. `10_000_000` has the same value as `10000000`.
+
+Use `0b` for binary numbers, for example `0b1010`. The older `%` prefix remains valid in both modes but is deprecated in RC7.
 
 ### Booleans
 
@@ -173,11 +202,13 @@ Use `null` when a value is intentionally empty or not set:
 theme = null
 ```
 
-In lenient mode, a blank value after `=` may also be accepted:
+In lenient mode, a blank root-level or section-level value after `=` becomes `null` and must produce a warning:
 
 ```yini
 theme =
 ```
+
+Strict mode rejects blank values. Missing values inside lists or inline objects are errors in both modes; use explicit `null` instead.
 
 ### Lists
 
@@ -234,7 +265,7 @@ The `;` comment style is only for full-line comments. It must be the first non-w
 timeout = 30 ; Invalid ❌
 ```
 
-> In YINI RC 6, `#` always starts a comment outside string values. No whitespace is required after `#`, so `#336699` is treated as a comment, not a hex number.
+> Outside string literals and backticked identifiers, `#` always starts a comment. No whitespace is required before or after it, so `color = #336699` leaves `color` without a value: `null` with a warning in lenient mode, or an error in strict mode. Write a hex number as `0x336699` or `hex:336699`.
 
 💡**Tip:** You can use any comment style in your file.
 For best readability, try to stick to one style per file.
@@ -408,7 +439,7 @@ name = "Alice"
 role = "admin"
 ```
 
-> In strict mode, inline object entries must use `key: value`; `key = value` is invalid inside inline objects. In lenient mode, `key = value` may also be accepted, but `key: value` is the recommended form.
+> In strict mode, inline object entries must use `key: value`; `key = value` is invalid inside inline objects. Lenient parsers must accept both separators, including mixed separators in one object. Prefer the canonical `key: value` form.
 
 ---
 
@@ -439,7 +470,25 @@ This tells readers which mode the file is meant for.
 
 It does not switch the parser mode by itself. The parser, CLI option, API call, or application still chooses whether to use lenient or strict mode.
 
-If the file declares one mode but the parser uses another, the parser reports a mode mismatch. In (YINI Spec) RC 6, `@yini strict` parsed in lenient mode is an error; `@yini lenient` parsed in strict mode is allowed with a warning.
+If the file declares one mode but the parser uses another, the parser reports a mode mismatch. `@yini strict` parsed in lenient mode must be rejected. `@yini lenient` parsed in strict mode produces a warning; the document must still pass all strict-mode checks.
+
+### Duplicate Names and Root-Level Values
+
+Duplicate section names under the same parent are errors in both modes. Sections cannot be reopened or merged by repeating their header.
+
+Duplicate keys are errors in strict mode. In lenient mode, the first value is kept and later duplicates are ignored with a warning. A key and a child section cannot share a name under the same parent in either mode.
+
+Lenient mode allows key-value pairs before the first section. They appear directly on the document root alongside top-level sections, without an implicit `base` object:
+
+```yini
+title = "Demo"
+^ Server
+port = 8080
+```
+
+```json
+{ "title": "Demo", "Server": { "port": 8080 } }
+```
 
 ### Example Difference
 
@@ -475,6 +524,8 @@ title = "MyTitle"
 ```
 
 In strict mode, `/END` makes it clear where the configuration document ends.
+
+Only comments and whitespace may follow `/END`. A complete final line does not need a trailing newline in either mode, including a strict document ending immediately after `/END`.
 
 Strict mode also requires exactly one explicit top-level section. Any other sections must be nested inside that top-level section, and loose top-level key-value pairs are not allowed.
 
@@ -539,6 +590,8 @@ Use backticks for section names or key names that contain spaces, punctuation, o
 
 Without backticks, names like `user id` and `api.version` are not valid plain names.
 
+Inside backticked names, use a backslash before a backtick or another backslash to include that character literally. These are the only supported escapes in identifiers. Invalid names are errors in both modes.
+
 ### Deep Section Levels
 
 For normal nesting, use repeated `^` markers:
@@ -553,21 +606,34 @@ Repeated section markers are supported up to level 9.
 
 For deeper repeated section markers, underscores can visually group the
 markers and make the section depth easier to count. The underscores do not
-change the depth:
+change the depth. Establish the parent levels first, and use distinct names for siblings:
 
 ```yini
-^^^^^^ Settings   # Level 6
-^^^_^^^ Settings  # Also level 6
+^ App
+^^ Services
+^^^ API
+^^^^ Routes
+^^^^^ Options
+^^^^^^ Settings        # Level 6.
+^^^_^^^ GroupedSettings # Also level 6; a different sibling section.
 ```
 
 For deeper nesting, use numeric shorthand:
 
 ```yini
+^ App
+^^ Services
+^^^ API
+^^^^ Routes
+^^^^^ Options
+^^^^^^ Settings
+^^^^^^^ Advanced
+^^^^^^^^ Details
 ^^^^^^^^^ DeepSection  # Level 9
 ^10 VeryDeep           # Level 10
 ```
 
-Numeric shorthand requires a space after the number:
+Numeric shorthand requires a space or tab after the number. These header fragments assume a depth-9 parent has already been established:
 
 ```yini
 ^10 VeryDeep     # ✅ Valid
@@ -578,7 +644,7 @@ Numeric shorthand requires a space after the number:
 
 YINI also supports additional number notations, string types, escaping rules, parser modes, and validation rules.
 
-For full details, see the [YINI Specification](../refs/specification).
+For full details, see the [YINI Specification](/refs/specification).
 
 ---
 
