@@ -2,7 +2,7 @@
 
 Official website repository for YINI, built with Astro, React, and Tailwind CSS.
 
-This website uses a YINI config file for part of its configuration.
+This website uses [`site-config.yini`](site-config.yini) for shared text, navigation links, and site information.
 
 YINI is an INI-inspired, human-readable text format for representing structured information. It is intended for configuration files, application settings, and general data-storage use cases. 
 
@@ -25,10 +25,12 @@ Example of a YINI file:
 
 ---
 
-## Real Configuration Used by This Site
-Part of the website configuration (including internal links and descriptive text) is defined in a YINI file.
+<a id="real-configuration-used-by-this-site"></a>
 
-Example snippet from the real file (`site-config.yini`):
+## How the Website Uses YINI
+
+For example, the home and getting-started links are defined like this:
+
 ```yini
 ^ siteLinks
 
@@ -43,27 +45,19 @@ Example snippet from the real file (`site-config.yini`):
             title = 'Start exploring the YINI format.'
 ```
 
-View the full configuration file in the repository:  
-[`site-config.yini`](site-config.yini)
+<a id="yini-build-pipeline-used-on-this-site"></a>
 
-### YINI Build Pipeline Used on This Site
-During the build process, the configuration is converted automatically using [yini-cli](https://github.com/YINI-lang/yini-cli).
+Before `npm run dev` or `npm run build` starts Astro, npm runs `npm run gen:config` to convert the YINI file to JSON with the [YINI CLI](https://github.com/YINI-lang/yini-cli) ↗.
 
 ```txt
-site-config.yini (source of truth)
- ↓
-yini-cli (converts YINI to JSON)
- ↓
-site-config.json (generated file; do not edit directly)
- ↓
-src/config/conf.ts (reads the generated JSON)
- ↓
-Astro application
+site-config.yini
+    → YINI CLI
+    → src/config/site-config.json
+    → src/config/conf.ts
+    → Astro pages and components
 ```
 
-This allows YINI to be used as the source configuration format, while the application consumes generated JSON/TypeScript objects.
-
-Runtime parsing can also be done directly with [yini-parser](https://github.com/YINI-lang/yini-parser-typescript).
+Edit `site-config.yini`, rather than the generated `src/config/site-config.json`.
 
 ---
 

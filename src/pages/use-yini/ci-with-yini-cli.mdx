@@ -103,21 +103,13 @@ This is often enough to catch accidental mistakes early.
 
 ---
 
-## Real configuration used by this site
+<span id="real-configuration-used-by-this-site" />
 
-This website itself uses a YINI configuration file, so the workflow shown on this page is a real example rather than only a theoretical one.
+## How this website uses YINI
 
-The source configuration file lives in the `yini-homepage` repository:
+This website stores its shared text, navigation links, and site information in [`site-config.yini`](https://github.com/YINI-lang/yini-homepage/blob/main/site-config.yini) ↗.
 
-```txt
-site-config.yini
-```
-
-You can view the repository here:
-
-[github.com/YINI-lang/yini-homepage](https://github.com/YINI-lang/yini-homepage)
-
-Example snippet from `site-config.yini`:
+Here are two navigation links from that file:
 
 ```yini
 ^ siteLinks
@@ -125,47 +117,33 @@ Example snippet from `site-config.yini`:
     ^^ hero
 
         ^^^ home
-        url = '/'
-        title = 'Home – YINI homepage'
+            url = '/'
+            title = 'Home – YINI homepage'
 
         ^^^ getStarted
-        url = '/use-yini/get-started'
-        title = 'Start exploring the YINI format.'
+            url = '/use-yini/get-started'
+            title = 'Start exploring the YINI format.'
 ```
 
-## YINI build workflow/pipeline used on this site
+<span id="yini-build-workflowpipeline-used-on-this-site" />
 
-During the build workflow, the YINI file is converted to JSON with [yini-cli](/tools/yini-cli):
+Before local development or a production build, npm automatically runs `npm run gen:config`:
 
 ```bash
-npx yini-cli parse site-config.yini --output src/config/site-config.json
+npx yini-cli@latest parse site-config.yini --output src/config/site-config.json
 ```
 
-This parses `site-config.yini` and generates `src/config/site-config.json` for the Astro application to use.
-
-The generated JSON file is then read by the Astro application through `config.ts`.
+The website then reads the generated JSON through `src/config/conf.ts`:
 
 ```txt
-site-config.yini (source of truth)
- ↓
-yini-cli (converts YINI to JSON)
- ↓
-site-config.json (generated file; do not edit directly)
- ↓
-config.ts (reads the generated JSON)
- ↓
-Astro application
+site-config.yini
+    → YINI CLI
+    → src/config/site-config.json
+    → src/config/conf.ts
+    → Astro pages and components
 ```
 
-This makes `site-config.yini` the human-friendly source file, while the application still consumes generated JSON in a predictable way.
-
-This pattern works well when you want:
-
-- Readable source configuration for humans.
-- JSON output for existing tools or application code.
-- Validation during build or CI before bad configuration reaches production.
-
-If you prefer runtime parsing instead, you can also use a [YINI parser for your programming language](/tools/yini-parsers) and load YINI files directly in your application.
+If you prefer runtime parsing, you can also use a [YINI parser for your programming language](/tools/yini-parsers) to load YINI files directly in your application.
 
 ---
 
