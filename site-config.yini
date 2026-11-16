@@ -55,7 +55,8 @@
 
     heroCredibilityLine = 'Open source · Formal specification · TypeScript, Python & Go parsers · CLI'
     tagLine = 'Human-readable configuration files with clear structure and predictable parsing.'
-    elevatorPitch = "YINI is a human-friendly, INI-inspired text-based configuration format for software projects: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage."
+    --elevatorPitch = "YINI is a human-friendly, INI-inspired text-based configuration format for software projects: readable like INI, structured like JSON, without YAML's surprises. It offers clear nesting, comments, and predictable parsing, so your configuration stays easy to read and reason about as it grows. Suitable for configuration files, application settings, and general data storage."
+    elevatorPitch = "YINI is a clear, human-friendly, text-based configuration format — less verbose than JSON and XML, simpler than YAML, more expressive than INI, and less repetitive than TOML."
 
     ^^ mainPage
         headTitle = 'YINI — Human-Friendly Configuration Format with Real Structure'
