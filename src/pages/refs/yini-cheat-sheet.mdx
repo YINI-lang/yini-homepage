@@ -8,7 +8,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 <BaseLayout headTitle={frontmatter.title} headDescription={frontmatter.description}>
 
-# YINI Cheat Sheet
+# Cheat Sheet for YINI
 
 > _Based on the official **YINI Specification (v1.0 Release Candidate 7)**_
 
@@ -19,29 +19,29 @@ Want to test a snippet while reading? Open the [YINI Playground](/playground).
 YINI makes data files (such as configuration files and application settings) easy for humans to read
 **and** predictable for machines to process — like INI, but with **real structure**, lists (arrays), objects, and comments.
 
-More structured than INI, less noisy than JSON, and less fragile than YAML.
+> _More structured than INI, less noisy than JSON, and less fragile than YAML._
 
 ---
 
 ## 🧱 Basic Syntax
 
-| Element                           | YINI Syntax                                                                                                                                                                                                                                |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Section heading: level&nbsp;1** | `^ App`                                                                                                                                                                                                                                    |
-| **Section heading: level&nbsp;2** | `^^ Database`                                                                                                                                                                                                                              |
-| **Section heading: level&nbsp;3** | `^^^ Pool`                                                                                                                                                                                                                                 |
-| **Section marker separator**      | `^^^_^^^_^^^ DeepSection`<br/>`_` may visually separate repeated section markers and does not count toward section depth.                                                                                                                  |
-| **String**                        | `"text"`, `'text'`, `"C:\Users\Robin"` <br/>👉 Strings are raw by default — `\` and `\n` are treated as normal text<br/>👉 Use `E"..."` or `e'...'` for escape sequences like `\n`, `\t`, `\\` (escapes are transformed during parse time) |
-| **Number**                        | `42`, `3.14`, `-10`, `1e4`                                                                                                                                                                                                                 |
-| **Boolean**                       | `true`, `false`, `on`, `off`, `yes`, `no` _(case-insensitive)_                                                                                                                                                                             |
-| **Null**                          | `null`, `Null`, _(or blank in lenient mode)_                                                                                                                                                                                               |
-| **List (array)**                  | `[1, 2, 3]`                                                                                                                                                                                                                                |
-| **Inline object (map/dict)**      | `{ a: 1, b: 2 }`                                                                                                                                                                                                                           |
-| **Comment**                       | `// Default comment`                                                                                                                                                                                                                       |
-| **Alt. comment**                  | `# Comment`<br/>`#Comment`<br/>`#` starts a comment outside string literals and backticked identifiers.                                                                                                                                                               |
-| **Multi-line (block) comment**    | `/* comment */`<br/><br/>`/*`<br/>`  Multi-line`<br/>`  comment`<br/>`*/`                                                                                                                                                                  |
-| **Full-line comment**             | `; This is a full-line comment (only full lines)`                                                                                                                                                                                          |
-| **Disable line**                  | `--debug = true`                                                                                                                                                                                                                           |
+| Element                           | YINI Syntax                                                                                                                                                                                                                                                    |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Section heading: level&nbsp;1** | `^ App`                                                                                                                                                                                                                                                        |
+| **Section heading: level&nbsp;2** | `^^ Database`                                                                                                                                                                                                                                                  |
+| **Section heading: level&nbsp;3** | `^^^ Pool`                                                                                                                                                                                                                                                     |
+| **Section marker separator**      | `^^^_^^^_^^^ DeepSection`<br/>`_` may visually separate repeated section markers and does not count toward section depth.                                                                                                                                      |
+| **String**                        | `"text"`, `'text'`, `"C:\Users\Robin"`, `'/usr/local/bin'` <br/>👉 Strings are raw by default — `\` and `\n` are treated as normal text<br/>👉 Use `E"..."` or `e'...'` for escape sequences like `\n`, `\t`, `\\` (escapes are transformed during parse time) |
+| **Number**                        | `42`, `3.14`, `-10`, `1e4`                                                                                                                                                                                                                                     |
+| **Boolean**                       | `true`, `false`, `on`, `off`, `yes`, `no` _(case-insensitive)_                                                                                                                                                                                                 |
+| **Null**                          | `null`, `Null`, _(or blank in lenient mode)_                                                                                                                                                                                                                   |
+| **List (array)**                  | `[1, 2, 3]`                                                                                                                                                                                                                                                    |
+| **Inline object (map/dict)**      | `{ a: 1, b: 2 }`                                                                                                                                                                                                                                               |
+| **Comment**                       | `// Default comment`                                                                                                                                                                                                                                           |
+| **Alt. comment**                  | `# Comment`<br/>`#Comment`<br/>`#` starts a comment outside string literals and backticked identifiers.                                                                                                                                                        |
+| **Multi-line (block) comment**    | `/* comment */`<br/><br/>`/*`<br/>`  Multi-line`<br/>`  comment`<br/>`*/`                                                                                                                                                                                      |
+| **Full-line comment**             | `; This is a full-line comment (only full lines)`                                                                                                                                                                                                              |
+| **Disable line**                  | `--debug = true`                                                                                                                                                                                                                                               |
 
 ---
 

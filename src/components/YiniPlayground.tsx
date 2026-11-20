@@ -512,10 +512,13 @@ export default function YiniPlayground() {
                         This playground uses the official TypeScript/Node.js
                         &nbsp;<code>yini-parser</code>.
                     </p>
-                    <p className="mt-1 text-right text-sm">
+                    <p className="mt-1 text-left text-sm">
                         <span aria-hidden="true">&#128161;</span> Quick syntax
                         reference:{' '}
-                        <a href="/refs/yini-cheat-sheet">YINI Cheat Sheet</a>.
+                        <a href="/refs/yini-cheat-sheet">
+                            <b>Cheat Sheet</b> for YINI code
+                        </a>
+                        .
                     </p>
                 </div>
 
