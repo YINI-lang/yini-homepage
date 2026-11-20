@@ -140,7 +140,7 @@
     }
 
     .btn-outline {
-        @apply border border-gray-300 !text-slate-900 hover:bg-gray-100 hover:!text-slate-900;
+        @apply border border-gray-300 !text-slate-900 hover:bg-gray-100 hover:!text-slate-900 dark:border-slate-700 dark:!text-slate-100 dark:hover:bg-slate-800 dark:hover:!text-slate-100;
     }
 }
 
@@ -208,11 +208,6 @@
     .prose pre {
         background: #0b1220; /* deep navy */
         color: #e5e7eb;
-    }
-
-    /* Buttons (example dark variant for outline) */
-    .btn-outline {
-        @apply border-slate-700 !text-slate-100 hover:bg-slate-800;
     }
 
     .yini-quick-start {

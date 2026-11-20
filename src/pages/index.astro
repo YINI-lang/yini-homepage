@@ -171,11 +171,12 @@ const statusIcon = (status: EcosystemStatus) => {
         <section class="pb-4">
             <h2>This website uses YINI</h2>
             <p>
-                This website's shared text, navigation links, and site information
-                come from <a
+                This website's shared text, navigation links, and site
+                information come from <a
                     href={`${CONFIG.urls.external.gitHub.yiniHomepage}/blob/main/site-config.yini`}
                     target="_blank"
-                    rel="noopener noreferrer"><code>site-config.yini</code>&nbsp;↗</a
+                    rel="noopener noreferrer"
+                    ><code>site-config.yini</code>&nbsp;↗</a
                 >. Before Astro builds the site, the YINI CLI converts that file
                 to JSON.
             </p>
@@ -367,10 +368,10 @@ name = "Hello"`}</code></pre>
                 class="mt-6 flex flex-wrap items-center justify-center gap-3 pt-6 pb-4"
             >
                 <a
-                    href={CONFIG.siteLinks.hero.getStarted.url}
                     class="btn btn-primary"
+                    href={CONFIG.siteLinks.hero.playground.url}
                 >
-                    Get Started
+                    Try Playground
                 </a>
 
                 <a

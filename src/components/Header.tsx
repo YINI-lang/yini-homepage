@@ -109,16 +109,16 @@ export default function Header({ isProd }: HeaderProps) {
                     Quick Tutorial
                 </a> */}
                 <a
-                    href={CONFIG.siteLinks.hero.examples.url}
-                    title={CONFIG.siteLinks.hero.examples.title}
-                    className={cssClasses}>
-                    Examples
-                </a>
-                <a
                     href={CONFIG.siteLinks.hero.playground.url}
                     title={CONFIG.siteLinks.hero.playground.title}
                     className={cssClasses}>
                     Playground
+                </a>
+                <a
+                    href={CONFIG.siteLinks.hero.examples.url}
+                    title={CONFIG.siteLinks.hero.examples.title}
+                    className={cssClasses}>
+                    Examples
                 </a>
                 <a
                     href={CONFIG.siteLinks.navMenu.useYini.getYINITools.url}
@@ -179,7 +179,7 @@ export default function Header({ isProd }: HeaderProps) {
                                 CONFIG.siteLinks.navMenu.useYini.getStarted.url
                             }
                             className={cssClasses}>
-                            ◦ Get Started
+                            🚀 Get Started
                         </a>
                     </div>
                     {/* <div className="mb-2">
@@ -193,18 +193,18 @@ export default function Header({ isProd }: HeaderProps) {
                         </a>
                     </div> */}
                     <div className="mb-2">
+                        <a href="/playground" className={cssClasses}>
+                            🧪 Try Playground
+                        </a>
+                    </div>
+                    <div className="mb-2">
                         <a
                             href={
                                 CONFIG.siteLinks.navMenu.learnYini.examples
                                     .index.url
                             }
                             className={cssClasses}>
-                            ◦ YINI Examples
-                        </a>
-                    </div>
-                    <div className="mb-2">
-                        <a href="/playground" className={cssClasses}>
-                            ◦ Playground
+                            📄 Examples
                         </a>
                     </div>
                     <div className="mb-2">
@@ -214,7 +214,7 @@ export default function Header({ isProd }: HeaderProps) {
                                     .url
                             }
                             className={cssClasses}>
-                            ◦ Get YINI Tools
+                            ⬇️ Get YINI Tools
                         </a>
                     </div>
                     {/* <div className="mb-2">
@@ -231,14 +231,14 @@ export default function Header({ isProd }: HeaderProps) {
                             ◦ FAQ
                         </a>
                     </div> */}
-                    <div className="mb-2">
+                    {/* <div className="mb-2">
                         <a
                             href={CONFIG.siteLinks.navMenu.refs.spec.url}
                             className={cssClasses}>
                             ◦ Specification
                         </a>
-                    </div>
-                    <div className="mb-2 text-xs">
+                    </div> */}
+                    {/* <div className="mb-2 text-xs">
                         <a
                             href={CONFIG.urls.external.gitHub.yiniSpec}
                             target="_blank"
@@ -246,14 +246,14 @@ export default function Header({ isProd }: HeaderProps) {
                             className={cssClasses}>
                             ◦ Formal Spec on GitHub ↗
                         </a>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div>
                     <hr />
                 </div>
 
-                <div>
+                {/* <div>
                     <h3 className="my-2 font-semibold text-slate-500">Start</h3>
                     <ul className="space-y-2 pl-4">
                         <li>
@@ -280,7 +280,7 @@ export default function Header({ isProd }: HeaderProps) {
                                         .url
                                 }
                                 className={cssClasses}>
-                                Get Started 🚀
+                                Get Started
                             </a>
                         </li>
                         <li>
@@ -294,9 +294,9 @@ export default function Header({ isProd }: HeaderProps) {
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> */}
 
-                <div>
+                {/* <div>
                     <h3 className="my-2 font-semibold text-slate-500">
                         Examples
                     </h3>
@@ -370,10 +370,32 @@ export default function Header({ isProd }: HeaderProps) {
                         </li>
                     </ul>
                 </div>
-
+ */}
                 <div>
-                    <h3 className="my-2 font-semibold text-slate-500">Learn</h3>
+                    <h3 className="my-2 font-semibold text-slate-500">
+                        Learn YINI
+                    </h3>
                     <ul className="space-y-2 pl-4">
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.start
+                                        .whatIsYINIAndWhy.url
+                                }
+                                className={cssClasses}>
+                                What is YINI & Why?
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={
+                                    CONFIG.siteLinks.navMenu.learnYini
+                                        .quickTutorial.url
+                                }
+                                className={cssClasses}>
+                                Quick Tutorial
+                            </a>
+                        </li>
                         <li>
                             <a
                                 href={
@@ -381,7 +403,7 @@ export default function Header({ isProd }: HeaderProps) {
                                         .learnYiniFormat.url
                                 }
                                 className={cssClasses}>
-                                YINI Format Guide 🎓
+                                Format Guide
                             </a>
                         </li>
                         <li>
@@ -390,13 +412,13 @@ export default function Header({ isProd }: HeaderProps) {
                                     CONFIG.siteLinks.navMenu.refs.cheatSheet.url
                                 }
                                 className={cssClasses}>
-                                Cheat Sheet ⭐
+                                Cheat Sheet
                             </a>
                         </li>
                     </ul>
                 </div>
 
-                <div>
+                {/* <div>
                     <h3 className="my-2 font-semibold text-slate-500">
                         Use YINI
                     </h3>
@@ -431,13 +453,20 @@ export default function Header({ isProd }: HeaderProps) {
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> */}
 
                 <div>
                     <h3 className="my-2 font-semibold text-slate-500">
                         Reference
                     </h3>
                     <ul className="space-y-2 pl-4">
+                        <li>
+                            <a
+                                href={CONFIG.siteLinks.navMenu.refs.faq.url}
+                                className={cssClasses}>
+                                FAQ
+                            </a>
+                        </li>
                         <li>
                             <a
                                 href={CONFIG.siteLinks.navMenu.refs.spec.url}
@@ -452,13 +481,6 @@ export default function Header({ isProd }: HeaderProps) {
                                 }
                                 className={cssClasses}>
                                 YINI Format Rationale
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href={CONFIG.siteLinks.navMenu.refs.faq.url}
-                                className={cssClasses}>
-                                FAQ
                             </a>
                         </li>
                     </ul>
