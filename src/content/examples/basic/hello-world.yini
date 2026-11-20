@@ -1,7 +1,1 @@
-^ App
-name  = "Nebula"
-debug = false
-
-^ Server
-host = "127.0.0.1"
-port = 8080
+key = "Hello world!"

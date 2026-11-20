@@ -28,22 +28,143 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
 
         <h2>A quick/minimal example</h2>
         <YINIExample title="Hello world" code={exampleHelloWorld} />
+        <ul class="mt-5 space-y-1.5 pt-2">
+            <li>
+                <a
+                    href={CONFIG.siteLinks.navMenu.learnYini.examples.core.url}
+                    class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
+                >
+                    <div class="min-w-0 flex-1">
+                        <h3 class="leading-tight font-medium underline">
+                            Core YINI examples
+                        </h3>
+                        <p
+                            class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                        >
+                            Start here if you are new to YINI. These small,
+                            fundamental examples introduce sections, keys,
+                            values, comments, and basic structure.
+                        </p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a
+                    href={CONFIG.siteLinks.navMenu.learnYini.examples
+                        .indentation.url}
+                    class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
+                >
+                    <div class="min-w-0 flex-1">
+                        <h3 class="leading-tight font-medium underline">
+                            Indentation and nesting styles
+                        </h3>
+                        <p
+                            class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                        >
+                            See how YINI nesting works. Compare indented and
+                            non-indented styles, and learn why section markers
+                            define the structure.
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
 
         <hr />
 
         <YINIExample title="A bit fuller example" code={exampleSettings} />
+        <ul class="mt-5 space-y-1.5 pt-2">
+            <li>
+                <a
+                    href={CONFIG.siteLinks.navMenu.learnYini.examples.values
+                        .url}
+                    class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
+                >
+                    <div class="min-w-0 flex-1">
+                        <h3 class="leading-tight font-medium underline">
+                            Value literal examples
+                        </h3>
+                        <p
+                            class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                        >
+                            Compare strings, booleans, number formats, digit
+                            separators, and other everyday value syntax.
+                        </p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a
+                    href={CONFIG.siteLinks.navMenu.learnYini.examples.common
+                        .url}
+                    class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
+                >
+                    <div class="min-w-0 flex-1">
+                        <h3 class="leading-tight font-medium underline">
+                            Common real-world examples
+                        </h3>
+                        <p
+                            class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                        >
+                            Look at practical configuration patterns for apps,
+                            tools, services, and everyday project settings.
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
 
         <hr />
 
         <YINIExample
-            title="Three useful YINI string forms"
+            title="Useful YINI string forms"
             code={exampleBasicStrings}
         />
+        <ul class="mt-5 space-y-1.5 pt-2">
+            <li>
+                <a
+                    href={CONFIG.siteLinks.navMenu.learnYini.examples.advanced
+                        .url}
+                    class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
+                >
+                    <div class="min-w-0 flex-1">
+                        <h3 class="leading-tight font-medium underline">
+                            Advanced feature examples
+                        </h3>
+                        <p
+                            class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                        >
+                            Explore more flexible syntax, richer values, parser
+                            behavior, and features you may need in larger or
+                            more demanding files.
+                        </p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a
+                    href={CONFIG.siteLinks.navMenu.learnYini.examples.large.url}
+                    class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
+                >
+                    <div class="min-w-0 flex-1">
+                        <h3 class="leading-tight font-medium underline">
+                            Large examples
+                        </h3>
+                        <p
+                            class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
+                        >
+                            Browse bigger configuration files and see how YINI
+                            reads when a file grows beyond small examples.
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
 
         <hr />
 
-        <section class="pb-4">
-            <h2>Explore example pages/collections</h2>
+        <!-- <section class="pb-4"> -->
+        <!-- <h2>Explore example pages/collections</h2>
 
             <p
                 class="text-base leading-relaxed text-slate-600 dark:text-slate-400"
@@ -53,135 +174,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
                     >Core YINI examples</a
                 >, then explore the collection that matches what you need — from
                 focused syntax examples to full-scale configs.
-            </p>
+            </p> -->
 
-            <ul class="mt-5 space-y-1.5">
-                <li>
-                    <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.core
-                            .url}
-                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
-                    >
-                        <div class="min-w-0 flex-1">
-                            <h3 class="leading-tight font-medium underline">
-                                Core YINI examples
-                            </h3>
-                            <p
-                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
-                            >
-                                Start here if you are new to YINI. These small,
-                                fundamental examples introduce sections, keys,
-                                values, comments, and basic structure.
-                            </p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples
-                            .indentation.url}
-                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
-                    >
-                        <div class="min-w-0 flex-1">
-                            <h3 class="leading-tight font-medium underline">
-                                Indentation and nesting styles
-                            </h3>
-                            <p
-                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
-                            >
-                                See how YINI nesting works. Compare indented and
-                                non-indented styles, and learn why section
-                                markers define the structure.
-                            </p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.values
-                            .url}
-                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
-                    >
-                        <div class="min-w-0 flex-1">
-                            <h3 class="leading-tight font-medium underline">
-                                Value literal examples
-                            </h3>
-                            <p
-                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
-                            >
-                                Compare strings, booleans, number formats, digit
-                                separators, and other everyday value syntax.
-                            </p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.common
-                            .url}
-                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
-                    >
-                        <div class="min-w-0 flex-1">
-                            <h3 class="leading-tight font-medium underline">
-                                Common real-world examples
-                            </h3>
-                            <p
-                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
-                            >
-                                Look at practical configuration patterns for
-                                apps, tools, services, and everyday project
-                                settings.
-                            </p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples
-                            .advanced.url}
-                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
-                    >
-                        <div class="min-w-0 flex-1">
-                            <h3 class="leading-tight font-medium underline">
-                                Advanced feature examples
-                            </h3>
-                            <p
-                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
-                            >
-                                Explore more flexible syntax, richer values,
-                                parser behavior, and features you may need in
-                                larger or more demanding files.
-                            </p>
-                        </div>
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href={CONFIG.siteLinks.navMenu.learnYini.examples.large
-                            .url}
-                        class="group flex items-start gap-3 rounded-lg border border-slate-200 px-4 py-1 !no-underline transition hover:border-slate-300 hover:bg-slate-50 hover:!no-underline dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-800/40"
-                    >
-                        <div class="min-w-0 flex-1">
-                            <h3 class="leading-tight font-medium underline">
-                                Large examples
-                            </h3>
-                            <p
-                                class="mt-0.5 text-sm leading-snug text-slate-600 dark:text-slate-400"
-                            >
-                                Browse bigger configuration files and see how
-                                YINI reads when a file grows beyond small
-                                examples.
-                            </p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </section>
+        <!-- </section> -->
 
         <PageEndingLinks />
     </section>

@@ -1,9 +1,12 @@
 // Ordinary strings are raw by default; backslashes are preserved.
-name = "YINI"
-path = "C:\Users\Kim\Projects"
+format = "YINI"
+title  = 'My first config' // Single quotes work too.
+path   = "C:\Users\Kim\Projects"
+dir    = "/usr/local/bin"
 
-// Escaped Strings interpret escape sequences.
-message = E"Hello!\nWelcome to YINI."
+// Escaped strings interpret escape sequences.
+message = E"Hello!\nWelcome to \tYINI."
+text    = e'Coffee and tea are ready.\n\tLet\'s code!'
 
 // Triple-quoted strings are useful for multiline text.
 description = """

@@ -64,6 +64,11 @@ const htmlTitle = makeHtmlTitle(headTitle, postTitle, 60)
 const isProd = import.meta.env.PROD
 const isDev = import.meta.env.DEV
 const hasFullBleedSlot = Astro.slots.has('full-bleed')
+const examplesPath =
+    CONFIG.siteLinks.navMenu.learnYini.examples.index.url.replace(/\/$/, '')
+const currentPath = Astro.url.pathname.replace(/\/$/, '')
+const isExamplesPage =
+    currentPath === examplesPath || currentPath.startsWith(`${examplesPath}/`)
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -338,13 +343,33 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
                         </div>
 
                         <!-- 3) Learn YINI: Examples (NAV menu) -->
-                        <div>
-                            <h3
-                                class="font-semibold text-slate-900 dark:text-slate-100"
+                        <details
+                            id="sidebar-examples"
+                            class="group"
+                            open={isExamplesPage}
+                        >
+                            <summary
+                                class="cursor-pointer list-none rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 [&::-webkit-details-marker]:hidden"
                             >
-                                Examples
-                            </h3>
-                            <ul class="space-y-2">
+                                <h3
+                                    class="flex items-center gap-1 font-semibold text-slate-900 dark:text-slate-100"
+                                >
+                                    <svg
+                                        aria-hidden="true"
+                                        class="size-4 shrink-0 group-open:rotate-90"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path d="m9 6 6 6-6 6"></path>
+                                    </svg>
+                                    Examples 📚
+                                </h3>
+                            </summary>
+                            <ul class="mt-2 space-y-2">
                                 <li>
                                     <a
                                         href={CONFIG.siteLinks.navMenu.learnYini
@@ -409,7 +434,7 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </details>
 
                         <!-- 4) Use YINI (NAV menu) -->
                         <div>
@@ -569,6 +594,33 @@ const hasFullBleedSlot = Astro.slots.has('full-bleed')
             <a href="#top">Back to top </a>
         </footer>
         <Footer />
+
+        <script>
+            const examples =
+                document.querySelector<HTMLDetailsElement>('#sidebar-examples')
+            const summary = examples?.querySelector('summary')
+            const overview =
+                examples?.querySelector<HTMLAnchorElement>('a.sidebar-link')
+
+            if (examples && summary && overview) {
+                summary.addEventListener('click', (event) => {
+                    if (examples.open) return
+
+                    const currentPath = window.location.pathname.replace(
+                        /\/$/,
+                        '',
+                    )
+                    const overviewPath = new URL(
+                        overview.href,
+                    ).pathname.replace(/\/$/, '')
+
+                    if (currentPath !== overviewPath) {
+                        event.preventDefault()
+                        window.location.assign(overview.href)
+                    }
+                })
+            }
+        </script>
 
         <script is:inline>
             function trackClick(eventName, props = {}) {

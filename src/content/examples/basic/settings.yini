@@ -1,10 +1,12 @@
 @yini
 
 ^ App
-name     = "Nebula"
-isDebug  = false
-logPath  = "./logs/nebula.log"
-features = ["search", "dark-mode"] // A list (array)
+name    = "Nebula"
+isDebug = false
+logPath = "./logs/nebula.log"
+
+^^ Features // Sub-section of App
+list = ["search", "dark-mode"]
 
 ^ Server
 host   = "0.0.0.0"

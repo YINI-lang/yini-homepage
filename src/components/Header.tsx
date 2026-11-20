@@ -204,7 +204,7 @@ export default function Header({ isProd }: HeaderProps) {
                                     .index.url
                             }
                             className={cssClasses}>
-                            📄 Examples
+                            📚 Examples
                         </a>
                     </div>
                     <div className="mb-2">
