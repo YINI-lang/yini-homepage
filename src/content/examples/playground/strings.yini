@@ -28,3 +28,10 @@ Status:\tReady"""
 
 # The + operator joins strings into one value.
 title = "YINI " + "string formats"
+
+# Store command text with shared indentation removed.
+build_cmds = command"""
+    npm install
+    npm run build
+    npm test
+"""
