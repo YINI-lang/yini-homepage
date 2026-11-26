@@ -41,7 +41,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                 <!-- YINI is a clear, human-friendly, text-based configuration format
                 — less verbose than JSON, simpler than YAML, and more expressive
                 than INI. -->
-                {CONFIG.text.elevatorPitch}
+                {CONFIG.text.elevatorPitchShorter}
             </p>
             {/* Positioning line */}
             <p class="my-6">
@@ -50,6 +50,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
             </p>
 
             <div
+                class="my-4 flex flex-wrap items-center justify-center gap-3 pt-10"
+            >
+                <a
+                    href={CONFIG.siteLinks.hero.getStarted.url}
+                    class="btn btn-primary"
+                >
+                    Get Started
+                </a>
+
+                <a
+                    href={CONFIG.siteLinks.hero.playground.url}
+                    class="inline-block underline"
+                >
+                    Playground
+                </a>
+            </div>
+            <!-- <div
                 class="my-4 flex flex-wrap items-center justify-center gap-3 pt-10"
             >
                 <a
@@ -65,7 +82,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                 >
                     Get Started
                 </a>
-            </div>
+            </div> -->
         </section>
 
         <section class="my-6">
@@ -199,7 +216,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
         </section>
 
         <section class="mb-2 py-4 text-center">
-            <div class="flex flex-wrap items-center justify-center gap-3">
+            <!-- <div class="flex flex-wrap items-center justify-center gap-3">
                 <a
                     href={CONFIG.siteLinks.hero.getStarted.url}
                     class="btn btn-primary"
@@ -212,6 +229,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                     class="inline-block underline"
                 >
                     View Examples
+                </a>
+            </div> -->
+            <div
+                class="my-4 flex flex-wrap items-center justify-center gap-3 pt-10"
+            >
+                <a
+                    href={CONFIG.siteLinks.hero.playground.url}
+                    class="btn btn-primary"
+                >
+                    Try Playground
+                </a>
+
+                <a
+                    href={CONFIG.siteLinks.hero.getStarted.url}
+                    class="inline-block underline"
+                >
+                    Get Started
                 </a>
             </div>
         </section>
