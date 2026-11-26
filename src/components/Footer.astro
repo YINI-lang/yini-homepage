@@ -2,6 +2,13 @@
 import CONFIG from '../config/conf'
 
 const year = new Date().getFullYear()
+/*
+ Footer and links and grouping based on these priorities:
+    - Keep entry points: Get Started, Format Guide, and Examples serve readers with different levels of familiarity.
+    - Keep useful return destinations: Playground, Cheat Sheet, Specification, and FAQ are pages someone might repeatedly need.
+    - Prefer overview pages: Get YINI Tools can lead to parsers and CLIs, avoiding a separate footer link for every implementation.
+    - Keep project utilities: About, GitHub, and Report a bug provide context, source access, and support.
+ */
 ---
 
 <!-- Footer (dark) -->
@@ -32,8 +39,8 @@ const year = new Date().getFullYear()
 
             <!-- Left Column -->
             <div>
-                <!-- Use it -->
-                <h2 class="text-sm font-semibold text-slate-200">Use it</h2>
+                <!-- Learn -->
+                <h2 class="text-sm font-semibold text-slate-200">Learn</h2>
                 <ul class="mt-3 space-y-2 text-sm">
                     <li>
                         <a
@@ -45,21 +52,45 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
-                            href={CONFIG.siteLinks.hero.playground.url}
-                            title={CONFIG.siteLinks.hero.playground.title}
+                            href={CONFIG.siteLinks.navMenu.learnYini
+                                .quickTutorial.url}
+                            title={CONFIG.siteLinks.navMenu.learnYini
+                                .quickTutorial.title}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Playground</a
+                            >Quick Tutorial</a
                         >
                     </li>
                     <li>
                         <a
-                            href={CONFIG.siteLinks.navMenu.useYini.yiniParsers
-                                .url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onclick="trackClick('Ext. Link Clicked: Footer')"
+                            href={CONFIG.siteLinks.hero.examples.url}
+                            title={CONFIG.siteLinks.hero.examples.title}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Official YINI Parsers</a
+                            >YINI Examples</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={CONFIG.siteLinks.hero.faq.url}
+                            title={CONFIG.siteLinks.hero.faq.title}
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >FAQ</a
+                        >
+                    </li>
+                </ul>
+
+                <br />
+
+                <!-- Tools & Reference -->
+                <h2 class="text-sm font-semibold text-slate-200">
+                    Tools & Reference
+                </h2>
+                <ul class="mt-3 space-y-2 text-sm">
+                    <li>
+                        <a
+                            href={CONFIG.siteLinks.hero.playground.url}
+                            title={CONFIG.siteLinks.hero.playground.title}
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >Playground</a
                         >
                     </li>
                     <li>
@@ -77,57 +108,17 @@ const year = new Date().getFullYear()
                             title={CONFIG.siteLinks.navMenu.refs.cheatSheet
                                 .title}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >YINI Cheat Sheet</a
+                            >Cheat Sheet</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={CONFIG.siteLinks.hero.spec.url}
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >Specification</a
                         >
                     </li>
                 </ul>
-
-                <br />
-
-                <!-- Quick links -->
-                <h2 class="text-sm font-semibold text-slate-200">
-                    Quick links
-                </h2>
-                <ul class="mt-3 space-y-2 text-sm">
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.navMenu.start
-                                .whatIsYINIAndWhy.url}
-                            title={CONFIG.siteLinks.navMenu.start
-                                .whatIsYINIAndWhy.title}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >What is YINI & Why?</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.hero.tutorial.url}
-                            title={CONFIG.siteLinks.hero.tutorial.title}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Quick Tutorial</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.navMenu.learnYini
-                                .learnYiniFormat.url}
-                            title={CONFIG.siteLinks.navMenu.learnYini
-                                .learnYiniFormat.title}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >YINI Format Guide</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.hero.examples.url}
-                            title={CONFIG.siteLinks.hero.examples.title}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >YINI Examples</a
-                        >
-                    </li>
-                </ul>
-
-                <br />
 
                 <!-- Community -->
                 <!-- <h2 class="text-sm font-semibold text-slate-200">Community</h2>
@@ -170,214 +161,12 @@ const year = new Date().getFullYear()
                     </li>
                 </ul>
             </div> -->
-
-                <br />
-
-                <!-- Tools -->
-                <h2 class="text-sm font-semibold text-slate-200">Tools</h2>
-                <ul class="mt-3 space-y-2 text-sm">
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.navMenu.tools.yiniCli.url}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >YINI CLI command</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.navMenu.tools.yiniTestSuite
-                                .url}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >YINI Test Suite CLI</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.navMenu.tools.parserTS.url}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Node.js YINI Parser</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.navMenu.tools.parserPython
-                                .url}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Python YINI Parser</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.navMenu.tools.parserGo.url}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Go YINI Parser</a
-                        >
-                    </li>
-                </ul>
             </div>
 
             <!-- Right Column -->
             <div>
-                <!-- YINI ecosystem / Repos -->
-                <h2 class="text-sm font-semibold text-slate-200">
-                    YINI ecosystem / Source&nbsp;code
-                </h2>
-                <ul class="mt-3 space-y-2 text-sm">
-                    <li>
-                        <a
-                            href={CONFIG.urls.external.gitHub.yiniOrg}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onclick="trackClick('Ext. Link Clicked: Footer')"
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >YINI Project on GitHub ↗</a
-                        >
-                    </li>
-                </ul>
-                <details class="mt-2">
-                    <summary
-                        class="cursor-pointer text-sm text-slate-300 hover:text-sky-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
-                    >
-                        More GitHub repositories
-                    </summary>
-                    <ul class="mt-2 space-y-2 text-sm">
-                        <li>
-                            <a
-                                href={CONFIG.urls.external.gitHub.yiniCli}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >GitHub: yini-cli ↗</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href={CONFIG.urls.external.gitHub
-                                    .yiniParserPython}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >GitHub: yini-parser-python ↗</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href={CONFIG.urls.external.gitHub.yiniParserGo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >GitHub: yini-parser-go ↗</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href={CONFIG.urls.external.gitHub.yiniParserTs}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >GitHub: yini-parser-typescript ↗</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href={CONFIG.urls.external.gitHub.yiniTestSuite}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >GitHub: yini-test-suite ↗</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href={CONFIG.urls.external.gitHub.yiniDemoApps}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >GitHub: yini-demo-apps ↗</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href={CONFIG.urls.external.gitHub.yiniSyntax}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >GitHub: yini-syntax-highlighting ↗</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href={CONFIG.urls.external.gitHub.yiniHomepage}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >GitHub: yini-homepage ↗</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href={CONFIG.urls.external.gitHub.yiniSpec}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onclick="trackClick('Ext. Link Clicked: Footer')"
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >GitHub: yini-spec ↗</a
-                            >
-                        </li>
-                    </ul>
-                </details>
-
-                <br />
-
-                <!-- Deep dive -->
-                <h2 class="text-sm font-semibold text-slate-200">Deep dive</h2>
-                <ul class="mt-3 space-y-2 text-sm">
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.hero.faq.url}
-                            title={CONFIG.siteLinks.hero.faq.title}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >FAQ</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.hero.spec.url}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >Specification</a
-                        >
-                    </li>
-                    <!-- <li>
-                            <a
-                                href={CONFIG.siteLinks.navMenu.learnYini
-                                    .examples.large.url}
-                                title={CONFIG.siteLinks.navMenu.learnYini
-                                    .examples.large.title}
-                                class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                                >Large Examples</a
-                            >
-                        </li> -->
-                    <li>
-                        <a
-                            href={CONFIG.siteLinks.navMenu.refs.rationale.url}
-                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
-                            >YINI Format Rationale</a
-                        >
-                    </li>
-                </ul>
-
-                <br />
-
-                <!-- General -->
-                <h2 class="text-sm font-semibold text-slate-200">Info</h2>
+                <!-- Project -->
+                <h2 class="text-sm font-semibold text-slate-200">Project</h2>
                 <ul class="mt-3 space-y-2 text-sm">
                     <li>
                         <a
@@ -388,12 +177,36 @@ const year = new Date().getFullYear()
                     </li>
                     <li>
                         <a
+                            href={CONFIG.urls.external.gitHub.yiniOrg}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onclick="trackClick('Ext. Link Clicked: Footer Bottom Title')"
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >GitHub (source code) ↗</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={CONFIG.urls.external.discussions
+                                .yiniHomepageBugReport}
+                            title="Report a bug on this website"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onclick="trackClick('Ext. Link Clicked: Footer Bug Report')"
+                            class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
+                            >Report a bug ↗</a
+                        >
+                    </li>
+                    <li>
+                        <a
                             href={CONFIG.siteLinks.navMenu.metaInfo.assets.url}
                             class="text-slate-300 no-underline hover:text-sky-300 hover:underline"
                             >Logos & Assets</a
                         >
                     </li>
                 </ul>
+
+                <br />
             </div>
         </div>
 
@@ -442,9 +255,10 @@ const year = new Date().getFullYear()
                     DEV.to ↗
                 </a>
             </div>
-            <div
+            <!-- <div
                 class="flex flex-col items-center justify-between gap-3 md:flex-row"
-            >
+            > -->
+            <div class="text-center">
                 <div>
                     <a
                         href={CONFIG.meta.homepageURL}
@@ -455,7 +269,7 @@ const year = new Date().getFullYear()
                         ></a
                     >
                 </div>
-                <div class="flex items-center gap-4">
+                <!-- <div class="flex items-center gap-4">
                     <a
                         href={CONFIG.urls.external.discussions
                             .yiniHomepageBugReport}
@@ -474,7 +288,7 @@ const year = new Date().getFullYear()
                         class="text-slate-400 no-underline hover:text-sky-300 hover:underline"
                         >YINI-lang Project on GitHub ↗</a
                     >
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
